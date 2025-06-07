@@ -28,14 +28,33 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
+        // LOGS DE DEBUG
+        \Log::info('=== LOGIN DEBUG ===');
+        \Log::info('Email recibido: ' . $request->email);
+        \Log::info('Password recibido (primeros 20 chars): ' . substr($request->password, 0, 20));
+        \Log::info('Password length: ' . strlen($request->password));
+        \Log::info('Password starts with $2: ' . (str_starts_with($request->password, '$2') ? 'YES' : 'NO'));
+
         // Buscar el usuario por email
         $user = User::where('email', $request->email)->first();
         
-        if ($user && $this->verifyPassword($request->password, $user->password)) {
-            Auth::login($user, $request->boolean('remember'));
-            $request->session()->regenerate();
+        if ($user) {
+            \Log::info('Usuario encontrado: ' . $user->email);
+            \Log::info('Password almacenado (primeros 20 chars): ' . substr($user->password, 0, 20));
+            \Log::info('Password almacenado length: ' . strlen($user->password));
+            \Log::info('Password almacenado starts with $2: ' . (str_starts_with($user->password, '$2') ? 'YES' : 'NO'));
+            
+            if ($this->verifyPassword($request->password, $user->password)) {
+                \Log::info('Password verification: SUCCESS');
+                Auth::login($user, $request->boolean('remember'));
+                $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard')->with('success', '¡Bienvenido de vuelta!');
+                return redirect()->intended('/dashboard')->with('success', '¡Bienvenido de vuelta!');
+            } else {
+                \Log::info('Password verification: FAILED');
+            }
+        } else {
+            \Log::info('Usuario NO encontrado');
         }
 
         throw ValidationException::withMessages([
@@ -46,34 +65,56 @@ class AuthController extends Controller
     /**
      * Verificar contraseña con múltiples algoritmos
      */
-    private function verifyPassword($plainPassword, $hashedPassword)
+    private function verifyPassword($plainPassword, $storedPassword)
     {
-        // Intentar verificar con Bcrypt primero
-        if (Hash::check($plainPassword, $hashedPassword)) {
-            return true;
+        \Log::info('=== VERIFY PASSWORD DEBUG ===');
+        \Log::info('Plain password: ' . $plainPassword);
+        \Log::info('Stored password: ' . $storedPassword);
+        
+        // Intentar verificar con Bcrypt primero (método recomendado)
+        try {
+            \Log::info('Intentando Hash::check...');
+            if (Hash::check($plainPassword, $storedPassword)) {
+                \Log::info('Hash::check SUCCESS');
+                return true;
+            }
+            \Log::info('Hash::check FAILED');
+        } catch (\Exception $e) {
+            \Log::error('Hash::check ERROR: ' . $e->getMessage());
         }
         
-        // Si no es Bcrypt, intentar con otros algoritmos comunes
+        // Si no es Bcrypt, intentar con otros algoritmos comunes para compatibilidad
         // MD5
-        if (md5($plainPassword) === $hashedPassword) {
+        $md5Hash = md5($plainPassword);
+        \Log::info('MD5 hash: ' . $md5Hash);
+        if ($md5Hash === $storedPassword) {
+            \Log::info('MD5 match SUCCESS');
             return true;
         }
         
         // SHA1
-        if (sha1($plainPassword) === $hashedPassword) {
+        $sha1Hash = sha1($plainPassword);
+        \Log::info('SHA1 hash: ' . $sha1Hash);
+        if ($sha1Hash === $storedPassword) {
+            \Log::info('SHA1 match SUCCESS');
             return true;
         }
         
         // SHA256
-        if (hash('sha256', $plainPassword) === $hashedPassword) {
+        $sha256Hash = hash('sha256', $plainPassword);
+        \Log::info('SHA256 hash: ' . $sha256Hash);
+        if ($sha256Hash === $storedPassword) {
+            \Log::info('SHA256 match SUCCESS');
             return true;
         }
         
-        // Verificar si es una contraseña en texto plano (no recomendado)
-        if ($plainPassword === $hashedPassword) {
+        // Verificar si es una contraseña en texto plano (no recomendado, solo para compatibilidad)
+        if ($plainPassword === $storedPassword) {
+            \Log::info('Plain text match SUCCESS');
             return true;
         }
         
+        \Log::info('All verification methods FAILED');
         return false;
     }
 

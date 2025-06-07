@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Vilba</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- bcryptjs removido: procesamos contraseñas en el backend -->
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
     <div class="max-w-md w-full space-y-8">
@@ -23,7 +24,7 @@
             </div>
         @endif
         
-        <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
+        <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST" id="loginForm">
             @csrf
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
@@ -75,5 +76,7 @@
             </div>
         </form>
     </div>
+
+    <!-- Script removido: enviamos la contraseña en texto plano para que el backend la procese -->
 </body>
 </html>
