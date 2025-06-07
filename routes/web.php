@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CraneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,20 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/clients/{client}/deactivate', [ClientController::class, 'deactivate'])->name('clients.deactivate');
     Route::get('/clients-search', [ClientController::class, 'search'])->name('clients.search');
     Route::get('/clients-stats', [ClientController::class, 'stats'])->name('clients.stats');
+
+    // CRUD de Grúas
+    Route::resource('cranes', CraneController::class);
+    
+    // Rutas adicionales para grúas
+    Route::patch('/cranes/{crane}/activate', [CraneController::class, 'activate'])->name('cranes.activate');
+    Route::patch('/cranes/{crane}/deactivate', [CraneController::class, 'deactivate'])->name('cranes.deactivate');
+    Route::patch('/cranes/{crane}/maintenance', [CraneController::class, 'setMaintenance'])->name('cranes.maintenance');
+    Route::get('/cranes-stats', [CraneController::class, 'stats'])->name('cranes.stats');
+    
+    // Rutas para gestión de zonas de precios
+    Route::post('/cranes/{crane}/price-zones', [CraneController::class, 'addPriceZone'])->name('cranes.price-zones.store');
+    Route::put('/cranes/{crane}/price-zones/{zona}', [CraneController::class, 'updatePriceZone'])->name('cranes.price-zones.update');
+    Route::delete('/cranes/{crane}/price-zones/{zona}', [CraneController::class, 'removePriceZone'])->name('cranes.price-zones.destroy');
 });
 
 // Rutas API para AJAX (también protegidas)
@@ -59,4 +74,10 @@ Route::middleware(['auth'])->prefix('api')->group(function () {
     Route::apiResource('clients', ClientController::class, ['as' => 'api']);
     Route::patch('/clients/{client}/activate', [ClientController::class, 'activate'])->name('api.clients.activate');
     Route::patch('/clients/{client}/deactivate', [ClientController::class, 'deactivate'])->name('api.clients.deactivate');
+    
+    // API para gestión de zonas de precios de grúas
+    Route::post('/cranes/{crane}/price-zones', [CraneController::class, 'addPriceZone'])->name('api.cranes.price-zones.store');
+    Route::put('/cranes/{crane}/price-zones/{zona}', [CraneController::class, 'updatePriceZone'])->name('api.cranes.price-zones.update');
+    Route::delete('/cranes/{crane}/price-zones/{zona}', [CraneController::class, 'removePriceZone'])->name('api.cranes.price-zones.destroy');
+    Route::get('/cranes-stats', [CraneController::class, 'stats'])->name('api.cranes.stats');
 });

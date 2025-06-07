@@ -1,0 +1,348 @@
+@extends('layouts.app')
+
+@section('title', 'Gestión de Grúas')
+
+@section('content')
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h3 mb-0 text-gray-800">Gestión de Grúas</h1>
+                    <p class="mb-0 text-muted">Administra todas las grúas del sistema</p>
+                </div>
+                <a href="{{ route('cranes.create') }}" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Nueva Grúa
+                </a>
+            </div>
+
+            <!-- Filtros y búsqueda -->
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <form method="GET" action="{{ route('cranes.index') }}" class="row g-3">
+                        <div class="col-md-3">
+                            <label for="search" class="form-label">Buscar</label>
+                            <input type="text" class="form-control" id="search" name="search" 
+                                   value="{{ request('search') }}" 
+                                   placeholder="Marca, modelo, nombre...">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" id="estado" name="estado">
+                                <option value="">Todos</option>
+                                <option value="activo" {{ request('estado') === 'activo' ? 'selected' : '' }}>Activo</option>
+                                <option value="inactivo" {{ request('estado') === 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                <option value="mantenimiento" {{ request('estado') === 'mantenimiento' ? 'selected' : '' }}>Mantenimiento</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <select class="form-select" id="tipo" name="tipo">
+                                <option value="">Todos</option>
+                                <option value="torre" {{ request('tipo') === 'torre' ? 'selected' : '' }}>Torre</option>
+                                <option value="móvil" {{ request('tipo') === 'móvil' ? 'selected' : '' }}>Móvil</option>
+                                <option value="oruga" {{ request('tipo') === 'oruga' ? 'selected' : '' }}>Oruga</option>
+                                <option value="camión" {{ request('tipo') === 'camión' ? 'selected' : '' }}>Camión</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="sort" class="form-label">Ordenar por</label>
+                            <select class="form-select" id="sort" name="sort">
+                                <option value="created_at" {{ request('sort') === 'created_at' ? 'selected' : '' }}>Fecha creación</option>
+                                <option value="nombre" {{ request('sort') === 'nombre' ? 'selected' : '' }}>Nombre</option>
+                                <option value="marca" {{ request('sort') === 'marca' ? 'selected' : '' }}>Marca</option>
+                                <option value="capacidad" {{ request('sort') === 'capacidad' ? 'selected' : '' }}>Capacidad</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="direction" class="form-label">Orden</label>
+                            <select class="form-select" id="direction" name="direction">
+                                <option value="desc" {{ request('direction') === 'desc' ? 'selected' : '' }}>Descendente</option>
+                                <option value="asc" {{ request('direction') === 'asc' ? 'selected' : '' }}>Ascendente</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1 d-flex align-items-end">
+                            <button type="submit" class="btn btn-outline-primary w-100">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="row mb-4">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Total de Grúas
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $cranes->total() }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-truck-moving fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Grúas Activas
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{ $cranes->where('estado', 'activo')->count() }}
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        En Mantenimiento
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{ $cranes->where('estado', 'mantenimiento')->count() }}
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-tools fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-danger shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                        Grúas Inactivas
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{ $cranes->where('estado', 'inactivo')->count() }}
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-times-circle fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de grúas -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Grúas</h6>
+                </div>
+                <div class="card-body">
+                    @if($cranes->count() > 0)
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Marca</th>
+                                        <th>Modelo</th>
+                                        <th>Tipo</th>
+                                        <th>Capacidad</th>
+                                        <th>Estado</th>
+                                        <th>Categoría</th>
+                                        <th>Precios</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($cranes as $crane)
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ms-3">
+                                                        <div class="fw-bold">{{ $crane->nombre }}</div>
+                                                        <div class="text-muted small">ID: {{ $crane->id }}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{{ $crane->marca }}</td>
+                                            <td>{{ $crane->modelo }}</td>
+                                            <td>
+                                                <span class="badge bg-info text-dark">
+                                                    {{ ucfirst($crane->tipo) }}
+                                                </span>
+                                            </td>
+                                            <td>{{ number_format($crane->capacidad) }} ton</td>
+                                            <td>
+                                                @switch($crane->estado)
+                                                    @case('activo')
+                                                        <span class="badge bg-success">Activo</span>
+                                                        @break
+                                                    @case('inactivo')
+                                                        <span class="badge bg-danger">Inactivo</span>
+                                                        @break
+                                                    @case('mantenimiento')
+                                                        <span class="badge bg-warning text-dark">Mantenimiento</span>
+                                                        @break
+                                                    @default
+                                                        <span class="badge bg-secondary">{{ ucfirst($crane->estado) }}</span>
+                                                @endswitch
+                                            </td>
+                                            <td>{{ $crane->category ?? 'Sin categoría' }}</td>
+                                            <td>
+                                                @if(!empty($crane->precios) && count($crane->precios) > 0)
+                                                    <span class="badge bg-primary">{{ count($crane->precios) }} zona(s)</span>
+                                                @else
+                                                    <span class="text-muted">Sin precios</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <a href="{{ route('cranes.show', $crane) }}" 
+                                                       class="btn btn-sm btn-outline-info" 
+                                                       title="Ver detalles">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    <a href="{{ route('cranes.edit', $crane) }}" 
+                                                       class="btn btn-sm btn-outline-primary" 
+                                                       title="Editar">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    
+                                                    @if($crane->estado === 'activo')
+                                                        <form action="{{ route('cranes.deactivate', $crane) }}" 
+                                                              method="POST" 
+                                                              style="display: inline;">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" 
+                                                                    class="btn btn-sm btn-outline-warning" 
+                                                                    title="Desactivar"
+                                                                    onclick="return confirm('¿Estás seguro de que quieres desactivar esta grúa?')">
+                                                                <i class="fas fa-pause"></i>
+                                                            </button>
+                                                        </form>
+                                                    @elseif($crane->estado === 'inactivo')
+                                                        <form action="{{ route('cranes.activate', $crane) }}" 
+                                                              method="POST" 
+                                                              style="display: inline;">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" 
+                                                                    class="btn btn-sm btn-outline-success" 
+                                                                    title="Activar">
+                                                                <i class="fas fa-play"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                    
+                                                    @if($crane->estado !== 'mantenimiento')
+                                                        <form action="{{ route('cranes.maintenance', $crane) }}" 
+                                                              method="POST" 
+                                                              style="display: inline;">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" 
+                                                                    class="btn btn-sm btn-outline-warning" 
+                                                                    title="Poner en mantenimiento"
+                                                                    onclick="return confirm('¿Estás seguro de que quieres poner esta grúa en mantenimiento?')">
+                                                                <i class="fas fa-tools"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                    
+                                                    <form action="{{ route('cranes.destroy', $crane) }}" 
+                                                          method="POST" 
+                                                          style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" 
+                                                                class="btn btn-sm btn-outline-danger" 
+                                                                title="Eliminar"
+                                                                onclick="return confirm('¿Estás seguro de que quieres eliminar esta grúa? Esta acción no se puede deshacer.')">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Paginación -->
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <div>
+                                <p class="text-muted mb-0">
+                                    Mostrando {{ $cranes->firstItem() }} a {{ $cranes->lastItem() }} 
+                                    de {{ $cranes->total() }} resultados
+                                </p>
+                            </div>
+                            <div>
+                                {{ $cranes->appends(request()->query())->links() }}
+                            </div>
+                        </div>
+                    @else
+                        <div class="text-center py-5">
+                            <i class="fas fa-truck-moving fa-3x text-gray-300 mb-3"></i>
+                            <h5 class="text-gray-600">No se encontraron grúas</h5>
+                            <p class="text-muted mb-4">No hay grúas que coincidan con los criterios de búsqueda.</p>
+                            <a href="{{ route('cranes.create') }}" class="btn btn-primary">
+                                <i class="fas fa-plus me-2"></i>Crear Primera Grúa
+                            </a>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@push('scripts')
+<script>
+    // Auto-submit form when filters change
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        const selects = form.querySelectorAll('select');
+        
+        selects.forEach(select => {
+            select.addEventListener('change', function() {
+                form.submit();
+            });
+        });
+        
+        // Search input with debounce
+        const searchInput = document.getElementById('search');
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                form.submit();
+            }, 500);
+        });
+    });
+</script>
+@endpush
