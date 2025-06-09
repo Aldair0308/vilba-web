@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Editar Grúa: ' . $crane->nombre)
+@section('title', 'Editar Equipo: ' . $crane->nombre)
 
 @section('content')
 <div class="container-fluid">
@@ -10,20 +10,20 @@
             <div class="mb-4">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('cranes.index') }}">Grúas</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('cranes.index') }}">Equipos</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('cranes.show', $crane->id) }}">{{ $crane->nombre }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Editar</li>
                     </ol>
                 </nav>
-                <h1 class="h3 mb-0 text-gray-800">Editar Grúa</h1>
-                <p class="mb-0 text-muted">Modifique la información de la grúa</p>
+                <h1 class="h3 mb-0 text-gray-800">Editar Equipo</h1>
+                    <p class="mb-0 text-muted">Modifique la información del equipo</p>
             </div>
 
             <!-- Formulario -->
             <div class="card shadow">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        <i class="fas fa-truck-moving me-2"></i>Información de la Grúa
+                        <i class="fas fa-truck-moving me-2"></i>Información del Equipo
                     </h6>
                 </div>
                 <div class="card-body">
@@ -147,8 +147,9 @@
                                         id="estado" 
                                         name="estado">
                                     <option value="activo" {{ old('estado', $crane->estado) === 'activo' ? 'selected' : '' }}>Activo</option>
-                                    <option value="inactivo" {{ old('estado', $crane->estado) === 'inactivo' ? 'selected' : '' }}>Inactivo</option>
-                                    <option value="mantenimiento" {{ old('estado', $crane->estado) === 'mantenimiento' ? 'selected' : '' }}>Mantenimiento</option>
+                            <option value="inactivo" {{ old('estado', $crane->estado) === 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+                            <option value="mantenimiento" {{ old('estado', $crane->estado) === 'mantenimiento' ? 'selected' : '' }}>Mantenimiento</option>
+                            <option value="en_renta" {{ old('estado', $crane->estado) === 'en_renta' ? 'selected' : '' }}>En Renta</option>
                                 </select>
                                 @error('estado')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -175,7 +176,7 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                                 <div class="form-text">
-                                    Categoría o clasificación especial de la grúa (opcional)
+                                    Categoría o clasificación especial del equipo (opcional)
                                 </div>
                             </div>
                         </div>
@@ -204,14 +205,24 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-3 mb-3">
-                                                        <label class="form-label">Zona <span class="text-danger">*</span></label>
-                                                        <select class="form-select zona-select" name="precios[{{ $index }}][zona]" required>
-                                                            <option value="">Seleccione zona</option>
-                                                            <option value="basica" {{ (isset($precio['zona']) && $precio['zona'] === 'basica') ? 'selected' : '' }}>Básica</option>
-                                                            <option value="estandar" {{ (isset($precio['zona']) && $precio['zona'] === 'estandar') ? 'selected' : '' }}>Estándar</option>
-                                                            <option value="premium" {{ (isset($precio['zona']) && $precio['zona'] === 'premium') ? 'selected' : '' }}>Premium</option>
-                                                        </select>
-                                                    </div>
+                        <label class="form-label">Zona <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <select class="form-select zona-select" name="precios[{{ $index }}][zona]" required>
+                                <option value="">Seleccione zona</option>
+                                <option value="basica" {{ (isset($precio['zona']) && $precio['zona'] === 'basica') ? 'selected' : '' }}>Básica</option>
+                                <option value="estandar" {{ (isset($precio['zona']) && $precio['zona'] === 'estandar') ? 'selected' : '' }}>Estándar</option>
+                                <option value="premium" {{ (isset($precio['zona']) && $precio['zona'] === 'premium') ? 'selected' : '' }}>Premium</option>
+                                <option value="custom" {{ (isset($precio['zona']) && !in_array($precio['zona'], ['basica', 'estandar', 'premium'])) ? 'selected' : '' }}>Personalizada</option>
+                            </select>
+                            <button type="button" class="btn btn-outline-secondary edit-zona-btn" title="Editar zona">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control mt-2 custom-zona-input" name="precios[{{ $index }}][zona_custom]" 
+                               value="{{ (isset($precio['zona']) && !in_array($precio['zona'], ['basica', 'estandar', 'premium'])) ? $precio['zona'] : '' }}" 
+                               placeholder="Nombre de zona personalizada" 
+                               style="{{ (isset($precio['zona']) && !in_array($precio['zona'], ['basica', 'estandar', 'premium'])) ? 'display: block;' : 'display: none;' }}">
+                    </div>
                                                     <div class="col-md-3 mb-3">
                                                         <label class="form-label">Precio Básico <span class="text-danger">*</span></label>
                                                         <div class="input-group">
@@ -299,7 +310,7 @@
                                             <i class="fas fa-arrow-left me-2"></i>Cancelar
                                         </a>
                                         <a href="{{ route('cranes.index') }}" class="btn btn-outline-secondary ms-2">
-                                            <i class="fas fa-list me-2"></i>Lista de Grúas
+                                            <i class="fas fa-list me-2"></i>Lista de Equipos
                                         </a>
                                     </div>
                                     <div>
@@ -307,7 +318,7 @@
                                             <i class="fas fa-undo me-2"></i>Restablecer
                                         </button>
                                         <button type="submit" class="btn btn-primary" id="submitBtn">
-                                            <i class="fas fa-save me-2"></i>Actualizar Grúa
+                                            <i class="fas fa-save me-2"></i>Actualizar Equipo
                                         </button>
                                     </div>
                                 </div>
@@ -329,7 +340,7 @@
                         Las siguientes acciones son irreversibles. Proceda con precaución.
                     </p>
                     <form method="POST" action="{{ route('cranes.destroy', $crane->id) }}" 
-                          onsubmit="return confirm('¿Está COMPLETAMENTE seguro de eliminar esta grúa?\n\nEsta acción NO se puede deshacer.\n\nEscriba ELIMINAR en el campo de confirmación para continuar.')">
+                          onsubmit="return confirm('¿Está COMPLETAMENTE seguro de eliminar este equipo?\n\nEsta acción NO se puede deshacer.\n\nEscriba ELIMINAR en el campo de confirmación para continuar.')">
                         @csrf
                         @method('DELETE')
                         <div class="row align-items-end">
@@ -342,7 +353,7 @@
                             </div>
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-danger w-100" id="deleteBtn" disabled>
-                                    <i class="fas fa-trash me-2"></i>Eliminar Grúa
+                                    <i class="fas fa-trash me-2"></i>Eliminar Equipo
                                 </button>
                             </div>
                         </div>
@@ -426,7 +437,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const preciosContainer = document.getElementById('precios-container');
     const addPrecioBtn = document.getElementById('add-precio');
     
+    console.log('🚀 DOM cargado - Iniciando script de precios (EDIT)');
+    console.log('📍 Elementos encontrados (EDIT):', {
+        preciosContainer: !!preciosContainer,
+        addPrecioBtn: !!addPrecioBtn
+    });
+    
+    if (!preciosContainer || !addPrecioBtn) {
+        console.error('❌ Error: No se encontraron los elementos necesarios (EDIT)');
+    }
+    
     let precioIndex = {{ count($crane->precios ?? []) }};
+    console.log('📊 Índice inicial de precios (EDIT):', precioIndex);
     
     // Store original values
     const originalValues = {};
@@ -467,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Re-enable button after 3 seconds in case of error
         setTimeout(function() {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = '<i class="fas fa-save me-2"></i>Actualizar Grúa';
+            submitBtn.innerHTML = '<i class="fas fa-save me-2"></i>Actualizar Equipo';
         }, 3000);
     });
     
@@ -499,19 +521,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h6 class="mb-0">
                         <i class="fas fa-map-marker-alt me-2"></i>Zona ${index + 1}
                     </h6>
-                    <button type="button" class="btn btn-sm btn-outline-danger remove-precio">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    <div>
+                        <button type="button" class="btn btn-sm btn-outline-primary me-2 duplicate-precio" title="Duplicar zona">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-danger remove-precio" title="Eliminar zona">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label class="form-label">Zona <span class="text-danger">*</span></label>
-                        <select class="form-select zona-select" name="precios[${index}][zona]" required>
-                            <option value="">Seleccione zona</option>
-                            <option value="basica">Básica</option>
-                            <option value="estandar">Estándar</option>
-                            <option value="premium">Premium</option>
-                        </select>
+                        <div class="input-group">
+                            <select class="form-select zona-select" name="precios[${index}][zona]" required>
+                                <option value="">Seleccione zona</option>
+                                <option value="basica">Básica</option>
+                                <option value="estandar">Estándar</option>
+                                <option value="premium">Premium</option>
+                                <option value="custom">Personalizada</option>
+                            </select>
+                            <button type="button" class="btn btn-outline-secondary edit-zona-btn" title="Editar zona">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control mt-2 custom-zona-input" name="precios[${index}][zona_custom]" 
+                               placeholder="Nombre de zona personalizada" style="display: none;">
                     </div>
                     <div class="col-md-3 mb-3">
                         <label class="form-label">Precio Básico <span class="text-danger">*</span></label>
@@ -540,21 +575,125 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add precio
-    addPrecioBtn.addEventListener('click', function() {
-        const newItem = document.createElement('div');
-        newItem.innerHTML = createPrecioItem(precioIndex);
-        preciosContainer.appendChild(newItem.firstElementChild);
-        precioIndex++;
+    console.log('🔧 Configurando event listener para botón add-precio (EDIT)');
+    
+    addPrecioBtn.addEventListener('click', function(e) {
+        console.log('🖱️ CLICK detectado en botón add-precio (EDIT)');
+        console.log('📊 Estado actual - precioIndex:', precioIndex);
+        
+        try {
+            console.log('⚙️ Creando nuevo item de precio...');
+            const newItemHTML = createPrecioItem(precioIndex);
+            console.log('✅ HTML generado:', newItemHTML.substring(0, 100) + '...');
+            
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = newItemHTML;
+            const newItem = tempDiv.firstElementChild;
+            console.log('✅ Elemento DOM creado:', newItem);
+            
+            console.log('📝 Agregando item al contenedor...');
+            preciosContainer.appendChild(newItem);
+            console.log('✅ Item agregado al DOM');
+            
+            precioIndex++;
+            console.log('📈 Índice actualizado a:', precioIndex);
+            console.log('🎉 Nueva zona de precio agregada exitosamente! (EDIT)');
+        } catch (error) {
+            console.error('💥 ERROR al crear el item de precio (EDIT):', error);
+            console.error('📋 Stack trace:', error.stack);
+        }
     });
     
-    // Remove precio
+    console.log('✅ Event listener configurado correctamente (EDIT)');
+    
+    // Handle precio actions
     preciosContainer.addEventListener('click', function(e) {
+        // Remove precio
         if (e.target.closest('.remove-precio')) {
             if (confirm('¿Está seguro de eliminar esta zona de precio?')) {
                 e.target.closest('.precio-item').remove();
+                updatePrecioIndexes();
+            }
+        }
+        
+        // Duplicate precio
+        if (e.target.closest('.duplicate-precio')) {
+            const precioItem = e.target.closest('.precio-item');
+            const newItem = precioItem.cloneNode(true);
+            
+            // Update indexes and clear values
+            const newIndex = precioIndex++;
+            newItem.setAttribute('data-index', newIndex);
+            newItem.querySelector('h6').innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>Zona ${newIndex + 1}`;
+            
+            // Update form names
+            newItem.querySelectorAll('[name]').forEach(input => {
+                const oldName = input.getAttribute('name');
+                const newName = oldName.replace(/\[\d+\]/, `[${newIndex}]`);
+                input.setAttribute('name', newName);
+                
+                // Clear values except zona selection
+                if (!input.classList.contains('zona-select')) {
+                    input.value = '';
+                }
+            });
+            
+            precioItem.parentNode.insertBefore(newItem, precioItem.nextSibling);
+        }
+        
+        // Edit zona button
+        if (e.target.closest('.edit-zona-btn')) {
+            const precioItem = e.target.closest('.precio-item');
+            const zonaSelect = precioItem.querySelector('.zona-select');
+            const customInput = precioItem.querySelector('.custom-zona-input');
+            
+            if (zonaSelect.value === 'custom') {
+                const newName = prompt('Ingrese el nombre de la zona:', customInput.value);
+                if (newName && newName.trim()) {
+                    customInput.value = newName.trim();
+                }
+            } else {
+                const newName = prompt('Ingrese el nombre de la nueva zona:', '');
+                if (newName && newName.trim()) {
+                    zonaSelect.value = 'custom';
+                    customInput.value = newName.trim();
+                    customInput.style.display = 'block';
+                }
             }
         }
     });
+    
+    // Handle zona select changes
+    preciosContainer.addEventListener('change', function(e) {
+        if (e.target.classList.contains('zona-select')) {
+            const customInput = e.target.closest('.precio-item').querySelector('.custom-zona-input');
+            if (e.target.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.required = true;
+            } else {
+                customInput.style.display = 'none';
+                customInput.required = false;
+                customInput.value = '';
+            }
+        }
+    });
+    
+    // Update precio indexes
+    function updatePrecioIndexes() {
+        const precioItems = preciosContainer.querySelectorAll('.precio-item');
+        precioItems.forEach((item, index) => {
+            item.setAttribute('data-index', index);
+            item.querySelector('h6').innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>Zona ${index + 1}`;
+            
+            // Update form names
+            item.querySelectorAll('[name]').forEach(input => {
+                const oldName = input.getAttribute('name');
+                const newName = oldName.replace(/\[\d+\]/, `[${index}]`);
+                input.setAttribute('name', newName);
+            });
+        });
+        precioIndex = precioItems.length;
+    }
     
     // Detect changes
     let hasChanges = false;

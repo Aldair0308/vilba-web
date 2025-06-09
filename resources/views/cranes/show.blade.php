@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Grúa: ' . $crane->nombre)
+@section('title', 'Equipo: ' . $crane->nombre)
 
 @section('content')
 <div class="container-fluid">
@@ -11,12 +11,12 @@
                 <div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('cranes.index') }}">Grúas</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('cranes.index') }}">Equipos</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $crane->nombre }}</li>
                         </ol>
                     </nav>
                     <h1 class="h3 mb-0 text-gray-800">{{ $crane->nombre }}</h1>
-                    <p class="mb-0 text-muted">Información detallada de la grúa</p>
+                    <p class="mb-0 text-muted">Información detallada del equipo</p>
                 </div>
                 <div class="btn-group" role="group">
                     <a href="{{ route('cranes.edit', $crane->id) }}" class="btn btn-warning">
@@ -27,7 +27,7 @@
                             @csrf
                             @method('PATCH')
                             <button type="submit" class="btn btn-secondary" 
-                                    onclick="return confirm('¿Está seguro de desactivar esta grúa?')">
+                                    onclick="return confirm('¿Está seguro de desactivar este equipo?')">
                                 <i class="fas fa-pause me-2"></i>Desactivar
                             </button>
                         </form>
@@ -41,12 +41,31 @@
                         </form>
                     @endif
                     
-                    @if($crane->estado !== 'mantenimiento')
+                    @if($crane->estado === 'activo')
+                        <form method="POST" action="{{ route('cranes.rented', $crane->id) }}" style="display: inline;">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-info" 
+                                    onclick="return confirm('¿Está seguro de poner este equipo en renta?')">
+                                <i class="fas fa-handshake me-2"></i>Poner en Renta
+                            </button>
+                        </form>
+                    @elseif($crane->estado === 'en_renta')
+                        <form method="POST" action="{{ route('cranes.activate', $crane->id) }}" style="display: inline;">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-undo me-2"></i>Devolver de Renta
+                            </button>
+                        </form>
+                    @endif
+                    
+                    @if($crane->estado !== 'mantenimiento' && $crane->estado !== 'en_renta')
                         <form method="POST" action="{{ route('cranes.maintenance', $crane->id) }}" style="display: inline;">
                             @csrf
                             @method('PATCH')
                             <button type="submit" class="btn btn-warning" 
-                                    onclick="return confirm('¿Está seguro de poner esta grúa en mantenimiento?')">
+                                    onclick="return confirm('¿Está seguro de poner este equipo en mantenimiento?')">
                                 <i class="fas fa-tools me-2"></i>Mantenimiento
                             </button>
                         </form>
@@ -55,7 +74,7 @@
             </div>
 
             <div class="row">
-                <!-- Información de la Grúa -->
+                <!-- Información del Equipo -->
                 <div class="col-lg-8">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -86,6 +105,11 @@
                                             @case('mantenimiento')
                                                 <span class="badge bg-warning fs-6">
                                                     <i class="fas fa-tools me-1"></i>Mantenimiento
+                                                </span>
+                                                @break
+                                            @case('en_renta')
+                                                <span class="badge bg-info fs-6">
+                                                    <i class="fas fa-handshake me-1"></i>En Renta
                                                 </span>
                                                 @break
                                             @default
@@ -233,6 +257,8 @@
                                             <i class="fas fa-check-circle"></i> Disponible
                                         @elseif($crane->estado === 'mantenimiento')
                                             <i class="fas fa-tools text-warning"></i> Mantenimiento
+                                        @elseif($crane->estado === 'en_renta')
+                                            <i class="fas fa-handshake text-info"></i> En Renta
                                         @else
                                             <i class="fas fa-times-circle text-danger"></i> No Disponible
                                         @endif
@@ -261,8 +287,16 @@
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="btn btn-outline-secondary w-100" 
-                                                onclick="return confirm('¿Está seguro de desactivar esta grúa?')">
-                                            <i class="fas fa-pause me-2"></i>Desactivar Grúa
+                                                onclick="return confirm('¿Está seguro de desactivar este equipo?')">
+                                            <i class="fas fa-pause me-2"></i>Desactivar Equipo
+                                        </button>
+                                    </form>
+                                    <form method="POST" action="{{ route('cranes.rented', $crane->id) }}">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-outline-info w-100" 
+                                                onclick="return confirm('¿Está seguro de poner este equipo en renta?')">
+                                            <i class="fas fa-handshake me-2"></i>Poner en Renta
                                         </button>
                                     </form>
                                 @elseif($crane->estado === 'inactivo')
@@ -270,7 +304,15 @@
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="btn btn-outline-success w-100">
-                                            <i class="fas fa-play me-2"></i>Activar Grúa
+                                            <i class="fas fa-play me-2"></i>Activar Equipo
+                                        </button>
+                                    </form>
+                                @elseif($crane->estado === 'en_renta')
+                                    <form method="POST" action="{{ route('cranes.activate', $crane->id) }}">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-outline-success w-100">
+                                            <i class="fas fa-undo me-2"></i>Devolver de Renta
                                         </button>
                                     </form>
                                 @endif
@@ -280,7 +322,7 @@
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="btn btn-outline-warning w-100" 
-                                                onclick="return confirm('¿Está seguro de poner esta grúa en mantenimiento?')">
+                                                onclick="return confirm('¿Está seguro de poner este equipo en mantenimiento?')">
                                             <i class="fas fa-tools me-2"></i>Poner en Mantenimiento
                                         </button>
                                     </form>
@@ -292,8 +334,8 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger w-100" 
-                                            onclick="return confirm('¿Está seguro de eliminar esta grúa? Esta acción no se puede deshacer.')">
-                                        <i class="fas fa-trash me-2"></i>Eliminar Grúa
+                                            onclick="return confirm('¿Está seguro de eliminar este equipo? Esta acción no se puede deshacer.')">
+                                        <i class="fas fa-trash me-2"></i>Eliminar Equipo
                                     </button>
                                 </form>
                             </div>

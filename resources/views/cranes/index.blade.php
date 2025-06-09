@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Gestión de Grúas')
+@section('title', 'Gestión de Equipos')
 
 @section('content')
 <div class="container-fluid">
@@ -9,11 +9,11 @@
             <!-- Header -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
-                    <h1 class="h3 mb-0 text-gray-800">Gestión de Grúas</h1>
-                    <p class="mb-0 text-muted">Administra todas las grúas del sistema</p>
+                    <h1 class="h3 mb-0 text-gray-800">Gestión de Equipos</h1>
+<p class="mb-0 text-muted">Administra todos los equipos del sistema</p>
                 </div>
                 <a href="{{ route('cranes.create') }}" class="btn btn-primary">
-                    <i class="fas fa-plus me-2"></i>Nueva Grúa
+                    <i class="fas fa-plus me-2"></i>Nuevo Equipo
                 </a>
             </div>
 
@@ -34,6 +34,7 @@
                                 <option value="activo" {{ request('estado') === 'activo' ? 'selected' : '' }}>Activo</option>
                                 <option value="inactivo" {{ request('estado') === 'inactivo' ? 'selected' : '' }}>Inactivo</option>
                                 <option value="mantenimiento" {{ request('estado') === 'mantenimiento' ? 'selected' : '' }}>Mantenimiento</option>
+                                <option value="en_renta" {{ request('estado') === 'en_renta' ? 'selected' : '' }}>En Renta</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -79,7 +80,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Total de Grúas
+                                        Total de Equipos
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $cranes->total() }}</div>
                                 </div>
@@ -97,7 +98,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Grúas Activas
+                                        Equipos Activos
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                                         {{ $cranes->where('estado', 'activo')->count() }}
@@ -132,12 +133,32 @@
                 </div>
 
                 <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        En Renta
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{ $cranes->where('estado', 'en_renta')->count() }}
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-handshake fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-danger shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                        Grúas Inactivas
+                                        Equipos Inactivos
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                                         {{ $cranes->where('estado', 'inactivo')->count() }}
@@ -152,10 +173,10 @@
                 </div>
             </div>
 
-            <!-- Tabla de grúas -->
+            <!-- Tabla de equipos -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Lista de Grúas</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Equipos</h6>
                 </div>
                 <div class="card-body">
                     @if($cranes->count() > 0)
@@ -204,6 +225,9 @@
                                                     @case('mantenimiento')
                                                         <span class="badge bg-warning text-dark">Mantenimiento</span>
                                                         @break
+                                                    @case('en_renta')
+                                                        <span class="badge bg-info">En Renta</span>
+                                                        @break
                                                     @default
                                                         <span class="badge bg-secondary">{{ ucfirst($crane->estado) }}</span>
                                                 @endswitch
@@ -238,7 +262,7 @@
                                                             <button type="submit" 
                                                                     class="btn btn-sm btn-outline-warning" 
                                                                     title="Desactivar"
-                                                                    onclick="return confirm('¿Estás seguro de que quieres desactivar esta grúa?')">
+                                                                    onclick="return confirm('¿Estás seguro de que quieres desactivar este equipo?')">
                                                                 <i class="fas fa-pause"></i>
                                                             </button>
                                                         </form>
@@ -256,7 +280,34 @@
                                                         </form>
                                                     @endif
                                                     
-                                                    @if($crane->estado !== 'mantenimiento')
+                                                    @if($crane->estado === 'activo')
+                                                        <form action="{{ route('cranes.rented', $crane) }}" 
+                                                              method="POST" 
+                                                              style="display: inline;">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" 
+                                                                    class="btn btn-sm btn-outline-info" 
+                                                                    title="Poner en renta"
+                                                                    onclick="return confirm('¿Estás seguro de que quieres poner este equipo en renta?')">
+                                                                <i class="fas fa-handshake"></i>
+                                                            </button>
+                                                        </form>
+                                                    @elseif($crane->estado === 'en_renta')
+                                                        <form action="{{ route('cranes.activate', $crane) }}" 
+                                                              method="POST" 
+                                                              style="display: inline;">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" 
+                                                                    class="btn btn-sm btn-outline-success" 
+                                                                    title="Devolver de renta">
+                                                                <i class="fas fa-undo"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                    
+                                                    @if($crane->estado !== 'mantenimiento' && $crane->estado !== 'en_renta')
                                                         <form action="{{ route('cranes.maintenance', $crane) }}" 
                                                               method="POST" 
                                                               style="display: inline;">
@@ -265,7 +316,7 @@
                                                             <button type="submit" 
                                                                     class="btn btn-sm btn-outline-warning" 
                                                                     title="Poner en mantenimiento"
-                                                                    onclick="return confirm('¿Estás seguro de que quieres poner esta grúa en mantenimiento?')">
+                                                                    onclick="return confirm('¿Estás seguro de que quieres poner este equipo en mantenimiento?')">
                                                                 <i class="fas fa-tools"></i>
                                                             </button>
                                                         </form>
@@ -279,7 +330,7 @@
                                                         <button type="submit" 
                                                                 class="btn btn-sm btn-outline-danger" 
                                                                 title="Eliminar"
-                                                                onclick="return confirm('¿Estás seguro de que quieres eliminar esta grúa? Esta acción no se puede deshacer.')">
+                                                                onclick="return confirm('¿Estás seguro de que quieres eliminar este equipo? Esta acción no se puede deshacer.')">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
@@ -306,10 +357,10 @@
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-truck-moving fa-3x text-gray-300 mb-3"></i>
-                            <h5 class="text-gray-600">No se encontraron grúas</h5>
-                            <p class="text-muted mb-4">No hay grúas que coincidan con los criterios de búsqueda.</p>
+                            <h5 class="text-gray-600">No se encontraron equipos</h5>
+<p class="text-muted mb-4">No hay equipos que coincidan con los criterios de búsqueda.</p>
                             <a href="{{ route('cranes.create') }}" class="btn btn-primary">
-                                <i class="fas fa-plus me-2"></i>Crear Primera Grúa
+                                <i class="fas fa-plus me-2"></i>Crear Primer Equipo
                             </a>
                         </div>
                     @endif

@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CraneController;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,14 +56,24 @@ Route::middleware(['auth'])->group(function () {
     
     // Rutas adicionales para grúas
     Route::patch('/cranes/{crane}/activate', [CraneController::class, 'activate'])->name('cranes.activate');
-    Route::patch('/cranes/{crane}/deactivate', [CraneController::class, 'deactivate'])->name('cranes.deactivate');
-    Route::patch('/cranes/{crane}/maintenance', [CraneController::class, 'setMaintenance'])->name('cranes.maintenance');
+Route::patch('/cranes/{crane}/deactivate', [CraneController::class, 'deactivate'])->name('cranes.deactivate');
+Route::patch('/cranes/{crane}/maintenance', [CraneController::class, 'setMaintenance'])->name('cranes.maintenance');
+Route::patch('/cranes/{crane}/rented', [CraneController::class, 'setRented'])->name('cranes.rented');
     Route::get('/cranes-stats', [CraneController::class, 'stats'])->name('cranes.stats');
     
     // Rutas para gestión de zonas de precios
     Route::post('/cranes/{crane}/price-zones', [CraneController::class, 'addPriceZone'])->name('cranes.price-zones.store');
     Route::put('/cranes/{crane}/price-zones/{zona}', [CraneController::class, 'updatePriceZone'])->name('cranes.price-zones.update');
     Route::delete('/cranes/{crane}/price-zones/{zona}', [CraneController::class, 'removePriceZone'])->name('cranes.price-zones.destroy');
+    
+    // CRUD de Archivos
+    Route::resource('files', FileController::class);
+    
+    // Rutas adicionales para archivos
+    Route::get('/files/{file}/download', [FileController::class, 'download'])->name('files.download');
+    Route::get('/files/{file}/preview', [FileController::class, 'preview'])->name('files.preview');
+    Route::get('/files-search', [FileController::class, 'search'])->name('files.search');
+    Route::get('/files-stats', [FileController::class, 'stats'])->name('files.stats');
 });
 
 // Rutas API para AJAX (también protegidas)
@@ -80,4 +92,12 @@ Route::middleware(['auth'])->prefix('api')->group(function () {
     Route::put('/cranes/{crane}/price-zones/{zona}', [CraneController::class, 'updatePriceZone'])->name('api.cranes.price-zones.update');
     Route::delete('/cranes/{crane}/price-zones/{zona}', [CraneController::class, 'removePriceZone'])->name('api.cranes.price-zones.destroy');
     Route::get('/cranes-stats', [CraneController::class, 'stats'])->name('api.cranes.stats');
+    
+    // API de archivos para búsquedas AJAX
+    Route::get('/files/search', [FileController::class, 'search'])->name('api.files.search');
+    Route::get('/files/stats', [FileController::class, 'stats'])->name('api.files.stats');
+    
+    // API REST completa para archivos
+    Route::apiResource('files', FileController::class, ['as' => 'api']);
+    Route::get('/files/{file}/download', [FileController::class, 'download'])->name('api.files.download');
 });

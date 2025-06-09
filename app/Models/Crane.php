@@ -18,6 +18,7 @@ class Crane extends Model
     const STATUS_ACTIVE = 'activo';
     const STATUS_INACTIVE = 'inactivo';
     const STATUS_MAINTENANCE = 'mantenimiento';
+    const STATUS_RENTED = 'en_renta';
 
     // Tipos de grúa
     const TYPE_TOWER = 'torre';
@@ -117,6 +118,14 @@ class Crane extends Model
     }
 
     /**
+     * Scope para grúas en renta
+     */
+    public function scopeRented($query)
+    {
+        return $query->where('estado', self::STATUS_RENTED);
+    }
+
+    /**
      * Scope para grúas con precios configurados
      */
     public function scopeWithPrices($query)
@@ -134,6 +143,7 @@ class Crane extends Model
             self::STATUS_ACTIVE => 'Activo',
             self::STATUS_INACTIVE => 'Inactivo',
             self::STATUS_MAINTENANCE => 'Mantenimiento',
+            self::STATUS_RENTED => 'En Renta',
         ];
     }
 
@@ -175,6 +185,14 @@ class Crane extends Model
     }
 
     /**
+     * Verificar si la grúa está en renta
+     */
+    public function isRented()
+    {
+        return $this->estado === self::STATUS_RENTED;
+    }
+
+    /**
      * Activar grúa
      */
     public function activate()
@@ -198,6 +216,15 @@ class Crane extends Model
     public function setMaintenance()
     {
         $this->estado = self::STATUS_MAINTENANCE;
+        return $this->save();
+    }
+
+    /**
+     * Poner grúa en renta
+     */
+    public function setRented()
+    {
+        $this->estado = self::STATUS_RENTED;
         return $this->save();
     }
 

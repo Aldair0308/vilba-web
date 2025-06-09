@@ -91,10 +91,11 @@ class CraneController extends Controller
                 'nombre' => 'required|string|max:255',
                 'capacidad' => 'required|integer|min:1',
                 'tipo' => 'required|in:torre,móvil,oruga,camión',
-                'estado' => 'sometimes|in:activo,inactivo,mantenimiento',
+                'estado' => 'sometimes|in:activo,inactivo,mantenimiento,en_renta',
                 'category' => 'nullable|string|max:255',
                 'precios' => 'nullable|array',
                 'precios.*.zona' => 'required_with:precios|string|max:255',
+                'precios.*.zona_custom' => 'nullable|string|max:255',
                 'precios.*.precio' => 'required_with:precios|array',
                 'precios.*.precio.*' => 'required_with:precios|numeric|min:0'
             ], [
@@ -106,20 +107,27 @@ class CraneController extends Controller
                 'capacidad.min' => 'La capacidad debe ser mayor a 0',
                 'tipo.required' => 'El tipo es obligatorio',
                 'tipo.in' => 'El tipo debe ser: torre, móvil, oruga o camión',
-                'estado.in' => 'El estado debe ser: activo, inactivo o mantenimiento',
+                'estado.in' => 'El estado debe ser: activo, inactivo, mantenimiento o en renta',
                 'precios.*.zona.required_with' => 'La zona es obligatoria cuando se especifican precios',
                 'precios.*.precio.required_with' => 'Los precios son obligatorios cuando se especifica una zona',
                 'precios.*.precio.*.numeric' => 'Los precios deben ser números',
                 'precios.*.precio.*.min' => 'Los precios deben ser mayores o iguales a 0'
             ]);
 
-            // No formatting needed - keep original values
-            
             if (!isset($validatedData['estado'])) {
                 $validatedData['estado'] = Crane::STATUS_ACTIVE;
             }
 
-            if (!isset($validatedData['precios'])) {
+            // Process custom zones
+            if (isset($validatedData['precios'])) {
+                foreach ($validatedData['precios'] as $index => $precio) {
+                    if (isset($precio['zona']) && $precio['zona'] === 'custom' && isset($precio['zona_custom']) && !empty($precio['zona_custom'])) {
+                        $validatedData['precios'][$index]['zona'] = $precio['zona_custom'];
+                    }
+                    // Remove zona_custom field as it's not needed in the final data
+                    unset($validatedData['precios'][$index]['zona_custom']);
+                }
+            } else {
                 $validatedData['precios'] = [];
             }
 
@@ -217,10 +225,11 @@ class CraneController extends Controller
                 'nombre' => 'required|string|max:255',
                 'capacidad' => 'required|integer|min:1',
                 'tipo' => 'required|in:torre,móvil,oruga,camión',
-                'estado' => 'sometimes|in:activo,inactivo,mantenimiento',
+                'estado' => 'sometimes|in:activo,inactivo,mantenimiento,en_renta',
                 'category' => 'nullable|string|max:255',
                 'precios' => 'nullable|array',
                 'precios.*.zona' => 'required_with:precios|string|max:255',
+                'precios.*.zona_custom' => 'nullable|string|max:255',
                 'precios.*.precio' => 'required_with:precios|array',
                 'precios.*.precio.*' => 'required_with:precios|numeric|min:0'
             ], [
@@ -232,16 +241,23 @@ class CraneController extends Controller
                 'capacidad.min' => 'La capacidad debe ser mayor a 0',
                 'tipo.required' => 'El tipo es obligatorio',
                 'tipo.in' => 'El tipo debe ser: torre, móvil, oruga o camión',
-                'estado.in' => 'El estado debe ser: activo, inactivo o mantenimiento',
+                'estado.in' => 'El estado debe ser: activo, inactivo, mantenimiento o en renta',
                 'precios.*.zona.required_with' => 'La zona es obligatoria cuando se especifican precios',
                 'precios.*.precio.required_with' => 'Los precios son obligatorios cuando se especifica una zona',
                 'precios.*.precio.*.numeric' => 'Los precios deben ser números',
                 'precios.*.precio.*.min' => 'Los precios deben ser mayores o iguales a 0'
             ]);
 
-            // No formatting needed - keep original values
-
-            if (!isset($validatedData['precios'])) {
+            // Process custom zones
+            if (isset($validatedData['precios'])) {
+                foreach ($validatedData['precios'] as $index => $precio) {
+                    if (isset($precio['zona']) && $precio['zona'] === 'custom' && isset($precio['zona_custom']) && !empty($precio['zona_custom'])) {
+                        $validatedData['precios'][$index]['zona'] = $precio['zona_custom'];
+                    }
+                    // Remove zona_custom field as it's not needed in the final data
+                    unset($validatedData['precios'][$index]['zona_custom']);
+                }
+            } else {
                 $validatedData['precios'] = [];
             }
 
@@ -408,6 +424,36 @@ class CraneController extends Controller
     }
 
     /**
+     * Set crane as rented.
+     */
+    public function setRented($id)
+    {
+        try {
+            $crane = Crane::findOrFail($id);
+            $crane->setRented();
+
+            if (request()->expectsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'data' => $crane->fresh(),
+                    'message' => 'Equipo puesto en renta exitosamente'
+                ]);
+            }
+
+            return redirect()->back()->with('success', 'Equipo puesto en renta exitosamente.');
+        } catch (\Exception $e) {
+            if (request()->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Error al poner el equipo en renta'
+                ], 500);
+            }
+
+            return redirect()->back()->with('error', 'Error al poner el equipo en renta');
+        }
+    }
+
+    /**
      * Get crane statistics.
      */
     public function stats()
@@ -417,6 +463,7 @@ class CraneController extends Controller
             $activo = Crane::where('estado', Crane::STATUS_ACTIVE)->count();
             $inactivo = Crane::where('estado', Crane::STATUS_INACTIVE)->count();
             $mantenimiento = Crane::where('estado', Crane::STATUS_MAINTENANCE)->count();
+            $enRenta = Crane::where('estado', Crane::STATUS_RENTED)->count();
             
             // Estadísticas por tipo
             $byType = [
@@ -439,6 +486,7 @@ class CraneController extends Controller
                 'activo' => $activo,
                 'inactivo' => $inactivo,
                 'mantenimiento' => $mantenimiento,
+                'en_renta' => $enRenta,
                 'by_type' => $byType,
                 'average_capacity' => round($averageCapacity, 2),
                 'with_prices' => $withPrices,
