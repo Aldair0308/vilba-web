@@ -29,6 +29,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'photo' => 'photo_user.jpg',
+            'rol' => fake()->randomElement(['admin', 'user']),
         ];
     }
 
@@ -39,6 +41,36 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Create an admin user.
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'rol' => 'admin',
+        ]);
+    }
+
+    /**
+     * Create a regular user.
+     */
+    public function regularUser(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'rol' => 'user',
+        ]);
+    }
+
+    /**
+     * Create a user with a specific photo.
+     */
+    public function withPhoto(string $photo): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'photo' => $photo,
         ]);
     }
 }

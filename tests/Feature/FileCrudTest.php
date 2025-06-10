@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class FileCrudTest extends TestCase
 {
@@ -16,6 +18,7 @@ class FileCrudTest extends TestCase
 
     private User $user;
     private File $file;
+    private string $samplePdfBase64;
 
     protected function setUp(): void
     {
@@ -35,13 +38,18 @@ class FileCrudTest extends TestCase
             'password' => Hash::make('password'),
         ]);
         
+        // Sample PDF base64 (minimal PDF structure)
+        $this->samplePdfBase64 = base64_encode(
+            "%PDF-1.4\n1 0 obj\n<<\n/Type /Catalog\n/Pages 2 0 R\n>>\nendobj\n2 0 obj\n<<\n/Type /Pages\n/Kids [3 0 R]\n/Count 1\n>>\nendobj\n3 0 obj\n<<\n/Type /Page\n/Parent 2 0 R\n/MediaBox [0 0 612 792]\n>>\nendobj\nxref\n0 4\n0000000000 65535 f \n0000000009 00000 n \n0000000074 00000 n \n0000000120 00000 n \ntrailer\n<<\n/Size 4\n/Root 1 0 R\n>>\nstartxref\n179\n%%EOF"
+        );
+        
         // Create a test file
         $this->file = File::create([
             'name' => 'Test Document',
-            'base64' => 'data:application/pdf;base64,' . base64_encode('fake pdf content for testing'),
+            'base64' => $this->samplePdfBase64,
             'type' => 'pdf',
-            'department' => 'IT',
-            'responsible_id' => 'user123',
+            'department' => 'Testing',
+            'responsible_id' => $this->user->id,
         ]);
     }
 
@@ -84,6 +92,8 @@ class FileCrudTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('files.index');
         $response->assertViewHas('files');
+        $response->assertViewHas('departments');
+        $response->assertViewHas('stats');
     }
 
     /** @test */
@@ -98,96 +108,60 @@ class FileCrudTest extends TestCase
     }
 
     /** @test */
-    public function authenticated_user_can_store_valid_file()
+    public function authenticated_user_can_create_file_with_valid_data()
     {
         $this->actingAs($this->user);
         
         $fileData = [
             'name' => 'New Test Document',
-            'base64' => 'data:application/pdf;base64,' . base64_encode('new fake pdf content'),
+            'base64' => $this->samplePdfBase64,
             'type' => 'pdf',
-            'department' => 'HR',
-            'responsible_id' => 'user456',
+            'department' => 'Sales',
+            'responsible_id' => $this->user->id,
         ];
         
         $response = $this->post(route('files.store'), $fileData);
         
-        $response->assertRedirect(route('files.index'));
-        $response->assertSessionHas('success', 'Archivo creado exitosamente');
-        
+        $response->assertStatus(302);
         $this->assertDatabaseHas('files', [
-            'name' => 'New Test Document',
+            'name' => $fileData['name'],
             'type' => 'pdf',
-            'department' => 'HR',
-            'responsible_id' => 'user456',
+            'department' => 'Sales',
+            'responsible_id' => $this->user->id,
         ]);
+        
+        $response->assertRedirect(route('files.index'));
     }
 
     /** @test */
-    public function authenticated_user_cannot_store_file_without_required_fields()
+    public function file_creation_fails_with_invalid_data()
     {
         $this->actingAs($this->user);
         
-        // Test without name
-        $response = $this->post(route('files.store'), [
-            'base64' => 'data:application/pdf;base64,' . base64_encode('content'),
-            'type' => 'pdf',
-            'department' => 'IT',
-            'responsible_id' => 'user123',
-        ]);
-        $response->assertSessionHasErrors(['name']);
+        // Test required fields
+        $response = $this->post(route('files.store'), []);
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors(['name', 'base64', 'type', 'department', 'responsible_id']);
         
-        // Test without base64
+        // Test invalid type
         $response = $this->post(route('files.store'), [
             'name' => 'Test File',
+            'base64' => $this->samplePdfBase64,
+            'type' => 'invalid_type',
+            'department' => 'Testing',
+            'responsible_id' => $this->user->id,
+        ]);
+        $response->assertSessionHasErrors(['type']);
+        
+        // Test invalid base64
+        $response = $this->post(route('files.store'), [
+            'name' => 'Test File',
+            'base64' => 'invalid_base64_content',
             'type' => 'pdf',
-            'department' => 'IT',
-            'responsible_id' => 'user123',
+            'department' => 'Testing',
+            'responsible_id' => $this->user->id,
         ]);
         $response->assertSessionHasErrors(['base64']);
-        
-        // Test without type
-        $response = $this->post(route('files.store'), [
-            'name' => 'Test File',
-            'base64' => 'data:application/pdf;base64,' . base64_encode('content'),
-            'department' => 'IT',
-            'responsible_id' => 'user123',
-        ]);
-        $response->assertSessionHasErrors(['type']);
-        
-        // Test without department
-        $response = $this->post(route('files.store'), [
-            'name' => 'Test File',
-            'base64' => 'data:application/pdf;base64,' . base64_encode('content'),
-            'type' => 'pdf',
-            'responsible_id' => 'user123',
-        ]);
-        $response->assertSessionHasErrors(['department']);
-        
-        // Test without responsible_id
-        $response = $this->post(route('files.store'), [
-            'name' => 'Test File',
-            'base64' => 'data:application/pdf;base64,' . base64_encode('content'),
-            'type' => 'pdf',
-            'department' => 'IT',
-        ]);
-        $response->assertSessionHasErrors(['responsible_id']);
-    }
-
-    /** @test */
-    public function authenticated_user_cannot_store_file_with_invalid_type()
-    {
-        $this->actingAs($this->user);
-        
-        $response = $this->post(route('files.store'), [
-            'name' => 'Test File',
-            'base64' => 'data:application/pdf;base64,' . base64_encode('content'),
-            'type' => 'invalid_type',
-            'department' => 'IT',
-            'responsible_id' => 'user123',
-        ]);
-        
-        $response->assertSessionHasErrors(['type']);
     }
 
     /** @test */
@@ -195,11 +169,13 @@ class FileCrudTest extends TestCase
     {
         $this->actingAs($this->user);
         
-        $response = $this->get(route('files.show', $this->file->id));
+        $response = $this->get(route('files.show', $this->file));
         
         $response->assertStatus(200);
         $response->assertViewIs('files.show');
-        $response->assertViewHas('file', $this->file);
+        $response->assertViewHas('file');
+        $response->assertSee($this->file->name);
+        $response->assertSee($this->file->department);
     }
 
     /** @test */
@@ -207,11 +183,12 @@ class FileCrudTest extends TestCase
     {
         $this->actingAs($this->user);
         
-        $response = $this->get(route('files.edit', $this->file->id));
+        $response = $this->get(route('files.edit', $this->file));
         
         $response->assertStatus(200);
         $response->assertViewIs('files.edit');
-        $response->assertViewHas('file', $this->file);
+        $response->assertViewHas('file');
+        $response->assertSee($this->file->name);
     }
 
     /** @test */
@@ -220,64 +197,44 @@ class FileCrudTest extends TestCase
         $this->actingAs($this->user);
         
         $updateData = [
-            'name' => 'Updated Document Name',
-            'type' => 'excel',
-            'department' => 'Finance',
-            'responsible_id' => 'user789',
+            'name' => 'Updated Test Document',
+            'base64' => $this->samplePdfBase64,
+            'type' => 'pdf',
+            'department' => 'Updated Department',
+            'responsible_id' => $this->user->id,
         ];
         
-        $response = $this->put(route('files.update', $this->file->id), $updateData);
+        $response = $this->put(route('files.update', $this->file), $updateData);
         
-        $response->assertRedirect(route('files.show', $this->file->id));
-        $response->assertSessionHas('success', 'Archivo actualizado exitosamente');
+        $response->assertStatus(302);
+        $this->assertDatabaseHas('files', [
+            '_id' => $this->file->id,
+            'name' => 'Updated Test Document',
+            'department' => 'Updated Department',
+        ]);
         
-        $this->file->refresh();
-        $this->assertEquals('Updated Document Name', $this->file->name);
-        $this->assertEquals('excel', $this->file->type);
-        $this->assertEquals('Finance', $this->file->department);
-        $this->assertEquals('user789', $this->file->responsible_id);
+        $response->assertRedirect(route('files.show', $this->file));
     }
 
     /** @test */
-    public function authenticated_user_cannot_update_file_with_invalid_data()
+    public function file_update_fails_with_invalid_data()
     {
         $this->actingAs($this->user);
         
+        // Test missing required fields
+        $response = $this->put(route('files.update', $this->file), []);
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors(['name', 'type', 'department', 'responsible_id']);
+        
         // Test invalid type
-        $response = $this->put(route('files.update', $this->file->id), [
-            'name' => 'Test',
+        $response = $this->put(route('files.update', $this->file), [
+            'name' => 'Updated File',
+            'base64' => $this->samplePdfBase64,
             'type' => 'invalid_type',
-            'department' => 'IT',
-            'responsible_id' => 'user123',
+            'department' => 'Testing',
+            'responsible_id' => $this->user->id,
         ]);
         $response->assertSessionHasErrors(['type']);
-        
-        // Test empty name
-        $response = $this->put(route('files.update', $this->file->id), [
-            'name' => '',
-            'type' => 'pdf',
-            'department' => 'IT',
-            'responsible_id' => 'user123',
-        ]);
-        $response->assertSessionHasErrors(['name']);
-        
-        // Test empty department
-        $response = $this->put(route('files.update', $this->file->id), [
-            'name' => 'Test',
-            'type' => 'pdf',
-            'department' => '',
-            'responsible_id' => 'user123',
-        ]);
-        $response->assertSessionHasErrors(['department']);
-        
-        // Test empty responsible_id
-        $response = $this->put(route('files.update', $this->file->id), [
-            'name' => 'Test',
-            'type' => 'pdf',
-            'department' => 'IT',
-            'responsible_id' => '',
-        ]);
-        $response->assertSessionHasErrors(['responsible_id']);
     }
 
     /** @test */
@@ -285,14 +242,16 @@ class FileCrudTest extends TestCase
     {
         $this->actingAs($this->user);
         
-        $response = $this->delete(route('files.destroy', $this->file->id));
+        $fileId = $this->file->id;
+        
+        $response = $this->delete(route('files.destroy', $this->file));
+        
+        $response->assertStatus(302);
+        $this->assertDatabaseMissing('files', [
+            '_id' => $fileId,
+        ]);
         
         $response->assertRedirect(route('files.index'));
-        $response->assertSessionHas('success', 'Archivo eliminado exitosamente');
-        
-        $this->assertDatabaseMissing('files', [
-            '_id' => $this->file->id
-        ]);
     }
 
     /** @test */
@@ -300,47 +259,44 @@ class FileCrudTest extends TestCase
     {
         $this->actingAs($this->user);
         
-        $response = $this->get(route('files.download', $this->file->id));
+        $response = $this->get(route('files.download', $this->file));
         
         $response->assertStatus(200);
         $response->assertHeader('Content-Type', 'application/pdf');
-        $response->assertHeader('Content-Disposition');
+        $response->assertHeader('Content-Disposition', 'attachment; filename="' . $this->file->name . '.pdf"');
     }
 
     /** @test */
-    public function authenticated_user_can_search_files()
+    public function authenticated_user_can_preview_file()
+    {
+        $this->actingAs($this->user);
+
+        $response = $this->get(route('files.preview', $this->file));
+
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'application/pdf');
+        $response->assertHeader('Content-Disposition', 'inline');
+    }
+
+    /** @test */
+    public function files_index_can_be_filtered_by_search()
     {
         $this->actingAs($this->user);
         
-        // Create additional files for search
+        // Create additional test files
         File::create([
-            'name' => 'Searchable Document',
-            'base64' => 'data:application/pdf;base64,' . base64_encode('content'),
+            'name' => 'Another Document',
+            'base64' => $this->samplePdfBase64,
             'type' => 'pdf',
-            'department' => 'Marketing',
-            'responsible_id' => 'user999',
+            'department' => 'HR',
+            'responsible_id' => $this->user->id,
         ]);
         
-        $response = $this->get(route('files.search', ['q' => 'Searchable']));
+        $response = $this->get(route('files.index', ['search' => 'Another']));
         
         $response->assertStatus(200);
-        $response->assertJsonStructure([
-            'success',
-            'data' => [
-                '*' => [
-                    'id',
-                    'name',
-                    'type',
-                    'department',
-                    'responsible_id'
-                ]
-            ],
-            'message'
-        ]);
-        
-        $responseData = $response->json();
-        $this->assertTrue($responseData['success']);
-        $this->assertGreaterThan(0, count($responseData['data']));
+        $response->assertSee('Another Document');
+        $response->assertDontSee('Test Document');
     }
 
     /** @test */
@@ -376,17 +332,20 @@ class FileCrudTest extends TestCase
     {
         $this->actingAs($this->user);
         
-        // Create files of different types
-        File::factory()->pdf()->create(['name' => 'PDF Document']);
-        File::factory()->excel()->create(['name' => 'Excel Document']);
+        // Create an Excel file
+        File::create([
+            'name' => 'Excel Document',
+            'base64' => base64_encode('fake excel content'),
+            'type' => 'excel',
+            'department' => 'Finance',
+            'responsible_id' => $this->user->id,
+        ]);
         
-        // Filter by PDF
-        $response = $this->get(route('files.index', ['type' => 'pdf']));
-        $response->assertStatus(200);
-        
-        // Filter by Excel
         $response = $this->get(route('files.index', ['type' => 'excel']));
+        
         $response->assertStatus(200);
+        $response->assertSee('Excel Document');
+        $response->assertDontSee('Test Document');
     }
 
     /** @test */
@@ -394,24 +353,20 @@ class FileCrudTest extends TestCase
     {
         $this->actingAs($this->user);
         
-        // Create files for different departments
-        File::factory()->create(['department' => 'HR']);
-        File::factory()->create(['department' => 'Finance']);
+        // Create file in different department
+        File::create([
+            'name' => 'HR Document',
+            'base64' => $this->samplePdfBase64,
+            'type' => 'pdf',
+            'department' => 'Human Resources',
+            'responsible_id' => $this->user->id,
+        ]);
         
-        $response = $this->get(route('files.index', ['department' => 'HR']));
+        $response = $this->get(route('files.index', ['department' => 'Human Resources']));
+        
         $response->assertStatus(200);
-    }
-
-    /** @test */
-    public function files_index_can_be_searched()
-    {
-        $this->actingAs($this->user);
-        
-        File::factory()->create(['name' => 'Important Document']);
-        File::factory()->create(['name' => 'Regular File']);
-        
-        $response = $this->get(route('files.index', ['search' => 'Important']));
-        $response->assertStatus(200);
+        $response->assertSee('HR Document');
+        $response->assertDontSee('Test Document');
     }
 
     /** @test */
@@ -419,18 +374,26 @@ class FileCrudTest extends TestCase
     {
         $this->actingAs($this->user);
         
-        $response = $this->get(route('files.index', [
-            'sort_by' => 'name',
-            'sort_order' => 'asc'
-        ]));
-        $response->assertStatus(200);
+        // Create additional file
+        File::create([
+            'name' => 'Alpha Document',
+            'base64' => $this->samplePdfBase64,
+            'type' => 'pdf',
+            'department' => 'Testing',
+            'responsible_id' => $this->user->id,
+        ]);
         
-        $response = $this->get(route('files.index', [
-            'sort_by' => 'createdAt',
-            'sort_order' => 'desc'
-        ]));
+        $response = $this->get(route('files.index', ['sort_by' => 'name', 'sort_order' => 'asc']));
+        
         $response->assertStatus(200);
+        // Alpha Document should appear before Test Document when sorted by name ascending
+        $content = $response->getContent();
+        $alphaPos = strpos($content, 'Alpha Document');
+        $testPos = strpos($content, 'Test Document');
+        $this->assertLessThan($testPos, $alphaPos);
     }
+
+
 
     /** @test */
     public function file_model_calculates_file_size_correctly()

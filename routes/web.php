@@ -6,6 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CraneController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\LogController;
+use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +77,28 @@ Route::patch('/cranes/{crane}/rented', [CraneController::class, 'setRented'])->n
     Route::get('/files/{file}/preview', [FileController::class, 'preview'])->name('files.preview');
     Route::get('/files-search', [FileController::class, 'search'])->name('files.search');
     Route::get('/files-stats', [FileController::class, 'stats'])->name('files.stats');
+    
+    // CRUD de Cotizaciones
+    Route::resource('quotes', QuoteController::class);
+    
+    // Rutas adicionales para cotizaciones
+    Route::patch('/quotes/{quote}/status', [QuoteController::class, 'changeStatus'])->name('quotes.change-status');
+    Route::get('/quotes/client/{client}', [QuoteController::class, 'byClient'])->name('quotes.by-client');
+    Route::get('/quotes-stats', [QuoteController::class, 'stats'])->name('quotes.stats');
+    
+    // Rutas para usuarios
+    Route::resource('users', UserController::class);
+    Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
+    Route::get('/users-stats', [UserController::class, 'stats'])->name('users.stats');
+    
+    // CRUD de Logs (solo lectura)
+    Route::get('/logs', [LogController::class, 'index'])->name('logs.index');
+    Route::get('/logs/{log}', [LogController::class, 'show'])->name('logs.show');
+    
+    // Rutas adicionales para logs
+    Route::get('/logs-search', [LogController::class, 'search'])->name('logs.search');
+    Route::get('/logs-stats', [LogController::class, 'stats'])->name('logs.stats');
+    Route::get('/logs-export', [LogController::class, 'export'])->name('logs.export');
 });
 
 // Rutas API para AJAX (también protegidas)
@@ -97,7 +122,32 @@ Route::middleware(['auth'])->prefix('api')->group(function () {
     Route::get('/files/search', [FileController::class, 'search'])->name('api.files.search');
     Route::get('/files/stats', [FileController::class, 'stats'])->name('api.files.stats');
     
+    // API de cotizaciones para búsquedas AJAX
+    Route::get('/quotes/search', [QuoteController::class, 'search'])->name('api.quotes.search');
+    Route::get('/quotes/stats', [QuoteController::class, 'stats'])->name('api.quotes.stats');
+    Route::get('/quotes/client/{client}', [QuoteController::class, 'byClient'])->name('api.quotes.by-client');
+    
+    // API REST completa para cotizaciones
+    Route::apiResource('quotes', QuoteController::class, ['as' => 'api']);
+    Route::patch('/quotes/{quote}/status', [QuoteController::class, 'changeStatus'])->name('api.quotes.change-status');
+    
     // API REST completa para archivos
     Route::apiResource('files', FileController::class, ['as' => 'api']);
     Route::get('/files/{file}/download', [FileController::class, 'download'])->name('api.files.download');
+    
+    // API de usuarios para búsquedas AJAX
+    Route::get('/users/search', [UserController::class, 'search'])->name('api.users.search');
+    Route::get('/users/stats', [UserController::class, 'stats'])->name('api.users.stats');
+    
+    // API REST completa para usuarios
+    Route::apiResource('users', UserController::class, ['as' => 'api']);
+    
+    // API de logs para búsquedas AJAX
+    Route::get('/logs/search', [LogController::class, 'search'])->name('api.logs.search');
+    Route::get('/logs/stats', [LogController::class, 'stats'])->name('api.logs.stats');
+    Route::get('/logs/export', [LogController::class, 'export'])->name('api.logs.export');
+    
+    // API REST para logs (solo lectura)
+    Route::get('/logs', [LogController::class, 'index'])->name('api.logs.index');
+    Route::get('/logs/{log}', [LogController::class, 'show'])->name('api.logs.show');
 });
