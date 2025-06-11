@@ -72,8 +72,9 @@ class Log extends Model
         return [
             'createdAt' => 'datetime',
             'updatedAt' => 'datetime',
-            'previousData' => 'array',
-            'newData' => 'array',
+            // MongoDB already stores these as native arrays, no casting needed
+            // 'previousData' => 'array',
+            // 'newData' => 'array',
         ];
     }
 
@@ -234,6 +235,14 @@ class Log extends Model
         $changes = [];
         $previous = $this->previousData ?? [];
         $new = $this->newData ?? [];
+
+        // Asegurar que los datos sean arrays (compatibilidad con datos existentes)
+        if (is_string($previous)) {
+            $previous = json_decode($previous, true) ?? [];
+        }
+        if (is_string($new)) {
+            $new = json_decode($new, true) ?? [];
+        }
 
         // Obtener todas las claves únicas
         $allKeys = array_unique(array_merge(array_keys($previous), array_keys($new)));

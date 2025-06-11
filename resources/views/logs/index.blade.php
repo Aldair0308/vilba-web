@@ -233,7 +233,7 @@
                                     <li class="list-group-item">
                                         <strong>{{ $field }}:</strong>
                                         <span class="text-danger">{{ $changes['old'] ?? 'N/A' }}</span>
-                                        <i class="fas fa-arrow-right mx-2"></i>
+                                        <span class="arrow-icon mx-2">→</span>
                                         <span class="text-success">{{ $changes['new'] ?? 'N/A' }}</span>
                                     </li>
                                 @endforeach
@@ -280,6 +280,49 @@
 pre {
     max-height: 300px;
     overflow-y: auto;
+    font-size: 0.875rem;
+}
+
+/* Estilos mejorados para las flechas */
+.arrow-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #6c757d;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+/* Asegurar que los iconos de FontAwesome se muestren correctamente */
+.fas, .far, .fab {
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Pro", "Font Awesome 5 Brands" !important;
+    font-weight: 900;
+}
+
+/* Mejorar la apariencia de los badges */
+.badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+}
+
+/* Mejorar el espaciado en la tabla */
+.table td {
+    vertical-align: middle;
+    padding: 0.75rem;
+}
+
+/* Estilos para los modales de cambios */
+.modal-body pre {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+}
+
+/* Mejorar la visualización de códigos */
+code {
+    background-color: #f8f9fa;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
     font-size: 0.875rem;
 }
 </style>
