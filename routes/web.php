@@ -26,6 +26,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Ruta de acerca
+Route::get('/acerca', function () {
+    return view('about');
+})->name('about');
+
+// Ruta de contacto
+Route::get('/contacto', function () {
+    return view('contact');
+})->name('contact');
+
+// Ruta de servicio
+Route::get('/servicios', function () {
+    return view('services');
+})->name('services');
+
+
 // Rutas de autenticación
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
