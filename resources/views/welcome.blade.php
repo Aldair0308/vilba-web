@@ -22,6 +22,13 @@
             <link rel="stylesheet" href="assets/css/style.css">
             <!-- Language switcher script -->
             <script src="assets/js/language-switcher.js"></script>
+            
+            <!-- Configuración inicial del idioma -->
+            <script>
+                // Pasar idioma desde Laravel al JavaScript
+                window.initialLanguage = '{{ $language ?? "es" }}';
+                console.log('🌐 Idioma inicial desde Laravel:', window.initialLanguage);
+            </script>
             <style>
                 /* Estilo solo para PC (pantallas mayores a 768px) */
                 @media (min-width: 769px) {
@@ -33,106 +40,6 @@
    </head>
 
    <body>
-
-<!-- INICIO BOTÓN WHATSAPP MEJORADO - PEGAR EN EL BODY -->
-<div class="wa-btn-container">
-    <a href="https://wa.me/7203333571" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="wa-btn" 
-       aria-label="Chat por WhatsApp">
-       
-       <svg xmlns="http://www.w3.org/2000/svg" class="wa-icon" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-       </svg>
-       <span class="wa-pulse"></span>
-    </a>
-</div>
-
-<style>
-/* ESTILOS MEJORADOS - PEGAR EN HEAD O FINAL DEL BODY */
-.wa-btn-container {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    z-index: 9999;
-}
-
-.wa-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    background: #25D366;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-    overflow: hidden;
-}
-
-.wa-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
-    background: #128C7E;
-}
-
-.wa-icon {
-    width: 32px;
-    height: 32px;
-    fill: white;
-    z-index: 2;
-    transition: transform 0.3s;
-}
-
-.wa-btn:hover .wa-icon {
-    transform: rotate(10deg);
-}
-
-.wa-pulse {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    opacity: 0;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(0.8);
-        opacity: 0.5;
-    }
-    70% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-}
-
-/* Efecto al hacer clic */
-.wa-btn:active {
-    transform: scale(0.95);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .wa-btn {
-        width: 56px;
-        height: 56px;
-    }
-    .wa-icon {
-        width: 28px;
-        height: 28px;
-    }
-}
-</style>
-<!-- FIN BOTÓN WHATSAPP MEJORADO -->
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -144,89 +51,8 @@
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
-    <header>
-        <!-- Inicio del Encabezado -->
-        <div class="header-area header-transparent">
-            <div class="main-header">
-                <!-- <div class="header-top d-none d-lg-block">
-                    <div class="container-fluid">
-                        <div class="col-xl-12">
-                            <div class="row d-flex justify-content-between align-items-center">
-                                <div class="header-info-left">
-                                    <ul>     
-                                        <li>+(123) 1234-567-8901</li>
-                                        <li>info@domain.com</li>
-                                        <li>Lun - Sáb 8:00 - 17:30, Domingo - CERRADO</li>
-                                    </ul>
-                                </div>
-                                <div class="header-info-right">
-                                    <ul class="header-social">    
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="header-bottom header-sticky">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2 col-md-1">
-                                <div class="logo">
-                                    <!-- logo-1 -->
-                                    <a href="index.html" class="big-logo"><img src="assets/img/logo/logo.svg" alt="Logo de Grúas Vilba" style="height: 80px; width: auto; max-width: 400px; margin-left: -60px;"></a>
-                                    <!-- logo-2 -->
-                                    <a href="index.html" class="small-logo"><img src="assets/img/logo/logo.svg" alt="Logo de Grúas Vilba" style="height: 60px; width: auto; max-width: 280px; margin-left: -60px;"></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-8 col-lg-8 col-md-8">
-                                <!-- Menú principal -->
-                                <div class="main-menu f-right d-none d-lg-block">
-                                    <nav> 
-                                        <ul id="navigation">                                                                                                                   
-                                            <li><a href="index.html">Inicio</a></li>
-                                            <li><a href="about.html">Nosotros</a></li>
-                                            <li><a href="project.html">Proyectos</a></li>
-                                            <li><a href="services.html">Servicios</a></li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Detalle del Blog</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Páginas</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Elementos</a></li>
-                                                    <li><a href="project_details.html">Detalle del Proyecto</a></li>
-                                                    <li><a href="services_details.html">Detalle del Servicio</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contacto</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>             
-                            <div class="col-xl-2 col-lg-2 col-md-3">
-                                <div class="header-right-btn f-right d-none d-lg-block">
-                                    <a href="#" class="btn" data-translate="contact">Contáctanos</a>
-                                </div>
-                            </div>
-                            <!-- Menú Móvil -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Fin del Encabezado -->
-    </header>
+
+    <x-navar :language="$language ?? 'es'" />
     
     <main>
 
@@ -239,15 +65,15 @@
                             <div class="col-lg-11">
                                 <div class="hero__caption">
                                     <div class="hero-text1">
-                                        <span data-animation="fadeInUp" data-delay=".3s">maquinaria industrial y servicios de construcción</span>
+                                        <span data-animation="fadeInUp" data-delay=".3s" data-translate="hero_subtitle">maquinaria industrial y servicios de construcción</span>
                                     </div>
-                                    <h1 data-animation="fadeInUp" data-delay=".5s" data-translate="welcome" >Bienvenido</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".5s" data-translate="welcome">Bienvenido</h1>
                                     <div class="stock-text" data-animation="fadeInUp" data-delay=".8s" style="margin-top: 20px;">
                                         <h2>GrÚas Vilba</h2>
                                         <h2>GrÚas Vilba</h2>
                                     </div>
                                     <div class="hero-text2 mt-110" data-animation="fadeInUp" data-delay=".9s">
-                                       <span><a href="services.html" data-translate="services">Our Services</a></span>
+                                       <span><a href="services.html" data-translate="our_services">Nuestros Servicios</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -286,9 +112,9 @@
                     <div class="col-lg-12">
                         <div class="section-tittle mb-55">
                             <div class="front-text">
-                                <h2 class="">Nuestros Servicios</h2>
-                            </div>
-                            <span class="back-text">Servicios</span>
+                                    <h2 class="" data-translate="our_services_title">Nuestros Servicios</h2>
+                                </div>
+                                <span class="back-text" data-translate="services_back">Servicios</span>
                         </div>
                     </div>
                 </div>
@@ -299,8 +125,8 @@
                                 <img src="assets/img/service/servicess1.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="services_details.html">Técnicas e implementación de ingeniería</a></h4>
-                                <a href="services_details.html" class="more-btn">Leer más <i class="ti-plus"></i></a>
+                                <h4><a href="services_details.html" data-translate="engineering_techniques">Técnicas e implementación de ingeniería</a></h4>
+                                <a href="services_details.html" class="more-btn" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">
@@ -347,18 +173,18 @@
                     <!-- Título de la sección -->
                     <div class="section-tittle section-tittle2 mb-55">
                         <div class="front-text">
-                            <h2 class="">Quiénes somos</h2>
+                            <h2 class="" data-translate="who_we_are">Quiénes somos</h2>
                         </div>
-                        <span class="back-text">Sobre nosotros</span>
+                        <span class="back-text" data-translate="about_us_back">Sobre nosotros</span>
                     </div>
                     <div class="support-caption">
-                        <p class="pera-top">
+                        <p class="pera-top" data-translate="company_description_1">
                             En <strong>Vilba</strong>, ofrecemos soluciones confiables en renta de equipo pesado para tus proyectos industriales, de construcción o logísticos.
                         </p>
-                        <p>
+                        <p data-translate="company_description_2">
                             Contamos con una amplia variedad de maquinaria como montacargas, grúas, plataformas y más. Nos enfocamos en brindar equipos en excelente estado, acompañados de un servicio al cliente profesional y puntual. Ya sea para uso diario o por proyecto, en Vilba te apoyamos con la maquinaria que necesitas, cuando la necesitas.
                         </p>
-                        <a href="about.html" class="btn red-btn2">Leer más sobre nosotros</a>
+                        <a href="about.html" class="btn red-btn2" data-translate="read_more_about_us">Leer más sobre nosotros</a>
                     </div>
                     
                 </div>
@@ -385,9 +211,9 @@
                             <!-- Section Tittle -->
                             <div class="section-tittle section-tittle3">
                                 <div class="front-text">
-                                    <h2 class="">Nuestros Proyectos</h2>
+                                    <h2 class="" data-translate="our_projects">Nuestros Proyectos</h2>
                                 </div>
-                                <span class="back-text">Gellary</span>
+                                <span class="back-text" data-translate="gallery">Galería</span>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -395,11 +221,11 @@
                                 <!--Nav Button  -->                                            
                                 <nav> 
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false">Todos</a>
-                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Interiores</a>
-                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Recientes</a>
-                                        <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Drenaje</a>
-                                        <a class="nav-item nav-link" id="nav-technology" data-toggle="tab" href="#nav-techno" role="tab" aria-controls="nav-contact" aria-selected="false">Parques</a>
+                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false" data-translate="all">Todos</a>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" data-translate="interiors">Interiores</a>
+                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" data-translate="recent">Recientes</a>
+                                        <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false" data-translate="drainage">Drenaje</a>
+                                        <a class="nav-item nav-link" id="nav-technology" data-toggle="tab" href="#nav-techno" role="tab" aria-controls="nav-contact" aria-selected="false" data-translate="parks">Parques</a>
                                     </div>
                                 </nav>
                                 <!--End Nav Button  -->
@@ -1072,88 +898,8 @@
         <!--latest News Area End -->
 
     </main>
-    <footer>
-        <!-- Inicio del Pie de Página -->
-        <div class="footer-main">
-            <div class="footer-area footer-padding">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-lg-4 col-md-4 col-sm-8">
-                            <div class="single-footer-caption mb-30">
-                                <!-- Logo -->
-                                <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt="Logo Grúas Vilba"></a>
-                                </div>
-                                <div class="footer-tittle">
-                                    <div class="footer-pera">
-                                        <p class="info1">Vilba empresa especializada en servicios de grúas con atención personalizada y rápida respuesta en toda la ciudad.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-sm-5">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Enlaces Rápidos</h4>
-                                    <ul>
-                                        <li><a href="#">Nosotros</a></li>
-                                        <li><a href="#">Servicios</a></li>
-                                        <li><a href="#">Proyectos</a></li>
-                                        <li><a href="#">Contáctanos</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-7">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Contacto</h4>
-                                    <div class="footer-pera">
-                                        <p class="info1">Calle Principal 123, Colonia Centro, Ciudad, Estado</p>
-                                    </div>
-                                    <ul>
-                                        <li><a href="#">Teléfono: +52 (123) 456 7890</a></li>
-                                        <li><a href="#">Celular: +52 (123) 987 6543</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-8">
-                            <div class="single-footer-caption mb-50">
-                                <!-- Formulario de suscripción -->
-                                <div class="footer-form">
-                                    <div id="mc_embed_signup">
-                                        <form target="_blank" action="#" method="get" class="subscribe_form relative mail_part" novalidate="true">
-                                            <input type="email" name="EMAIL" id="newsletter-form-email" placeholder="Correo electrónico" class="placeholder hide-on-focus" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Correo electrónico'">
-                                            <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm">
-                                                    SUSCRIBIRSE
-                                                </button>
-                                            </div>
-                                            <div class="mt-10 info"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!-- Mapa -->
-                                <div class="map-footer">
-                                    <img src="assets/img/gallery/map-footer.png" alt="Mapa de ubicación">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Derechos de autor -->
-                    <div class="row align-items-center">
-                        <div class="col-xl-12">
-                            <div class="footer-copy-right text-center">
-                                <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | <a href="#" target="_blank">Vilba</a> 2025</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Fin del Pie de Página -->
-    </footer>
+    <!-- Footer Component -->
+    <x-footer :language="$language ?? 'es'" />
     
    
 	<!-- JS here -->

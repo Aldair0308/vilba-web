@@ -1,30 +1,46 @@
 // Language switcher and IP detection
 const languageSwitcher = {
-  currentLanguage: 'en',
+  currentLanguage: window.initialLanguage || 'es',
   translations: {
     en: {
       // Add all English translations here
-      welcome: 'Welcome',
-      services: 'Our Services',
+      home: 'Home',
       about: 'About Us',
-      contact: 'Contact Now'
+      projects: 'Projects',
+      services: 'Services',
+      language: 'Language',
+      contact: 'Contact',
+      contact_btn: 'Contact Us',
+      welcome: 'Welcome'
     },
     es: {
       // Add all Spanish translations here
-      welcome: 'Bienvenido',
-      services: 'Nuestros Servicios',
-      about: 'Sobre Nosotros',
-      contact: 'Contactar Ahora'
+      home: 'Inicio',
+      about: 'Nosotros',
+      projects: 'Proyectos',
+      services: 'Servicios',
+      language: 'Idioma',
+      contact: 'Contacto',
+      contact_btn: 'Contáctanos',
+      welcome: 'Bienvenido'
     }
   },
 
   init: function() {
-    this.detectCountry();
+    // Solo detectar país si no hay idioma definido desde Laravel
+    if (!window.initialLanguage) {
+      this.detectCountry();
+    }
     this.createLanguageSelector();
     this.applyTranslations();
   },
 
   detectCountry: function() {
+    // Solo detectar si no hay idioma definido desde Laravel
+    if (window.initialLanguage) {
+      return;
+    }
+    
     fetch('https://ipapi.co/json/')
       .then(response => response.json())
       .then(data => {
@@ -50,10 +66,14 @@ const languageSwitcher = {
       li.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          this.currentLanguage = e.target.dataset.lang;
-          this.applyTranslations();
-          document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
+          const selectedLang = e.target.dataset.lang;
+          
+          // Redirigir a la ruta correcta según el idioma
+          if (selectedLang === 'en') {
+            window.location.href = '/EN';
+          } else {
+            window.location.href = '/ES';
+          }
         });
       });
     }

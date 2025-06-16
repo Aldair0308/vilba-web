@@ -9,6 +9,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,25 +22,29 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Ruta principal
-Route::get('/', function () {
-    return view('welcome');
+// Rutas principales con soporte de idioma
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/acerca', [HomeController::class, 'about'])->name('about');
+Route::get('/contacto', [HomeController::class, 'contact'])->name('contact');
+Route::get('/servicios', [HomeController::class, 'services'])->name('services');
+
+// Rutas específicas por idioma
+Route::prefix('ES')->group(function () {
+    Route::get('/', [HomeController::class, 'indexEs'])->name('home.ES');
+    Route::get('/acerca', [HomeController::class, 'aboutEs'])->name('about.ES');
+    Route::get('/contacto', [HomeController::class, 'contactEs'])->name('contact.ES');
+    Route::get('/servicios', [HomeController::class, 'servicesEs'])->name('services.ES');
 });
 
-// Ruta de acerca
-Route::get('/acerca', function () {
-    return view('about');
-})->name('about');
+Route::prefix('EN')->group(function () {
+    Route::get('/', [HomeController::class, 'indexEn'])->name('home.EN');
+    Route::get('/about', [HomeController::class, 'aboutEn'])->name('about.EN');
+    Route::get('/contact', [HomeController::class, 'contactEn'])->name('contact.EN');
+    Route::get('/services', [HomeController::class, 'servicesEn'])->name('services.EN');
+});
 
-// Ruta de contacto
-Route::get('/contacto', function () {
-    return view('contact');
-})->name('contact');
-
-// Ruta de servicio
-Route::get('/servicios', function () {
-    return view('services');
-})->name('services');
+// Ruta para cambiar idioma
+Route::get('/cambiar-idioma/{language}', [HomeController::class, 'changeLanguage'])->name('change.language');
 
 
 // Rutas de autenticación

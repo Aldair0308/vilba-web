@@ -17,6 +17,9 @@
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- Internationalization CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/i18n.css') }}">
+    
     <!-- Custom Brand Colors CSS -->
     <style>
         :root {
@@ -307,6 +310,9 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Internationalization JS Module -->
+    <script type="module" src="{{ asset('assets/js/i18n-module.js') }}"></script>
     
     <!-- Custom Scripts -->
     @stack('scripts')
