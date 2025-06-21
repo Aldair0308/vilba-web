@@ -56,6 +56,17 @@ class HomeController extends Controller
     }
     
     /**
+     * Mostrar página de detalles de servicios
+     */
+    public function servicesDetails(Request $request)
+    {
+        $language = $this->detectLanguage($request);
+        Session::put('language', $language);
+        
+        return view('services_details', compact('language'));
+    }
+    
+    /**
      * Métodos específicos para español
      */
     public function indexEs(Request $request)
@@ -84,6 +95,13 @@ class HomeController extends Controller
         $language = 'es';
         Session::put('language', $language);
         return view('services', compact('language'));
+    }
+    
+    public function servicesDetailsEs(Request $request)
+    {
+        $language = 'es';
+        Session::put('language', $language);
+        return view('services_details', compact('language'));
     }
     
     /**
@@ -117,6 +135,13 @@ class HomeController extends Controller
         return view('services', compact('language'));
     }
     
+    public function servicesDetailsEn(Request $request)
+    {
+        $language = 'en';
+        Session::put('language', $language);
+        return view('services_details', compact('language'));
+    }
+    
     /**
      * Cambiar idioma y recargar página
      */
@@ -131,12 +156,60 @@ class HomeController extends Controller
         Session::put('language', $language);
         Cookie::queue('vilba_language', $language, 60 * 24 * 30); // 30 días
         
-        // Redirigir a la ruta específica del idioma
-        if ($language === 'en') {
-            return redirect()->route('home.EN');
-        } else {
-            return redirect()->route('home.ES');
+        // Obtener la URL actual desde el parámetro o el referer como fallback
+        $currentUrl = $request->input('current_url') ?? $request->header('referer');
+        $currentView = 'home'; // Vista por defecto
+        
+        // Debug: Log para verificar la URL actual
+        \Log::info('Language Change Debug', [
+            'current_url' => $currentUrl,
+            'target_language' => $language,
+            'method' => $request->method()
+        ]);
+        
+        // Detectar la vista actual basándose en la URL actual
+        if ($currentUrl) {
+            // Normalizar la URL removiendo el dominio y parámetros
+            $path = parse_url($currentUrl, PHP_URL_PATH);
+            
+            // Detectar vista basándose en el path
+            if (strpos($path, '/acerca') !== false || strpos($path, '/about') !== false || 
+                strpos($path, '/ES/acerca') !== false || strpos($path, '/EN/about') !== false) {
+                $currentView = 'about';
+            } elseif (strpos($path, '/contacto') !== false || strpos($path, '/contact') !== false ||
+                     strpos($path, '/ES/contacto') !== false || strpos($path, '/EN/contact') !== false) {
+                $currentView = 'contact';
+            } elseif (strpos($path, '/detalle-servicio') !== false || 
+                     strpos($path, '/ES/detalle-servicio') !== false || strpos($path, '/EN/detalle-servicio') !== false) {
+                $currentView = 'services-detail';
+            } elseif (strpos($path, '/servicios') !== false || strpos($path, '/services') !== false ||
+                     strpos($path, '/ES/servicios') !== false || strpos($path, '/EN/services') !== false) {
+                $currentView = 'services';
+            }
         }
+        
+        // Log del resultado de detección
+        \Log::info('View Detection Result', [
+            'detected_view' => $currentView,
+            'path' => $path ?? 'no_path'
+        ]);
+        
+        // Redirigir a la vista actual en el idioma seleccionado
+        $routeMap = [
+            'home' => $language === 'en' ? 'home.EN' : 'home.ES',
+            'about' => $language === 'en' ? 'about.EN' : 'about.ES',
+            'contact' => $language === 'en' ? 'contact.EN' : 'contact.ES',
+            'services' => $language === 'en' ? 'services.EN' : 'services.ES',
+            'services-detail' => $language === 'en' ? 'services-detail.EN' : 'services-detail.ES'
+        ];
+        
+        $targetRoute = $routeMap[$currentView] ?? ($language === 'en' ? 'home.EN' : 'home.ES');
+        
+        \Log::info('Final Redirect', [
+            'target_route' => $targetRoute
+        ]);
+        
+        return redirect()->route($targetRoute);
     }
     
     /**

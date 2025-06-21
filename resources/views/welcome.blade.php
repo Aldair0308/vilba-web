@@ -10,6 +10,7 @@
     <title>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
@@ -129,8 +130,8 @@
                                 <img src="assets/img/service/servicess1.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="services_details.html" data-translate="engineering_techniques">Técnicas e implementación de ingeniería</a></h4>
-                                <a href="services_details.html" class="more-btn" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}" data-translate="engineering_techniques">Técnicas e implementación de ingeniería</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">
@@ -143,8 +144,8 @@
                                 <img src="assets/img/service/servicess2.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="services_details.html">Técnicas e implementación de ingeniería</a></h4>
-                                <a href="services_details.html" class="more-btn">Leer más <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}">Técnicas e implementación de ingeniería</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn">Leer más <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">
@@ -157,8 +158,8 @@
                                 <img src="assets/img/service/servicess3.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="services_details.htmlaa">Técnicas e implementación de ingeniería</a></h4>
-                                <a href="services_details.html" class="more-btn">Leer más <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}">Técnicas e implementación de ingeniería</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn">Leer más <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">

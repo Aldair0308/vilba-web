@@ -75,13 +75,13 @@
                                             <li><a href="javascript:void(0)" data-translate="language">{{ $currentLanguage === 'en' ? 'Language' : 'Idioma' }}</a>
                                                 <ul class="submenu">
                                                     <li>
-                                        <a href="{{ route('home.ES') }}" @if($currentLanguage === 'es') style="font-weight: bold; color: #ff6b35;" @endif>
+                                        <a href="javascript:void(0)" onclick="changeLanguage('es')" @if($currentLanguage === 'es') style="font-weight: bold; color: #ff6b35;" @endif>
                                             <img src="{{ asset('assets/images/flags/mx.svg') }}" alt="Español" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
                                             Español
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('home.EN') }}" @if($currentLanguage === 'en') style="font-weight: bold; color: #ff6b35;" @endif>
+                                        <a href="javascript:void(0)" onclick="changeLanguage('en')" @if($currentLanguage === 'en') style="font-weight: bold; color: #ff6b35;" @endif>
                                             <img src="{{ asset('assets/images/flags/us.svg') }}" alt="English" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
                                             English
                                         </a>
@@ -112,3 +112,37 @@
         </div>
         <!-- Fin del Encabezado -->
     </header>
+    
+    <!-- Script para cambio de idioma dinámico -->
+    <script>
+        function changeLanguage(language) {
+            // Obtener la URL actual
+            const currentUrl = window.location.href;
+            
+            // Crear un formulario temporal para enviar la solicitud POST
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/cambiar-idioma/' + language;
+            
+            // Agregar token CSRF
+            const csrfToken = document.querySelector('meta[name="csrf-token"]');
+            if (csrfToken) {
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = '_token';
+                csrfInput.value = csrfToken.getAttribute('content');
+                form.appendChild(csrfInput);
+            }
+            
+            // Agregar la URL actual como parámetro
+            const currentUrlInput = document.createElement('input');
+            currentUrlInput.type = 'hidden';
+            currentUrlInput.name = 'current_url';
+            currentUrlInput.value = currentUrl;
+            form.appendChild(currentUrlInput);
+            
+            // Agregar el formulario al DOM y enviarlo
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>

@@ -27,6 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/acerca', [HomeController::class, 'about'])->name('about');
 Route::get('/contacto', [HomeController::class, 'contact'])->name('contact');
 Route::get('/servicios', [HomeController::class, 'services'])->name('services');
+Route::get('/detalle-servicio', [HomeController::class, 'servicesDetails'])->name('services-detail');
 
 // Rutas específicas por idioma
 Route::prefix('ES')->group(function () {
@@ -34,6 +35,8 @@ Route::prefix('ES')->group(function () {
     Route::get('/acerca', [HomeController::class, 'aboutEs'])->name('about.ES');
     Route::get('/contacto', [HomeController::class, 'contactEs'])->name('contact.ES');
     Route::get('/servicios', [HomeController::class, 'servicesEs'])->name('services.ES');
+    Route::get('/detalle-servicio', [HomeController::class, 'servicesDetailsEs'])->name('services-detail.ES');
+    
 });
 
 Route::prefix('EN')->group(function () {
@@ -41,10 +44,12 @@ Route::prefix('EN')->group(function () {
     Route::get('/about', [HomeController::class, 'aboutEn'])->name('about.EN');
     Route::get('/contact', [HomeController::class, 'contactEn'])->name('contact.EN');
     Route::get('/services', [HomeController::class, 'servicesEn'])->name('services.EN');
+    Route::get('/detalle-servicio', [HomeController::class, 'servicesDetailsEn'])->name('services-detail.EN');
 });
 
 // Ruta para cambiar idioma
 Route::get('/cambiar-idioma/{language}', [HomeController::class, 'changeLanguage'])->name('change.language');
+Route::post('/cambiar-idioma/{language}', [HomeController::class, 'changeLanguage'])->name('change.language.post');
 
 
 // Rutas de autenticación
