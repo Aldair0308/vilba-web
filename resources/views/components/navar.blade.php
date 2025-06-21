@@ -45,11 +45,11 @@
                                 <div class="logo">
                                     <!-- logo-1 -->
                                     <a href="{{ route('home') }}" class="big-logo">
-                                        <img id="logo-big" src="assets/img/logo/logo.png" alt="" style="height: 80px; width: auto; max-width: 400px; margin-left: -60px;">
+                                        <img id="logo-big" src="{{ asset('assets/img/logo/logo.png') }}" alt="" style="height: 80px; width: auto; max-width: 400px; margin-left: -60px;">
                                     </a>
                                     <!-- logo-2 -->
                                     <a href="{{ route('home') }}" class="small-logo">
-                                        <img id="logo-small" src="assets/img/logo/logo.png" alt="" style="height: 60px; width: auto; max-width: 280px; margin-left: -60px;">
+                                        <img id="logo-small" src="{{ asset('assets/img/logo/logo.png') }}" alt="" style="height: 60px; width: auto; max-width: 280px; margin-left: -60px;">
                                     </a>
                                     
                                     <!-- CSS específico para móviles -->
