@@ -99,7 +99,7 @@
                 left: 0;
             }
             h2{
-                font-size: 140px;
+                font-size: 60px !important;
                 font-weight: 800;
                 margin: 0;
                 line-height: 1;
@@ -107,16 +107,16 @@
                 position: absolute;
                 color: #fff;
                 @media #{$lg}{
-                    font-size: 110px;
+                    font-size: 50px !important;
                 }
                 @media #{$md}{
-                    font-size: 60px;
+                    font-size: 35px !important;
                 }
                 @media #{$sm}{
-                    font-size: 52px;
+                    font-size: 28px !important;
                 }
                 @media #{$xs}{
-                    font-size: 27px;
+                    font-size: 18px !important;
                     margin-bottom: 25px;
                 }
 

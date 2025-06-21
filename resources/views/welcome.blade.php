@@ -1,9 +1,13 @@
+@php
+    $currentLanguage = $language ?? 'es';
+@endphp
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>GRÚAS VILBA</title>
+    <title>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -65,15 +69,15 @@
                             <div class="col-lg-11">
                                 <div class="hero__caption">
                                     <div class="hero-text1">
-                                        <span data-animation="fadeInUp" data-delay=".3s" data-translate="hero_subtitle">maquinaria industrial y servicios de construcción</span>
+                                        <span data-animation="fadeInUp" data-delay=".3s" data-translate="hero_subtitle">{{ $currentLanguage === 'en' ? 'industrial machinery and construction services' : 'maquinaria industrial y servicios de construcción' }}</span>
                                     </div>
-                                    <h1 data-animation="fadeInUp" data-delay=".5s" data-translate="welcome">Bienvenido</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".5s" data-translate="welcome">{{ $currentLanguage === 'en' ? 'Welcome' : 'Bienvenido' }}</h1>
                                     <div class="stock-text" data-animation="fadeInUp" data-delay=".8s" style="margin-top: 20px;">
-                                        <h2>GrÚas Vilba</h2>
-                                        <h2>GrÚas Vilba</h2>
+                                        <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
+                                        <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
                                     </div>
                                     <div class="hero-text2 mt-110" data-animation="fadeInUp" data-delay=".9s">
-                                       <span><a href="services.html" data-translate="our_services">Nuestros Servicios</a></span>
+                                       <span><a href="services.html" data-translate="our_services">{{ $currentLanguage === 'en' ? 'Our Services' : 'Nuestros Servicios' }}</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -86,15 +90,15 @@
                             <div class="col-lg-11">
                                 <div class="hero__caption">
                                     <div class="hero-text1">
-                                        <span data-animation="fadeInUp" data-delay=".3s">hand car wash and detailing service</span>
+                                        <span data-animation="fadeInUp" data-delay=".3s">{{ $currentLanguage === 'en' ? 'professional crane and heavy machinery services' : 'servicios profesionales de grúas y maquinaria pesada' }}</span>
                                     </div>
-                                    <h1 data-animation="fadeInUp" data-delay=".5s" data-translate="welcome">advanced</h1>
+                                    <h1 data-animation="fadeInUp" data-delay=".5s" data-translate="welcome">{{ $currentLanguage === 'en' ? 'Advanced' : 'Avanzado' }}</h1>
                                     <div class="stock-text" data-animation="fadeInUp" data-delay=".8s">
-                                        <h2>Construction</h2>
-                                        <h2>Construction</h2>
+                                        <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
+                                        <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
                                     </div>
                                     <div class="hero-text2 mt-110" data-animation="fadeInUp" data-delay=".9s">
-                                        <span><a href="services.html" data-translate="services">Our Services</a></span>
+                                        <span><a href="services.html" data-translate="services">{{ $currentLanguage === 'en' ? 'Our Services' : 'Nuestros Servicios' }}</a></span>
                                     </div>
                                 </div>
                             </div>
