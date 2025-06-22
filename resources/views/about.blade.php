@@ -1,31 +1,34 @@
-@php
-    $currentLanguage = $language ?? 'es';
-@endphp
-
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="{{ $language ?? 'es' }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Construction HTML-5 Template</title>
+        <title>
+            @if(($language ?? 'es') === 'en')
+                About Us - VILBA
+            @else
+                Acerca de Nosotros - VILBA
+            @endif
+        </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="manifest" href="site.webmanifest">
-                <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+                <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
 
                 <!-- CSS here -->
-            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-            <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-            <link rel="stylesheet" href="assets/css/gijgo.css">
-            <link rel="stylesheet" href="assets/css/slicknav.css">
-            <link rel="stylesheet" href="assets/css/animate.min.css">
-            <link rel="stylesheet" href="assets/css/magnific-popup.css">
-            <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-            <link rel="stylesheet" href="assets/css/themify-icons.css">
-            <link rel="stylesheet" href="assets/css/slick.css">
-            <link rel="stylesheet" href="assets/css/nice-select.css">
-            <link rel="stylesheet" href="assets/css/style.css">
-            <link rel="stylesheet" href="assets/css/responsive.css">
+            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/gijgo.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
    </head>
 
    <body>
@@ -35,28 +38,31 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder-logo.png" alt="">
+                    <img src="{{ asset('assets/img/logo/loder-logo.png') }}" alt="">
                 </div>
             </div>
         </div>
     </div>
     <!-- Preloader Start -->
-<x-navar :language="$language ?? 'es'" />
+    <header>
+        <!-- Header Start -->
+        <x-navar :language="$language ?? 'es'" />
+    </header>
     <main>
         <!-- slider Area Start-->
         <div class="slider-area ">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="{{ asset('assets/img/hero/about.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="hero-cap pt-100">
-                                <h2>About us</h2>
-                                <nav aria-label="breadcrumb ">
-                                    <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Product</a></li>
-                                    </ol>
-                                </nav>
+                            <div class="hero-cap hero-cap2 pt-120">
+                                <h2>
+                                    @if(($language ?? 'es') === 'en')
+                                        About Us
+                                    @else
+                                        Acerca de Nosotros
+                                    @endif
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -71,20 +77,50 @@
                     <!-- section tittle -->
                     <div class="section-tittle section-tittle2 mb-55">
                         <div class="front-text">
-                            <h2 class="">Who we are</h2>
+                            <h2 class="">
+                                @if(($language ?? 'es') === 'en')
+                                    Who we are
+                                @else
+                                    Quiénes somos
+                                @endif
+                            </h2>
                         </div>
-                        <span class="back-text">About us</span>
+                        <span class="back-text">
+                            @if(($language ?? 'es') === 'en')
+                                About us
+                            @else
+                                Acerca de nosotros
+                            @endif
+                        </span>
                     </div>
                     <div class="support-caption">
-                        <p class="pera-top">Mollit anim laborum duis au dolor in voluptcate velit ess cillum dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillu.</p>
-                        <p>Mollit anim laborum.Dvcuis aute iruxvfg dhjkolohr in re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur sfwsignjnt occa cupidatat non aute iruxvfg dhjinulpadeserunt mollitemnth incididbnt ut;o5tu layjobore mofllit anim.</p>
-                        <a href="about.html" class="btn red-btn2">read more</a>
+                        <p class="pera-top">
+                            @if(($language ?? 'es') === 'en')
+                                At VILBA, we are a company specialized in crane services with personalized attention and quick response throughout the city. We have been providing reliable and professional crane services since 1994.
+                            @else
+                                En VILBA, somos una empresa especializada en servicios de grúas con atención personalizada y rápida respuesta en toda la ciudad. Hemos estado brindando servicios de grúas confiables y profesionales desde 1994.
+                            @endif
+                        </p>
+                        <p>
+                            @if(($language ?? 'es') === 'en')
+                                Our team of experienced professionals is committed to providing safe, efficient, and cost-effective solutions for all your lifting and transportation needs. We pride ourselves on our excellent customer service and our ability to handle projects of any size.
+                            @else
+                                Nuestro equipo de profesionales experimentados está comprometido a brindar soluciones seguras, eficientes y rentables para todas sus necesidades de elevación y transporte. Nos enorgullecemos de nuestro excelente servicio al cliente y nuestra capacidad para manejar proyectos de cualquier tamaño.
+                            @endif
+                        </p>
+                        <a href="{{ ($language ?? 'es') === 'en' ? route('services.EN') : route('services.ES') }}" class="btn red-btn2">
+                            @if(($language ?? 'es') === 'en')
+                                Our Services
+                            @else
+                                Nuestros Servicios
+                            @endif
+                        </a>
                     </div>
                 </div>
                 <div class="right-content">
                     <!-- img -->
                     <div class="right-img">
-                        <img src="assets/img/gallery/safe_in.png" alt="">
+                        <img src="{{ asset('assets/img/gallery/safe_in.png') }}" alt="">
                     </div>
                     <div class="support-img-cap text-center">
                         <span>1994</span>
@@ -178,7 +214,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
                         <div class="single-team mb-30">
                             <div class="team-img">
-                                <img src="assets/img/team/team1.png" alt="">
+                                <img src="{{ asset('assets/img/team/team1.png') }}" alt="">
                             </div>
                             <div class="team-caption">
                                 <span>UX Designer</span>
@@ -189,7 +225,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
                         <div class="single-team mb-30">
                             <div class="team-img">
-                                <img src="assets/img/team/team2.png" alt="">
+                                <img src="{{ asset('assets/img/team/team2.png') }}" alt="">
                             </div>
                             <div class="team-caption">
                                 <span>UX Designer</span>
@@ -200,7 +236,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
                         <div class="single-team mb-30">
                             <div class="team-img">
-                                <img src="assets/img/team/team3.png" alt="">
+                                <img src="{{ asset('assets/img/team/team3.png') }}" alt="">
                             </div>
                             <div class="team-caption">
                                 <span>UX Designer</span>
