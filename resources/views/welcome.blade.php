@@ -724,7 +724,7 @@
 <!-- Área de Contador Fin -->
 
 <!-- Equipo Inicio -->
-<div class="team-area section-padding30">
+{{-- <div class="team-area section-padding30">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -774,7 +774,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Equipo Fin -->
 
 <!-- Testimonios Inicio -->
@@ -905,6 +905,13 @@
     </main>
     <!-- Footer Component -->
     <x-footer :language="$language ?? 'es'" />
+    
+    <!-- WhatsApp Button Component -->
+    <x-whatsapp-button 
+        phone="+525512345678" 
+        :language="session('language') ?? 'es'" 
+        :message="session('language') === 'en' ? 'Hello! I would like more information about your services.' : 'Hola! Me gustaría obtener más información sobre sus servicios.'" 
+    />
     
    
 	<!-- JS here -->

@@ -128,6 +128,13 @@
     </main>
     <!-- Footer Component -->
     <x-footer :language="$language ?? 'es'" />
+    
+    <!-- WhatsApp Button Component -->
+    <x-whatsapp-button 
+        phone="+525512345678" 
+        :language="session('language') ?? 'es'" 
+        :message="session('language') === 'en' ? 'Hello! I would like more information about your services.' : 'Hola! Me gustaría obtener más información sobre sus servicios.'" 
+    />
 
         <!-- JS here -->
 
