@@ -78,7 +78,7 @@
                                         <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
                                     </div>
                                     <div class="hero-text2 mt-110" data-animation="fadeInUp" data-delay=".9s">
-                                       <span><a href="services.html" data-translate="our_services">{{ $currentLanguage === 'en' ? 'Our Services' : 'Nuestros Servicios' }}</a></span>
+                                       <span><a href="{{ route('services') }}" data-translate="our_services">{{ $currentLanguage === 'en' ? 'Our Services' : 'Nuestros Servicios' }}</a></span>
                                     </div>
                                 </div>
                             </div>
