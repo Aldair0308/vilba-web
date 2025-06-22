@@ -27,6 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/acerca', [HomeController::class, 'about'])->name('about');
 Route::get('/contacto', [HomeController::class, 'contact'])->name('contact');
 Route::get('/servicios', [HomeController::class, 'services'])->name('services');
+Route::get('/equipos', [HomeController::class, 'equipos'])->name('equipos');
 Route::get('/detalle-servicio', [HomeController::class, 'servicesDetails'])->name('services-detail');
 
 // Rutas específicas por idioma
@@ -35,6 +36,7 @@ Route::prefix('ES')->group(function () {
     Route::get('/acerca', [HomeController::class, 'aboutEs'])->name('about.ES');
     Route::get('/contacto', [HomeController::class, 'contactEs'])->name('contact.ES');
     Route::get('/servicios', [HomeController::class, 'servicesEs'])->name('services.ES');
+    Route::get('/equipos', [HomeController::class, 'equiposEs'])->name('equipos.ES');
     Route::get('/detalle-servicio', [HomeController::class, 'servicesDetailsEs'])->name('services-detail.ES');
     
 });
@@ -44,6 +46,7 @@ Route::prefix('EN')->group(function () {
     Route::get('/about', [HomeController::class, 'aboutEn'])->name('about.EN');
     Route::get('/contact', [HomeController::class, 'contactEn'])->name('contact.EN');
     Route::get('/services', [HomeController::class, 'servicesEn'])->name('services.EN');
+    Route::get('/equipment', [HomeController::class, 'equiposEn'])->name('equipos.EN');
     Route::get('/detalle-servicio', [HomeController::class, 'servicesDetailsEn'])->name('services-detail.EN');
 });
 

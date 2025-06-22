@@ -67,6 +67,17 @@ class HomeController extends Controller
     }
     
     /**
+     * Mostrar página de equipos
+     */
+    public function equipos(Request $request)
+    {
+        $language = $this->detectLanguage($request);
+        Session::put('language', $language);
+        
+        return view('equipos', compact('language'));
+    }
+    
+    /**
      * Métodos específicos para español
      */
     public function indexEs(Request $request)
@@ -102,6 +113,13 @@ class HomeController extends Controller
         $language = 'es';
         Session::put('language', $language);
         return view('services_details', compact('language'));
+    }
+    
+    public function equiposEs(Request $request)
+    {
+        $language = 'es';
+        Session::put('language', $language);
+        return view('equipos', compact('language'));
     }
     
     /**
@@ -140,6 +158,13 @@ class HomeController extends Controller
         $language = 'en';
         Session::put('language', $language);
         return view('services_details', compact('language'));
+    }
+    
+    public function equiposEn(Request $request)
+    {
+        $language = 'en';
+        Session::put('language', $language);
+        return view('equipos', compact('language'));
     }
     
     /**
@@ -182,6 +207,9 @@ class HomeController extends Controller
             } elseif (strpos($path, '/detalle-servicio') !== false || 
                      strpos($path, '/ES/detalle-servicio') !== false || strpos($path, '/EN/detalle-servicio') !== false) {
                 $currentView = 'services-detail';
+            } elseif (strpos($path, '/equipos') !== false || strpos($path, '/equipment') !== false ||
+                     strpos($path, '/ES/equipos') !== false || strpos($path, '/EN/equipment') !== false) {
+                $currentView = 'equipos';
             } elseif (strpos($path, '/servicios') !== false || strpos($path, '/services') !== false ||
                      strpos($path, '/ES/servicios') !== false || strpos($path, '/EN/services') !== false) {
                 $currentView = 'services';
@@ -200,6 +228,7 @@ class HomeController extends Controller
             'about' => $language === 'en' ? 'about.EN' : 'about.ES',
             'contact' => $language === 'en' ? 'contact.EN' : 'contact.ES',
             'services' => $language === 'en' ? 'services.EN' : 'services.ES',
+            'equipos' => $language === 'en' ? 'equipos.EN' : 'equipos.ES',
             'services-detail' => $language === 'en' ? 'services-detail.EN' : 'services-detail.ES'
         ];
         
