@@ -69,11 +69,11 @@
                                         <ul id="navigation">                                                                                                                   
                                             <li><a href="{{ $currentLanguage === 'en' ? route('home.EN') : route('home.ES') }}" data-translate="home">{{ $currentLanguage === 'en' ? 'Home' : 'Inicio' }}</a></li>
                                             <li><a href="{{ $currentLanguage === 'en' ? route('equipos.EN') : route('equipos.ES') }}">{{ $currentLanguage === 'en' ? 'Equipment' : 'Equipos' }}</a></li>
-                                            <li><a href="{{ $currentLanguage === 'en' ? route('about.EN') : route('about.ES') }}" data-translate="about">{{ $currentLanguage === 'en' ? 'About Us' : 'Nosotros' }}</a></li>
-                                            {{-- <li><a href="#" data-translate="projects">{{ $currentLanguage === 'en' ? 'Projects' : 'Proyectos' }}</a></li> --}}
                                             <li><a href="{{ $currentLanguage === 'en' ? route('services.EN') : route('services.ES') }}" data-translate="services">{{ $currentLanguage === 'en' ? 'Services' : 'Servicios' }}</a></li>
-                                        
-                                            <li><a href="javascript:void(0)" data-translate="language">{{ $currentLanguage === 'en' ? 'Language' : 'Idioma' }}</a>
+                                            <li><a href="{{ $currentLanguage === 'en' ? route('about.EN') : route('about.ES') }}" data-translate="about">{{ $currentLanguage === 'en' ? 'About Us' : 'Nosotros' }}</a></li>
+                                            
+                                            <li><a href="{{ $currentLanguage === 'en' ? route('contact.EN') : route('contact.ES') }}" data-translate="contact">{{ $currentLanguage === 'en' ? 'Contact' : 'Contacto' }}</a></li>
+                                            <li><a href="javascript:void(0)" data-translate="language">{{ $currentLanguage === 'en' ? 'Language 🌐' : 'Idioma 🌐' }}</a>
                                                 <ul class="submenu">
                                                     <li>
                                         <a href="javascript:void(0)" onclick="changeLanguage('es')" @if($currentLanguage === 'es') style="font-weight: bold; color: #ff6b35;" @endif>
@@ -89,7 +89,6 @@
                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="{{ $currentLanguage === 'en' ? route('contact.EN') : route('contact.ES') }}" data-translate="contact">{{ $currentLanguage === 'en' ? 'Contact' : 'Contacto' }}</a></li>
                                         </ul>
                                     </nav>
                                 </div>

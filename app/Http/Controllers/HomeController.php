@@ -122,6 +122,20 @@ class HomeController extends Controller
         return view('equipos', compact('language'));
     }
     
+    public function equiposDetailEs(Request $request, $slug)
+    {
+        $language = 'es';
+        Session::put('language', $language);
+        
+        $equipment = $this->getEquipmentBySlug($slug, $language);
+        
+        if (!$equipment) {
+            abort(404);
+        }
+        
+        return view('equipos-detalle', compact('language', 'equipment'));
+    }
+    
     /**
      * Métodos específicos para inglés
      */
@@ -167,6 +181,34 @@ class HomeController extends Controller
         return view('equipos', compact('language'));
     }
     
+    public function equiposDetailEn(Request $request, $slug)
+    {
+        $language = 'en';
+        Session::put('language', $language);
+        
+        $equipment = $this->getEquipmentBySlug($slug, $language);
+        
+        if (!$equipment) {
+            abort(404);
+        }
+        
+        return view('equipos-detalle', compact('language', 'equipment'));
+    }
+    
+    public function equiposDetail(Request $request, $slug)
+    {
+        $language = $this->detectLanguage($request);
+        Session::put('language', $language);
+        
+        $equipment = $this->getEquipmentBySlug($slug, $language);
+        
+        if (!$equipment) {
+            abort(404);
+        }
+        
+        return view('equipos-detalle', compact('language', 'equipment'));
+    }
+    
     /**
      * Cambiar idioma y recargar página
      */
@@ -192,6 +234,9 @@ class HomeController extends Controller
             'method' => $request->method()
         ]);
         
+        // Variables para detectar páginas de detalle de equipos
+        $equipmentSlug = null;
+        
         // Detectar la vista actual basándose en la URL actual
         if ($currentUrl) {
             // Normalizar la URL removiendo el dominio y parámetros
@@ -207,6 +252,11 @@ class HomeController extends Controller
             } elseif (strpos($path, '/detalle-servicio') !== false || 
                      strpos($path, '/ES/detalle-servicio') !== false || strpos($path, '/EN/detalle-servicio') !== false) {
                 $currentView = 'services-detail';
+            } elseif (preg_match('/\/(ES\/)?equipos\/([^\/?]+)/', $path, $matches) || 
+                     preg_match('/\/(EN\/)?equipment\/([^\/?]+)/', $path, $matches)) {
+                // Detectar página de detalle de equipos y extraer slug
+                $currentView = 'equipos-detail';
+                $equipmentSlug = end($matches); // Obtener el último match que es el slug
             } elseif (strpos($path, '/equipos') !== false || strpos($path, '/equipment') !== false ||
                      strpos($path, '/ES/equipos') !== false || strpos($path, '/EN/equipment') !== false) {
                 $currentView = 'equipos';
@@ -219,8 +269,21 @@ class HomeController extends Controller
         // Log del resultado de detección
         \Log::info('View Detection Result', [
             'detected_view' => $currentView,
+            'equipment_slug' => $equipmentSlug,
             'path' => $path ?? 'no_path'
         ]);
+        
+        // Manejar redirección especial para páginas de detalle de equipos
+        if ($currentView === 'equipos-detail' && $equipmentSlug) {
+            $targetRoute = $language === 'en' ? 'equipos.detail.EN' : 'equipos.detail.ES';
+            
+            \Log::info('Equipment Detail Redirect', [
+                'target_route' => $targetRoute,
+                'slug' => $equipmentSlug
+            ]);
+            
+            return redirect()->route($targetRoute, ['slug' => $equipmentSlug]);
+        }
         
         // Redirigir a la vista actual en el idioma seleccionado
         $routeMap = [
@@ -294,4 +357,795 @@ class HomeController extends Controller
         // 6. Idioma por defecto
         return 'es';
     }
+    
+    /**
+     * Obtener datos del equipo por slug
+     */
+    private function getEquipmentBySlug($slug, $language = 'es')
+    {
+        $equipments = [
+            'gruas-torre' => [
+                'slug' => 'gruas-torre',
+                'name' => [
+                    'es' => 'Grúas Torre',
+                    'en' => 'Tower Cranes'
+                ],
+                'description' => [
+                    'es' => 'Grúas torre de alta capacidad para proyectos de construcción de todos los tamaños.',
+                    'en' => 'High-capacity tower cranes for construction projects of all sizes.'
+                ],
+                'hero_image' => 'assets/img/gallery/services1.jpg',
+                'gallery' => [
+                    'assets/img/gallery/services1.jpg',
+                    'assets/img/gallery/services2.jpg',
+                    'assets/img/gallery/services3.jpg'
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras grúas torre ofrecen soluciones de elevación confiables y eficientes para proyectos de construcción de gran envergadura. Con tecnología de punta y operadores certificados.',
+                        'features' => [
+                            'Capacidad de carga hasta 25 toneladas',
+                            'Altura máxima de 80 metros',
+                            'Alcance horizontal hasta 70 metros',
+                            'Sistema de control computarizado',
+                            'Operadores certificados incluidos'
+                        ],
+                        'applications' => [
+                            'Construcción de edificios altos',
+                            'Proyectos residenciales',
+                            'Construcción comercial',
+                            'Infraestructura urbana'
+                        ],
+                        'technical_specs' => [
+                            'Carga máxima: 25 toneladas',
+                            'Altura bajo gancho: 80m',
+                            'Alcance máximo: 70m',
+                            'Velocidad de elevación: 120 m/min',
+                            'Rotación: 360° continua'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our tower cranes offer reliable and efficient lifting solutions for large-scale construction projects. Featuring cutting-edge technology and certified operators.',
+                        'features' => [
+                            'Load capacity up to 25 tons',
+                            'Maximum height of 80 meters',
+                            'Horizontal reach up to 70 meters',
+                            'Computerized control system',
+                            'Certified operators included'
+                        ],
+                        'applications' => [
+                            'High-rise building construction',
+                            'Residential projects',
+                            'Commercial construction',
+                            'Urban infrastructure'
+                        ],
+                        'technical_specs' => [
+                            'Maximum load: 25 tons',
+                            'Hook height: 80m',
+                            'Maximum reach: 70m',
+                            'Lifting speed: 120 m/min',
+                            'Rotation: 360° continuous'
+                        ]
+                    ]
+                ]
+            ],
+            'tower-cranes' => [
+                'slug' => 'tower-cranes',
+                'name' => [
+                    'es' => 'Grúas Torre',
+                    'en' => 'Tower Cranes'
+                ],
+                'description' => [
+                    'es' => 'Grúas torre de alta capacidad para proyectos de construcción de todos los tamaños.',
+                    'en' => 'High-capacity tower cranes for construction projects of all sizes.'
+                ],
+                'hero_image' => 'assets/img/gallery/services1.jpg',
+                'gallery' => [
+                    'assets/img/gallery/services1.jpg',
+                    'assets/img/gallery/services2.jpg',
+                    'assets/img/gallery/services3.jpg'
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras grúas torre ofrecen soluciones de elevación confiables y eficientes para proyectos de construcción de gran envergadura. Con tecnología de punta y operadores certificados.',
+                        'features' => [
+                            'Capacidad de carga hasta 25 toneladas',
+                            'Altura máxima de 80 metros',
+                            'Alcance horizontal hasta 70 metros',
+                            'Sistema de control computarizado',
+                            'Operadores certificados incluidos'
+                        ],
+                        'applications' => [
+                            'Construcción de edificios altos',
+                            'Proyectos residenciales',
+                            'Construcción comercial',
+                            'Infraestructura urbana'
+                        ],
+                        'technical_specs' => [
+                            'Carga máxima: 25 toneladas',
+                            'Altura bajo gancho: 80m',
+                            'Alcance máximo: 70m',
+                            'Velocidad de elevación: 120 m/min',
+                            'Rotación: 360° continua'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our tower cranes offer reliable and efficient lifting solutions for large-scale construction projects. Featuring cutting-edge technology and certified operators.',
+                        'features' => [
+                            'Load capacity up to 25 tons',
+                            'Maximum height of 80 meters',
+                            'Horizontal reach up to 70 meters',
+                            'Computerized control system',
+                            'Certified operators included'
+                        ],
+                        'applications' => [
+                            'High-rise building construction',
+                            'Residential projects',
+                            'Commercial construction',
+                            'Urban infrastructure'
+                        ],
+                        'technical_specs' => [
+                            'Maximum load: 25 tons',
+                            'Hook height: 80m',
+                            'Maximum reach: 70m',
+                            'Lifting speed: 120 m/min',
+                            'Rotation: 360° continuous'
+                        ]
+                    ]
+                ]
+            ],
+            'gruas-moviles' => [
+                'slug' => 'gruas-moviles',
+                'name' => [
+                    'es' => 'Grúas Móviles',
+                    'en' => 'Mobile Cranes'
+                ],
+                'description' => [
+                    'es' => 'Grúas móviles versátiles para montaje rápido y posicionamiento flexible.',
+                    'en' => 'Versatile mobile cranes for quick setup and flexible positioning.'
+                ],
+                'hero_image' => 'assets/img/gallery/services2.jpg',
+                'gallery' => [
+                    'assets/img/gallery/services2.jpg',
+                    'assets/img/gallery/services1.jpg',
+                    'assets/img/gallery/services4.jpg'
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras grúas móviles proporcionan la flexibilidad necesaria para proyectos que requieren movilidad y configuración rápida. Ideales para trabajos en múltiples ubicaciones.',
+                        'features' => [
+                            'Capacidad de carga hasta 50 toneladas',
+                            'Longitud de pluma hasta 60 metros',
+                            'Movilidad todo terreno',
+                            'Configuración rápida en sitio',
+                            'Operación hidráulica suave'
+                        ],
+                        'applications' => [
+                            'Montaje de estructuras prefabricadas',
+                            'Trabajos de mantenimiento industrial',
+                            'Construcción en espacios reducidos',
+                            'Proyectos temporales'
+                        ],
+                        'technical_specs' => [
+                            'Carga máxima: 50 toneladas',
+                            'Longitud de pluma: 60m',
+                            'Radio de trabajo: 48m',
+                            'Velocidad de traslado: 80 km/h',
+                            'Estabilizadores: Hidráulicos'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our mobile cranes provide the flexibility needed for projects requiring mobility and quick setup. Ideal for work at multiple locations.',
+                        'features' => [
+                            'Load capacity up to 50 tons',
+                            'Boom length up to 60 meters',
+                            'All-terrain mobility',
+                            'Quick on-site setup',
+                            'Smooth hydraulic operation'
+                        ],
+                        'applications' => [
+                            'Prefabricated structure assembly',
+                            'Industrial maintenance work',
+                            'Construction in confined spaces',
+                            'Temporary projects'
+                        ],
+                        'technical_specs' => [
+                            'Maximum load: 50 tons',
+                            'Boom length: 60m',
+                            'Working radius: 48m',
+                            'Travel speed: 80 km/h',
+                            'Outriggers: Hydraulic'
+                        ]
+                    ]
+                ]
+            ],
+            'mobile-cranes' => [
+                'slug' => 'mobile-cranes',
+                'name' => [
+                    'es' => 'Grúas Móviles',
+                    'en' => 'Mobile Cranes'
+                ],
+                'description' => [
+                    'es' => 'Grúas móviles versátiles para montaje rápido y posicionamiento flexible.',
+                    'en' => 'Versatile mobile cranes for quick setup and flexible positioning.'
+                ],
+                'hero_image' => 'assets/img/gallery/services2.jpg',
+                'gallery' => [
+                    'assets/img/gallery/services2.jpg',
+                    'assets/img/gallery/services1.jpg',
+                    'assets/img/gallery/services4.jpg'
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras grúas móviles proporcionan la flexibilidad necesaria para proyectos que requieren movilidad y configuración rápida. Ideales para trabajos en múltiples ubicaciones.',
+                        'features' => [
+                            'Capacidad de carga hasta 50 toneladas',
+                            'Longitud de pluma hasta 60 metros',
+                            'Movilidad todo terreno',
+                            'Configuración rápida en sitio',
+                            'Operación hidráulica suave'
+                        ],
+                        'applications' => [
+                            'Montaje de estructuras prefabricadas',
+                            'Trabajos de mantenimiento industrial',
+                            'Construcción en espacios reducidos',
+                            'Proyectos temporales'
+                        ],
+                        'technical_specs' => [
+                            'Carga máxima: 50 toneladas',
+                            'Longitud de pluma: 60m',
+                            'Radio de trabajo: 48m',
+                            'Velocidad de traslado: 80 km/h',
+                            'Estabilizadores: Hidráulicos'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our mobile cranes provide the flexibility needed for projects requiring mobility and quick setup. Ideal for work at multiple locations.',
+                        'features' => [
+                            'Load capacity up to 50 tons',
+                            'Boom length up to 60 meters',
+                            'All-terrain mobility',
+                            'Quick on-site setup',
+                            'Smooth hydraulic operation'
+                        ],
+                        'applications' => [
+                            'Prefabricated structure assembly',
+                            'Industrial maintenance work',
+                            'Construction in confined spaces',
+                            'Temporary projects'
+                        ],
+                        'technical_specs' => [
+                            'Maximum load: 50 tons',
+                            'Boom length: 60m',
+                            'Working radius: 48m',
+                            'Travel speed: 80 km/h',
+                            'Outriggers: Hydraulic'
+                        ]
+                    ]
+                 ]
+             ],
+             'montacargas' => [
+                 'slug' => 'montacargas',
+                 'name' => [
+                     'es' => 'Montacargas',
+                     'en' => 'Forklifts'
+                 ],
+                 'description' => [
+                     'es' => 'Montacargas de servicio pesado para manejo de materiales y operaciones de almacén.',
+                     'en' => 'Heavy-duty forklifts for material handling and warehouse operations.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services3.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services3.jpg',
+                     'assets/img/gallery/services1.jpg',
+                     'assets/img/gallery/services5.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestros montacargas ofrecen soluciones eficientes para el manejo de materiales en almacenes, fábricas y sitios de construcción. Disponibles en versiones eléctricas y diésel.',
+                         'features' => [
+                             'Capacidad de carga hasta 10 toneladas',
+                             'Altura de elevación hasta 8 metros',
+                             'Opciones eléctricas y diésel',
+                             'Cabina ergonómica con visibilidad 360°',
+                             'Sistema hidráulico de alta eficiencia'
+                         ],
+                         'applications' => [
+                             'Manejo de materiales en almacenes',
+                             'Carga y descarga de camiones',
+                             'Operaciones en fábricas',
+                             'Construcción y obras civiles'
+                         ],
+                         'technical_specs' => [
+                             'Carga máxima: 10 toneladas',
+                             'Altura de elevación: 8m',
+                             'Tipo de combustible: Eléctrico/Diésel',
+                             'Velocidad de elevación: 0.5 m/s',
+                             'Radio de giro: 2.8m'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our forklifts offer efficient solutions for material handling in warehouses, factories, and construction sites. Available in electric and diesel versions.',
+                         'features' => [
+                             'Load capacity up to 10 tons',
+                             'Lift height up to 8 meters',
+                             'Electric and diesel options',
+                             'Ergonomic cabin with 360° visibility',
+                             'High-efficiency hydraulic system'
+                         ],
+                         'applications' => [
+                             'Warehouse material handling',
+                             'Truck loading and unloading',
+                             'Factory operations',
+                             'Construction and civil works'
+                         ],
+                         'technical_specs' => [
+                             'Maximum load: 10 tons',
+                             'Lift height: 8m',
+                             'Fuel type: Electric/Diesel',
+                             'Lifting speed: 0.5 m/s',
+                             'Turning radius: 2.8m'
+                         ]
+                     ]
+                 ]
+             ],
+             'forklifts' => [
+                 'slug' => 'forklifts',
+                 'name' => [
+                     'es' => 'Montacargas',
+                     'en' => 'Forklifts'
+                 ],
+                 'description' => [
+                     'es' => 'Montacargas de servicio pesado para manejo de materiales y operaciones de almacén.',
+                     'en' => 'Heavy-duty forklifts for material handling and warehouse operations.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services3.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services3.jpg',
+                     'assets/img/gallery/services1.jpg',
+                     'assets/img/gallery/services5.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestros montacargas ofrecen soluciones eficientes para el manejo de materiales en almacenes, fábricas y sitios de construcción. Disponibles en versiones eléctricas y diésel.',
+                         'features' => [
+                             'Capacidad de carga hasta 10 toneladas',
+                             'Altura de elevación hasta 8 metros',
+                             'Opciones eléctricas y diésel',
+                             'Cabina ergonómica con visibilidad 360°',
+                             'Sistema hidráulico de alta eficiencia'
+                         ],
+                         'applications' => [
+                             'Manejo de materiales en almacenes',
+                             'Carga y descarga de camiones',
+                             'Operaciones en fábricas',
+                             'Construcción y obras civiles'
+                         ],
+                         'technical_specs' => [
+                             'Carga máxima: 10 toneladas',
+                             'Altura de elevación: 8m',
+                             'Tipo de combustible: Eléctrico/Diésel',
+                             'Velocidad de elevación: 0.5 m/s',
+                             'Radio de giro: 2.8m'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our forklifts offer efficient solutions for material handling in warehouses, factories, and construction sites. Available in electric and diesel versions.',
+                         'features' => [
+                             'Load capacity up to 10 tons',
+                             'Lift height up to 8 meters',
+                             'Electric and diesel options',
+                             'Ergonomic cabin with 360° visibility',
+                             'High-efficiency hydraulic system'
+                         ],
+                         'applications' => [
+                             'Warehouse material handling',
+                             'Truck loading and unloading',
+                             'Factory operations',
+                             'Construction and civil works'
+                         ],
+                         'technical_specs' => [
+                             'Maximum load: 10 tons',
+                             'Lift height: 8m',
+                             'Fuel type: Electric/Diesel',
+                             'Lifting speed: 0.5 m/s',
+                             'Turning radius: 2.8m'
+                         ]
+                     ]
+                 ]
+             ],
+             'plataformas-aereas' => [
+                 'slug' => 'plataformas-aereas',
+                 'name' => [
+                     'es' => 'Plataformas Aéreas',
+                     'en' => 'Aerial Platforms'
+                 ],
+                 'description' => [
+                     'es' => 'Plataformas de trabajo aéreas seguras y confiables para tareas en altura.',
+                     'en' => 'Safe and reliable aerial work platforms for high-altitude tasks.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services4.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services4.jpg',
+                     'assets/img/gallery/services2.jpg',
+                     'assets/img/gallery/services1.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestras plataformas aéreas proporcionan acceso seguro a trabajos en altura, ideales para mantenimiento, instalación y construcción en espacios elevados.',
+                         'features' => [
+                             'Altura máxima de 45 metros',
+                             'Carga de plataforma hasta 500kg',
+                             'Tipos tijera y articulada disponibles',
+                             'Controles de seguridad avanzados',
+                             'Estabilización automática'
+                         ],
+                         'applications' => [
+                             'Mantenimiento de edificios',
+                             'Instalación de sistemas eléctricos',
+                             'Trabajos de pintura en altura',
+                             'Limpieza de fachadas'
+                         ],
+                         'technical_specs' => [
+                             'Altura máxima: 45m',
+                             'Carga de plataforma: 500kg',
+                             'Alcance horizontal: 25m',
+                             'Velocidad de elevación: 0.8 m/s',
+                             'Tipo: Tijera/Articulada'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our aerial platforms provide safe access to high-altitude work, ideal for maintenance, installation, and construction in elevated spaces.',
+                         'features' => [
+                             'Maximum height of 45 meters',
+                             'Platform load up to 500kg',
+                             'Scissor and boom types available',
+                             'Advanced safety controls',
+                             'Automatic stabilization'
+                         ],
+                         'applications' => [
+                             'Building maintenance',
+                             'Electrical system installation',
+                             'High-altitude painting work',
+                             'Facade cleaning'
+                         ],
+                         'technical_specs' => [
+                             'Maximum height: 45m',
+                             'Platform load: 500kg',
+                             'Horizontal reach: 25m',
+                             'Lifting speed: 0.8 m/s',
+                             'Type: Scissor/Boom'
+                         ]
+                     ]
+                 ]
+             ],
+             'aerial-platforms' => [
+                 'slug' => 'aerial-platforms',
+                 'name' => [
+                     'es' => 'Plataformas Aéreas',
+                     'en' => 'Aerial Platforms'
+                 ],
+                 'description' => [
+                     'es' => 'Plataformas de trabajo aéreas seguras y confiables para tareas en altura.',
+                     'en' => 'Safe and reliable aerial work platforms for high-altitude tasks.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services4.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services4.jpg',
+                     'assets/img/gallery/services2.jpg',
+                     'assets/img/gallery/services1.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestras plataformas aéreas proporcionan acceso seguro a trabajos en altura, ideales para mantenimiento, instalación y construcción en espacios elevados.',
+                         'features' => [
+                             'Altura máxima de 45 metros',
+                             'Carga de plataforma hasta 500kg',
+                             'Tipos tijera y articulada disponibles',
+                             'Controles de seguridad avanzados',
+                             'Estabilización automática'
+                         ],
+                         'applications' => [
+                             'Mantenimiento de edificios',
+                             'Instalación de sistemas eléctricos',
+                             'Trabajos de pintura en altura',
+                             'Limpieza de fachadas'
+                         ],
+                         'technical_specs' => [
+                             'Altura máxima: 45m',
+                             'Carga de plataforma: 500kg',
+                             'Alcance horizontal: 25m',
+                             'Velocidad de elevación: 0.8 m/s',
+                             'Tipo: Tijera/Articulada'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our aerial platforms provide safe access to high-altitude work, ideal for maintenance, installation, and construction in elevated spaces.',
+                         'features' => [
+                             'Maximum height of 45 meters',
+                             'Platform load up to 500kg',
+                             'Scissor and boom types available',
+                             'Advanced safety controls',
+                             'Automatic stabilization'
+                         ],
+                         'applications' => [
+                             'Building maintenance',
+                             'Electrical system installation',
+                             'High-altitude painting work',
+                             'Facade cleaning'
+                         ],
+                         'technical_specs' => [
+                             'Maximum height: 45m',
+                             'Platform load: 500kg',
+                             'Horizontal reach: 25m',
+                             'Lifting speed: 0.8 m/s',
+                             'Type: Scissor/Boom'
+                         ]
+                     ]
+                 ]
+             ],
+             'excavadoras' => [
+                 'slug' => 'excavadoras',
+                 'name' => [
+                     'es' => 'Excavadoras',
+                     'en' => 'Excavators'
+                 ],
+                 'description' => [
+                     'es' => 'Excavadoras de alta potencia para trabajos de excavación y movimiento de tierra.',
+                     'en' => 'High-power excavators for excavation and earthmoving work.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services5.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services5.jpg',
+                     'assets/img/gallery/services2.jpg',
+                     'assets/img/gallery/services3.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestras excavadoras están diseñadas para trabajos pesados de excavación, demolición y movimiento de tierra en proyectos de construcción e infraestructura.',
+                         'features' => [
+                             'Potencia del motor hasta 400 HP',
+                             'Peso operativo hasta 50 toneladas',
+                             'Alcance de excavación hasta 12 metros',
+                             'Cabina con aire acondicionado',
+                             'Sistema hidráulico de alta presión'
+                         ],
+                         'applications' => [
+                             'Excavación de cimientos',
+                             'Demolición de estructuras',
+                             'Movimiento de tierra',
+                             'Construcción de carreteras'
+                         ],
+                         'technical_specs' => [
+                             'Potencia: 400 HP',
+                             'Peso operativo: 50 toneladas',
+                             'Alcance máximo: 12m',
+                             'Profundidad de excavación: 8m',
+                             'Capacidad del cucharón: 3.5 m³'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our excavators are designed for heavy excavation, demolition, and earthmoving work in construction and infrastructure projects.',
+                         'features' => [
+                             'Engine power up to 400 HP',
+                             'Operating weight up to 50 tons',
+                             'Excavation reach up to 12 meters',
+                             'Air-conditioned cabin',
+                             'High-pressure hydraulic system'
+                         ],
+                         'applications' => [
+                             'Foundation excavation',
+                             'Structure demolition',
+                             'Earthmoving',
+                             'Road construction'
+                         ],
+                         'technical_specs' => [
+                             'Power: 400 HP',
+                             'Operating weight: 50 tons',
+                             'Maximum reach: 12m',
+                             'Digging depth: 8m',
+                             'Bucket capacity: 3.5 m³'
+                         ]
+                     ]
+                 ]
+             ],
+             'excavators' => [
+                 'slug' => 'excavators',
+                 'name' => [
+                     'es' => 'Excavadoras',
+                     'en' => 'Excavators'
+                 ],
+                 'description' => [
+                     'es' => 'Excavadoras de alta potencia para trabajos de excavación y movimiento de tierra.',
+                     'en' => 'High-power excavators for excavation and earthmoving work.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services5.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services5.jpg',
+                     'assets/img/gallery/services2.jpg',
+                     'assets/img/gallery/services3.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestras excavadoras están diseñadas para trabajos pesados de excavación, demolición y movimiento de tierra en proyectos de construcción e infraestructura.',
+                         'features' => [
+                             'Potencia del motor hasta 400 HP',
+                             'Peso operativo hasta 50 toneladas',
+                             'Alcance de excavación hasta 12 metros',
+                             'Cabina con aire acondicionado',
+                             'Sistema hidráulico de alta presión'
+                         ],
+                         'applications' => [
+                             'Excavación de cimientos',
+                             'Demolición de estructuras',
+                             'Movimiento de tierra',
+                             'Construcción de carreteras'
+                         ],
+                         'technical_specs' => [
+                             'Potencia: 400 HP',
+                             'Peso operativo: 50 toneladas',
+                             'Alcance máximo: 12m',
+                             'Profundidad de excavación: 8m',
+                             'Capacidad del cucharón: 3.5 m³'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our excavators are designed for heavy excavation, demolition, and earthmoving work in construction and infrastructure projects.',
+                         'features' => [
+                             'Engine power up to 400 HP',
+                             'Operating weight up to 50 tons',
+                             'Excavation reach up to 12 meters',
+                             'Air-conditioned cabin',
+                             'High-pressure hydraulic system'
+                         ],
+                         'applications' => [
+                             'Foundation excavation',
+                             'Structure demolition',
+                             'Earthmoving',
+                             'Road construction'
+                         ],
+                         'technical_specs' => [
+                             'Power: 400 HP',
+                             'Operating weight: 50 tons',
+                             'Maximum reach: 12m',
+                             'Digging depth: 8m',
+                             'Bucket capacity: 3.5 m³'
+                         ]
+                     ]
+                 ]
+             ],
+             'equipos-especializados' => [
+                 'slug' => 'equipos-especializados',
+                 'name' => [
+                     'es' => 'Equipos Especializados',
+                     'en' => 'Specialized Equipment'
+                 ],
+                 'description' => [
+                     'es' => 'Equipos especializados para aplicaciones específicas en construcción e industria.',
+                     'en' => 'Specialized equipment for specific applications in construction and industry.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services1.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services1.jpg',
+                     'assets/img/gallery/services4.jpg',
+                     'assets/img/gallery/services5.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Contamos con una amplia gama de equipos especializados diseñados para aplicaciones específicas en diversos sectores industriales y de construcción.',
+                         'features' => [
+                             'Equipos de última tecnología',
+                             'Adaptables a necesidades específicas',
+                             'Operadores especializados disponibles',
+                             'Mantenimiento especializado',
+                             'Soporte técnico 24/7'
+                         ],
+                         'applications' => [
+                             'Proyectos industriales especiales',
+                             'Instalaciones complejas',
+                             'Trabajos de precisión',
+                             'Aplicaciones personalizadas'
+                         ],
+                         'technical_specs' => [
+                             'Variedad de especificaciones',
+                             'Configuraciones personalizadas',
+                             'Tecnología avanzada',
+                             'Certificaciones internacionales',
+                             'Soporte técnico especializado'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'We have a wide range of specialized equipment designed for specific applications in various industrial and construction sectors.',
+                         'features' => [
+                             'Latest technology equipment',
+                             'Adaptable to specific needs',
+                             'Specialized operators available',
+                             'Specialized maintenance',
+                             '24/7 technical support'
+                         ],
+                         'applications' => [
+                             'Special industrial projects',
+                             'Complex installations',
+                             'Precision work',
+                             'Custom applications'
+                         ],
+                         'technical_specs' => [
+                             'Variety of specifications',
+                             'Custom configurations',
+                             'Advanced technology',
+                             'International certifications',
+                             'Specialized technical support'
+                         ]
+                     ]
+                 ]
+             ],
+             'specialized-equipment' => [
+                 'slug' => 'specialized-equipment',
+                 'name' => [
+                     'es' => 'Equipos Especializados',
+                     'en' => 'Specialized Equipment'
+                 ],
+                 'description' => [
+                     'es' => 'Equipos especializados para aplicaciones específicas en construcción e industria.',
+                     'en' => 'Specialized equipment for specific applications in construction and industry.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services1.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services1.jpg',
+                     'assets/img/gallery/services4.jpg',
+                     'assets/img/gallery/services5.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Contamos con una amplia gama de equipos especializados diseñados para aplicaciones específicas en diversos sectores industriales y de construcción.',
+                         'features' => [
+                             'Equipos de última tecnología',
+                             'Adaptables a necesidades específicas',
+                             'Operadores especializados disponibles',
+                             'Mantenimiento especializado',
+                             'Soporte técnico 24/7'
+                         ],
+                         'applications' => [
+                             'Proyectos industriales especiales',
+                             'Instalaciones complejas',
+                             'Trabajos de precisión',
+                             'Aplicaciones personalizadas'
+                         ],
+                         'technical_specs' => [
+                             'Variedad de especificaciones',
+                             'Configuraciones personalizadas',
+                             'Tecnología avanzada',
+                             'Certificaciones internacionales',
+                             'Soporte técnico especializado'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'We have a wide range of specialized equipment designed for specific applications in various industrial and construction sectors.',
+                         'features' => [
+                             'Latest technology equipment',
+                             'Adaptable to specific needs',
+                             'Specialized operators available',
+                             'Specialized maintenance',
+                             '24/7 technical support'
+                         ],
+                         'applications' => [
+                             'Special industrial projects',
+                             'Complex installations',
+                             'Precision work',
+                             'Custom applications'
+                         ],
+                         'technical_specs' => [
+                             'Variety of specifications',
+                             'Custom configurations',
+                             'Advanced technology',
+                             'International certifications',
+                             'Specialized technical support'
+                         ]
+                     ]
+                 ]
+             ]
+         ];
+ 
+         return $equipments[$slug] ?? null;
+     }
 }
