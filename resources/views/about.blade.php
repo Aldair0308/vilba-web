@@ -1,3 +1,7 @@
+@php
+    $currentLanguage = $language ?? 'es';
+@endphp
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -6,11 +10,10 @@
         <title>Construction HTML-5 Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+                <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-		<!-- CSS here -->
+                <!-- CSS here -->
             <link rel="stylesheet" href="assets/css/bootstrap.min.css">
             <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
             <link rel="stylesheet" href="assets/css/gijgo.css">
@@ -23,15 +26,6 @@
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel="stylesheet" href="assets/css/style.css">
             <link rel="stylesheet" href="assets/css/responsive.css">
-            <!-- Language switcher script -->
-            <script src="assets/js/language-switcher.js"></script>
-            
-            <!-- Configuración inicial del idioma -->
-            <script>
-                // Pasar idioma desde Laravel al JavaScript
-                window.initialLanguage = '{{ $language ?? "es" }}';
-                console.log('🌐 Idioma inicial desde Laravel:', window.initialLanguage);
-            </script>
    </head>
 
    <body>
@@ -46,8 +40,8 @@
             </div>
         </div>
     </div>
-
-    <x-navar :language="$language ?? 'es'" />
+    <!-- Preloader Start -->
+<x-navar :language="$language ?? 'es'" />
     <main>
         <!-- slider Area Start-->
         <div class="slider-area ">
@@ -60,7 +54,7 @@
                                 <nav aria-label="breadcrumb ">
                                     <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Product</a></li> 
+                                    <li class="breadcrumb-item"><a href="#">Product</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -99,7 +93,7 @@
                 </div>
             </div>
         </section>
-        <!-- About Area End --> 
+        <!-- About Area End -->
         <!-- Testimonial Start -->
         <div class="testimonial-area t-bg testimonial-padding">
             <div class="container ">
@@ -219,51 +213,12 @@
         </div>
         <!-- Team End -->
     </main>
-   <footer>
-       <!-- Footer Component -->
-       <x-footer :language="$language ?? 'es'" />
-   </footer>
-   
-	<!-- JS here -->
-	
-		<!-- All JS Custom Plugins Link Here here -->
-        <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-		<!-- Jquery, Popper, Bootstrap -->
-		<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="./assets/js/popper.min.js"></script>
-        <script src="./assets/js/bootstrap.min.js"></script>
-	    <!-- Jquery Mobile Menu -->
-        <script src="./assets/js/jquery.slicknav.min.js"></script>
 
-		<!-- Jquery Slick , Owl-Carousel Plugins -->
-        <script src="./assets/js/owl.carousel.min.js"></script>
-        <script src="./assets/js/slick.min.js"></script>
-        <!-- Date Picker -->
-        <script src="./assets/js/gijgo.min.js"></script>
-		<!-- One Page, Animated-HeadLin -->
-        <script src="./assets/js/wow.min.js"></script>
-		<script src="./assets/js/animated.headline.js"></script>
-        <script src="./assets/js/jquery.magnific-popup.js"></script>
+    <!-- Footer Component -->
+    <x-footer :language="$language ?? 'es'" />
 
-		<!-- Scrollup, nice-select, sticky -->
-        <script src="./assets/js/jquery.scrollUp.min.js"></script>
-        <script src="./assets/js/jquery.nice-select.min.js"></script>
-		<script src="./assets/js/jquery.sticky.js"></script>
-               
-        <!-- counter , waypoint -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-        <script src="./assets/js/jquery.counterup.min.js"></script>
+        <!-- JS here -->
+        <x-assets-links/>
 
-        <!-- contact js -->
-        <script src="./assets/js/contact.js"></script>
-        <script src="./assets/js/jquery.form.js"></script>
-        <script src="./assets/js/jquery.validate.min.js"></script>
-        <script src="./assets/js/mail-script.js"></script>
-        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
-        
-		<!-- Jquery Plugins, main Jquery -->	
-        <script src="./assets/js/plugins.js"></script>
-        <script src="./assets/js/main.js"></script>
-        
     </body>
 </html>
