@@ -1143,9 +1143,399 @@ class HomeController extends Controller
                          ]
                      ]
                  ]
+             ],
+            'retroexcavadora' => [
+                'slug' => 'retroexcavadora',
+                'name' => [
+                    'es' => 'Retroexcavadora',
+                    'en' => 'Backhoe Loader'
+                ],
+                'description' => [
+                    'es' => 'Retroexcavadoras versátiles para excavación, carga y múltiples tareas de construcción.',
+                    'en' => 'Versatile backhoe loaders for excavation, loading, and multiple construction tasks.'
+                ],
+                'hero_image' => 'assets/img/equipos/retroexcavadora.svg',
+                'gallery' => [
+                    'assets/img/equipos/retroexcavadora.svg',
+                    'assets/img/gallery/backhoe1.jpg',
+                    'assets/img/gallery/backhoe2.jpg'
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras retroexcavadoras ofrecen la versatilidad de dos máquinas en una. Con cargador frontal y brazo excavador trasero, son ideales para proyectos medianos que requieren flexibilidad.',
+                        'features' => [
+                            'Cargador frontal de alta capacidad',
+                            'Brazo excavador articulado',
+                            'Transmisión powershift',
+                            'Cabina ROPS certificada',
+                            'Sistema hidráulico piloto'
+                        ],
+                        'applications' => [
+                            'Excavación de zanjas',
+                            'Carga de materiales',
+                            'Nivelación de terrenos',
+                            'Trabajos urbanos'
+                        ],
+                        'technical_specs' => [
+                            'Peso operativo: 7-10 toneladas',
+                            'Potencia del motor: 95-110 HP',
+                            'Capacidad cucharón frontal: 1.0 m³',
+                            'Capacidad cucharón trasero: 0.3 m³',
+                            'Profundidad de excavación: 4.5 metros'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our backhoe loaders offer the versatility of two machines in one. With front loader and rear excavator arm, they are ideal for medium projects requiring flexibility.',
+                        'features' => [
+                            'High-capacity front loader',
+                            'Articulated excavator arm',
+                            'Powershift transmission',
+                            'ROPS certified cabin',
+                            'Pilot hydraulic system'
+                        ],
+                        'applications' => [
+                            'Trench excavation',
+                            'Material loading',
+                            'Land leveling',
+                            'Urban work'
+                        ],
+                        'technical_specs' => [
+                            'Operating weight: 7-10 tons',
+                            'Engine power: 95-110 HP',
+                            'Front bucket capacity: 1.0 m³',
+                            'Rear bucket capacity: 0.3 m³',
+                            'Digging depth: 4.5 meters'
+                        ]
+                    ]
+                ]
+            ],
+            'vibrocompactadora' => [
+                'slug' => 'vibrocompactadora',
+                'name' => [
+                    'es' => 'Vibrocompactadora',
+                    'en' => 'Vibratory Roller'
+                ],
+                'description' => [
+                    'es' => 'Vibrocompactadoras para compactación de suelos y asfalto.',
+                    'en' => 'Vibratory rollers for soil and asphalt compaction.'
+                ],
+                'hero_image' => 'assets/img/equipos/vibrocompactadora.svg',
+                'gallery' => [
+                    'assets/img/equipos/vibrocompactadora.svg',
+                    'assets/img/gallery/roller1.jpg',
+                    'assets/img/gallery/roller2.jpg'
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras vibrocompactadoras están diseñadas para lograr la compactación perfecta en proyectos de pavimentación y construcción de carreteras.',
+                        'features' => [
+                            'Sistema de vibración ajustable',
+                            'Rodillos de acero de alta calidad',
+                            'Sistema de riego automático',
+                            'Control de frecuencia variable',
+                            'Cabina con suspensión'
+                        ],
+                        'applications' => [
+                            'Compactación de asfalto',
+                            'Compactación de suelos',
+                            'Construcción de carreteras',
+                            'Trabajos de pavimentación'
+                        ],
+                        'technical_specs' => [
+                            'Peso operativo: 3-15 toneladas',
+                            'Ancho de compactación: 1.2-2.1 metros',
+                            'Frecuencia de vibración: 2800-4200 vpm',
+                            'Amplitud: 0.35-0.85 mm',
+                            'Velocidad de trabajo: 0-12 km/h'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our vibratory rollers are designed to achieve perfect compaction in paving and road construction projects.',
+                        'features' => [
+                            'Adjustable vibration system',
+                            'High-quality steel drums',
+                            'Automatic sprinkler system',
+                            'Variable frequency control',
+                            'Suspended cabin'
+                        ],
+                        'applications' => [
+                            'Asphalt compaction',
+                            'Soil compaction',
+                            'Road construction',
+                            'Paving work'
+                        ],
+                        'technical_specs' => [
+                            'Operating weight: 3-15 tons',
+                            'Compaction width: 1.2-2.1 meters',
+                            'Vibration frequency: 2800-4200 vpm',
+                            'Amplitude: 0.35-0.85 mm',
+                            'Working speed: 0-12 km/h'
+                        ]
+                    ]
+                 ]
+             ],
+             'motoconformadora' => [
+                 'slug' => 'motoconformadora',
+                 'name' => [
+                     'es' => 'Motoconformadora',
+                     'en' => 'Motor Grader'
+                 ],
+                 'description' => [
+                     'es' => 'Motoconformadoras para nivelación y conformación de terrenos.',
+                     'en' => 'Motor graders for land leveling and shaping.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/motoconformadora.svg',
+                 'gallery' => [
+                     'assets/img/equipos/motoconformadora.svg',
+                     'assets/img/gallery/grader1.jpg',
+                     'assets/img/gallery/grader2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestras motoconformadoras proporcionan la precisión necesaria para trabajos de nivelación y conformación de superficies en proyectos viales.',
+                         'features' => [
+                             'Hoja moldboard de 3.7 metros',
+                             'Sistema de control hidráulico',
+                             'Articulación central',
+                             'Ripper trasero opcional',
+                             'Sistema GPS disponible'
+                         ],
+                         'applications' => [
+                             'Nivelación de carreteras',
+                             'Conformación de taludes',
+                             'Mantenimiento vial',
+                             'Preparación de subrasante'
+                         ],
+                         'technical_specs' => [
+                             'Peso operativo: 12-20 toneladas',
+                             'Potencia del motor: 140-200 HP',
+                             'Longitud de hoja: 3.7 metros',
+                             'Velocidad máxima: 45 km/h',
+                             'Radio de giro: 7.3 metros'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our motor graders provide the precision needed for leveling and surface shaping work in road projects.',
+                         'features' => [
+                             '3.7-meter moldboard blade',
+                             'Hydraulic control system',
+                             'Center articulation',
+                             'Optional rear ripper',
+                             'GPS system available'
+                         ],
+                         'applications' => [
+                             'Road leveling',
+                             'Slope shaping',
+                             'Road maintenance',
+                             'Subgrade preparation'
+                         ],
+                         'technical_specs' => [
+                             'Operating weight: 12-20 tons',
+                             'Engine power: 140-200 HP',
+                             'Blade length: 3.7 meters',
+                             'Maximum speed: 45 km/h',
+                             'Turning radius: 7.3 meters'
+                         ]
+                     ]
+                 ]
+             ],
+             'pipa-agua' => [
+                 'slug' => 'pipa-agua',
+                 'name' => [
+                     'es' => 'Pipa de Agua',
+                     'en' => 'Water Truck'
+                 ],
+                 'description' => [
+                     'es' => 'Pipas de agua para control de polvo, compactación y riego.',
+                     'en' => 'Water trucks for dust control, compaction, and irrigation.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/pipa-agua.svg',
+                 'gallery' => [
+                     'assets/img/equipos/pipa-agua.svg',
+                     'assets/img/gallery/watertruck1.jpg',
+                     'assets/img/gallery/watertruck2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestras pipas de agua son fundamentales para el control de polvo y el mantenimiento de condiciones de trabajo seguras en proyectos de construcción.',
+                         'features' => [
+                             'Tanque de acero inoxidable',
+                             'Sistema de bombeo de alta presión',
+                             'Boquillas de aspersión ajustables',
+                             'Control remoto de aspersión',
+                             'Medidor de nivel de agua'
+                         ],
+                         'applications' => [
+                             'Control de polvo en obras',
+                             'Compactación de suelos',
+                             'Riego de áreas verdes',
+                             'Limpieza de equipos'
+                         ],
+                         'technical_specs' => [
+                             'Capacidad del tanque: 5,000-20,000 litros',
+                             'Presión de bombeo: 3-5 bar',
+                             'Ancho de aspersión: 8-15 metros',
+                             'Velocidad de trabajo: 5-25 km/h',
+                             'Autonomía: 4-8 horas'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our water trucks are essential for dust control and maintaining safe working conditions in construction projects.',
+                         'features' => [
+                             'Stainless steel tank',
+                             'High-pressure pumping system',
+                             'Adjustable spray nozzles',
+                             'Remote spray control',
+                             'Water level gauge'
+                         ],
+                         'applications' => [
+                             'Dust control at sites',
+                             'Soil compaction',
+                             'Green area irrigation',
+                             'Equipment cleaning'
+                         ],
+                         'technical_specs' => [
+                             'Tank capacity: 5,000-20,000 liters',
+                             'Pumping pressure: 3-5 bar',
+                             'Spray width: 8-15 meters',
+                             'Working speed: 5-25 km/h',
+                             'Autonomy: 4-8 hours'
+                         ]
+                     ]
+                 ]
+             ],
+             'camion-volteo' => [
+                 'slug' => 'camion-volteo',
+                 'name' => [
+                     'es' => 'Camión de Volteo',
+                     'en' => 'Dump Truck'
+                 ],
+                 'description' => [
+                     'es' => 'Camiones de volteo para transporte y descarga de materiales.',
+                     'en' => 'Dump trucks for material transport and unloading.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/camion-volteo.svg',
+                 'gallery' => [
+                     'assets/img/equipos/camion-volteo.svg',
+                     'assets/img/gallery/dumptruck1.jpg',
+                     'assets/img/gallery/dumptruck2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestros camiones de volteo ofrecen soluciones eficientes para el transporte y descarga de materiales en proyectos de construcción de gran escala.',
+                         'features' => [
+                             'Caja de volteo reforzada',
+                             'Sistema hidráulico de alta potencia',
+                             'Compuerta trasera automática',
+                             'Suspensión neumática',
+                             'Sistema de frenado ABS'
+                         ],
+                         'applications' => [
+                             'Transporte de agregados',
+                             'Movimiento de tierra',
+                             'Proyectos de minería',
+                             'Construcción de carreteras'
+                         ],
+                         'technical_specs' => [
+                             'Capacidad de carga: 10-40 toneladas',
+                             'Volumen de caja: 8-25 m³',
+                             'Potencia del motor: 300-500 HP',
+                             'Tiempo de volteo: 15-25 segundos',
+                             'Velocidad máxima: 90 km/h'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our dump trucks offer efficient solutions for material transport and unloading in large-scale construction projects.',
+                         'features' => [
+                             'Reinforced dump body',
+                             'High-power hydraulic system',
+                             'Automatic tailgate',
+                             'Air suspension',
+                             'ABS braking system'
+                         ],
+                         'applications' => [
+                             'Aggregate transport',
+                             'Earthmoving',
+                             'Mining projects',
+                             'Road construction'
+                         ],
+                         'technical_specs' => [
+                             'Load capacity: 10-40 tons',
+                             'Body volume: 8-25 m³',
+                             'Engine power: 300-500 HP',
+                             'Dumping time: 15-25 seconds',
+                             'Maximum speed: 90 km/h'
+                         ]
+                     ]
+                 ]
+                         ],
+             'excavadora' => [
+                 'slug' => 'excavadora',
+                 'name' => [
+                     'es' => 'Excavadora',
+                     'en' => 'Dump Truck'
+                 ],
+                 'description' => [
+                     'es' => 'Camiones de volteo para transporte y descarga de materiales.',
+                     'en' => 'Dump trucks for material transport and unloading.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/excavadora-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/excavadora.png',
+                     'assets/img/gallery/dumptruck1.jpg',
+                     'assets/img/gallery/dumptruck2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestros camiones de volteo ofrecen soluciones eficientes para el transporte y descarga de materiales en proyectos de construcción de gran escala.',
+                         'features' => [
+                             'Caja de volteo reforzada',
+                             'Sistema hidráulico de alta potencia',
+                             'Compuerta trasera automática',
+                             'Suspensión neumática',
+                             'Sistema de frenado ABS'
+                         ],
+                         'applications' => [
+                             'Transporte de agregados',
+                             'Movimiento de tierra',
+                             'Proyectos de minería',
+                             'Construcción de carreteras'
+                         ],
+                         'technical_specs' => [
+                             'Capacidad de carga: 10-40 toneladas',
+                             'Volumen de caja: 8-25 m³',
+                             'Potencia del motor: 300-500 HP',
+                             'Tiempo de volteo: 15-25 segundos',
+                             'Velocidad máxima: 90 km/h'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our dump trucks offer efficient solutions for material transport and unloading in large-scale construction projects.',
+                         'features' => [
+                             'Reinforced dump body',
+                             'High-power hydraulic system',
+                             'Automatic tailgate',
+                             'Air suspension',
+                             'ABS braking system'
+                         ],
+                         'applications' => [
+                             'Aggregate transport',
+                             'Earthmoving',
+                             'Mining projects',
+                             'Road construction'
+                         ],
+                         'technical_specs' => [
+                             'Load capacity: 10-40 tons',
+                             'Body volume: 8-25 m³',
+                             'Engine power: 300-500 HP',
+                             'Dumping time: 15-25 seconds',
+                             'Maximum speed: 90 km/h'
+                         ]
+                     ]
+                 ]
              ]
          ];
  
          return $equipments[$slug] ?? null;
      }
-}
+ }

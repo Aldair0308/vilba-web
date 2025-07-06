@@ -69,6 +69,84 @@
     @php
         $equipments = [
             [
+                        'slug' => 'excavadora',
+                        'name' => [
+                            'es' => 'Excavadora',
+                            'en' => 'Dump Truck'
+                        ],
+                        'description' => [
+                            'es' => 'Camiones de volteo para transporte y descarga de materiales. Disponibles en diferentes capacidades para proyectos de construcción y minería.',
+                            'en' => 'Dump trucks for material transport and unloading. Available in different capacities for construction and mining projects.'
+                        ],
+                        'image' => 'assets/img/equipos/excavadora.png',
+                        'icon' => 'assets/img/icon/services_icon1.png',
+                        'specs' => [
+                            'es' => [
+                                'Capacidad: 10-40 toneladas',
+                                'Sistema hidráulico de volteo',
+                                'Múltiples configuraciones'
+                            ],
+                            'en' => [
+                                'Capacity: 10-40 tons',
+                                'Hydraulic dumping system',
+                                'Multiple configurations'
+                            ]
+                        ],
+                        'detailed_info' => [
+                            'es' => [
+                                'description' => 'Nuestros camiones de volteo ofrecen soluciones eficientes para el transporte y descarga de materiales en proyectos de construcción de gran escala.',
+                                'features' => [
+                                    'Caja de volteo reforzada',
+                                    'Sistema hidráulico de alta potencia',
+                                    'Compuerta trasera automática',
+                                    'Suspensión neumática',
+                                    'Sistema de frenado ABS'
+                                ],
+                                'applications' => [
+                                    'Transporte de agregados',
+                                    'Movimiento de tierra',
+                                    'Proyectos de minería',
+                                    'Construcción de carreteras'
+                                ],
+                                'technical_specs' => [
+                                    'Capacidad de carga: 10-40 toneladas',
+                                    'Volumen de caja: 8-25 m³',
+                                    'Potencia del motor: 300-500 HP',
+                                    'Tiempo de volteo: 15-25 segundos',
+                                    'Velocidad máxima: 90 km/h'
+                                ]
+                            ],
+                            'en' => [
+                                'description' => 'Our dump trucks offer efficient solutions for material transport and unloading in large-scale construction projects.',
+                                'features' => [
+                                    'Reinforced dump body',
+                                    'High-power hydraulic system',
+                                    'Automatic tailgate',
+                                    'Air suspension',
+                                    'ABS braking system'
+                                ],
+                                'applications' => [
+                                    'Aggregate transport',
+                                    'Earthmoving',
+                                    'Mining projects',
+                                    'Road construction'
+                                ],
+                                'technical_specs' => [
+                                    'Load capacity: 10-40 tons',
+                                    'Body volume: 8-25 m³',
+                                    'Engine power: 300-500 HP',
+                                    'Dumping time: 15-25 seconds',
+                                    'Maximum speed: 90 km/h'
+                                ]
+                            ]
+                        ],
+                        'gallery' => [
+                            'assets/img/equipos/camion-volteo.svg',
+                            'assets/img/gallery/dumptruck1.jpg',
+                            'assets/img/gallery/dumptruck2.jpg'
+                        ]
+],
+            [
                 'slug' => 'gruas-torre',
                 'name' => [
                     'es' => 'Grúas Torre',
@@ -535,7 +613,398 @@
                     'assets/img/gallery/specialized2.jpg',
                     'assets/img/gallery/specialized3.jpg'
                 ]
-            ]
+            ],
+            [
+                'slug' => 'retroexcavadora',
+                'name' => [
+                    'es' => 'Retroexcavadora',
+                    'en' => 'Backhoe Loader'
+                ],
+                'description' => [
+                    'es' => 'Retroexcavadoras versátiles para excavación, carga y múltiples tareas de construcción. Combinan la funcionalidad de una excavadora y un cargador frontal.',
+                    'en' => 'Versatile backhoe loaders for excavation, loading, and multiple construction tasks. Combine the functionality of an excavator and front loader.'
+                ],
+                'image' => 'assets/img/equipos/retroexcavadora.svg',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Peso: 7-10 toneladas',
+                        'Doble funcionalidad',
+                        'Alta maniobrabilidad'
+                    ],
+                    'en' => [
+                        'Weight: 7-10 tons',
+                        'Dual functionality',
+                        'High maneuverability'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras retroexcavadoras ofrecen la versatilidad de dos máquinas en una. Con cargador frontal y brazo excavador trasero, son ideales para proyectos medianos que requieren flexibilidad.',
+                        'features' => [
+                            'Cargador frontal de alta capacidad',
+                            'Brazo excavador articulado',
+                            'Transmisión powershift',
+                            'Cabina ROPS certificada',
+                            'Sistema hidráulico piloto'
+                        ],
+                        'applications' => [
+                            'Excavación de zanjas',
+                            'Carga de materiales',
+                            'Nivelación de terrenos',
+                            'Trabajos urbanos'
+                        ],
+                        'technical_specs' => [
+                            'Peso operativo: 7-10 toneladas',
+                            'Potencia del motor: 95-110 HP',
+                            'Capacidad cucharón frontal: 1.0 m³',
+                            'Capacidad cucharón trasero: 0.3 m³',
+                            'Profundidad de excavación: 4.5 metros'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our backhoe loaders offer the versatility of two machines in one. With front loader and rear excavator arm, they are ideal for medium projects requiring flexibility.',
+                        'features' => [
+                            'High-capacity front loader',
+                            'Articulated excavator arm',
+                            'Powershift transmission',
+                            'ROPS certified cabin',
+                            'Pilot hydraulic system'
+                        ],
+                        'applications' => [
+                            'Trench excavation',
+                            'Material loading',
+                            'Land leveling',
+                            'Urban work'
+                        ],
+                        'technical_specs' => [
+                            'Operating weight: 7-10 tons',
+                            'Engine power: 95-110 HP',
+                            'Front bucket capacity: 1.0 m³',
+                            'Rear bucket capacity: 0.3 m³',
+                            'Digging depth: 4.5 meters'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/retroexcavadora.svg',
+                    'assets/img/gallery/backhoe1.jpg',
+                    'assets/img/gallery/backhoe2.jpg'
+                ]
+            ],
+            [
+                'slug' => 'vibrocompactadora',
+                'name' => [
+                    'es' => 'Vibrocompactadora',
+                    'en' => 'Vibratory Roller'
+                ],
+                'description' => [
+                    'es' => 'Vibrocompactadoras para compactación de suelos y asfalto. Equipos especializados para lograr la densidad óptima en pavimentos y terraplenes.',
+                    'en' => 'Vibratory rollers for soil and asphalt compaction. Specialized equipment to achieve optimal density in pavements and embankments.'
+                ],
+                'image' => 'assets/img/equipos/vibrocompactadora.svg',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Peso: 3-15 toneladas',
+                        'Compactación por vibración',
+                        'Uso en asfalto y suelo'
+                    ],
+                    'en' => [
+                        'Weight: 3-15 tons',
+                        'Vibration compaction',
+                        'Asphalt and soil use'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras vibrocompactadoras están diseñadas para lograr la compactación perfecta en proyectos de pavimentación y construcción de carreteras.',
+                        'features' => [
+                            'Sistema de vibración ajustable',
+                            'Rodillos de acero de alta calidad',
+                            'Sistema de riego automático',
+                            'Control de frecuencia variable',
+                            'Cabina con suspensión'
+                        ],
+                        'applications' => [
+                            'Compactación de asfalto',
+                            'Compactación de suelos',
+                            'Construcción de carreteras',
+                            'Preparación de bases'
+                        ],
+                        'technical_specs' => [
+                            'Peso operativo: 3-15 toneladas',
+                            'Ancho de compactación: 1.2-2.1 metros',
+                            'Frecuencia de vibración: 2800-4200 vpm',
+                            'Velocidad de trabajo: 0-12 km/h',
+                            'Tanque de agua: 400-1000 litros'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our vibratory rollers are designed to achieve perfect compaction in paving and road construction projects.',
+                        'features' => [
+                            'Adjustable vibration system',
+                            'High-quality steel drums',
+                            'Automatic sprinkler system',
+                            'Variable frequency control',
+                            'Suspended cabin'
+                        ],
+                        'applications' => [
+                            'Asphalt compaction',
+                            'Soil compaction',
+                            'Road construction',
+                            'Base preparation'
+                        ],
+                        'technical_specs' => [
+                            'Operating weight: 3-15 tons',
+                            'Compaction width: 1.2-2.1 meters',
+                            'Vibration frequency: 2800-4200 vpm',
+                            'Working speed: 0-12 km/h',
+                            'Water tank: 400-1000 liters'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/vibrocompactadora.svg',
+                    'assets/img/gallery/roller1.jpg',
+                    'assets/img/gallery/roller2.jpg'
+                ]
+            ],
+            [
+                'slug' => 'motoconformadora',
+                'name' => [
+                    'es' => 'Motoconformadora',
+                    'en' => 'Motor Grader'
+                ],
+                'description' => [
+                    'es' => 'Motoconformadoras para nivelación y conformación de terrenos. Equipos especializados para construcción y mantenimiento de carreteras.',
+                    'en' => 'Motor graders for land leveling and shaping. Specialized equipment for road construction and maintenance.'
+                ],
+                'image' => 'assets/img/equipos/motoconformadora.svg',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Peso: 12-20 toneladas',
+                        'Hoja niveladora ajustable',
+                        'Alta precisión'
+                    ],
+                    'en' => [
+                        'Weight: 12-20 tons',
+                        'Adjustable blade',
+                        'High precision'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras motoconformadoras proporcionan la precisión necesaria para trabajos de nivelación y conformación de superficies en proyectos viales.',
+                        'features' => [
+                            'Hoja moldboard de 3.7 metros',
+                            'Sistema de control hidráulico',
+                            'Articulación central',
+                            'Ripper trasero opcional',
+                            'Sistema GPS disponible'
+                        ],
+                        'applications' => [
+                            'Nivelación de carreteras',
+                            'Conformación de taludes',
+                            'Mantenimiento vial',
+                            'Preparación de subrasante'
+                        ],
+                        'technical_specs' => [
+                            'Peso operativo: 12-20 toneladas',
+                            'Potencia del motor: 140-200 HP',
+                            'Longitud de hoja: 3.7 metros',
+                            'Velocidad máxima: 45 km/h',
+                            'Radio de giro: 7.3 metros'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our motor graders provide the precision needed for leveling and surface shaping work in road projects.',
+                        'features' => [
+                            '3.7-meter moldboard blade',
+                            'Hydraulic control system',
+                            'Center articulation',
+                            'Optional rear ripper',
+                            'GPS system available'
+                        ],
+                        'applications' => [
+                            'Road leveling',
+                            'Slope shaping',
+                            'Road maintenance',
+                            'Subgrade preparation'
+                        ],
+                        'technical_specs' => [
+                            'Operating weight: 12-20 tons',
+                            'Engine power: 140-200 HP',
+                            'Blade length: 3.7 meters',
+                            'Maximum speed: 45 km/h',
+                            'Turning radius: 7.3 meters'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/motoconformadora.svg',
+                    'assets/img/gallery/grader1.jpg',
+                    'assets/img/gallery/grader2.jpg'
+                ]
+            ],
+            [
+                'slug' => 'pipa-agua',
+                'name' => [
+                    'es' => 'Pipa de Agua',
+                    'en' => 'Water Truck'
+                ],
+                'description' => [
+                    'es' => 'Pipas de agua para control de polvo, compactación y riego. Equipos esenciales para mantener condiciones óptimas en obras de construcción.',
+                    'en' => 'Water trucks for dust control, compaction, and irrigation. Essential equipment to maintain optimal conditions at construction sites.'
+                ],
+                'image' => 'assets/img/equipos/pipa-agua.svg',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Capacidad: 5,000-20,000 litros',
+                        'Sistema de aspersión',
+                        'Control de polvo'
+                    ],
+                    'en' => [
+                        'Capacity: 5,000-20,000 liters',
+                        'Spraying system',
+                        'Dust control'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestras pipas de agua son fundamentales para el control de polvo y el mantenimiento de condiciones de trabajo seguras en proyectos de construcción.',
+                        'features' => [
+                            'Tanque de acero inoxidable',
+                            'Sistema de bombeo de alta presión',
+                            'Boquillas de aspersión ajustables',
+                            'Control remoto de aspersión',
+                            'Medidor de nivel de agua'
+                        ],
+                        'applications' => [
+                            'Control de polvo en obras',
+                            'Compactación de suelos',
+                            'Riego de áreas verdes',
+                            'Limpieza de equipos'
+                        ],
+                        'technical_specs' => [
+                            'Capacidad del tanque: 5,000-20,000 litros',
+                            'Presión de bombeo: 3-5 bar',
+                            'Ancho de aspersión: 8-15 metros',
+                            'Velocidad de trabajo: 5-25 km/h',
+                            'Autonomía: 4-8 horas'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our water trucks are essential for dust control and maintaining safe working conditions in construction projects.',
+                        'features' => [
+                            'Stainless steel tank',
+                            'High-pressure pumping system',
+                            'Adjustable spray nozzles',
+                            'Remote spray control',
+                            'Water level gauge'
+                        ],
+                        'applications' => [
+                            'Dust control at sites',
+                            'Soil compaction',
+                            'Green area irrigation',
+                            'Equipment cleaning'
+                        ],
+                        'technical_specs' => [
+                            'Tank capacity: 5,000-20,000 liters',
+                            'Pumping pressure: 3-5 bar',
+                            'Spray width: 8-15 meters',
+                            'Working speed: 5-25 km/h',
+                            'Autonomy: 4-8 hours'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/pipa-agua.svg',
+                    'assets/img/gallery/watertruck1.jpg',
+                    'assets/img/gallery/watertruck2.jpg'
+                ]
+            ],
+            [
+                'slug' => 'camion-volteo',
+                'name' => [
+                    'es' => 'Camión de Volteo',
+                    'en' => 'Dump Truck'
+                ],
+                'description' => [
+                    'es' => 'Camiones de volteo para transporte y descarga de materiales. Disponibles en diferentes capacidades para proyectos de construcción y minería.',
+                    'en' => 'Dump trucks for material transport and unloading. Available in different capacities for construction and mining projects.'
+                ],
+                'image' => 'assets/img/equipos/camion-volteo.svg',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Capacidad: 10-40 toneladas',
+                        'Sistema hidráulico de volteo',
+                        'Múltiples configuraciones'
+                    ],
+                    'en' => [
+                        'Capacity: 10-40 tons',
+                        'Hydraulic dumping system',
+                        'Multiple configurations'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestros camiones de volteo ofrecen soluciones eficientes para el transporte y descarga de materiales en proyectos de construcción de gran escala.',
+                        'features' => [
+                            'Caja de volteo reforzada',
+                            'Sistema hidráulico de alta potencia',
+                            'Compuerta trasera automática',
+                            'Suspensión neumática',
+                            'Sistema de frenado ABS'
+                        ],
+                        'applications' => [
+                            'Transporte de agregados',
+                            'Movimiento de tierra',
+                            'Proyectos de minería',
+                            'Construcción de carreteras'
+                        ],
+                        'technical_specs' => [
+                            'Capacidad de carga: 10-40 toneladas',
+                            'Volumen de caja: 8-25 m³',
+                            'Potencia del motor: 300-500 HP',
+                            'Tiempo de volteo: 15-25 segundos',
+                            'Velocidad máxima: 90 km/h'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our dump trucks offer efficient solutions for material transport and unloading in large-scale construction projects.',
+                        'features' => [
+                            'Reinforced dump body',
+                            'High-power hydraulic system',
+                            'Automatic tailgate',
+                            'Air suspension',
+                            'ABS braking system'
+                        ],
+                        'applications' => [
+                            'Aggregate transport',
+                            'Earthmoving',
+                            'Mining projects',
+                            'Road construction'
+                        ],
+                        'technical_specs' => [
+                            'Load capacity: 10-40 tons',
+                            'Body volume: 8-25 m³',
+                            'Engine power: 300-500 HP',
+                            'Dumping time: 15-25 seconds',
+                            'Maximum speed: 90 km/h'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/camion-volteo.svg',
+                    'assets/img/gallery/dumptruck1.jpg',
+                    'assets/img/gallery/dumptruck2.jpg'
+                ]
+            ],
+                    
         ];
         $currentLang = session('language', 'es');
     @endphp
@@ -557,131 +1026,27 @@
             
             <!-- Equipment Grid -->
             <div class="row">
-                <!-- Crane Equipment -->
+                @foreach($equipments as $equipment)
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="single-service-cap mb-30">
                         <div class="service-img">
-                            <img src="{{ asset('assets/img/service/servicess1.png') }}" alt="Grúas">
+                            <img src="{{ asset($equipment['image']) }}" alt="{{ $equipment['name'][$currentLang] }}">
                         </div>
                         <div class="service-cap">
-                            <h4><a href="{{ session('language') === 'en' ? route('equipos.detail.EN', 'tower-cranes') : route('equipos.detail.ES', 'gruas-torre') }}">{{ session('language') === 'en' ? 'Tower Cranes' : 'Grúas Torre' }}</a></h4>
-                            <p>{{ session('language') === 'en' ? 'High-capacity tower cranes for construction projects of all sizes. Perfect for lifting heavy materials to great heights with precision and safety.' : 'Grúas torre de alta capacidad para proyectos de construcción de todos los tamaños. Perfectas para elevar materiales pesados a grandes alturas con precisión y seguridad.' }}</p>
+                            <h4><a href="{{ session('language') === 'en' ? route('equipos.detail.EN', $equipment['slug']) : route('equipos.detail.ES', $equipment['slug']) }}">{{ $equipment['name'][$currentLang] }}</a></h4>
+                            <p>{{ $equipment['description'][$currentLang] }}</p>
                             <ul class="equipment-specs">
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Capacity: 5-25 tons' : 'Capacidad: 5-25 toneladas' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Height: Up to 80m' : 'Altura: Hasta 80m' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Professional operators included' : 'Operadores profesionales incluidos' }}</li>
+                                @foreach($equipment['specs'][$currentLang] as $spec)
+                                <li><i class="ti-check"></i> {{ $spec }}</li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="service-icon">
-                            <img src="{{ asset('assets/img/icon/services_icon1.png') }}" alt="">
+                            <img src="{{ asset($equipment['icon']) }}" alt="">
                         </div>
                     </div>
                 </div>
-                
-                <!-- Mobile Cranes -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-service-cap mb-30">
-                        <div class="service-img">
-                            <img src="{{ asset('assets/img/service/servicess2.png') }}" alt="Grúas Móviles">
-                        </div>
-                        <div class="service-cap">
-                            <h4><a href="{{ session('language') === 'en' ? route('equipos.detail.EN', 'mobile-cranes') : route('equipos.detail.ES', 'gruas-moviles') }}">{{ session('language') === 'en' ? 'Mobile Cranes' : 'Grúas Móviles' }}</a></h4>
-                            <p>{{ session('language') === 'en' ? 'Versatile mobile cranes for quick setup and flexible positioning. Ideal for projects requiring mobility and rapid deployment.' : 'Grúas móviles versátiles para montaje rápido y posicionamiento flexible. Ideales para proyectos que requieren movilidad y despliegue rápido.' }}</p>
-                            <ul class="equipment-specs">
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Capacity: 10-100 tons' : 'Capacidad: 10-100 toneladas' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'All-terrain capability' : 'Capacidad todo terreno' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Quick setup time' : 'Tiempo de montaje rápido' }}</li>
-                            </ul>
-                        </div>
-                        <div class="service-icon">
-                            <img src="{{ asset('assets/img/icon/services_icon1.png') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Forklifts -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-service-cap mb-30">
-                        <div class="service-img">
-                            <img src="{{ asset('assets/img/service/servicess3.png') }}" alt="Montacargas">
-                        </div>
-                        <div class="service-cap">
-                            <h4><a href="{{ session('language') === 'en' ? route('equipos.detail.EN', 'forklifts') : route('equipos.detail.ES', 'montacargas') }}">{{ session('language') === 'en' ? 'Forklifts' : 'Montacargas' }}</a></h4>
-                            <p>{{ session('language') === 'en' ? 'Electric and diesel forklifts for material handling and warehouse operations. Available in various capacities for indoor and outdoor use.' : 'Montacargas eléctricos y diésel para manejo de materiales y operaciones de almacén. Disponibles en varias capacidades para uso interior y exterior.' }}</p>
-                            <ul class="equipment-specs">
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Capacity: 1.5-10 tons' : 'Capacidad: 1.5-10 toneladas' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Electric & diesel options' : 'Opciones eléctricas y diésel' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Indoor/outdoor models' : 'Modelos interior/exterior' }}</li>
-                            </ul>
-                        </div>
-                        <div class="service-icon">
-                            <img src="{{ asset('assets/img/icon/services_icon1.png') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Aerial Platforms -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-service-cap mb-30">
-                        <div class="service-img">
-                            <img src="{{ asset('assets/img/service/servicess4.png') }}" alt="Plataformas Elevadoras">
-                        </div>
-                        <div class="service-cap">
-                            <h4><a href="{{ session('language') === 'en' ? route('equipos.detail.EN', 'aerial-platforms') : route('equipos.detail.ES', 'plataformas-elevadoras') }}">{{ session('language') === 'en' ? 'Aerial Platforms' : 'Plataformas Elevadoras' }}</a></h4>
-                            <p>{{ session('language') === 'en' ? 'Scissor lifts and boom lifts for elevated work access. Safe and efficient solutions for maintenance, installation, and construction tasks.' : 'Plataformas tijera y articuladas para acceso a trabajos en altura. Soluciones seguras y eficientes para tareas de mantenimiento, instalación y construcción.' }}</p>
-                            <ul class="equipment-specs">
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Height: 6-30 meters' : 'Altura: 6-30 metros' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Electric & diesel models' : 'Modelos eléctricos y diésel' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Indoor/outdoor use' : 'Uso interior/exterior' }}</li>
-                            </ul>
-                        </div>
-                        <div class="service-icon">
-                            <img src="{{ asset('assets/img/icon/services_icon1.png') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Excavators -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-service-cap mb-30">
-                        <div class="service-img">
-                            <img src="{{ asset('assets/img/service/servicess5.png') }}" alt="Excavadoras">
-                        </div>
-                        <div class="service-cap">
-                            <h4><a href="{{ session('language') === 'en' ? route('equipos.detail.EN', 'excavators') : route('equipos.detail.ES', 'excavadoras') }}">{{ session('language') === 'en' ? 'Excavators' : 'Excavadoras' }}</a></h4>
-                            <p>{{ session('language') === 'en' ? 'Heavy-duty excavators for earthmoving, demolition, and construction projects. Available in various sizes for different project requirements.' : 'Excavadoras de trabajo pesado para movimiento de tierra, demolición y proyectos de construcción. Disponibles en varios tamaños para diferentes requisitos de proyecto.' }}</p>
-                            <ul class="equipment-specs">
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Weight: 5-50 tons' : 'Peso: 5-50 toneladas' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Multiple attachments' : 'Múltiples accesorios' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Experienced operators' : 'Operadores experimentados' }}</li>
-                            </ul>
-                        </div>
-                        <div class="service-icon">
-                            <img src="{{ asset('assets/img/icon/services_icon1.png') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Specialized Equipment -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-service-cap mb-30">
-                        <div class="service-img">
-                            <img src="{{ asset('assets/img/service/servicess6.png') }}" alt="Equipos Especializados">
-                        </div>
-                        <div class="service-cap">
-                            <h4><a href="{{ session('language') === 'en' ? route('equipos.detail.EN', 'specialized-equipment') : route('equipos.detail.ES', 'equipos-especializados') }}">{{ session('language') === 'en' ? 'Specialized Equipment' : 'Equipos Especializados' }}</a></h4>
-                            <p>{{ session('language') === 'en' ? 'Custom and specialized machinery for unique project requirements. Including concrete pumps, pile drivers, and other specialized construction equipment.' : 'Maquinaria personalizada y especializada para requisitos únicos de proyecto. Incluyendo bombas de concreto, hincadoras de pilotes y otros equipos especializados de construcción.' }}</p>
-                            <ul class="equipment-specs">
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Custom solutions' : 'Soluciones personalizadas' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Latest technology' : 'Última tecnología' }}</li>
-                                <li><i class="ti-check"></i> {{ session('language') === 'en' ? 'Expert consultation' : 'Consultoría experta' }}</li>
-                            </ul>
-                        </div>
-                        <div class="service-icon">
-                            <img src="{{ asset('assets/img/icon/services_icon1.png') }}" alt="">
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

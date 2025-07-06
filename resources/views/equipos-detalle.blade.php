@@ -45,8 +45,8 @@
         <!-- Header End -->
     </header>
     <!-- slider Area Start-->
-    <div class="slider-area ">
-        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" style="background-image: url('{{ asset($equipment['hero_image']) }}');">
+    <div class="slider-area">
+<div class="single-slider hero-overly slider-height2 d-flex align-items-center equipment-cover" style="background-image: url('{{ asset($equipment['hero_image']) }}');">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -219,7 +219,25 @@
     </script>
 
     <!-- Custom CSS for Equipment Details -->
+
     <style>
+    .equipment-cover {
+        background-size: 100%; /* Zoom out (try 120%, 130%, etc.) */
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: background-size 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .equipment-cover {
+            background-size: cover; /* Reset for mobile so it fills properly */
+        }
+    }
+</style>
+
+    <style>
+
+        
         .equipment-summary img {
             border-radius: 8px;
         }

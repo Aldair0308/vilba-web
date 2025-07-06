@@ -69,8 +69,7 @@
     <section class="contact-section">
             <div class="container">
                 <div class="d-none d-sm-block mb-5 pb-4">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3044.4758777037155!2d-99.52974490962549!3d19.28472853403844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1750569602694!5m2!1ses!2smx" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <script>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.8445194652563!2d-99.96694989999999!3d19.4191227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2856ba145a859%3A0xdca48ae2e494098d!2sCONCRETOS%20Y%20CONSTRUCCIONES%20VILBA%20SA%20DE%20CV!5e0!3m2!1ses-419!2smx!4v1751433490665!5m2!1ses-419!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><script>
                         function initMap() {
                             var uluru = {
                                 lat: -25.363,

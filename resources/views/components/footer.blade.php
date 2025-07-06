@@ -7,6 +7,16 @@
     $currentLanguage = $language ?? 'es';
 @endphp
 
+            <style>
+                /* Estilo solo para PC (pantallas mayores a 768px) */
+                @media (max-width: 769px) {
+                    #copy-right {
+                        padding-bottom: 70px !important;
+                    }
+                }
+            </style>
+
+
 <footer>
     <!-- Inicio del Pie de Página -->
     <div class="footer-main">
@@ -77,7 +87,7 @@
                     </div>
                 </div>
                 <!-- Derechos de autor -->
-                <div class="row align-items-center">
+                <div id="copy-right" class="row align-items-center">
                     <div class="col-xl-12">
                         <div class="footer-copy-right text-center">
                             <p>{{ $currentLanguage === 'en' ? 'Copyright' : 'Copyright' }} &copy;<script>document.write(new Date().getFullYear());</script> {{ $currentLanguage === 'en' ? 'All rights reserved' : 'Todos los derechos reservados' }} | <a href="#" target="_blank">Vilba</a> 2025</p>
