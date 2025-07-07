@@ -147,16 +147,16 @@
                         ]
 ],
             [
-                'slug' => 'gruas-torre',
+                'slug' => 'retroexcavadora-414E',
                 'name' => [
-                    'es' => 'Grúas Torre',
-                    'en' => 'Tower Cranes'
+                    'es' => 'Retroexcavadora 414E',
+                    'en' => 'Backhoe Loader 414E'
                 ],
                 'description' => [
                     'es' => 'Grúas torre de alta capacidad para proyectos de construcción de todos los tamaños. Perfectas para elevar materiales pesados a grandes alturas con precisión y seguridad.',
                     'en' => 'High-capacity tower cranes for construction projects of all sizes. Perfect for lifting heavy materials to great heights with precision and safety.'
                 ],
-                'image' => 'assets/img/service/servicess1.png',
+                'image' => 'assets/img/equipos/Retro-414.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -225,16 +225,94 @@
                 ]
             ],
             [
-                'slug' => 'gruas-moviles',
+                'slug' => 'camion-ford',
                 'name' => [
-                    'es' => 'Grúas Móviles',
+                    'es' => 'Camión de Volteo Ford',
+                    'en' => 'Dump Truck'
+                ],
+                'description' => [
+                    'es' => 'Camiones de volteo para transporte y descarga de materiales. Disponibles en diferentes capacidades para proyectos de construcción y minería.',
+                    'en' => 'Dump trucks for material transport and unloading. Available in different capacities for construction and mining projects.'
+                ],
+                'image' => 'assets/img/equipos/camion.png',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Capacidad: 10-40 toneladas',
+                        'Sistema hidráulico de volteo',
+                        'Múltiples configuraciones'
+                    ],
+                    'en' => [
+                        'Capacity: 10-40 tons',
+                        'Hydraulic dumping system',
+                        'Multiple configurations'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestros camiones de volteo ofrecen soluciones eficientes para el transporte y descarga de materiales en proyectos de construcción de gran escala.',
+                        'features' => [
+                            'Caja de volteo reforzada',
+                            'Sistema hidráulico de alta potencia',
+                            'Compuerta trasera automática',
+                            'Suspensión neumática',
+                            'Sistema de frenado ABS'
+                        ],
+                        'applications' => [
+                            'Transporte de agregados',
+                            'Movimiento de tierra',
+                            'Proyectos de minería',
+                            'Construcción de carreteras'
+                        ],
+                        'technical_specs' => [
+                            'Capacidad de carga: 10-40 toneladas',
+                            'Volumen de caja: 8-25 m³',
+                            'Potencia del motor: 300-500 HP',
+                            'Tiempo de volteo: 15-25 segundos',
+                            'Velocidad máxima: 90 km/h'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our dump trucks offer efficient solutions for material transport and unloading in large-scale construction projects.',
+                        'features' => [
+                            'Reinforced dump body',
+                            'High-power hydraulic system',
+                            'Automatic tailgate',
+                            'Air suspension',
+                            'ABS braking system'
+                        ],
+                        'applications' => [
+                            'Aggregate transport',
+                            'Earthmoving',
+                            'Mining projects',
+                            'Road construction'
+                        ],
+                        'technical_specs' => [
+                            'Load capacity: 10-40 tons',
+                            'Body volume: 8-25 m³',
+                            'Engine power: 300-500 HP',
+                            'Dumping time: 15-25 seconds',
+                            'Maximum speed: 90 km/h'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/camion-volteo.svg',
+                    'assets/img/gallery/dumptruck1.jpg',
+                    'assets/img/gallery/dumptruck2.jpg'
+                ]
+            ],
+            [
+                'slug' => 'camion-kenworth',
+                'name' => [
+                    'es' => 'Camión Kenworth',
                     'en' => 'Mobile Cranes'
                 ],
                 'description' => [
                     'es' => 'Grúas móviles versátiles para montaje rápido y posicionamiento flexible. Ideales para proyectos que requieren movilidad y despliegue rápido.',
                     'en' => 'Versatile mobile cranes for quick setup and flexible positioning. Ideal for projects requiring mobility and rapid deployment.'
                 ],
-                'image' => 'assets/img/service/servicess2.png',
+                'image' => 'assets/img/equipos/camion-kenworth.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -926,84 +1004,7 @@
                     'assets/img/gallery/watertruck2.jpg'
                 ]
             ],
-            [
-                'slug' => 'camion-volteo',
-                'name' => [
-                    'es' => 'Camión de Volteo',
-                    'en' => 'Dump Truck'
-                ],
-                'description' => [
-                    'es' => 'Camiones de volteo para transporte y descarga de materiales. Disponibles en diferentes capacidades para proyectos de construcción y minería.',
-                    'en' => 'Dump trucks for material transport and unloading. Available in different capacities for construction and mining projects.'
-                ],
-                'image' => 'assets/img/equipos/camion-volteo.svg',
-                'icon' => 'assets/img/icon/services_icon1.png',
-                'specs' => [
-                    'es' => [
-                        'Capacidad: 10-40 toneladas',
-                        'Sistema hidráulico de volteo',
-                        'Múltiples configuraciones'
-                    ],
-                    'en' => [
-                        'Capacity: 10-40 tons',
-                        'Hydraulic dumping system',
-                        'Multiple configurations'
-                    ]
-                ],
-                'detailed_info' => [
-                    'es' => [
-                        'description' => 'Nuestros camiones de volteo ofrecen soluciones eficientes para el transporte y descarga de materiales en proyectos de construcción de gran escala.',
-                        'features' => [
-                            'Caja de volteo reforzada',
-                            'Sistema hidráulico de alta potencia',
-                            'Compuerta trasera automática',
-                            'Suspensión neumática',
-                            'Sistema de frenado ABS'
-                        ],
-                        'applications' => [
-                            'Transporte de agregados',
-                            'Movimiento de tierra',
-                            'Proyectos de minería',
-                            'Construcción de carreteras'
-                        ],
-                        'technical_specs' => [
-                            'Capacidad de carga: 10-40 toneladas',
-                            'Volumen de caja: 8-25 m³',
-                            'Potencia del motor: 300-500 HP',
-                            'Tiempo de volteo: 15-25 segundos',
-                            'Velocidad máxima: 90 km/h'
-                        ]
-                    ],
-                    'en' => [
-                        'description' => 'Our dump trucks offer efficient solutions for material transport and unloading in large-scale construction projects.',
-                        'features' => [
-                            'Reinforced dump body',
-                            'High-power hydraulic system',
-                            'Automatic tailgate',
-                            'Air suspension',
-                            'ABS braking system'
-                        ],
-                        'applications' => [
-                            'Aggregate transport',
-                            'Earthmoving',
-                            'Mining projects',
-                            'Road construction'
-                        ],
-                        'technical_specs' => [
-                            'Load capacity: 10-40 tons',
-                            'Body volume: 8-25 m³',
-                            'Engine power: 300-500 HP',
-                            'Dumping time: 15-25 seconds',
-                            'Maximum speed: 90 km/h'
-                        ]
-                    ]
-                ],
-                'gallery' => [
-                    'assets/img/equipos/camion-volteo.svg',
-                    'assets/img/gallery/dumptruck1.jpg',
-                    'assets/img/gallery/dumptruck2.jpg'
-                ]
-            ],
+            
                     
         ];
         $currentLang = session('language', 'es');

@@ -364,11 +364,11 @@ class HomeController extends Controller
     private function getEquipmentBySlug($slug, $language = 'es')
     {
         $equipments = [
-            'gruas-torre' => [
-                'slug' => 'gruas-torre',
+            'retroexcavadora-414E' => [
+                'slug' => 'retroexcavadora-414E',
                 'name' => [
-                    'es' => 'Grúas Torre',
-                    'en' => 'Tower Cranes'
+                    'es' => 'Retroexcavadora 414E',
+                    'en' => 'Backhoe Loader 414E'
                 ],
                 'description' => [
                     'es' => 'Grúas torre de alta capacidad para proyectos de construcción de todos los tamaños.',
@@ -494,17 +494,17 @@ class HomeController extends Controller
                     ]
                 ]
             ],
-            'gruas-moviles' => [
-                'slug' => 'gruas-moviles',
+            'camion-kenworth' => [
+                'slug' => 'camion-kenworth',
                 'name' => [
-                    'es' => 'Grúas Móviles',
-                    'en' => 'Mobile Cranes'
+                    'es' => 'Camión Kenworth',
+                    'en' => 'Kenworth Truck'
                 ],
                 'description' => [
                     'es' => 'Grúas móviles versátiles para montaje rápido y posicionamiento flexible.',
                     'en' => 'Versatile mobile cranes for quick setup and flexible positioning.'
                 ],
-                'hero_image' => 'assets/img/gallery/services2.jpg',
+                'hero_image' => 'assets/img/equipos/camion-kenworth-cover.png',
                 'gallery' => [
                     'assets/img/gallery/services2.jpg',
                     'assets/img/gallery/services1.jpg',
@@ -1404,19 +1404,19 @@ class HomeController extends Controller
                      ]
                  ]
              ],
-             'camion-volteo' => [
-                 'slug' => 'camion-volteo',
+             'camion-ford' => [
+                 'slug' => 'camion-ford',
                  'name' => [
-                     'es' => 'Camión de Volteo',
+                     'es' => 'Camión de Volteo Ford',
                      'en' => 'Dump Truck'
                  ],
                  'description' => [
                      'es' => 'Camiones de volteo para transporte y descarga de materiales.',
                      'en' => 'Dump trucks for material transport and unloading.'
                  ],
-                 'hero_image' => 'assets/img/equipos/camion-volteo.svg',
+                 'hero_image' => 'assets/img/equipos/camion-cover.png',
                  'gallery' => [
-                     'assets/img/equipos/camion-volteo.svg',
+                     'assets/img/equipos/camion.png',
                      'assets/img/gallery/dumptruck1.jpg',
                      'assets/img/gallery/dumptruck2.jpg'
                  ],
