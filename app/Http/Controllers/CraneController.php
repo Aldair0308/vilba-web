@@ -85,34 +85,58 @@ class CraneController extends Controller
     public function store(Request $request)
     {
         try {
-            $validatedData = $request->validate([
+            // Determinar si es equipo ligero
+            $isLigero = $request->input('category') === 'ligero';
+            
+            // Reglas de validación dinámicas
+            $rules = [
                 'marca' => 'required|string|max:255',
-                'modelo' => 'required|string|max:255',
                 'nombre' => 'required|string|max:255',
-                'capacidad' => 'required|integer|min:1',
-                'tipo' => 'required|in:torre,móvil,oruga,camión',
                 'estado' => 'sometimes|in:activo,inactivo,mantenimiento,en_renta',
-                'category' => 'nullable|string|max:255',
+                'category' => 'required|in:pesado,ligero',
                 'precios' => 'nullable|array',
                 'precios.*.zona' => 'required_with:precios|string|max:255',
                 'precios.*.zona_custom' => 'nullable|string|max:255',
-                'precios.*.precio' => 'required_with:precios|array',
-                'precios.*.precio.*' => 'required_with:precios|numeric|min:0'
-            ], [
+                'precios.*.precio' => 'required_with:precios|numeric|min:0'
+            ];
+            
+            // Agregar reglas específicas para equipos pesados
+            if (!$isLigero) {
+                $rules['modelo'] = 'required|string|max:255';
+                $rules['capacidad'] = 'required|integer|min:1';
+                $rules['tipo'] = 'required|in:torre,móvil,oruga,camión';
+            } else {
+                $rules['modelo'] = 'nullable|string|max:255';
+                $rules['capacidad'] = 'nullable|integer|min:0';
+                $rules['tipo'] = 'nullable|string|max:255';
+            }
+            
+            $messages = [
                 'marca.required' => 'La marca es obligatoria',
-                'modelo.required' => 'El modelo es obligatorio',
+                'modelo.required' => 'El modelo es obligatorio para equipos pesados',
                 'nombre.required' => 'El nombre es obligatorio',
-                'capacidad.required' => 'La capacidad es obligatoria',
+                'capacidad.required' => 'La capacidad es obligatoria para equipos pesados',
                 'capacidad.integer' => 'La capacidad debe ser un número entero',
                 'capacidad.min' => 'La capacidad debe ser mayor a 0',
-                'tipo.required' => 'El tipo es obligatorio',
+                'tipo.required' => 'El tipo es obligatorio para equipos pesados',
                 'tipo.in' => 'El tipo debe ser: torre, móvil, oruga o camión',
+                'category.required' => 'El tipo de equipo es obligatorio',
+                'category.in' => 'El tipo de equipo debe ser pesado o ligero',
                 'estado.in' => 'El estado debe ser: activo, inactivo, mantenimiento o en renta',
                 'precios.*.zona.required_with' => 'La zona es obligatoria cuando se especifican precios',
-                'precios.*.precio.required_with' => 'Los precios son obligatorios cuando se especifica una zona',
-                'precios.*.precio.*.numeric' => 'Los precios deben ser números',
-                'precios.*.precio.*.min' => 'Los precios deben ser mayores o iguales a 0'
-            ]);
+                'precios.*.precio.required_with' => 'El precio es obligatorio cuando se especifica una zona',
+                'precios.*.precio.numeric' => 'El precio debe ser un número',
+                'precios.*.precio.min' => 'El precio debe ser mayor o igual a 0'
+            ];
+            
+            $validatedData = $request->validate($rules, $messages);
+            
+            // Establecer valores por defecto para equipos ligeros
+            if ($isLigero) {
+                $validatedData['modelo'] = $validatedData['modelo'] ?? 'N/A';
+                $validatedData['capacidad'] = $validatedData['capacidad'] ?? 0;
+                $validatedData['tipo'] = $validatedData['tipo'] ?? 'N/A';
+            }
 
             if (!isset($validatedData['estado'])) {
                 $validatedData['estado'] = Crane::STATUS_ACTIVE;
@@ -218,35 +242,59 @@ class CraneController extends Controller
     {
         try {
             $crane = Crane::findOrFail($id);
-
-            $validatedData = $request->validate([
+            
+            // Determinar si es equipo ligero
+            $isLigero = $request->input('category') === 'ligero';
+            
+            // Reglas de validación dinámicas
+            $rules = [
                 'marca' => 'required|string|max:255',
-                'modelo' => 'required|string|max:255',
                 'nombre' => 'required|string|max:255',
-                'capacidad' => 'required|integer|min:1',
-                'tipo' => 'required|in:torre,móvil,oruga,camión',
                 'estado' => 'sometimes|in:activo,inactivo,mantenimiento,en_renta',
-                'category' => 'nullable|string|max:255',
+                'category' => 'required|in:pesado,ligero',
                 'precios' => 'nullable|array',
                 'precios.*.zona' => 'required_with:precios|string|max:255',
                 'precios.*.zona_custom' => 'nullable|string|max:255',
-                'precios.*.precio' => 'required_with:precios|array',
-                'precios.*.precio.*' => 'required_with:precios|numeric|min:0'
-            ], [
+                'precios.*.precio' => 'required_with:precios|numeric|min:0'
+            ];
+            
+            // Agregar reglas específicas para equipos pesados
+            if (!$isLigero) {
+                $rules['modelo'] = 'required|string|max:255';
+                $rules['capacidad'] = 'required|integer|min:1';
+                $rules['tipo'] = 'required|in:torre,móvil,oruga,camión';
+            } else {
+                $rules['modelo'] = 'nullable|string|max:255';
+                $rules['capacidad'] = 'nullable|integer|min:0';
+                $rules['tipo'] = 'nullable|string|max:255';
+            }
+            
+            $messages = [
                 'marca.required' => 'La marca es obligatoria',
-                'modelo.required' => 'El modelo es obligatorio',
+                'modelo.required' => 'El modelo es obligatorio para equipos pesados',
                 'nombre.required' => 'El nombre es obligatorio',
-                'capacidad.required' => 'La capacidad es obligatoria',
+                'capacidad.required' => 'La capacidad es obligatoria para equipos pesados',
                 'capacidad.integer' => 'La capacidad debe ser un número entero',
                 'capacidad.min' => 'La capacidad debe ser mayor a 0',
-                'tipo.required' => 'El tipo es obligatorio',
+                'tipo.required' => 'El tipo es obligatorio para equipos pesados',
                 'tipo.in' => 'El tipo debe ser: torre, móvil, oruga o camión',
+                'category.required' => 'El tipo de equipo es obligatorio',
+                'category.in' => 'El tipo de equipo debe ser pesado o ligero',
                 'estado.in' => 'El estado debe ser: activo, inactivo, mantenimiento o en renta',
                 'precios.*.zona.required_with' => 'La zona es obligatoria cuando se especifican precios',
-                'precios.*.precio.required_with' => 'Los precios son obligatorios cuando se especifica una zona',
-                'precios.*.precio.*.numeric' => 'Los precios deben ser números',
-                'precios.*.precio.*.min' => 'Los precios deben ser mayores o iguales a 0'
-            ]);
+                'precios.*.precio.required_with' => 'El precio es obligatorio cuando se especifica una zona',
+                'precios.*.precio.numeric' => 'El precio debe ser un número',
+                'precios.*.precio.min' => 'El precio debe ser mayor o igual a 0'
+            ];
+            
+            $validatedData = $request->validate($rules, $messages);
+            
+            // Establecer valores por defecto para equipos ligeros
+            if ($isLigero) {
+                $validatedData['modelo'] = $validatedData['modelo'] ?? 'N/A';
+                $validatedData['capacidad'] = $validatedData['capacidad'] ?? 0;
+                $validatedData['tipo'] = $validatedData['tipo'] ?? 'N/A';
+            }
 
             // Process custom zones
             if (isset($validatedData['precios'])) {

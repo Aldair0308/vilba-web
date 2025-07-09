@@ -106,11 +106,11 @@
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar-sm me-3">
                                                         <div class="avatar-title bg-secondary text-white rounded-circle">
-                                                            {{ strtoupper(substr($log->userName, 0, 1)) }}
+                                                            {{ strtoupper(substr(is_array($log->userName) ? 'S' : $log->userName, 0, 1)) }}
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <h6 class="mb-0">{{ $log->userName }}</h6>
+                                                        <h6 class="mb-0">{{ is_array($log->userName) ? json_encode($log->userName) : $log->userName }}</h6>
                                                         @if($log->user)
                                                             <small class="text-muted">{{ $log->user->email }}</small>
                                                         @endif
@@ -119,33 +119,33 @@
                                             </td>
                                             <td>
                                                 <span class="badge bg-{{ $log->getActionColor() }}">
-                                                    {{ $log->formatted_action }}
+                                                    {{ is_array($log->formatted_action) ? json_encode($log->formatted_action) : $log->formatted_action }}
                                                 </span>
                                             </td>
                                             <td>
                                                 <span class="badge bg-light text-dark">
-                                                    {{ $log->formatted_module }}
+                                                    {{ is_array($log->formatted_module) ? json_encode($log->formatted_module) : $log->formatted_module }}
                                                 </span>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <code class="small">{{ Str::limit($log->entityId, 8) }}</code>
+                                                    <code class="small">{{ Str::limit(is_array($log->entityId) ? json_encode($log->entityId) : $log->entityId, 8) }}</code>
                                                     @if($log->entityName)
-                                                        <br><small class="text-muted">{{ Str::limit($log->entityName, 20) }}</small>
+                                                        <br><small class="text-muted">{{ Str::limit(is_array($log->entityName) ? json_encode($log->entityName) : $log->entityName, 20) }}</small>
                                                     @endif
                                                 </div>
                                             </td>
                                             <td>
                                                 @if($log->description)
-                                                    <span title="{{ $log->description }}">
-                                                        {{ Str::limit($log->description, 40) }}
+                                                    <span title="{{ is_array($log->description) ? json_encode($log->description) : $log->description }}">
+                                                        {{ Str::limit(is_array($log->description) ? json_encode($log->description) : $log->description, 40) }}
                                                     </span>
                                                 @else
-                                                    <span class="text-muted">{{ $log->full_description }}</span>
+                                                    <span class="text-muted">{{ is_array($log->full_description) ? json_encode($log->full_description) : $log->full_description }}</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <code class="small">{{ $log->ipAddress }}</code>
+                                                <code class="small">{{ is_array($log->ipAddress) ? json_encode($log->ipAddress) : $log->ipAddress }}</code>
                                             </td>
                                             <td>
                                                 <div>
@@ -176,15 +176,14 @@
                         </div>
 
                         <!-- Paginación -->
-                        <div class="d-flex justify-content-between align-items-center mt-4">
-                            <div>
-                                <p class="text-muted mb-0">
-                                    Mostrando {{ $logs->firstItem() }} a {{ $logs->lastItem() }} 
-                                    de {{ $logs->total() }} resultados
-                                </p>
+                        <div class="pagination-wrapper">
+                            <div class="pagination-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Mostrando <strong>{{ $logs->firstItem() }}</strong> a <strong>{{ $logs->lastItem() }}</strong> 
+                                de <strong>{{ $logs->total() }}</strong> resultados
                             </div>
-                            <div>
-                                {{ $logs->appends(request()->query())->links() }}
+                            <div class="pagination-nav">
+                                {{ $logs->appends(request()->query())->links('custom.pagination') }}
                             </div>
                         </div>
                     @else
@@ -232,9 +231,9 @@
                                 @foreach($log->getChanges() as $field => $changes)
                                     <li class="list-group-item">
                                         <strong>{{ $field }}:</strong>
-                                        <span class="text-danger">{{ $changes['old'] ?? 'N/A' }}</span>
+                                        <span class="text-danger">{{ is_array($changes['old'] ?? 'N/A') ? json_encode($changes['old']) : ($changes['old'] ?? 'N/A') }}</span>
                                         <span class="arrow-icon mx-2">→</span>
-                                        <span class="text-success">{{ $changes['new'] ?? 'N/A' }}</span>
+                                        <span class="text-success">{{ is_array($changes['new'] ?? 'N/A') ? json_encode($changes['new']) : ($changes['new'] ?? 'N/A') }}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -324,6 +323,134 @@ code {
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
     font-size: 0.875rem;
+}
+
+/* Estilos personalizados para el paginado */
+.pagination {
+    margin: 0;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 0 2px;
+}
+
+.pagination .page-link {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    color: #6c757d;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+    text-decoration: none;
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    color: #495057;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,123,255,0.25);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: #fff;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #6c757d;
+    font-weight: 600;
+}
+
+.pagination .page-item:first-child .page-link:hover,
+.pagination .page-item:last-child .page-link:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+/* Contenedor de paginación mejorado */
+.pagination-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 0.75rem;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.pagination-info {
+    color: #495057;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.pagination-info i {
+    color: #6c757d;
+}
+
+.pagination-nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .pagination-wrapper {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .pagination .page-link {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .pagination-info {
+        order: 2;
+        margin-top: 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .pagination-nav {
+        order: 1;
+    }
+    
+    .pagination .page-item {
+        margin: 0 1px;
+    }
+}
+
+@media (max-width: 576px) {
+    .pagination .page-link {
+        padding: 0.25rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    
+    .pagination .page-item {
+        margin: 0;
+    }
 }
 </style>
 @endsection

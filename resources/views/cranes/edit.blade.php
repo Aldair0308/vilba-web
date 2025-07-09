@@ -40,7 +40,7 @@
                                 <select class="form-select @error('marca') is-invalid @enderror" 
                                         id="marca" 
                                         name="marca" 
-                                        required>
+                                        >
                                     <option value="">Seleccione una marca</option>
                                     <option value="Caterpillar" {{ old('marca', $crane->marca) === 'Caterpillar' ? 'selected' : '' }}>Caterpillar</option>
                                     <option value="Liebherr" {{ old('marca', $crane->marca) === 'Liebherr' ? 'selected' : '' }}>Liebherr</option>
@@ -58,16 +58,15 @@
                             </div>
 
                             <!-- Modelo -->
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-3 campo-pesado">
                                 <label for="modelo" class="form-label">
-                                    Modelo <span class="text-danger">*</span>
+                                    Modelo <span class="text-danger campo-pesado-required">*</span>
                                 </label>
                                 <input type="text" 
                                        class="form-control @error('modelo') is-invalid @enderror" 
                                        id="modelo" 
                                        name="modelo" 
                                        value="{{ old('modelo', $crane->modelo) }}" 
-                                       required 
                                        maxlength="100"
                                        placeholder="Ej: RT540E">
                                 @error('modelo')
@@ -97,16 +96,15 @@
                             </div>
 
                             <!-- Capacidad -->
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-3 campo-pesado">
                                 <label for="capacidad" class="form-label">
-                                    Capacidad (toneladas) <span class="text-danger">*</span>
+                                    Capacidad (toneladas) <span class="text-danger campo-pesado-required">*</span>
                                 </label>
                                 <input type="number" 
                                        class="form-control @error('capacidad') is-invalid @enderror" 
                                        id="capacidad" 
                                        name="capacidad" 
                                        value="{{ old('capacidad', $crane->capacidad) }}" 
-                                       required 
                                        min="1" 
                                        max="1000" 
                                        step="0.1"
@@ -120,9 +118,9 @@
                             </div>
 
                             <!-- Tipo -->
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-3 campo-pesado">
                                 <label for="tipo" class="form-label">
-                                    Tipo <span class="text-danger">*</span>
+                                    Tipo <span class="text-danger campo-pesado-required">*</span>
                                 </label>
                                 <select class="form-select @error('tipo') is-invalid @enderror" 
                                         id="tipo" 
@@ -162,22 +160,33 @@
                                 @endif
                             </div>
 
-                            <!-- Categoría -->
-                            <div class="col-md-12 mb-3">
-                                <label for="category" class="form-label">Categoría</label>
-                                <input type="text" 
-                                       class="form-control @error('category') is-invalid @enderror" 
-                                       id="category" 
-                                       name="category" 
-                                       value="{{ old('category', $crane->category) }}" 
-                                       maxlength="100"
-                                       placeholder="Ej: Construcción, Industrial, Especial">
-                                @error('category')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                                <div class="form-text">
-                                    Categoría o clasificación especial del equipo (opcional)
+                            <!-- Tipo de Equipo (Solo lectura en edición) -->
+                            <div class="col-md-12 mb-4">
+                                <label class="form-label">Tipo de Equipo</label>
+                                <div class="alert alert-info border-info">
+                                    <div class="d-flex align-items-center">
+                                        @if(old('category', $crane->category) === 'ligero')
+                                            <i class="fas fa-car text-purple me-3" style="font-size: 1.5rem;"></i>
+                                            <div>
+                                                <strong>Equipo Ligero</strong>
+                                                <div class="text-muted small">Herramientas, equipos menores, accesorios sin especificaciones técnicas detalladas</div>
+                                                <div class="text-muted small mt-1"><i class="fas fa-info-circle me-1"></i>El tipo de equipo no puede modificarse después de la creación</div>
+                                            </div>
+                                        @else
+                                            <i class="fas fa-truck text-warning me-3" style="font-size: 1.5rem;"></i>
+                                            <div>
+                                                <strong>Equipo Pesado</strong>
+                                                <div class="text-muted small">Grúas, excavadoras, equipos de construcción con especificaciones técnicas completas</div>
+                                                <div class="text-muted small mt-1"><i class="fas fa-info-circle me-1"></i>El tipo de equipo no puede modificarse después de la creación</div>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
+                                <!-- Hidden input to maintain the category value -->
+                                <input type="hidden" name="category" value="{{ old('category', $crane->category === 'ligero' ? 'ligero' : 'pesado') }}">
+                                @error('category')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
@@ -223,41 +232,21 @@
                                placeholder="Nombre de zona personalizada" 
                                style="{{ (isset($precio['zona']) && !in_array($precio['zona'], ['basica', 'estandar', 'premium'])) ? 'display: block;' : 'display: none;' }}">
                     </div>
-                                                    <div class="col-md-3 mb-3">
-                                                        <label class="form-label">Precio Básico <span class="text-danger">*</span></label>
+                                                    <div class="col-md-9 mb-3">
+                                                        <label class="form-label">Precio por Día <span class="text-danger">*</span></label>
                                                         <div class="input-group">
                                                             <span class="input-group-text">$</span>
                                                             <input type="number" 
                                                                    class="form-control" 
-                                                                   name="precios[{{ $index }}][precio][0]" 
-                                                                   value="{{ isset($precio['precio'][0]) ? $precio['precio'][0] : '' }}" 
+                                                                   name="precios[{{ $index }}][precio]" 
+                                                                   value="{{ isset($precio['precio']) ? (is_array($precio['precio']) ? $precio['precio'][0] : $precio['precio']) : '' }}" 
                                                                    min="0" 
                                                                    step="0.01" 
                                                                    required>
+                                                            <span class="input-group-text">/ día</span>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-3 mb-3">
-                                                        <label class="form-label">Precio Estándar</label>
-                                                        <div class="input-group">
-                                                            <span class="input-group-text">$</span>
-                                                            <input type="number" 
-                                                                   class="form-control" 
-                                                                   name="precios[{{ $index }}][precio][1]" 
-                                                                   value="{{ isset($precio['precio'][1]) ? $precio['precio'][1] : '' }}" 
-                                                                   min="0" 
-                                                                   step="0.01">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 mb-3">
-                                                        <label class="form-label">Precio Premium</label>
-                                                        <div class="input-group">
-                                                            <span class="input-group-text">$</span>
-                                                            <input type="number" 
-                                                                   class="form-control" 
-                                                                   name="precios[{{ $index }}][precio][2]" 
-                                                                   value="{{ isset($precio['precio'][2]) ? $precio['precio'][2] : '' }}" 
-                                                                   min="0" 
-                                                                   step="0.01">
+                                                        <div class="form-text">
+                                                            Precio de alquiler por día para esta zona
                                                         </div>
                                                     </div>
                                                 </div>
@@ -420,6 +409,34 @@
 .precio-item:hover {
     border-color: #4e73df !important;
 }
+
+.form-check-card {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.form-check-card:hover {
+    border-color: #4e73df !important;
+    background-color: #f8f9fc;
+}
+
+.form-check-input:checked + .form-check-label .form-check-card,
+.form-check-input:checked ~ .form-check-card {
+    border-color: #4e73df !important;
+    background-color: #e3f2fd;
+}
+
+.text-purple {
+    color: #9C27B0 !important;
+}
+
+.campo-pesado {
+    transition: all 0.3s ease;
+}
+
+.campo-pesado.hidden {
+    display: none !important;
+}
 </style>
 @endpush
 
@@ -436,6 +453,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const deleteBtn = document.getElementById('deleteBtn');
     const preciosContainer = document.getElementById('precios-container');
     const addPrecioBtn = document.getElementById('add-precio');
+    
+    // Equipment type elements
+    const categoryHiddenInput = document.querySelector('input[name="category"]');
+    const camposPesados = document.querySelectorAll('.campo-pesado');
+    const camposPesadosRequired = document.querySelectorAll('.campo-pesado-required');
+    const modeloInput = document.getElementById('modelo');
+    const capacidadInput = document.getElementById('capacidad');
+    const tipoSelect = document.getElementById('tipo');
+    
+    // Determine if equipment is light based on hidden input
+    const isLigero = categoryHiddenInput && categoryHiddenInput.value === 'ligero';
     
     console.log('🚀 DOM cargado - Iniciando script de precios (EDIT)');
     console.log('📍 Elementos encontrados (EDIT):', {
@@ -457,17 +485,88 @@ document.addEventListener('DOMContentLoaded', function() {
         originalValues[input.name] = input.value;
     });
     
+    // Initialize equipment type display (fixed, no changes allowed)
+    function initializeEquipmentTypeDisplay() {
+        if (isLigero) {
+            // Hide fields for light equipment
+            camposPesados.forEach(campo => {
+                campo.style.display = 'none';
+            });
+            
+            camposPesadosRequired.forEach(span => {
+                span.style.display = 'none';
+            });
+            
+            // Set N/A values for light equipment
+            if (modeloInput) {
+                modeloInput.value = 'N/A';
+                modeloInput.removeAttribute('required');
+            }
+            if (capacidadInput) {
+                capacidadInput.value = '0';
+                capacidadInput.removeAttribute('required');
+            }
+            if (tipoSelect) {
+                // Add N/A option if it doesn't exist
+                if (!tipoSelect.querySelector('option[value="N/A"]')) {
+                    const naOption = document.createElement('option');
+                    naOption.value = 'N/A';
+                    naOption.textContent = 'N/A';
+                    tipoSelect.appendChild(naOption);
+                }
+                tipoSelect.value = 'N/A';
+                tipoSelect.removeAttribute('required');
+            }
+        } else {
+            // Show fields for heavy equipment
+            camposPesados.forEach(campo => {
+                campo.style.display = 'block';
+            });
+            
+            camposPesadosRequired.forEach(span => {
+                span.style.display = 'inline';
+            });
+            
+            // Add required attributes for heavy equipment
+            if (modeloInput) {
+                modeloInput.setAttribute('required', 'required');
+            }
+            if (capacidadInput) {
+                capacidadInput.setAttribute('required', 'required');
+            }
+            if (tipoSelect) {
+                tipoSelect.setAttribute('required', 'required');
+            }
+        }
+    }
+    
+    // Initialize equipment type display on page load
+    initializeEquipmentTypeDisplay();
+    
     // Auto-generate crane name
     function generateName() {
         const marca = marcaSelect.value;
         const modelo = modeloInput.value;
-        if (marca && modelo) {
-            nombreInput.value = `${marca} ${modelo}`;
+        
+        if (marca) {
+            if (isLigero) {
+                // For light equipment, use only brand
+                nombreInput.value = marca;
+            } else {
+                // For heavy equipment, use brand + model (if available and not N/A)
+                if (modelo && modelo !== 'N/A' && modelo.trim() !== '') {
+                    nombreInput.value = `${marca} ${modelo}`;
+                } else {
+                    nombreInput.value = marca;
+                }
+            }
         }
     }
     
     marcaSelect.addEventListener('change', generateName);
     modeloInput.addEventListener('input', generateName);
+    
+    // Equipment type is fixed in edit mode, no need for change listeners
     
     // Reset form
     resetBtn.addEventListener('click', function() {
@@ -483,6 +582,55 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form validation
     form.addEventListener('submit', function(e) {
+        // Validate based on equipment type (fixed, determined by hidden input)
+        if (isLigero) {
+            // For light equipment, ensure N/A values are set
+            if (!modeloInput.value || modeloInput.value.trim() === '') {
+                modeloInput.value = 'N/A';
+            }
+            if (!capacidadInput.value || capacidadInput.value === '') {
+                capacidadInput.value = '0';
+            }
+            if (!tipoSelect.value || tipoSelect.value === '') {
+                if (!tipoSelect.querySelector('option[value="N/A"]')) {
+                    const naOption = document.createElement('option');
+                    naOption.value = 'N/A';
+                    naOption.textContent = 'N/A';
+                    tipoSelect.appendChild(naOption);
+                }
+                tipoSelect.value = 'N/A';
+            }
+        } else {
+            // For heavy equipment, validate required fields
+            let hasErrors = false;
+            
+            if (!marcaSelect.value) {
+                marcaSelect.classList.add('is-invalid');
+                hasErrors = true;
+            }
+            
+            if (!modeloInput.value || modeloInput.value.trim() === '' || modeloInput.value === 'N/A') {
+                modeloInput.classList.add('is-invalid');
+                hasErrors = true;
+            }
+            
+            if (!capacidadInput.value || capacidadInput.value <= 0) {
+                capacidadInput.classList.add('is-invalid');
+                hasErrors = true;
+            }
+            
+            if (!tipoSelect.value || tipoSelect.value === 'N/A') {
+                tipoSelect.classList.add('is-invalid');
+                hasErrors = true;
+            }
+            
+            if (hasErrors) {
+                e.preventDefault();
+                alert('Por favor complete todos los campos requeridos para equipos pesados.');
+                return false;
+            }
+        }
+        
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Actualizando...';
         
@@ -548,25 +696,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         <input type="text" class="form-control mt-2 custom-zona-input" name="precios[${index}][zona_custom]" 
                                placeholder="Nombre de zona personalizada" style="display: none;">
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label">Precio Básico <span class="text-danger">*</span></label>
+                    <div class="col-md-9 mb-3">
+                        <label class="form-label">Precio por Día <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" name="precios[${index}][precio][0]" min="0" step="0.01" required>
+                            <input type="number" class="form-control" name="precios[${index}][precio]" min="0" step="0.01" placeholder="0.00" required>
+                            <span class="input-group-text">/ día</span>
                         </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label">Precio Estándar</label>
-                        <div class="input-group">
-                            <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" name="precios[${index}][precio][1]" min="0" step="0.01">
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label">Precio Premium</label>
-                        <div class="input-group">
-                            <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" name="precios[${index}][precio][2]" min="0" step="0.01">
+                        <div class="form-text">
+                            Precio de alquiler por día para esta zona
                         </div>
                     </div>
                 </div>

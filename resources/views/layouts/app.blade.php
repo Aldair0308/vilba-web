@@ -230,6 +230,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('clients.index') }}">Clientes</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('cranes.index') }}">Equipos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('quotes.index') }}">Cotizaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logs.index') }}">Logs</a>
+                            </li>
                         @endauth
                     </ul>
                     
