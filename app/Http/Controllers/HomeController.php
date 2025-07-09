@@ -624,27 +624,27 @@ class HomeController extends Controller
                     ]
                  ]
              ],
-             'montacargas' => [
-                 'slug' => 'montacargas',
+             'Retroexcavadora 416F' => [
+                 'slug' => 'retroexcavadora-416F',
                  'name' => [
-                     'es' => 'Montacargas',
-                     'en' => 'Forklifts'
+                     'es' => 'Retroexcavadora 416F',
+                     'en' => 'Backhoe Loader 416F'
                  ],
                  'description' => [
-                     'es' => 'Montacargas de servicio pesado para manejo de materiales y operaciones de almacén.',
-                     'en' => 'Heavy-duty forklifts for material handling and warehouse operations.'
+                     'es' => 'Retroexcavadora 416F de alto rendimiento para excavación y carga.',
+                     'en' => 'High-performance 416F backhoe loader for excavation and loading.'
                  ],
                  'hero_image' => 'assets/img/gallery/services3.jpg',
                  'gallery' => [
-                     'assets/img/gallery/services3.jpg',
+                     'assets/img/equipos/Retro-416F.png',
                      'assets/img/gallery/services1.jpg',
                      'assets/img/gallery/services5.jpg'
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Nuestros montacargas ofrecen soluciones eficientes para el manejo de materiales en almacenes, fábricas y sitios de construcción. Disponibles en versiones eléctricas y diésel.',
+                         'description' => 'Nuestra retroexcavadora 416F combina potencia y versatilidad para realizar tareas de excavación, carga y movimiento de tierra en una amplia variedad de terrenos. Ideal para proyectos de construcción y mantenimiento.',
                          'features' => [
-                             'Capacidad de carga hasta 10 toneladas',
+                             'Capacidad de carga hasta 2.5 toneladas',
                              'Altura de elevación hasta 8 metros',
                              'Opciones eléctricas y diésel',
                              'Cabina ergonómica con visibilidad 360°',

@@ -381,16 +381,16 @@
                 ]
             ],
             [
-                'slug' => 'montacargas',
+                'slug' => 'retroexcavadora-416F',
                 'name' => [
-                    'es' => 'Montacargas',
-                    'en' => 'Forklifts'
+                    'es' => 'Retroexcavadora 416F',
+                    'en' => 'Backhoe Loader 416F'
                 ],
                 'description' => [
-                    'es' => 'Montacargas eléctricos y diésel para manejo de materiales y operaciones de almacén. Disponibles en varias capacidades para uso interior y exterior.',
-                    'en' => 'Electric and diesel forklifts for material handling and warehouse operations. Available in various capacities for indoor and outdoor use.'
+                    'es' => 'Retroexcavadora 416F de alto rendimiento para excavación y carga. Ideal para proyectos de construcción y mantenimiento en terrenos variados.',
+                    'en' => 'High-performance 416F backhoe loader for excavation and loading. Ideal for construction and maintenance projects on varied terrains.'
                 ],
-                'image' => 'assets/img/service/servicess3.png',
+                'image' => 'assets/img/equipos/Retro-416.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -406,7 +406,7 @@
                 ],
                 'detailed_info' => [
                     'es' => [
-                        'description' => 'Nuestra flota de montacargas incluye modelos eléctricos y diésel para satisfacer todas las necesidades de manejo de materiales. Desde operaciones de almacén hasta trabajos pesados en exteriores.',
+                        'description' => 'Nuestra retroexcavadora 416F combina potencia y versatilidad para realizar tareas de excavación, carga y movimiento de tierra en una amplia variedad de terrenos. Ideal para proyectos de construcción y mantenimiento.',
                         'features' => [
                             'Transmisión hidrostática',
                             'Mástil de elevación triple',

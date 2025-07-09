@@ -10,6 +10,7 @@ use App\Http\Controllers\LogController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,9 +69,7 @@ Route::post('/register', [AuthController::class, 'register']);
 // Rutas protegidas por autenticación
 Route::middleware(['auth'])->group(function () {
     // Dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Perfil de usuario
     Route::get('/profile', function () {
@@ -182,4 +181,7 @@ Route::middleware(['auth'])->prefix('api')->group(function () {
     // API REST para logs (solo lectura)
     Route::get('/logs', [LogController::class, 'index'])->name('api.logs.index');
     Route::get('/logs/{log}', [LogController::class, 'show'])->name('api.logs.show');
+    
+    // API de dashboard para estadísticas
+    Route::get('/dashboard/stats', [DashboardController::class, 'stats'])->name('api.dashboard.stats');
 });
