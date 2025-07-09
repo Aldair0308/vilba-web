@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Crane;
 use App\Models\Quote;
 use App\Models\User;
+use App\Models\Log;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -51,6 +52,12 @@ class DashboardController extends Controller
             'inactive' => Client::where('status', 'inactive')->count(),
         ];
         
+        // Obtener logs recientes (últimos 6 registros)
+        $recentLogs = Log::with('user')
+            ->orderBy('createdAt', 'desc')
+            ->limit(6)
+            ->get();
+        
         return view('dashboard', compact(
             'totalClients',
             'availableEquipment', 
@@ -61,7 +68,8 @@ class DashboardController extends Controller
             'totalUsers',
             'equipmentByStatus',
             'quotesByStatus',
-            'clientsByStatus'
+            'clientsByStatus',
+            'recentLogs'
         ));
     }
     

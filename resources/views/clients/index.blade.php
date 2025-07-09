@@ -168,15 +168,13 @@
                         </div>
 
                         <!-- Paginación -->
-                        <div class="d-flex justify-content-between align-items-center mt-4">
-                            <div>
-                                <p class="text-muted mb-0">
-                                    Mostrando {{ $clients->firstItem() }} a {{ $clients->lastItem() }} 
-                                    de {{ $clients->total() }} resultados
-                                </p>
+                        <div class="pagination-wrapper">
+                            <div class="pagination-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <span>Mostrando <strong>{{ $clients->firstItem() }}</strong> a <strong>{{ $clients->lastItem() }}</strong> de <strong>{{ $clients->total() }}</strong> resultados</span>
                             </div>
-                            <div>
-                                {{ $clients->appends(request()->query())->links() }}
+                            <div class="pagination-nav">
+                                {{ $clients->appends(request()->query())->links('custom.pagination') }}
                             </div>
                         </div>
                     @else
@@ -194,6 +192,98 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+/* Pagination Styles */
+.pagination-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.pagination-info {
+    display: flex;
+    align-items: center;
+    color: #495057;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.pagination-info i {
+    color: #007bff;
+    margin-right: 0.5rem;
+}
+
+.pagination-nav .pagination {
+    margin: 0;
+    gap: 0.25rem;
+}
+
+.pagination-nav .page-item .page-link {
+    border: 1px solid #dee2e6;
+    color: #495057;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.125rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.pagination-nav .page-item .page-link:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,123,255,0.3);
+}
+
+.pagination-nav .page-item.active .page-link {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,123,255,0.3);
+}
+
+.pagination-nav .page-item.disabled .page-link {
+    color: #6c757d;
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+.pagination-nav .page-item.disabled .page-link:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pagination-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .pagination-info {
+        justify-content: center;
+    }
+    
+    .pagination-nav .page-item .page-link {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+</style>
+@endpush
 
 <style>
 .avatar-sm {
