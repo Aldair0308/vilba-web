@@ -238,6 +238,9 @@
                                 <a class="nav-link" href="{{ route('quotes.index') }}">Cotizaciones</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('events.index') }}">Eventos</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logs.index') }}">Logs</a>
                             </li>
                         @endauth

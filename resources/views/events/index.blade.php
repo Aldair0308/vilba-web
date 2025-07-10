@@ -187,12 +187,16 @@
                                             </td>
                                             <td>
                                                 <div>
-                                                    @if($event->all_day)
-                                                        <strong>{{ $event->start_date->format('d/m/Y') }}</strong>
-                                                        <br><small class="text-muted">Todo el día</small>
+                                                    @if($event->start_date)
+                                                        @if($event->all_day)
+                                                            <strong>{{ $event->start_date->format('d/m/Y') }}</strong>
+                                                            <br><small class="text-muted">Todo el día</small>
+                                                        @else
+                                                            <strong>{{ $event->start_date->format('d/m/Y') }}</strong>
+                                                            <br><small class="text-muted">{{ $event->start_date->format('H:i') }} - {{ $event->end_date ? $event->end_date->format('H:i') : 'Sin fin' }}</small>
+                                                        @endif
                                                     @else
-                                                        <strong>{{ $event->start_date->format('d/m/Y') }}</strong>
-                                                        <br><small class="text-muted">{{ $event->start_date->format('H:i') }} - {{ $event->end_date ? $event->end_date->format('H:i') : 'Sin fin' }}</small>
+                                                        <span class="text-muted">Sin fecha</span>
                                                     @endif
                                                 </div>
                                             </td>
