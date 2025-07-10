@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CraneController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\QuoteController;
@@ -117,6 +118,19 @@ Route::patch('/cranes/{crane}/rented', [CraneController::class, 'setRented'])->n
     Route::get('/quotes/client/{client}', [QuoteController::class, 'byClient'])->name('quotes.by-client');
     Route::get('/quotes-stats', [QuoteController::class, 'stats'])->name('quotes.stats');
     
+    // CRUD de Eventos
+    Route::resource('events', EventController::class);
+    
+    // Rutas adicionales para eventos
+    Route::get('/events-calendar', [EventController::class, 'calendar'])->name('events.calendar');
+    Route::get('/events-calendar-data', [EventController::class, 'calendarData'])->name('events.calendar-data');
+    Route::patch('/events/{event}/change-status', [EventController::class, 'changeStatus'])->name('events.change-status');
+    Route::patch('/events/{event}/start', [EventController::class, 'start'])->name('events.start');
+    Route::patch('/events/{event}/complete', [EventController::class, 'complete'])->name('events.complete');
+    Route::patch('/events/{event}/cancel', [EventController::class, 'cancel'])->name('events.cancel');
+    Route::get('/events-search', [EventController::class, 'search'])->name('events.search');
+    Route::get('/events-stats', [EventController::class, 'stats'])->name('events.stats');
+    
     // Rutas para usuarios
     Route::resource('users', UserController::class);
     Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
@@ -161,6 +175,18 @@ Route::middleware(['auth'])->prefix('api')->group(function () {
     // API REST completa para cotizaciones
     Route::apiResource('quotes', QuoteController::class, ['as' => 'api']);
     Route::patch('/quotes/{quote}/status', [QuoteController::class, 'changeStatus'])->name('api.quotes.change-status');
+    
+    // API de eventos para búsquedas AJAX y calendario
+    Route::get('/events/search', [EventController::class, 'search'])->name('api.events.search');
+    Route::get('/events/stats', [EventController::class, 'stats'])->name('api.events.stats');
+    Route::get('/events/calendar-data', [EventController::class, 'calendarData'])->name('api.events.calendar-data');
+    
+    // API REST completa para eventos
+    Route::apiResource('events', EventController::class, ['as' => 'api']);
+    Route::patch('/events/{event}/change-status', [EventController::class, 'changeStatus'])->name('api.events.change-status');
+    Route::patch('/events/{event}/start', [EventController::class, 'start'])->name('api.events.start');
+    Route::patch('/events/{event}/complete', [EventController::class, 'complete'])->name('api.events.complete');
+    Route::patch('/events/{event}/cancel', [EventController::class, 'cancel'])->name('api.events.cancel');
     
     // API REST completa para archivos
     Route::apiResource('files', FileController::class, ['as' => 'api']);

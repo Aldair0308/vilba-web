@@ -1,0 +1,425 @@
+@extends('layouts.app')
+
+@section('title', 'Crear Evento')
+
+@section('content')
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h3 mb-0 text-gray-800">Crear Nuevo Evento</h1>
+                    <p class="mb-0 text-muted">Completa la información del evento</p>
+                </div>
+                <div>
+                    <a href="{{ route('events.index') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Volver a Eventos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-plus me-2"></i>Información del Evento
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('events.store') }}" id="eventForm">
+                        @csrf
+                        
+                        <div class="row">
+                            <!-- Información básica -->
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title" class="form-label">Título del Evento <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control @error('title') is-invalid @enderror" 
+                                               id="title" name="title" value="{{ old('title') }}" 
+                                               placeholder="Ej: Renta de grúa para construcción" required>
+                                        @error('title')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    
+                                    <div class="col-md-12 mb-3">
+                                        <label for="description" class="form-label">Descripción</label>
+                                        <textarea class="form-control @error('description') is-invalid @enderror" 
+                                                  id="description" name="description" rows="3" 
+                                                  placeholder="Describe los detalles del evento...">{{ old('description') }}</textarea>
+                                        @error('description')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="type" class="form-label">Tipo de Evento <span class="text-danger">*</span></label>
+                                        <select class="form-select @error('type') is-invalid @enderror" id="type" name="type" required>
+                                            <option value="">Seleccionar tipo...</option>
+                                            <option value="renta" {{ old('type') === 'renta' ? 'selected' : '' }}>Renta</option>
+                                            <option value="mantenimiento" {{ old('type') === 'mantenimiento' ? 'selected' : '' }}>Mantenimiento</option>
+                                            <option value="reunion" {{ old('type') === 'reunion' ? 'selected' : '' }}>Reunión</option>
+                                            <option value="entrega" {{ old('type') === 'entrega' ? 'selected' : '' }}>Entrega</option>
+                                            <option value="recogida" {{ old('type') === 'recogida' ? 'selected' : '' }}>Recogida</option>
+                                            <option value="otro" {{ old('type') === 'otro' ? 'selected' : '' }}>Otro</option>
+                                        </select>
+                                        @error('type')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="priority" class="form-label">Prioridad <span class="text-danger">*</span></label>
+                                        <select class="form-select @error('priority') is-invalid @enderror" id="priority" name="priority" required>
+                                            <option value="">Seleccionar prioridad...</option>
+                                            <option value="baja" {{ old('priority') === 'baja' ? 'selected' : '' }}>Baja</option>
+                                            <option value="media" {{ old('priority') === 'media' ? 'selected' : '' }}>Media</option>
+                                            <option value="alta" {{ old('priority') === 'alta' ? 'selected' : '' }}>Alta</option>
+                                            <option value="urgente" {{ old('priority') === 'urgente' ? 'selected' : '' }}>Urgente</option>
+                                        </select>
+                                        @error('priority')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    
+                                    <div class="col-md-12 mb-3">
+                                        <label for="location" class="form-label">Ubicación</label>
+                                        <input type="text" class="form-control @error('location') is-invalid @enderror" 
+                                               id="location" name="location" value="{{ old('location') }}" 
+                                               placeholder="Ej: Av. Principal 123, Ciudad">
+                                        @error('location')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Panel lateral -->
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-header">
+                                        <h6 class="mb-0">Configuración</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="status" class="form-label">Estado</label>
+                                            <select class="form-select @error('status') is-invalid @enderror" id="status" name="status">
+                                                <option value="programado" {{ old('status', 'programado') === 'programado' ? 'selected' : '' }}>Programado</option>
+                                                <option value="en_progreso" {{ old('status') === 'en_progreso' ? 'selected' : '' }}>En Progreso</option>
+                                                <option value="completado" {{ old('status') === 'completado' ? 'selected' : '' }}>Completado</option>
+                                                <option value="cancelado" {{ old('status') === 'cancelado' ? 'selected' : '' }}>Cancelado</option>
+                                            </select>
+                                            @error('status')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="color" class="form-label">Color del Evento</label>
+                                            <input type="color" class="form-control form-control-color @error('color') is-invalid @enderror" 
+                                                   id="color" name="color" value="{{ old('color', '#007bff') }}">
+                                            @error('color')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="reminder_minutes" class="form-label">Recordatorio (minutos antes)</label>
+                                            <select class="form-select @error('reminder_minutes') is-invalid @enderror" id="reminder_minutes" name="reminder_minutes">
+                                                <option value="">Sin recordatorio</option>
+                                                <option value="15" {{ old('reminder_minutes') == '15' ? 'selected' : '' }}>15 minutos</option>
+                                                <option value="30" {{ old('reminder_minutes') == '30' ? 'selected' : '' }}>30 minutos</option>
+                                                <option value="60" {{ old('reminder_minutes') == '60' ? 'selected' : '' }}>1 hora</option>
+                                                <option value="120" {{ old('reminder_minutes') == '120' ? 'selected' : '' }}>2 horas</option>
+                                                <option value="1440" {{ old('reminder_minutes') == '1440' ? 'selected' : '' }}>1 día</option>
+                                            </select>
+                                            @error('reminder_minutes')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fechas y horarios -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <h5 class="mb-3">Fechas y Horarios</h5>
+                            </div>
+                            
+                            <div class="col-md-12 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="all_day" name="all_day" 
+                                           value="1" {{ old('all_day') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="all_day">
+                                        Evento de todo el día
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="start_date" class="form-label">Fecha de Inicio <span class="text-danger">*</span></label>
+                                <input type="datetime-local" class="form-control @error('start_date') is-invalid @enderror" 
+                                       id="start_date" name="start_date" value="{{ old('start_date') }}" required>
+                                @error('start_date')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="col-md-6 mb-3" id="end_date_container">
+                                <label for="end_date" class="form-label">Fecha de Fin</label>
+                                <input type="datetime-local" class="form-control @error('end_date') is-invalid @enderror" 
+                                       id="end_date" name="end_date" value="{{ old('end_date') }}">
+                                @error('end_date')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <!-- Relaciones -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <h5 class="mb-3">Relaciones</h5>
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="client_id" class="form-label">Cliente</label>
+                                <select class="form-select @error('client_id') is-invalid @enderror" id="client_id" name="client_id">
+                                    <option value="">Seleccionar cliente...</option>
+                                    @foreach($clients as $client)
+                                        <option value="{{ $client->_id }}" {{ old('client_id') === $client->_id ? 'selected' : '' }}>
+                                            {{ $client->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('client_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="crane_id" class="form-label">Grúa</label>
+                                <select class="form-select @error('crane_id') is-invalid @enderror" id="crane_id" name="crane_id">
+                                    <option value="">Seleccionar grúa...</option>
+                                    @foreach($cranes as $crane)
+                                        <option value="{{ $crane->_id }}" {{ old('crane_id') === $crane->_id ? 'selected' : '' }}>
+                                            {{ $crane->nombre }} - {{ $crane->modelo }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('crane_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="user_id" class="form-label">Responsable</label>
+                                <select class="form-select @error('user_id') is-invalid @enderror" id="user_id" name="user_id">
+                                    <option value="">Seleccionar responsable...</option>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->_id }}" {{ old('user_id') === $user->_id ? 'selected' : '' }}>
+                                            {{ $user->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('user_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <!-- Notas adicionales -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <h5 class="mb-3">Información Adicional</h5>
+                            </div>
+                            
+                            <div class="col-md-12 mb-3">
+                                <label for="notes" class="form-label">Notas</label>
+                                <textarea class="form-control @error('notes') is-invalid @enderror" 
+                                          id="notes" name="notes" rows="4" 
+                                          placeholder="Notas adicionales, instrucciones especiales, etc...">{{ old('notes') }}</textarea>
+                                @error('notes')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <!-- Botones de acción -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                    <a href="{{ route('events.index') }}" class="btn btn-outline-secondary">
+                                        <i class="fas fa-times me-2"></i>Cancelar
+                                    </a>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary" name="action" value="save">
+                                            <i class="fas fa-save me-2"></i>Guardar Evento
+                                        </button>
+                                        <button type="submit" class="btn btn-success" name="action" value="save_and_new">
+                                            <i class="fas fa-plus me-2"></i>Guardar y Crear Otro
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('styles')
+<style>
+.form-control-color {
+    width: 100%;
+    height: 38px;
+}
+
+.card.bg-light {
+    border: 1px solid #e3e6f0;
+}
+
+.card.bg-light .card-header {
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.text-danger {
+    color: #e74a3b !important;
+}
+
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-group .btn {
+    margin-right: 10px;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+</style>
+@endpush
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const allDayCheckbox = document.getElementById('all_day');
+    const startDateInput = document.getElementById('start_date');
+    const endDateInput = document.getElementById('end_date');
+    const endDateContainer = document.getElementById('end_date_container');
+    
+    // Función para manejar el checkbox de todo el día
+    function toggleAllDay() {
+        if (allDayCheckbox.checked) {
+            // Cambiar a tipo date
+            startDateInput.type = 'date';
+            endDateInput.type = 'date';
+            
+            // Si hay valores datetime, convertir a date
+            if (startDateInput.value) {
+                startDateInput.value = startDateInput.value.split('T')[0];
+            }
+            if (endDateInput.value) {
+                endDateInput.value = endDateInput.value.split('T')[0];
+            }
+        } else {
+            // Cambiar a tipo datetime-local
+            startDateInput.type = 'datetime-local';
+            endDateInput.type = 'datetime-local';
+        }
+    }
+    
+    // Evento para el checkbox
+    allDayCheckbox.addEventListener('change', toggleAllDay);
+    
+    // Inicializar estado
+    toggleAllDay();
+    
+    // Validación de fechas
+    startDateInput.addEventListener('change', function() {
+        if (this.value && !endDateInput.value) {
+            // Auto-completar fecha de fin (1 hora después para datetime, mismo día para date)
+            if (allDayCheckbox.checked) {
+                endDateInput.value = this.value;
+            } else {
+                const startDate = new Date(this.value);
+                startDate.setHours(startDate.getHours() + 1);
+                endDateInput.value = startDate.toISOString().slice(0, 16);
+            }
+        }
+        
+        // Validar que la fecha de fin no sea anterior a la de inicio
+        if (this.value && endDateInput.value && this.value > endDateInput.value) {
+            endDateInput.value = this.value;
+        }
+        
+        // Establecer mínimo para fecha de fin
+        endDateInput.min = this.value;
+    });
+    
+    // Validación del formulario
+    document.getElementById('eventForm').addEventListener('submit', function(e) {
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
+        
+        if (startDate >= endDate) {
+            e.preventDefault();
+            alert('La fecha de fin debe ser posterior a la fecha de inicio.');
+            return false;
+        }
+        
+        // Validar que la fecha no sea en el pasado (opcional)
+        const now = new Date();
+        if (startDate < now) {
+            const confirm = window.confirm('La fecha de inicio es en el pasado. ¿Desea continuar?');
+            if (!confirm) {
+                e.preventDefault();
+                return false;
+            }
+        }
+    });
+    
+    // Auto-completar campos basado en el tipo de evento
+    document.getElementById('type').addEventListener('change', function() {
+        const colorInput = document.getElementById('color');
+        const prioritySelect = document.getElementById('priority');
+        
+        switch(this.value) {
+            case 'renta':
+                colorInput.value = '#28a745'; // Verde
+                if (!prioritySelect.value) prioritySelect.value = 'media';
+                break;
+            case 'mantenimiento':
+                colorInput.value = '#ffc107'; // Amarillo
+                if (!prioritySelect.value) prioritySelect.value = 'alta';
+                break;
+            case 'reunion':
+                colorInput.value = '#007bff'; // Azul
+                if (!prioritySelect.value) prioritySelect.value = 'media';
+                break;
+            case 'entrega':
+                colorInput.value = '#17a2b8'; // Cyan
+                if (!prioritySelect.value) prioritySelect.value = 'alta';
+                break;
+            case 'recogida':
+                colorInput.value = '#6f42c1'; // Púrpura
+                if (!prioritySelect.value) prioritySelect.value = 'alta';
+                break;
+            case 'otro':
+                colorInput.value = '#6c757d'; // Gris
+                if (!prioritySelect.value) prioritySelect.value = 'baja';
+                break;
+        }
+    });
+});
+</script>
+@endpush
+@endsection
