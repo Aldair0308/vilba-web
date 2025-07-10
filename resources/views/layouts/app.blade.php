@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" href="{{ asset('assets/img/favicon.ico') }}" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -45,7 +46,7 @@
         }
         
         .navbar-custom {
-            background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-dark) 100%) !important;
+            background: var(--brand-navy) !important;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
@@ -213,8 +214,8 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-custom">
             <div class="container">
-                <a class="navbar-brand navbar-brand-custom" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand navbar-brand-custom" href="{{ route('dashboard') }}">
+                    <img src="{{ asset('assets/img/logo/icon.png') }}" alt="Vilba" height="50" class="d-inline-block align-text-top">
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -225,7 +226,7 @@
                     <ul class="navbar-nav me-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                                <a class="nav-link" href="{{ route('dashboard') }}">Panel de control</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('clients.index') }}">Clientes</a>

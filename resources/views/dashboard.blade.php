@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - Vilba')
+@section('title', 'Panel de control - Vilba')
 
 @section('content')
 
@@ -12,7 +12,7 @@
                 <div class="container">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h1 class="h3 mb-0">Dashboard Principal</h1>
+                            <h1 class="h3 mb-0">Panel de control Principal</h1>
                             <p class="mb-0 opacity-75">Bienvenido, {{ Auth::user()->name }}. Aquí tienes un resumen de tu sistema.</p>
                         </div>
                         <div class="d-flex gap-2">
@@ -321,9 +321,16 @@
                 <div class="col-12">
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">
-                                <i class="fas fa-history me-2"></i>Actividad Reciente del Sistema
-                            </h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold text-primary">
+                                    <i class="fas fa-history me-2"></i>Actividad Reciente del Sistema
+                                </h6>
+                                <div class="d-flex align-items-center">
+                                    <button id="create-test-log-btn" class="btn btn-sm btn-outline-primary me-2" onclick="createTestLog()">Crear Log de Prueba</button>
+                                    <small class="text-muted me-2">Última actualización: <span id="last-update-time">--:--:--</span></small>
+                                    <span id="auto-update-status" class="badge bg-success">Actualizando automáticamente</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <!-- Indicador de actualización -->
@@ -564,10 +571,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('recent-logs-container');
         const lastUpdateTime = document.getElementById('last-update-time');
         
-        // Mostrar indicador de carga
-        updateIndicator.classList.remove('d-none');
+        console.log('🔄 Actualizando logs...', new Date().toLocaleTimeString());
         
-        fetch('/api/recent-logs', {
+        fetch('/api/recent-logs?t=' + Date.now(), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -578,33 +584,111 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success && data.logs.length > 0) {
-                updateLogsTable(data.logs);
+            console.log('📊 Datos recibidos:', {
+                success: data.success,
+                logsCount: data.logs ? data.logs.length : 0,
+                timestamp: data.timestamp,
+                totalLogs: data.total_logs,
+                debugInfo: data.debug_info
+            });
+            
+            if (data.success) {
+                console.log('✅ Respuesta exitosa del servidor');
+                console.log('🔍 Análisis detallado de logs:', {
+                    logsExists: !!data.logs,
+                    logsIsArray: Array.isArray(data.logs),
+                    logsLength: data.logs ? data.logs.length : 'N/A',
+                    logsType: typeof data.logs,
+                    firstLogSample: data.logs && data.logs.length > 0 ? data.logs[0] : 'No hay logs'
+                });
+                
+                if (data.logs && Array.isArray(data.logs) && data.logs.length > 0) {
+                    console.log('📝 Logs válidos recibidos:', data.logs.map(log => ({
+                        id: log.id,
+                        userName: log.userName,
+                        action: log.action,
+                        rawDate: log.rawDate,
+                        timeAgo: log.timeAgo
+                    })));
+                    updateLogsTable(data.logs);
+                } else {
+                    console.log('⚠️ No hay logs disponibles o logs inválidos:', {
+                        logs: data.logs,
+                        reason: !data.logs ? 'logs es null/undefined' : 
+                               !Array.isArray(data.logs) ? 'logs no es array' : 
+                               'logs array está vacío'
+                    });
+                    
+                    // Si hay contenido inicial guardado, restaurarlo en lugar de mostrar mensaje vacío
+                    if (window.initialLogsContent) {
+                        console.log('🔄 Restaurando contenido inicial guardado');
+                        const container = document.getElementById('recent-logs-container');
+                        if (container) {
+                            container.innerHTML = window.initialLogsContent;
+                        }
+                    } else {
+                        showNoLogsMessage();
+                    }
+                }
+            } else {
+                console.log('❌ Error en respuesta del servidor:', {
+                    success: data.success,
+                    message: data.message || 'Sin mensaje de error',
+                    fullResponse: data
+                });
+                
+                // Si hay contenido inicial guardado, restaurarlo en lugar de mostrar mensaje vacío
+                if (window.initialLogsContent) {
+                    console.log('🔄 Restaurando contenido inicial por error del servidor');
+                    const container = document.getElementById('recent-logs-container');
+                    if (container) {
+                        container.innerHTML = window.initialLogsContent;
+                    }
+                } else {
+                    showNoLogsMessage();
+                }
             }
-            // Si no hay logs nuevos, mantener el contenido actual
-            // No llamar a showNoLogsMessage() para preservar los logs iniciales
             
             // Actualizar tiempo de última actualización
             const now = new Date();
-            lastUpdateTime.textContent = now.toLocaleTimeString('es-ES', { 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit' 
-            });
+            if (lastUpdateTime) {
+                lastUpdateTime.textContent = now.toLocaleTimeString('es-ES', { 
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit' 
+                });
+            }
         })
         .catch(error => {
-            console.error('Error al actualizar logs:', error);
-            // En caso de error, mantener el contenido actual
+            console.error('❌ Error al actualizar logs:', error);
+            
+            // Si hay contenido inicial guardado, restaurarlo en lugar de mostrar mensaje vacío
+            if (window.initialLogsContent) {
+                console.log('🔄 Restaurando contenido inicial por error de red');
+                const container = document.getElementById('recent-logs-container');
+                if (container) {
+                    container.innerHTML = window.initialLogsContent;
+                }
+            } else {
+                showNoLogsMessage();
+            }
         })
         .finally(() => {
-            // Ocultar indicador de carga
-            updateIndicator.classList.add('d-none');
             isUpdating = false;
         });
     }
     
     function updateLogsTable(logs) {
+        console.log('🔧 Actualizando tabla con', logs.length, 'logs');
+        
         const container = document.getElementById('recent-logs-container');
+        if (!container) {
+            console.error('❌ Contenedor recent-logs-container no encontrado');
+            return;
+        }
+        
+        // Guardar el HTML anterior para comparar
+        const previousHTML = container.innerHTML;
         
         let tableHTML = `
             <div class="table-responsive">
@@ -620,9 +704,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     </thead>
                     <tbody id="logs-tbody">`;
         
-        logs.forEach(log => {
+        logs.forEach((log, index) => {
+            console.log(`📋 Log ${index + 1}:`, {
+                id: log.id,
+                userName: log.userName,
+                action: log.action,
+                timeAgo: log.timeAgo,
+                rawDate: log.rawDate
+            });
+            
             tableHTML += `
-                <tr>
+                <tr data-log-id="${log.id}" data-raw-date="${log.rawDate}">
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="avatar-sm me-2">
@@ -666,10 +758,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
             </div>`;
         
+        // Verificar si el contenido cambió
+        const contentChanged = previousHTML !== tableHTML;
+        console.log('🔄 ¿Contenido cambió?', contentChanged);
+        
+        if (contentChanged) {
+            console.log('✅ Actualizando DOM con nuevo contenido');
+        } else {
+            console.log('⚠️ El contenido es idéntico al anterior');
+        }
+        
         container.innerHTML = tableHTML;
-    }
-    
-    function showNoLogsMessage() {
+        console.log('✅ Tabla actualizada exitosamente');
+        }
+        
+        // Función para crear logs de prueba (SOLO PARA DEBUG)
+        function createTestLog() {
+            const btn = document.getElementById('create-test-log-btn');
+            btn.disabled = true;
+            btn.textContent = 'Creando...';
+            
+            fetch('/api/create-test-log', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('🧪 Resultado de crear log de prueba:', data);
+                if (data.success) {
+                    console.log('✅ Log de prueba creado exitosamente');
+                    // Forzar actualización inmediata
+                    setTimeout(() => {
+                        updateRecentLogs();
+                    }, 500);
+                } else {
+                    console.error('❌ Error al crear log de prueba:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('❌ Error en la petición:', error);
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.textContent = 'Crear Log de Prueba';
+            });
+        }
+        
+        function showNoLogsMessage() {
         const container = document.getElementById('recent-logs-container');
         container.innerHTML = `
             <div class="text-center py-4" id="no-logs-message">
@@ -682,17 +820,35 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>`;
     }
     
-    function startAutoUpdate() {
-        // No actualizar inmediatamente para preservar el contenido inicial
-        // Solo configurar la actualización automática
+    function startAutoUpdate(skipInitialUpdate = false) {
+        // Solo realizar actualización inmediata si no hay contenido inicial o se especifica
+        const container = document.getElementById('recent-logs-container');
+        const hasInitialContent = container && container.innerHTML.trim() !== '' && !container.innerHTML.includes('No hay actividad reciente');
+        
+        console.log('🚀 Iniciando auto-update. ¿Saltar actualización inicial?', skipInitialUpdate, '¿Hay contenido inicial?', hasInitialContent);
+        
+        // Guardar el contenido inicial para poder restaurarlo si es necesario
+        if (hasInitialContent && !window.initialLogsContent) {
+            window.initialLogsContent = container.innerHTML;
+            console.log('💾 Contenido inicial guardado para respaldo');
+        }
+        
+        if (!skipInitialUpdate && !hasInitialContent) {
+            console.log('📥 Realizando actualización inicial');
+            updateRecentLogs();
+        } else {
+            console.log('⏭️ Saltando actualización inicial - preservando contenido existente');
+        }
         
         // Configurar actualización cada 5 segundos
         updateInterval = setInterval(updateRecentLogs, 5000);
         
         // Actualizar estado
         const status = document.getElementById('auto-update-status');
-        status.textContent = 'Actualización automática activa';
-        status.className = 'badge bg-success ms-2';
+        if (status) {
+            status.textContent = 'Actualización automática activa';
+            status.className = 'badge bg-success ms-2';
+        }
     }
     
     function stopAutoUpdate() {
@@ -703,19 +859,38 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Actualizar estado
         const status = document.getElementById('auto-update-status');
-        status.textContent = 'Actualización automática pausada';
-        status.className = 'badge bg-warning ms-2';
+        if (status) {
+            status.textContent = 'Actualización automática pausada';
+            status.className = 'badge bg-warning ms-2';
+        }
     }
     
-    // Iniciar actualización automática
-    startAutoUpdate();
+    // Debug: Verificar contenido inicial al cargar la página
+    console.log('🔍 Verificando contenido inicial al cargar la página');
+    const initialContainer = document.getElementById('recent-logs-container');
+    if (initialContainer) {
+        console.log('📋 Contenido inicial encontrado:', {
+            hasContent: initialContainer.innerHTML.trim() !== '',
+            contentLength: initialContainer.innerHTML.length,
+            containsNoLogsMessage: initialContainer.innerHTML.includes('No hay actividad reciente'),
+            contentPreview: initialContainer.innerHTML.substring(0, 200) + '...'
+        });
+    } else {
+        console.error('❌ Contenedor initial no encontrado');
+    }
+    
+    // Esperar un poco antes de iniciar para permitir que se cargue el contenido inicial
+    setTimeout(() => {
+        console.log('⏰ Iniciando auto-update después de 2 segundos');
+        startAutoUpdate(true); // Saltar la primera actualización para preservar contenido inicial
+    }, 2000);
     
     // Pausar actualización cuando la pestaña no está visible
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
             stopAutoUpdate();
         } else {
-            startAutoUpdate();
+            startAutoUpdate(false); // Permitir actualización inmediata al volver a la pestaña
         }
     });
     
