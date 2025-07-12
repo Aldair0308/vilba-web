@@ -911,6 +911,47 @@ document.addEventListener('DOMContentLoaded', function() {
         stopAutoUpdate();
     });
     
+    // Show Brave browser specific alert
+    window.showBraveAlert = function() {
+        const alertHTML = `
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="brave-alert">
+                <h5 class="alert-heading"><i class="fab fa-brave"></i> Brave Browser Detectado</h5>
+                <p><strong>Las notificaciones están deshabilitadas por defecto en Brave por razones de privacidad.</strong></p>
+                <hr>
+                <h6>Para habilitar las notificaciones:</h6>
+                <ol>
+                    <li>Ve a <code>brave://settings/privacy</code></li>
+                    <li>Busca "<strong>Use Google services for push messaging</strong>"</li>
+                    <li>Activa esta opción</li>
+                    <li>Reinicia el navegador</li>
+                    <li>Regresa a esta página y prueba nuevamente</li>
+                </ol>
+                <hr>
+                <p class="mb-0">
+                    <strong>Alternativas:</strong><br>
+                    • Usa Chrome, Firefox o Edge para mejor compatibilidad<br>
+                    • Las notificaciones funcionan en Brave para Android
+                </p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        
+        // Insert alert at the top of the main content
+        const mainContent = document.querySelector('.container-fluid');
+        if (mainContent && !document.getElementById('brave-alert')) {
+            mainContent.insertAdjacentHTML('afterbegin', alertHTML);
+            
+            // Auto-hide after 15 seconds
+            setTimeout(() => {
+                const alert = document.getElementById('brave-alert');
+                if (alert) {
+                    alert.classList.remove('show');
+                    setTimeout(() => alert.remove(), 150);
+                }
+            }, 15000);
+        }
+    };
+    
     // Firebase Notifications Management
     function updateNotificationButtonState() {
         const btn = document.getElementById('enable-notifications-btn');
@@ -1014,8 +1055,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Crear notificación de prueba
             const notification = new Notification('🎉 Notificación de Prueba - Vilba', {
                 body: 'Esta es una notificación de prueba del sistema Vilba. ¡Todo funciona correctamente! 🚀',
-                icon: '/assets/img/logo/icon.png',
-                badge: '/assets/img/logo/icon.png',
+                icon: '/assets/img/favicon.ico',
+                badge: '/assets/img/favicon.ico',
                 tag: 'vilba-test-notification',
                 requireInteraction: false,
                 silent: false,

@@ -21,8 +21,8 @@ messaging.onBackgroundMessage(function(payload) {
   const notificationTitle = payload.notification.title || 'Nueva notificación';
   const notificationOptions = {
     body: payload.notification.body || 'Tienes una nueva notificación',
-    icon: '/assets/img/logo/icon.png',
-    badge: '/assets/img/logo/icon.png',
+    icon: '/assets/img/favicon.ico',
+    badge: '/assets/img/favicon.ico',
     tag: 'vilba-notification',
     requireInteraction: true,
     actions: [
