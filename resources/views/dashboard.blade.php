@@ -221,6 +221,18 @@
                                         <span>Mi Perfil</span>
                                     </a>
                                 </div>
+                                <div class="col-lg-2 col-md-4 mb-3">
+                                    <button id="enable-notifications-btn" class="btn btn-outline-primary btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                        <i class="fas fa-bell fa-2x mb-2"></i>
+                                        <span>Activar Notificaciones</span>
+                                    </button>
+                                </div>
+                                <div class="col-lg-2 col-md-4 mb-3">
+                                    <button id="test-notification-btn" class="btn btn-outline-success btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center" style="display: none;">
+                                        <i class="fas fa-paper-plane fa-2x mb-2"></i>
+                                        <span>Notificación de Prueba</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -898,6 +910,175 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('beforeunload', function() {
         stopAutoUpdate();
     });
+    
+    // Firebase Notifications Management
+    function updateNotificationButtonState() {
+        const btn = document.getElementById('enable-notifications-btn');
+        const testBtn = document.getElementById('test-notification-btn');
+        if (!btn) return;
+        
+        if ('Notification' in window) {
+            const permission = Notification.permission;
+            
+            switch(permission) {
+                case 'granted':
+                    btn.innerHTML = '<i class="fas fa-bell fa-2x mb-2 text-success"></i><span>Notificaciones Activas</span>';
+                    btn.className = 'btn btn-success btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center';
+                    btn.disabled = true;
+                    if (testBtn) testBtn.style.display = 'block';
+                    break;
+                case 'denied':
+                    btn.innerHTML = '<i class="fas fa-bell-slash fa-2x mb-2 text-danger"></i><span>Notificaciones Bloqueadas</span>';
+                    btn.className = 'btn btn-danger btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center';
+                    btn.disabled = true;
+                    if (testBtn) testBtn.style.display = 'none';
+                    break;
+                default:
+                    btn.innerHTML = '<i class="fas fa-bell fa-2x mb-2"></i><span>Activar Notificaciones</span>';
+                    btn.className = 'btn btn-outline-primary btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center';
+                    btn.disabled = false;
+                    if (testBtn) testBtn.style.display = 'none';
+            }
+        } else {
+            btn.innerHTML = '<i class="fas fa-times fa-2x mb-2 text-muted"></i><span>No Soportado</span>';
+            btn.className = 'btn btn-secondary btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center';
+            btn.disabled = true;
+            if (testBtn) testBtn.style.display = 'none';
+        }
+    }
+    
+    // Add click event listener to notification button
+    document.getElementById('enable-notifications-btn').addEventListener('click', async function() {
+        const btn = this;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin fa-2x mb-2"></i><span>Solicitando...</span>';
+        btn.disabled = true;
+        
+        try {
+            // Detailed error checking
+            if (typeof firebase === 'undefined') {
+                throw new Error('Firebase SDK no está cargado. Verifica la conexión a internet y que los scripts de Firebase estén incluidos correctamente.');
+            }
+            
+            if (typeof requestNotificationPermission !== 'function') {
+                const errorDetails = [];
+                errorDetails.push('Función requestNotificationPermission no encontrada');
+                
+                if (window.firebaseError) {
+                    errorDetails.push('Error de Firebase: ' + window.firebaseError);
+                }
+                
+                if (typeof firebase !== 'undefined') {
+                    errorDetails.push('Firebase SDK está cargado pero la función no se inicializó');
+                }
+                
+                throw new Error(errorDetails.join('\n'));
+            }
+            
+            await requestNotificationPermission();
+            
+        } catch (error) {
+            console.error('Error requesting notification permission:', error);
+            
+            // Show detailed error information
+            let errorMessage = 'Error al solicitar permisos de notificación:\n\n';
+            errorMessage += error.message + '\n\n';
+            errorMessage += 'Información técnica:\n';
+            errorMessage += '- Firebase disponible: ' + (typeof firebase !== 'undefined' ? 'Sí' : 'No') + '\n';
+            errorMessage += '- Función disponible: ' + (typeof requestNotificationPermission === 'function' ? 'Sí' : 'No') + '\n';
+            errorMessage += '- Navegador soporta notificaciones: ' + ('Notification' in window ? 'Sí' : 'No') + '\n';
+            errorMessage += '- Service Worker soportado: ' + ('serviceWorker' in navigator ? 'Sí' : 'No');
+            
+            alert(errorMessage);
+        } finally {
+            setTimeout(updateNotificationButtonState, 1000);
+        }
+    });
+    
+    // Test notification function
+    function sendTestNotification() {
+        console.log('🧪 Enviando notificación de prueba...');
+        
+        // Verificar soporte del navegador
+        if (!('Notification' in window)) {
+            alert('❌ Error: Tu navegador no soporta notificaciones web.');
+            return;
+        }
+        
+        // Verificar permisos
+        if (Notification.permission !== 'granted') {
+            alert('❌ Error: Las notificaciones no están habilitadas.\n\nPor favor, haz clic en "Activar Notificaciones" primero.');
+            return;
+        }
+        
+        try {
+            // Crear notificación de prueba
+            const notification = new Notification('🎉 Notificación de Prueba - Vilba', {
+                body: 'Esta es una notificación de prueba del sistema Vilba. ¡Todo funciona correctamente! 🚀',
+                icon: '/assets/img/logo/icon.png',
+                badge: '/assets/img/logo/icon.png',
+                tag: 'vilba-test-notification',
+                requireInteraction: false,
+                silent: false,
+                timestamp: Date.now(),
+                data: {
+                    type: 'test',
+                    source: 'dashboard',
+                    timestamp: new Date().toISOString()
+                }
+            });
+            
+            // Manejar click en la notificación
+            notification.onclick = function(event) {
+                console.log('👆 Usuario hizo clic en la notificación de prueba');
+                window.focus();
+                notification.close();
+                
+                // Mostrar mensaje de confirmación
+                setTimeout(() => {
+                    alert('✅ ¡Perfecto! La notificación funciona correctamente.\n\nAhora puedes recibir notificaciones del sistema Vilba.');
+                }, 100);
+            };
+            
+            // Manejar errores
+            notification.onerror = function(event) {
+                console.error('❌ Error en la notificación:', event);
+                alert('❌ Error al mostrar la notificación. Verifica la configuración del navegador.');
+            };
+            
+            // Auto cerrar después de 8 segundos
+            setTimeout(() => {
+                if (notification) {
+                    notification.close();
+                    console.log('⏰ Notificación de prueba cerrada automáticamente');
+                }
+            }, 8000);
+            
+            console.log('✅ Notificación de prueba enviada exitosamente');
+            
+            // Mostrar feedback visual temporal
+            const testBtn = document.getElementById('test-notification-btn');
+            if (testBtn) {
+                const originalHTML = testBtn.innerHTML;
+                testBtn.innerHTML = '<i class="fas fa-check fa-2x mb-2 text-success"></i><span>¡Enviada!</span>';
+                testBtn.disabled = true;
+                
+                setTimeout(() => {
+                    testBtn.innerHTML = originalHTML;
+                    testBtn.disabled = false;
+                }, 2000);
+            }
+            
+        } catch (error) {
+            console.error('❌ Error creando notificación:', error);
+            alert('❌ Error al crear la notificación:\n\n' + error.message + '\n\nVerifica que las notificaciones estén habilitadas en tu navegador.');
+        }
+    }
+    
+    // Add click event listener to test notification button
+    document.getElementById('test-notification-btn').addEventListener('click', sendTestNotification);
+    
+    // Check notification status on page load
+    updateNotificationButtonState();
 });
 </script>
 @endpush

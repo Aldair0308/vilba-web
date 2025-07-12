@@ -21,6 +21,10 @@
     <!-- Internationalization CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/i18n.css') }}">
     
+    <!-- Firebase CDN v8 (Compatible) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+    
     <!-- Custom Brand Colors CSS -->
     <style>
         :root {
@@ -326,6 +330,12 @@
     
     <!-- Internationalization JS Module -->
     <script type="module" src="{{ asset('assets/js/i18n-module.js') }}"></script>
+    
+    <!-- Firebase Configuration -->
+    <script src="{{ asset('js/firebase.js') }}" defer></script>
+    
+    <!-- Firebase Diagnostic Script (Temporal) -->
+    <script src="{{ asset('js/firebase-test.js') }}" defer></script>
     
     <!-- Custom Scripts -->
     @stack('scripts')

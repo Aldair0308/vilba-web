@@ -124,7 +124,7 @@ class EventController extends Controller
                 'type' => 'required|in:renta,mantenimiento,reunion,entrega,recogida,otro',
                 'status' => 'sometimes|in:programado,en_progreso,completado,cancelado',
                 'priority' => 'required|in:baja,media,alta,urgente',
-                'start_date' => 'required|date|after_or_equal:now',
+                'start_date' => 'required|date',
                 'end_date' => 'nullable|date|after_or_equal:start_date',
                 'all_day' => 'sometimes|boolean',
                 'location' => 'nullable|string|max:255',
@@ -145,9 +145,7 @@ class EventController extends Controller
                 'priority.in' => 'La prioridad debe ser válida',
                 'start_date.required' => 'La fecha de inicio es obligatoria',
                 'start_date.date' => 'La fecha de inicio debe ser una fecha válida',
-                'start_date.after_or_equal' => 'La fecha de inicio no puede ser en el pasado',
-                'start_date.after_or_equal' => 'La fecha de inicio no puede ser en el pasado',
-                'end_date.date' => 'La fecha de fin debe ser una fecha válida',
+
                 'end_date.date' => 'La fecha de fin debe ser una fecha válida',
                 'end_date.after_or_equal' => 'La fecha de fin debe ser posterior o igual a la fecha de inicio',
                 'client_id.exists' => 'El cliente seleccionado no existe',
@@ -173,37 +171,53 @@ class EventController extends Controller
 
             Log::info('Evento creado exitosamente', ['event_id' => $event->id]);
 
-            if ($request->expectsJson()) {
+            if ($request->expectsJson() || $request->ajax() || $request->wantsJson()) {
                 return response()->json([
                     'success' => true,
                     'data' => $event->load(['client', 'crane', 'user']),
                     'message' => 'Evento creado exitosamente'
-                ], 201);
+                ], 201)->header('Content-Type', 'application/json');
             }
 
             return redirect()->route('events.index')
                            ->with('success', 'Evento creado exitosamente');
         } catch (ValidationException $e) {
-            if ($request->expectsJson()) {
+            if ($request->expectsJson() || $request->ajax() || $request->wantsJson()) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Datos de validación incorrectos',
                     'errors' => $e->errors()
-                ], 422);
+                ], 422)->header('Content-Type', 'application/json');
             }
 
             return back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
-            Log::error('Error al crear evento: ' . $e->getMessage());
+            Log::error('Error al crear evento: ' . $e->getMessage(), [
+                'exception' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
             
-            if ($request->expectsJson()) {
-                return response()->json([
+            if ($request->expectsJson() || $request->ajax() || $request->wantsJson()) {
+                $errorData = [
                     'success' => false,
-                    'message' => 'Error interno del servidor'
-                ], 500);
+                    'message' => 'Error interno del servidor al crear el evento'
+                ];
+                
+                // En modo debug, incluir información detallada del error
+                if (config('app.debug')) {
+                    $errorData['exception'] = $e->getMessage();
+                    $errorData['file'] = basename($e->getFile());
+                    $errorData['line'] = $e->getLine();
+                    // No incluir trace completo para evitar problemas con JSON
+                    $errorData['class'] = get_class($e);
+                }
+                
+                return response()->json($errorData, 500)->header('Content-Type', 'application/json');
             }
 
-            return back()->with('error', 'Error al crear el evento')->withInput();
+            return back()->with('error', 'Error al crear el evento: ' . $e->getMessage())->withInput();
         }
     }
 
@@ -265,7 +279,7 @@ class EventController extends Controller
                 'type' => 'required|in:renta,mantenimiento,reunion,entrega,recogida,otro',
                 'status' => 'sometimes|in:programado,en_progreso,completado,cancelado',
                 'priority' => 'required|in:baja,media,alta,urgente',
-                'start_date' => 'required|date|after_or_equal:now',
+                'start_date' => 'required|date',
                 'end_date' => 'nullable|date|after_or_equal:start_date',
                 'all_day' => 'sometimes|boolean',
                 'location' => 'nullable|string|max:255',
@@ -441,16 +455,43 @@ class EventController extends Controller
 
             $query = Event::with(['client', 'crane', 'user']);
 
+            // Filtrar por rango de fechas
             if ($start && $end) {
                 $query->whereBetween('start_date', [$start, $end]);
             }
+            
+            // Aplicar filtros adicionales
+            if ($request->has('status') && $request->status) {
+                $query->where('status', $request->status);
+            }
+            
+            if ($request->has('type') && $request->type) {
+                $query->where('type', $request->type);
+            }
+            
+            if ($request->has('priority') && $request->priority) {
+                $query->where('priority', $request->priority);
+            }
+            
+            if ($request->has('client_id') && $request->client_id) {
+                $query->where('client_id', $request->client_id);
+            }
+            
+            if ($request->has('user_id') && $request->user_id) {
+                $query->where('user_id', $request->user_id);
+            }
 
             $events = $query->get()->map(function ($event) {
+                // Solo incluir eventos que tengan fecha de inicio
+                if (!$event->start_date) {
+                    return null;
+                }
+                
                 return [
                     'id' => $event->_id,
                     'title' => $event->title,
                     'start' => $event->start_date->toISOString(),
-                    'end' => $event->end_date->toISOString(),
+                    'end' => $event->end_date ? $event->end_date->toISOString() : null,
                     'allDay' => $event->all_day,
                     'backgroundColor' => $event->color ?: '#007bff',
                     'borderColor' => $event->color ?: '#007bff',
@@ -460,11 +501,11 @@ class EventController extends Controller
                     'status' => $event->status,
                     'priority' => $event->priority,
                     'location' => $event->location,
-                    'client' => $event->client ? $event->client->name : null,
-                    'crane' => $event->crane ? $event->crane->nombre : null,
-                    'user' => $event->user ? $event->user->name : null,
+                    'client' => $event->client ? ['name' => $event->client->name] : null,
+                    'crane' => $event->crane ? ['nombre' => $event->crane->nombre] : null,
+                    'user' => $event->user ? ['name' => $event->user->name] : null,
                 ];
-            });
+            })->filter(); // Filtrar elementos null
 
             return response()->json($events);
         } catch (\Exception $e) {

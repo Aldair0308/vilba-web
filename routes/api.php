@@ -20,6 +20,45 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Route for registering FCM web tokens
+Route::middleware('auth')->post('/register-web-token', function (Request $request) {
+    try {
+        $request->validate([
+            'token' => 'required|string',
+            'platform' => 'required|string|in:web,android,ios'
+        ]);
+
+        $user = auth()->user();
+        $token = $request->input('token');
+        $platform = $request->input('platform');
+
+        // Here you can save the token to database or send to external service
+        // For now, we'll just log it and return success
+        \Log::info('FCM Token registered', [
+            'user_id' => $user->id,
+            'user_name' => $user->name,
+            'token' => $token,
+            'platform' => $platform,
+            'timestamp' => now()
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Token registrado exitosamente',
+            'data' => [
+                'user_id' => $user->id,
+                'platform' => $platform,
+                'registered_at' => now()->toISOString()
+            ]
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Error al registrar token: ' . $e->getMessage()
+        ], 500);
+    }
+});
+
 // Ruta temporal para crear logs de prueba (SOLO PARA DEBUG)
 Route::middleware('auth')->post('/create-test-log', function () {
     try {

@@ -472,6 +472,14 @@ document.addEventListener('DOMContentLoaded', function() {
         endDate.setHours(date.getHours() + 1);
         document.getElementById('modal-end-date').value = endDate.toISOString().slice(0, 16);
         
+        // Habilitar todos los inputs del modal
+        const modal = document.getElementById('eventModal');
+        const inputs = modal.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.disabled = false;
+            input.readOnly = false;
+        });
+        
         new bootstrap.Modal(document.getElementById('eventModal')).show();
     }
     
@@ -498,6 +506,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('modal-location').value = event.location || '';
             document.getElementById('modal-description').value = event.description || '';
             
+            // Habilitar todos los inputs del modal
+            const modal = document.getElementById('eventModal');
+            const inputs = modal.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.disabled = false;
+                input.readOnly = false;
+            });
+            
             new bootstrap.Modal(document.getElementById('eventModal')).show();
         })
         .catch(error => {
@@ -518,22 +534,59 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             body: formData,
             headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
             }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
                 bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
                 calendar.refetchEvents();
                 alert(eventId ? 'Evento actualizado correctamente' : 'Evento creado correctamente');
             } else {
-                alert('Error: ' + (data.message || 'Error desconocido'));
+                let errorMessage = 'Error técnico al guardar el evento:\n\n';
+                
+                if (data.errors) {
+                    // Errores de validación
+                    errorMessage += 'Errores de validación:\n';
+                    Object.keys(data.errors).forEach(field => {
+                        errorMessage += `- ${field}: ${data.errors[field].join(', ')}\n`;
+                    });
+                } else if (data.message) {
+                    // Mensaje de error general
+                    errorMessage += `Mensaje: ${data.message}\n`;
+                } else {
+                    errorMessage += 'Error desconocido del servidor\n';
+                }
+                
+                // Agregar información adicional si está disponible
+                if (data.exception) {
+                    errorMessage += `\nExcepción: ${data.exception}\n`;
+                }
+                if (data.file) {
+                    errorMessage += `Archivo: ${data.file}\n`;
+                }
+                if (data.line) {
+                    errorMessage += `Línea: ${data.line}\n`;
+                }
+                
+                alert(errorMessage);
             }
         })
         .catch(error => {
             console.error('Error saving event:', error);
-            alert('Error al guardar el evento');
+            let errorMessage = 'Error técnico al guardar el evento:\n\n';
+            errorMessage += `Tipo: ${error.name || 'Error de red/conexión'}\n`;
+            errorMessage += `Mensaje: ${error.message || 'Error desconocido'}\n`;
+            errorMessage += `\nDetalles técnicos: ${error.stack || 'No disponible'}`;
+            alert(errorMessage);
         });
     });
     
@@ -609,6 +662,23 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             startInput.type = 'datetime-local';
             endInput.type = 'datetime-local';
+        }
+    });
+    
+    // Event listener para cuando se abra el modal
+    document.getElementById('eventModal').addEventListener('shown.bs.modal', function() {
+        // Asegurar que todos los inputs estén habilitados
+        const inputs = this.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.disabled = false;
+            input.readOnly = false;
+            input.style.pointerEvents = 'auto';
+        });
+        
+        // Enfocar el primer input
+        const firstInput = this.querySelector('input[type="text"]');
+        if (firstInput) {
+            setTimeout(() => firstInput.focus(), 100);
         }
     });
     
