@@ -118,6 +118,13 @@ Route::patch('/cranes/{crane}/rented', [CraneController::class, 'setRented'])->n
     Route::get('/quotes/client/{client}', [QuoteController::class, 'byClient'])->name('quotes.by-client');
     Route::get('/quotes-stats', [QuoteController::class, 'stats'])->name('quotes.stats');
     
+    // Rutas para generación de PDFs de cotizaciones
+    Route::get('/quotes/{quote}/pdf', [QuoteController::class, 'generatePdf'])->name('quotes.pdf');
+    Route::get('/quotes/{quote}/pdf/preview', [QuoteController::class, 'previewPdf'])->name('quotes.pdf.preview');
+    Route::post('/quotes/bulk-pdf', [QuoteController::class, 'generateBulkPdf'])->name('quotes.bulk-pdf');
+    Route::get('/quotes/create-with-pdf', [QuoteController::class, 'createWithPdf'])->name('quotes.create-with-pdf');
+    Route::post('/quotes/store-and-generate-pdf', [QuoteController::class, 'storeAndGeneratePdf'])->name('quotes.store-and-generate-pdf');
+    
     // CRUD de Eventos
     Route::resource('events', EventController::class);
     

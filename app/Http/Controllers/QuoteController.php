@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
+use App\Services\QuotePdfService;
 
 class QuoteController extends Controller
 {
@@ -102,11 +103,10 @@ class QuoteController extends Controller
     {
         try {
             $clients = Client::where('status', Client::STATUS_ACTIVE)->get(['_id', 'name']);
-            $files = File::all(['_id', 'name', 'type']);
             $cranes = Crane::where('estado', Crane::STATUS_ACTIVE)->get(['_id', 'nombre', 'marca', 'modelo', 'capacidad', 'tipo', 'precios']);
             $users = User::all(['_id', 'name']);
 
-            return view('quotes.create', compact('clients', 'files', 'cranes', 'users'));
+            return view('quotes.create', compact('clients', 'cranes', 'users'));
 
         } catch (\Exception $e) {
             Log::error('Error al cargar formulario de creación de cotización: ' . $e->getMessage());
@@ -124,7 +124,6 @@ class QuoteController extends Controller
                 'name' => 'required|string|max:255',
                 'zone' => 'required|string|max:255',
                 'clientId' => 'required|string|exists:clients,_id',
-                'fileId' => 'required|string|exists:files,_id',
                 'status' => ['sometimes', Rule::in([Quote::STATUS_PENDING, Quote::STATUS_APPROVED, Quote::STATUS_REJECTED, Quote::STATUS_ACTIVE, Quote::STATUS_COMPLETED])],
                 'cranes' => 'required|array|min:1',
                 'cranes.*.crane' => 'required|string|exists:cranes,_id',
@@ -133,15 +132,48 @@ class QuoteController extends Controller
                 'iva' => 'nullable|numeric|min:0|max:100',
                 'total' => 'nullable|string',
                 'responsibleId' => 'required|string|exists:users,_id',
+                'description' => 'nullable|string',
             ]);
 
-            // Crear la cotización
+            // Crear la cotización sin fileId
             $quote = Quote::create($validatedData);
 
             // Calcular el total automáticamente si no se proporcionó
             if (!$quote->total) {
                 $quote->total = (string) $quote->calculated_total;
                 $quote->save();
+            }
+
+            // Generar PDF automáticamente
+            try {
+                $pdfService = new \App\Services\QuotePdfService();
+                $pdf = $pdfService->generateQuotePdf($quote);
+                
+                // Obtener el contenido del PDF
+                $pdfContent = $pdf->output();
+                
+                // Convertir a base64
+                $base64Content = base64_encode($pdfContent);
+                
+                // Crear nombre del archivo
+                $fileName = 'Cotización ' . $quote->name;
+                
+                // Crear registro del archivo en la base de datos con base64
+                $file = File::create([
+                    'name' => $fileName,
+                    'base64' => $base64Content,
+                    'type' => File::TYPE_PDF,
+                    'department' => 'cotizaciones',
+                    'responsible_id' => auth()->id(),
+                ]);
+                
+                // Asociar el archivo a la cotización
+                $quote->fileId = $file->_id;
+                $quote->save();
+                
+            } catch (\Exception $pdfError) {
+                \Log::warning('Error al generar PDF automáticamente: ' . $pdfError->getMessage());
+                // Continuar sin PDF si hay error
             }
 
             if ($request->expectsJson()) {
@@ -457,6 +489,190 @@ class QuoteController extends Controller
                 'success' => false,
                 'message' => 'Error al obtener las estadísticas'
             ], 500);
+        }
+    }
+
+    /**
+     * Generar PDF de una cotización
+     */
+    public function generatePdf(string $id, QuotePdfService $pdfService)
+    {
+        try {
+            $quote = Quote::with(['client', 'responsible'])->findOrFail($id);
+            
+            $pdf = $pdfService->generateQuotePdf($quote);
+            
+            $filename = "cotizacion_{$quote->_id}_" . date('Y-m-d') . ".pdf";
+            
+            return $pdf->download($filename);
+
+        } catch (\Exception $e) {
+            Log::error('Error al generar PDF de cotización: ' . $e->getMessage());
+            
+            if (request()->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Error al generar el PDF de la cotización'
+                ], 500);
+            }
+
+            return redirect()->back()
+                           ->with('error', 'Error al generar el PDF de la cotización');
+        }
+    }
+
+    /**
+     * Previsualizar PDF de una cotización
+     */
+    public function previewPdf(string $id, QuotePdfService $pdfService)
+    {
+        try {
+            $quote = Quote::with(['client', 'responsible'])->findOrFail($id);
+            
+            $pdf = $pdfService->generateQuotePdf($quote);
+            
+            return $pdf->stream("cotizacion_{$quote->_id}.pdf");
+
+        } catch (\Exception $e) {
+            Log::error('Error al previsualizar PDF de cotización: ' . $e->getMessage());
+            
+            return redirect()->back()
+                           ->with('error', 'Error al previsualizar el PDF de la cotización');
+        }
+    }
+
+    /**
+     * Generar PDF masivo de múltiples cotizaciones
+     */
+    public function generateBulkPdf(Request $request, QuotePdfService $pdfService)
+    {
+        try {
+            $validatedData = $request->validate([
+                'quote_ids' => 'required|array|min:1',
+                'quote_ids.*' => 'required|string|exists:quotes,_id'
+            ]);
+
+            $pdf = $pdfService->generateBulkQuotePdf($validatedData['quote_ids']);
+            
+            $filename = "cotizaciones_" . date('Y-m-d_H-i-s') . ".pdf";
+            
+            return $pdf->download($filename);
+
+        } catch (\Exception $e) {
+            Log::error('Error al generar PDF masivo de cotizaciones: ' . $e->getMessage());
+            
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Error al generar el PDF de las cotizaciones'
+                ], 500);
+            }
+
+            return redirect()->back()
+                           ->with('error', 'Error al generar el PDF de las cotizaciones');
+        }
+    }
+
+    /**
+     * Mostrar formulario para crear cotización con generación de PDF
+     */
+    public function createWithPdf()
+    {
+        try {
+            $clients = Client::where('status', Client::STATUS_ACTIVE)->get(['_id', 'name', 'email', 'phone', 'rfc', 'address']);
+            $cranes = Crane::where('estado', Crane::STATUS_ACTIVE)->get(['_id', 'nombre', 'marca', 'modelo', 'capacidad', 'tipo', 'precios']);
+            $users = User::all(['_id', 'name']);
+
+            return view('quotes.create-with-pdf', compact('clients', 'cranes', 'users'));
+
+        } catch (\Exception $e) {
+            Log::error('Error al cargar formulario de creación de cotización con PDF: ' . $e->getMessage());
+            return redirect()->route('quotes.index')->with('error', 'Error al cargar el formulario');
+        }
+    }
+
+    /**
+     * Crear cotización y generar PDF inmediatamente
+     */
+    public function storeAndGeneratePdf(Request $request, QuotePdfService $pdfService)
+    {
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'zone' => 'required|string|max:255',
+                'clientId' => 'required|string|exists:clients,_id',
+                'cranes' => 'required|array|min:1',
+                'cranes.*.crane' => 'required|string|exists:cranes,_id',
+                'cranes.*.dias' => 'required|numeric|min:1',
+                'cranes.*.precio' => 'required|numeric|min:0',
+                'iva' => 'nullable|numeric|min:0|max:100',
+                'responsibleId' => 'required|string|exists:users,_id',
+                'generate_pdf' => 'boolean'
+            ]);
+
+            // Crear la cotización
+            $quote = Quote::create($validatedData);
+
+            // Calcular el total automáticamente
+            if (!$quote->total) {
+                $quote->total = (string) $quote->calculated_total;
+                $quote->save();
+            }
+
+            // Si se solicita generar PDF
+            if ($request->boolean('generate_pdf', true)) {
+                $pdf = $pdfService->generateQuotePdf($quote);
+                $filename = "cotizacion_{$quote->_id}_" . date('Y-m-d') . ".pdf";
+                
+                if ($request->expectsJson()) {
+                    return response()->json([
+                        'success' => true,
+                        'data' => $quote->load(['client', 'responsible']),
+                        'message' => 'Cotización creada exitosamente',
+                        'pdf_url' => route('quotes.generate-pdf', $quote->_id)
+                    ], 201);
+                }
+
+                return $pdf->download($filename);
+            }
+
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'data' => $quote->load(['client', 'responsible']),
+                    'message' => 'Cotización creada exitosamente'
+                ], 201);
+            }
+
+            return redirect()->route('quotes.show', $quote->_id)
+                           ->with('success', 'Cotización creada exitosamente');
+
+        } catch (ValidationException $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Datos de validación incorrectos',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+
+            return redirect()->back()
+                           ->withErrors($e->errors())
+                           ->withInput();
+
+        } catch (\Exception $e) {
+            Log::error('Error al crear cotización con PDF: ' . $e->getMessage());
+            
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Error interno del servidor'
+                ], 500);
+            }
+
+            return redirect()->back()
+                           ->with('error', 'Error al crear la cotización')
+                           ->withInput();
         }
     }
 }

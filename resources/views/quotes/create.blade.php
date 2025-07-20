@@ -72,21 +72,13 @@
                                             @enderror
                                         </div>
 
-                                        <!-- Archivo/PDF -->
+                                        <!-- Descripción -->
                                         <div class="mb-3">
-                                            <label for="fileId" class="form-label">Archivo PDF <span class="text-danger">*</span></label>
-                                            <select class="form-select @error('fileId') is-invalid @enderror" 
-                                                id="fileId" name="fileId" required>
-                                                <option value="">Seleccionar archivo...</option>
-                                                @foreach($files as $file)
-                                                    @if($file->type === 'pdf')
-                                                        <option value="{{ $file->_id }}" {{ old('fileId') == $file->_id ? 'selected' : '' }}>
-                                                            {{ $file->name }}
-                                                        </option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            @error('fileId')
+                                            <label for="description" class="form-label">Descripción</label>
+                                            <textarea class="form-control @error('description') is-invalid @enderror" 
+                                                id="description" name="description" rows="3" 
+                                                placeholder="Descripción adicional de la cotización...">{{ old('description') }}</textarea>
+                                            @error('description')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>

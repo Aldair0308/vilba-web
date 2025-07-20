@@ -21,6 +21,24 @@
                             <a href="{{ route('quotes.edit', $quote->_id) }}" class="btn btn-primary">
                                 <i class="fas fa-edit me-2"></i>Editar
                             </a>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-success dropdown-toggle" 
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-file-pdf me-2"></i>PDF
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('quotes.pdf.preview', $quote->_id) }}" target="_blank">
+                                            <i class="fas fa-eye me-2"></i>Vista Previa
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('quotes.pdf', $quote->_id) }}">
+                                            <i class="fas fa-download me-2"></i>Descargar PDF
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                             <button type="button" class="btn btn-outline-danger" 
                                     onclick="confirmDelete('{{ $quote->_id }}', '{{ $quote->name }}')">
                                 <i class="fas fa-trash me-2"></i>Eliminar

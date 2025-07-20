@@ -14,9 +14,37 @@
                             <h1 class="h3 mb-0">Gestión de Cotizaciones</h1>
                             <p class="mb-0 opacity-75">Administra todas las cotizaciones del sistema</p>
                         </div>
-                        <a href="{{ route('quotes.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus me-2"></i>Nueva Cotización
-                        </a>
+
+            <!-- Acciones en lote -->
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h6 class="mb-0">
+                                <i class="fas fa-layer-group me-2"></i>
+                                Acciones en Lote
+                            </h6>
+                            <small class="text-muted">Selecciona cotizaciones para generar PDFs en lote</small>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <button type="button" class="btn btn-outline-primary btn-sm" id="selectAll">
+                                <i class="fas fa-check-square me-1"></i>Seleccionar Todo
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" id="generateBulkPdf" disabled>
+                                <i class="fas fa-file-pdf me-1"></i>Generar PDFs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="btn-group">
+                            <a href="{{ route('quotes.create') }}" class="btn btn-primary">
+                                <i class="fas fa-plus me-2"></i>Nueva Cotización
+                            </a>
+                            <a href="{{ route('quotes.create-with-pdf') }}" class="btn btn-success">
+                                <i class="fas fa-file-pdf me-2"></i>Crear con PDF
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,6 +118,9 @@
                             <table class="table table-bordered table-hover">
                                 <thead class="table-light">
                                     <tr>
+                                        <th width="40">
+                                            <input type="checkbox" class="form-check-input" id="selectAllCheckbox">
+                                        </th>
                                         <th>Nombre</th>
                                         <th>Cliente</th>
                                         <th>Zona</th>
@@ -104,6 +135,10 @@
                                 <tbody>
                                     @foreach($quotes as $quote)
                                         <tr>
+                                            <td>
+                                                <input type="checkbox" class="form-check-input quote-checkbox" 
+                                                       value="{{ $quote->_id }}" data-quote-name="{{ $quote->name }}">
+                                            </td>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar-sm me-3">
@@ -174,6 +209,24 @@
                                                        title="Editar">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
+                                                    <div class="btn-group" role="group">
+                                                        <button type="button" class="btn btn-sm btn-outline-danger dropdown-toggle" 
+                                                                data-bs-toggle="dropdown" title="Opciones PDF">
+                                                            <i class="fas fa-file-pdf"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="{{ route('quotes.pdf.preview', $quote->_id) }}" target="_blank">
+                                                                    <i class="fas fa-eye me-2"></i>Vista Previa PDF
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="{{ route('quotes.pdf', $quote->_id) }}">
+                                                                    <i class="fas fa-download me-2"></i>Descargar PDF
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                     <button type="button" 
                                                             class="btn btn-sm btn-outline-danger" 
                                                             title="Eliminar"
@@ -339,5 +392,97 @@ function confirmDelete(quoteId, quoteName) {
     document.getElementById('deleteForm').action = `/quotes/${quoteId}`;
     new bootstrap.Modal(document.getElementById('deleteModal')).show();
 }
+
+// Funcionalidad de selección en lote
+$(document).ready(function() {
+    // Seleccionar/deseleccionar todos
+    $('#selectAllCheckbox').change(function() {
+        $('.quote-checkbox').prop('checked', this.checked);
+        updateBulkActions();
+    });
+    
+    $('#selectAll').click(function() {
+        const allChecked = $('.quote-checkbox:checked').length === $('.quote-checkbox').length;
+        $('.quote-checkbox').prop('checked', !allChecked);
+        $('#selectAllCheckbox').prop('checked', !allChecked);
+        updateBulkActions();
+    });
+    
+    // Actualizar estado cuando se selecciona/deselecciona individualmente
+    $(document).on('change', '.quote-checkbox', function() {
+        updateBulkActions();
+        updateSelectAllCheckbox();
+    });
+    
+    // Actualizar checkbox "Seleccionar Todo"
+    function updateSelectAllCheckbox() {
+        const totalCheckboxes = $('.quote-checkbox').length;
+        const checkedCheckboxes = $('.quote-checkbox:checked').length;
+        
+        $('#selectAllCheckbox').prop('checked', checkedCheckboxes === totalCheckboxes);
+        $('#selectAllCheckbox').prop('indeterminate', checkedCheckboxes > 0 && checkedCheckboxes < totalCheckboxes);
+    }
+    
+    // Actualizar botones de acciones en lote
+    function updateBulkActions() {
+        const selectedCount = $('.quote-checkbox:checked').length;
+        $('#generateBulkPdf').prop('disabled', selectedCount === 0);
+        
+        if (selectedCount > 0) {
+            $('#generateBulkPdf').html(`<i class="fas fa-file-pdf me-1"></i>Generar PDFs (${selectedCount})`);
+        } else {
+            $('#generateBulkPdf').html('<i class="fas fa-file-pdf me-1"></i>Generar PDFs');
+        }
+    }
+    
+    // Generar PDFs en lote
+    $('#generateBulkPdf').click(function() {
+        const selectedQuotes = [];
+        $('.quote-checkbox:checked').each(function() {
+            selectedQuotes.push({
+                id: $(this).val(),
+                name: $(this).data('quote-name')
+            });
+        });
+        
+        if (selectedQuotes.length === 0) {
+            alert('Por favor selecciona al menos una cotización');
+            return;
+        }
+        
+        // Confirmar acción
+        const quoteNames = selectedQuotes.map(q => q.name).join(', ');
+        if (confirm(`¿Generar PDF para las siguientes cotizaciones?\n\n${quoteNames}`)) {
+            // Crear formulario para enviar IDs
+            const form = $('<form>', {
+                method: 'POST',
+                action: '{{ route("quotes.bulk-pdf") }}'
+            });
+            
+            // Agregar token CSRF
+            form.append($('<input>', {
+                type: 'hidden',
+                name: '_token',
+                value: '{{ csrf_token() }}'
+            }));
+            
+            // Agregar IDs de cotizaciones
+            selectedQuotes.forEach(quote => {
+                form.append($('<input>', {
+                    type: 'hidden',
+                    name: 'quote_ids[]',
+                    value: quote.id
+                }));
+            });
+            
+            // Enviar formulario
+            $('body').append(form);
+            form.submit();
+        }
+    });
+    
+    // Inicializar estado
+    updateBulkActions();
+});
 </script>
 @endpush
