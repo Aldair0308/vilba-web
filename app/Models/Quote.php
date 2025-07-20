@@ -36,6 +36,7 @@ class Quote extends Model
         'iva',
         'total',
         'responsibleId',
+        'description',
     ];
 
     /**

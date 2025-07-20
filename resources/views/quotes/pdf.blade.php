@@ -123,9 +123,17 @@
 
         .project-description p {
             margin: 0;
-            padding: 10px;
+            padding: 15px;
             background: white;
             border-radius: 4px;
+            line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+            font-size: 11px;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            min-height: 40px;
         }
 
         table {
