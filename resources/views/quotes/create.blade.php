@@ -175,7 +175,7 @@
                                                         <div class="col-md-6 mb-3">
                                                             <label class="form-label">Precio por Día <span class="text-danger">*</span></label>
                                                             <div class="input-group">
-                                                                <span class="input-group-text">$</span>
+                                                                <span class="input-group-text">S/</span>
                                                                 <input type="number" class="form-control precio-input" 
                                                                        name="cranes[INDEX][precio]" min="0" step="0.01" required>
                                                             </div>
@@ -184,7 +184,7 @@
                                                             <div class="alert alert-success mb-0">
                                                                 <div class="d-flex justify-content-between">
                                                                     <span>Subtotal:</span>
-                                                                    <span class="crane-subtotal">$0.00</span>
+                                                                    <span class="crane-subtotal">S/ 0.00</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -193,32 +193,59 @@
                                             </div>
                                         </template>
 
-                                        <!-- IVA -->
-                                        <div class="mb-3 mt-4">
-                                            <label for="iva" class="form-label">IVA (%)</label>
-                                            <input type="number" class="form-control @error('iva') is-invalid @enderror" 
-                                                id="iva" name="iva" value="{{ old('iva', 16) }}" min="0" max="100" step="0.01">
-                                            @error('iva')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                        <!-- Configuración de IVA -->
+                                        <div class="mb-4 mt-4">
+                                            <div class="card">
+                                                <div class="card-header bg-light">
+                                                    <h5 class="mb-0">Configuración de IVA</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <!-- Switch para incluir IVA -->
+                                                    <div class="mb-3">
+                                                        <div class="form-check form-switch">
+                                                            <!-- Campo hidden para asegurar que siempre se envíe un valor -->
+                                                            <input type="hidden" name="include_iva" value="0">
+                                                            <input class="form-check-input" type="checkbox" id="includeIva" name="include_iva" value="1" checked>
+                                                            <label class="form-check-label fw-bold" for="includeIva">
+                                                                <i class="fas fa-percentage me-2"></i>Incluir IVA en la cotización
+                                                            </label>
+                                                        </div>
+                                                        <small class="text-muted">Activa o desactiva el cálculo de IVA para esta cotización</small>
+                                                    </div>
+
+                                                    <!-- Campo de porcentaje de IVA -->
+                                                    <div class="mb-3" id="ivaSection">
+                                                        <label for="iva" class="form-label">Porcentaje de IVA (%)</label>
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control @error('iva') is-invalid @enderror" 
+                                                                id="iva" name="iva" value="{{ old('iva', 16) }}" min="0" max="100" step="0.01">
+                                                            <span class="input-group-text">%</span>
+                                                        </div>
+                                                        @error('iva')
+                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
+                                                        <small class="text-muted">Ingresa el porcentaje de IVA a aplicar</small>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <!-- Resumen de totales -->
                                         <div class="card bg-light mt-3">
                                             <div class="card-body">
-                                                <h6 class="mb-3">Resumen</h6>
+                                                <h6 class="mb-3"><i class="fas fa-calculator me-2"></i>Resumen de Totales</h6>
                                                 <div class="d-flex justify-content-between mb-2">
                                                     <span>Subtotal:</span>
-                                                    <span id="subtotalDisplay">$0.00</span>
+                                                    <span id="subtotalDisplay" class="fw-bold">S/ 0.00</span>
                                                 </div>
-                                                <div class="d-flex justify-content-between mb-2">
+                                                <div class="d-flex justify-content-between mb-2" id="ivaRow">
                                                     <span>IVA (<span id="ivaRateDisplay">16</span>%):</span>
-                                                    <span id="ivaDisplay">$0.00</span>
+                                                    <span id="ivaDisplay" class="fw-bold text-info">S/ 0.00</span>
                                                 </div>
                                                 <hr>
-                                                <div class="d-flex justify-content-between fw-bold">
+                                                <div class="d-flex justify-content-between fw-bold fs-5">
                                                     <span>Total:</span>
-                                                    <span id="totalDisplay" class="text-success">$0.00</span>
+                                                    <span id="totalDisplay" class="text-success">S/ 0.00</span>
                                                 </div>
                                                 <input type="hidden" id="total" name="total">
                                             </div>
@@ -253,6 +280,9 @@
         const addCraneBtn = document.getElementById('addCraneBtn');
         const craneTemplate = document.getElementById('craneTemplate').content;
         const ivaInput = document.getElementById('iva');
+        const includeIvaSwitch = document.getElementById('includeIva');
+        const ivaSection = document.getElementById('ivaSection');
+        const ivaRow = document.getElementById('ivaRow');
         const ivaRateDisplay = document.getElementById('ivaRateDisplay');
         const subtotalDisplay = document.getElementById('subtotalDisplay');
         const ivaDisplay = document.getElementById('ivaDisplay');
@@ -263,6 +293,19 @@
         // Agregar grúa
         addCraneBtn.addEventListener('click', function() {
             addCrane();
+        });
+        
+        // Manejar switch de IVA
+        includeIvaSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                ivaSection.style.display = 'block';
+                ivaRow.style.display = 'flex';
+            } else {
+                ivaSection.style.display = 'none';
+                ivaRow.style.display = 'none';
+                ivaInput.value = 0;
+            }
+            updateTotals();
         });
         
         // Actualizar IVA cuando cambie
@@ -377,7 +420,7 @@
             const precio = parseFloat(craneItem.querySelector('.precio-input').value) || 0;
             const subtotal = dias * precio;
             
-            craneItem.querySelector('.crane-subtotal').textContent = '$' + subtotal.toFixed(2);
+            craneItem.querySelector('.crane-subtotal').textContent = 'S/ ' + subtotal.toFixed(2);
             updateTotals();
         }
         
@@ -392,13 +435,14 @@
                 subtotal += dias * precio;
             });
             
-            const ivaRate = parseFloat(ivaInput.value) || 0;
+            const includeIva = includeIvaSwitch.checked;
+            const ivaRate = includeIva ? (parseFloat(ivaInput.value) || 0) : 0;
             const ivaAmount = subtotal * (ivaRate / 100);
             const total = subtotal + ivaAmount;
             
-            subtotalDisplay.textContent = '$' + subtotal.toFixed(2);
-            ivaDisplay.textContent = '$' + ivaAmount.toFixed(2);
-            totalDisplay.textContent = '$' + total.toFixed(2);
+            subtotalDisplay.textContent = 'S/ ' + subtotal.toFixed(2);
+            ivaDisplay.textContent = 'S/ ' + ivaAmount.toFixed(2);
+            totalDisplay.textContent = 'S/ ' + total.toFixed(2);
             totalInput.value = total.toFixed(2);
         }
         

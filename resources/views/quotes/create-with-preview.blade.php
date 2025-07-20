@@ -122,6 +122,61 @@
                                     </div>
                                 </div>
 
+                                <!-- Configuración de IVA -->
+                                <div class="mb-4">
+                                    <div class="card">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0">Configuración de IVA</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- Switch para incluir IVA -->
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="includeIva" name="include_iva" value="1" checked>
+                                                    <label class="form-check-label fw-bold" for="includeIva">
+                                                        <i class="fas fa-percentage me-2"></i>Incluir IVA en la cotización
+                                                    </label>
+                                                </div>
+                                                <small class="text-muted">Activa o desactiva el cálculo de IVA para esta cotización</small>
+                                            </div>
+
+                                            <div class="mb-3" id="ivaSection">
+                                                <label for="iva" class="form-label">Porcentaje de IVA (%)</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control @error('iva') is-invalid @enderror" 
+                                                        id="iva" name="iva" value="{{ old('iva', 16) }}" min="0" max="100" step="0.01">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                @error('iva')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                                <small class="text-muted">Ingresa el porcentaje de IVA a aplicar</small>
+                                            </div>
+
+                                            <!-- Resumen de totales -->
+                                            <div class="card bg-light mt-3">
+                                                <div class="card-body">
+                                                    <h6 class="mb-3"><i class="fas fa-calculator me-2"></i>Resumen de Totales</h6>
+                                                    <div class="d-flex justify-content-between mb-2">
+                                                        <span>Subtotal:</span>
+                                                        <span id="subtotalDisplay" class="fw-bold">S/ 0.00</span>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between mb-2" id="ivaRow">
+                                                        <span>IVA (<span id="ivaRateDisplay">16</span>%):</span>
+                                                        <span id="ivaDisplay" class="fw-bold text-info">S/ 0.00</span>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="d-flex justify-content-between fw-bold fs-5">
+                                                        <span>Total:</span>
+                                                        <span id="totalDisplay" class="text-success">S/ 0.00</span>
+                                                    </div>
+                                                    <input type="hidden" id="total" name="total">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="mb-4">
                                     <div class="card">
                                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
@@ -195,37 +250,6 @@
                                                     </div>
                                                 </div>
                                             </template>
-
-                                            <!-- IVA -->
-                                            <div class="mb-3 mt-4">
-                                                <label for="iva" class="form-label">IVA (%)</label>
-                                                <input type="number" class="form-control @error('iva') is-invalid @enderror" 
-                                                    id="iva" name="iva" value="{{ old('iva', 16) }}" min="0" max="100" step="0.01">
-                                                @error('iva')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <!-- Resumen de totales -->
-                                            <div class="card bg-light mt-3">
-                                                <div class="card-body">
-                                                    <h6 class="mb-3">Resumen</h6>
-                                                    <div class="d-flex justify-content-between mb-2">
-                                                        <span>Subtotal:</span>
-                                                        <span id="subtotalDisplay">S/ 0.00</span>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between mb-2">
-                                                        <span>IVA (<span id="ivaRateDisplay">16</span>%):</span>
-                                                        <span id="ivaDisplay">S/ 0.00</span>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="d-flex justify-content-between fw-bold">
-                                                        <span>Total:</span>
-                                                        <span id="totalDisplay" class="text-success">S/ 0.00</span>
-                                                    </div>
-                                                    <input type="hidden" id="total" name="total">
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -272,6 +296,9 @@
         const addCraneBtn = document.getElementById('addCraneBtn');
         const craneTemplate = document.getElementById('craneTemplate').content;
         const ivaInput = document.getElementById('iva');
+        const includeIvaSwitch = document.getElementById('includeIva');
+        const ivaSection = document.getElementById('ivaSection');
+        const ivaRow = document.getElementById('ivaRow');
         const ivaRateDisplay = document.getElementById('ivaRateDisplay');
         const subtotalDisplay = document.getElementById('subtotalDisplay');
         const ivaDisplay = document.getElementById('ivaDisplay');
@@ -282,6 +309,20 @@
         // Agregar grúa
         addCraneBtn.addEventListener('click', function() {
             addCrane();
+        });
+        
+        // Manejar switch de IVA
+        includeIvaSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                ivaSection.style.display = 'block';
+                ivaRow.style.display = 'flex';
+            } else {
+                ivaSection.style.display = 'none';
+                ivaRow.style.display = 'none';
+                ivaInput.value = 0;
+            }
+            updateTotals();
+            updatePreview();
         });
         
         // Actualizar IVA cuando cambie
@@ -417,7 +458,8 @@
                 subtotal += dias * precio;
             });
             
-            const ivaRate = parseFloat(ivaInput.value) || 0;
+            const includeIva = includeIvaSwitch.checked;
+            const ivaRate = includeIva ? (parseFloat(ivaInput.value) || 0) : 0;
             const ivaAmount = subtotal * (ivaRate / 100);
             const total = subtotal + ivaAmount;
             
@@ -471,7 +513,8 @@
                 subtotal += dias * precio;
             });
             
-            const ivaRate = parseFloat(ivaInput.value) || 16;
+            const includeIva = includeIvaSwitch.checked;
+            const ivaRate = includeIva ? (parseFloat(ivaInput.value) || 16) : 0;
             const ivaAmount = subtotal * (ivaRate / 100);
             const total = subtotal + ivaAmount;
             
@@ -490,6 +533,20 @@
             document.getElementById('preview-iva-percentage').textContent = ivaRate;
             document.getElementById('preview-iva').textContent = 'S/ ' + ivaAmount.toFixed(2);
             document.getElementById('preview-total').textContent = 'S/ ' + total.toFixed(2);
+            
+            // Mostrar/ocultar fila de IVA en la vista previa
+            const previewIvaRow = document.getElementById('preview-iva-row');
+            const previewIvaTerms = document.getElementById('preview-iva-terms');
+            const previewIvaRate = document.getElementById('preview-iva-rate');
+            
+            if (includeIva) {
+                if (previewIvaRow) previewIvaRow.style.display = '';
+                if (previewIvaTerms) previewIvaTerms.textContent = 'El precio incluye IVA.';
+                if (previewIvaRate) previewIvaRate.textContent = ivaRate;
+            } else {
+                if (previewIvaRow) previewIvaRow.style.display = 'none';
+                if (previewIvaTerms) previewIvaTerms.textContent = 'El precio NO incluye IVA.';
+            }
             document.getElementById('preview-date').textContent = new Date().toLocaleDateString('es-ES');
         }
         

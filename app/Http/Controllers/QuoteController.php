@@ -149,6 +149,7 @@ class QuoteController extends Controller
                 'cranes.*.dias' => 'required|numeric|min:1',
                 'cranes.*.precio' => 'required|numeric|min:0',
                 'iva' => 'nullable|numeric|min:0|max:100',
+                'include_iva' => 'nullable|boolean',
                 'total' => 'nullable|string',
                 'responsibleId' => 'required|string|exists:users,_id',
                 'description' => 'nullable|string',

@@ -271,8 +271,8 @@
                         <td colspan="6" class="total-label">SUBTOTAL</td>
                         <td class="total-value" id="preview-subtotal">S/ 0.00</td>
                     </tr>
-                    <tr>
-                        <td colspan="6" class="total-label">IVA (18%)</td>
+                    <tr id="preview-iva-row">
+                        <td colspan="6" class="total-label">IVA (<span id="preview-iva-rate">18</span>%)</td>
                         <td class="total-value" id="preview-iva">S/ 0.00</td>
                     </tr>
                     <tr>
@@ -290,7 +290,7 @@
                 <li>Forma de pago: 50% adelanto, 50% contraentrega.</li>
                 <li>Tiempo de entrega: 7 días hábiles.</li>
                 <li>Garantía: 12 meses.</li>
-                <li>El precio incluye IVA.</li>
+                <li id="preview-iva-terms">El precio incluye IVA.</li>
             </ol>
         </div>
 

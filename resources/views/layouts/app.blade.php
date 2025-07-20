@@ -211,6 +211,82 @@
         .badge.bg-secondary {
             background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
         }
+        
+        /* Bootstrap Switch Styles - Asegurar visibilidad */
+        .form-check {
+            display: block !important;
+            min-height: 1.5rem !important;
+            padding-left: 1.5em !important;
+            margin-bottom: 0.125rem !important;
+        }
+        
+        .form-check-input {
+            width: 1em !important;
+            height: 1em !important;
+            margin-top: 0.25em !important;
+            vertical-align: top !important;
+            background-color: #fff !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: contain !important;
+            border: 1px solid rgba(0, 0, 0, 0.25) !important;
+            appearance: none !important;
+            color-adjust: exact !important;
+            display: inline-block !important;
+            float: left !important;
+            margin-left: -1.5em !important;
+        }
+        
+        .form-check-input[type="checkbox"] {
+            border-radius: 0.25em !important;
+        }
+        
+        .form-check-input:active {
+            filter: brightness(90%) !important;
+        }
+        
+        .form-check-input:focus {
+            border-color: var(--brand-orange) !important;
+            outline: 0 !important;
+            box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.25) !important;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--brand-orange) !important;
+            border-color: var(--brand-orange) !important;
+        }
+        
+        .form-check-input:checked[type="checkbox"] {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e") !important;
+        }
+        
+        .form-check-label {
+            color: #212529 !important;
+            cursor: pointer !important;
+        }
+        
+        /* Bootstrap Switch específico */
+        .form-switch {
+            padding-left: 2.5em !important;
+        }
+        
+        .form-switch .form-check-input {
+            width: 2em !important;
+            margin-left: -2.5em !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e") !important;
+            background-position: left center !important;
+            border-radius: 2em !important;
+            transition: background-position 0.15s ease-in-out !important;
+        }
+        
+        .form-switch .form-check-input:focus {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+        }
+        
+        .form-switch .form-check-input:checked {
+            background-position: right center !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+        }
     </style>
 </head>
 <body class="font-sans antialiased">

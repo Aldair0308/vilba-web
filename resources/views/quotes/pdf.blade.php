@@ -325,10 +325,12 @@
                         <td colspan="6" class="total-label">SUBTOTAL</td>
                         <td class="total-value">S/ {{ number_format($quote->subtotal ?? 0, 2) }}</td>
                     </tr>
+                    @if($quote->include_iva ?? true)
                     <tr>
                         <td colspan="6" class="total-label">IVA ({{ $quote->iva ?? 18 }}%)</td>
                         <td class="total-value">S/ {{ number_format($quote->iva_amount ?? 0, 2) }}</td>
                     </tr>
+                    @endif
                     <tr>
                         <td colspan="6" class="total-label">TOTAL</td>
                         <td class="total-value">S/ {{ number_format($quote->calculated_total ?? 0, 2) }}</td>
@@ -344,7 +346,11 @@
                 <li>Forma de pago: 50% adelanto, 50% contraentrega.</li>
                 <li>Tiempo de entrega: 7 días hábiles.</li>
                 <li>Garantía: 12 meses.</li>
-                <li>El precio incluye IVA.</li>
+                @if($quote->include_iva ?? true)
+                    <li>El precio incluye IVA.</li>
+                @else
+                    <li>El precio NO incluye IVA.</li>
+                @endif
             </ol>
         </div>
 

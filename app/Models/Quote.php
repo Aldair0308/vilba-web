@@ -34,6 +34,7 @@ class Quote extends Model
         'status',
         'cranes',
         'iva',
+        'include_iva',
         'total',
         'responsibleId',
         'description',
@@ -56,6 +57,7 @@ class Quote extends Model
         return [
             'cranes' => 'array',
             'iva' => 'float',
+            'include_iva' => 'boolean',
             'createdAt' => 'datetime',
             'updatedAt' => 'datetime',
         ];
@@ -217,8 +219,14 @@ class Quote extends Model
             }
         }
 
-        $iva = $this->iva ?? 0;
-        return $subtotal + ($subtotal * ($iva / 100));
+        // Solo aplicar IVA si include_iva es true
+        $includeIva = $this->include_iva ?? true; // Por defecto true para compatibilidad
+        if ($includeIva) {
+            $iva = $this->iva ?? 0;
+            return $subtotal + ($subtotal * ($iva / 100));
+        }
+        
+        return $subtotal;
     }
 
     /**
@@ -245,6 +253,12 @@ class Quote extends Model
      */
     public function getIvaAmountAttribute()
     {
+        // Solo calcular IVA si include_iva es true
+        $includeIva = $this->include_iva ?? true; // Por defecto true para compatibilidad
+        if (!$includeIva) {
+            return 0;
+        }
+        
         $subtotal = $this->getSubtotalAttribute();
         $iva = $this->iva ?? 0;
         return $subtotal * ($iva / 100);
