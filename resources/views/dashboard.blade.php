@@ -233,6 +233,12 @@
                                         <span>Notificación de Prueba</span>
                                     </button>
                                 </div>
+                                <div class="col-lg-2 col-md-4 mb-3">
+                                    <button id="send-token-btn" class="btn btn-outline-warning btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                        <i class="fas fa-bell fa-2x mb-2"></i>
+                                        <span>Enviar Token al API</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1117,6 +1123,246 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add click event listener to test notification button
     document.getElementById('test-notification-btn').addEventListener('click', sendTestNotification);
+    
+    // Function to manually send token to NestJS API with retry mechanism
+    async function sendTokenToNestJS() {
+        const btn = document.getElementById('send-token-btn');
+        const originalHTML = btn.innerHTML;
+        let attempt = 0;
+        const maxAttempts = 3;
+        
+        async function attemptTokenSend() {
+            attempt++;
+            console.log(`🔔 Intento ${attempt}/${maxAttempts} - Iniciando envío de token al API de NestJS...`);
+            
+            try {
+                btn.innerHTML = `<i class="fas fa-spinner fa-spin fa-2x mb-2"></i><span>Enviando... (${attempt}/${maxAttempts})</span>`;
+                btn.disabled = true;
+                
+                // Check if Firebase is available
+                if (typeof firebase === 'undefined') {
+                    throw new Error('Firebase SDK no está disponible');
+                }
+                
+                // Check if messaging is available
+                if (!firebase.messaging) {
+                    throw new Error('Firebase Messaging no está disponible');
+                }
+                
+                // Get messaging instance
+                const messaging = firebase.messaging();
+                
+                // Get FCM token using EXACTLY the same method as firebase.js (NO token deletion)
+                console.log('📱 Obteniendo token FCM usando método idéntico a firebase.js...');
+                let token;
+                
+                try {
+                    // Use EXACTLY the same method as firebase.js - no token deletion
+                    token = await messaging.getToken({
+                        vapidKey: 'BCiin0ow6U8uJa2FcqshHjNsElo7wwSXGA6og15X-0xv30KOAGMcA1iMaKKYlzquh9J-IhWRIpvrKloF51Oa1lQ'
+                    });
+                    
+                    console.log('🎯 Token obtenido con método idéntico a firebase.js (sin eliminar token previo)');
+                    
+                } catch (tokenError) {
+                    console.error('❌ Error obteniendo token FCM:', tokenError);
+                    
+                    // Use EXACTLY the same fallback as firebase.js
+                    if (tokenError.name === 'AbortError' || tokenError.message.includes('Registration failed')) {
+                        console.log('🔄 Error de registro detectado, usando fallback de firebase.js...');
+                        
+                        // Request permission again (same as firebase.js)
+                        const permission = await Notification.requestPermission();
+                        if (permission !== 'granted') {
+                            throw new Error('Permisos de notificación denegados');
+                        }
+                        
+                        // Wait and try again (same as firebase.js)
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        
+                        // Try getting token again with fresh messaging instance
+                        const newMessaging = firebase.messaging();
+                        token = await newMessaging.getToken({
+                            vapidKey: 'BCiin0ow6U8uJa2FcqshHjNsElo7wwSXGA6og15X-0xv30KOAGMcA1iMaKKYlzquh9J-IhWRIpvrKloF51Oa1lQ'
+                        });
+                        
+                        console.log('✅ Token obtenido con método de respaldo de firebase.js');
+                    } else {
+                        throw tokenError;
+                    }
+                }
+                
+                if (!token) {
+                     throw new Error('No se pudo obtener el token FCM después de múltiples intentos');
+                 }
+                 
+                 // Validate token is not empty or null
+                 if (typeof token !== 'string' || token.trim() === '') {
+                     throw new Error(`Token FCM inválido: '${token}' (tipo: ${typeof token})`);
+                 }
+                 
+                 console.log('✅ Token FCM obtenido y validado:', {
+                     token: token,
+                     length: token.length,
+                     type: typeof token,
+                     preview: token.substring(0, 50) + '...'
+                 });
+                
+                // Get user ID from localStorage
+                const userId = localStorage.getItem('user_id');
+                console.log('👤 User ID desde localStorage:', userId);
+                
+                if (!userId) {
+                    throw new Error('User ID no encontrado en localStorage');
+                }
+                
+                // Prepare request body (matching NestJS API format - same as firebase.js)
+                 const requestBody = {
+                     token: token,  // Using 'token' field like firebase.js
+                     userId: userId,
+                     platform: 'web',
+                     deviceInfo: {
+                         brand: navigator.platform || 'Unknown',
+                         modelName: navigator.userAgent.split('(')[1]?.split(')')[0] || 'Unknown',
+                         osName: navigator.platform.includes('Win') ? 'Windows' : 
+                                navigator.platform.includes('Mac') ? 'macOS' : 
+                                navigator.platform.includes('Linux') ? 'Linux' : 'Unknown',
+                         osVersion: navigator.userAgent.match(/(?:Windows NT|Mac OS X|Linux) ([\d\._]+)/)?.[1] || 'Unknown'
+                     },
+                     deviceName: `${navigator.userAgent.includes('Chrome') ? 'Chrome' : 
+                                 navigator.userAgent.includes('Firefox') ? 'Firefox' : 
+                                 navigator.userAgent.includes('Safari') ? 'Safari' : 'Unknown'} Browser - ${navigator.platform.includes('Win') ? 'Windows' : 
+                                navigator.platform.includes('Mac') ? 'macOS' : 
+                                navigator.platform.includes('Linux') ? 'Linux' : 'Unknown'}`,
+                     appVersion: '1.0.0',
+                     metadata: {
+                         browser: navigator.userAgent.includes('Chrome') ? 'Chrome' : 
+                                 navigator.userAgent.includes('Firefox') ? 'Firefox' : 
+                                 navigator.userAgent.includes('Safari') ? 'Safari' : 'Unknown',
+                         userAgent: navigator.userAgent,
+                         timestamp: new Date().toISOString(),
+                         attempt: attempt,
+                         retryReason: attempt > 1 ? 'Token registration retry' : 'Initial attempt'
+                     }
+                 };
+                
+                console.log('📤 Datos a enviar al NestJS API:', requestBody);
+                 
+                 // Final validation before sending
+                 if (!requestBody.token || requestBody.token.trim() === '') {
+                     throw new Error(`Token vacío en requestBody: '${requestBody.token}'`);
+                 }
+                 
+                 console.log('🔍 Validación final del token antes del envío:', {
+                     tokenPresent: !!requestBody.token,
+                     tokenLength: requestBody.token ? requestBody.token.length : 0,
+                     tokenPreview: requestBody.token ? requestBody.token.substring(0, 30) + '...' : 'N/A'
+                 });
+                 
+                 // Send to NestJS API with timeout
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+                
+                try {
+                    const response = await fetch('http://192.168.100.169:3000/devices/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(requestBody),
+                        signal: controller.signal
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    console.log('📡 Respuesta del servidor - Status:', response.status);
+                    console.log('📡 Respuesta del servidor - Headers:', Object.fromEntries(response.headers.entries()));
+                    
+                    const responseText = await response.text();
+                    console.log('📡 Respuesta del servidor - Body:', responseText);
+                    
+                    if (response.ok) {
+                        console.log('✅ Token enviado exitosamente al API de NestJS');
+                        btn.innerHTML = '<i class="fas fa-check fa-2x mb-2 text-success"></i><span>¡Enviado!</span>';
+                        btn.className = 'btn btn-success btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center';
+                        
+                        // Show success message
+                        alert(`✅ ¡Token enviado exitosamente al API de NestJS!\n\nIntento: ${attempt}/${maxAttempts}\nRespuesta del servidor: ${responseText}`);
+                        return true; // Success
+                    } else {
+                        throw new Error(`Error del servidor: ${response.status} - ${responseText}`);
+                    }
+                } catch (fetchError) {
+                    clearTimeout(timeoutId);
+                    throw fetchError;
+                }
+                
+            } catch (error) {
+                console.error(`❌ Error en intento ${attempt}:`, error);
+                
+                // If this is not the last attempt, try again
+                if (attempt < maxAttempts) {
+                    console.log(`🔄 Reintentando en 2 segundos... (${attempt + 1}/${maxAttempts})`);
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    return attemptTokenSend();
+                } else {
+                    // Last attempt failed, show detailed error
+                    btn.innerHTML = '<i class="fas fa-times fa-2x mb-2 text-danger"></i><span>Error</span>';
+                    btn.className = 'btn btn-danger btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center';
+                    
+                    // Create detailed error message
+                    let errorDetails = `❌ Error enviando token al API de NestJS después de ${maxAttempts} intentos:\n\n`;
+                    errorDetails += `🔍 DETALLES TÉCNICOS:\n`;
+                    errorDetails += `• Tipo de Error: ${error.name || 'Unknown'}\n`;
+                    errorDetails += `• Mensaje: ${error.message}\n`;
+                    errorDetails += `• Intentos realizados: ${attempt}/${maxAttempts}\n`;
+                    errorDetails += `• Navegador: ${navigator.userAgent.includes('Chrome') ? 'Chrome' : navigator.userAgent.includes('Firefox') ? 'Firefox' : navigator.userAgent.includes('Safari') ? 'Safari' : 'Unknown'}\n`;
+                    errorDetails += `• Plataforma: ${navigator.platform}\n`;
+                    errorDetails += `• Permisos de notificación: ${Notification.permission}\n`;
+                    errorDetails += `• Firebase disponible: ${typeof firebase !== 'undefined'}\n`;
+                    errorDetails += `• Firebase Messaging disponible: ${typeof firebase !== 'undefined' && !!firebase.messaging}\n\n`;
+                    
+                    if (error.name === 'AbortError' || error.message.includes('Registration failed')) {
+                        errorDetails += `🚨 DIAGNÓSTICO ESPECÍFICO - Error de Registro FCM:\n`;
+                        errorDetails += `• Este error indica un problema con el servicio de push de Firebase\n`;
+                        errorDetails += `• Posibles causas:\n`;
+                        errorDetails += `  - Configuración VAPID incorrecta\n`;
+                        errorDetails += `  - Problemas de conectividad con los servidores de Google\n`;
+                        errorDetails += `  - Restricciones del navegador o firewall\n`;
+                        errorDetails += `  - Token FCM expirado o inválido\n\n`;
+                        errorDetails += `💡 SOLUCIONES SUGERIDAS:\n`;
+                        errorDetails += `• Verificar conexión a internet\n`;
+                        errorDetails += `• Limpiar caché del navegador\n`;
+                        errorDetails += `• Verificar configuración de Firebase\n`;
+                        errorDetails += `• Contactar al administrador del sistema\n`;
+                    }
+                    
+                    errorDetails += `\n📋 Revisa la consola del navegador para logs detallados.`;
+                    
+                    alert(errorDetails);
+                    return false; // Failure
+                }
+            }
+        }
+        
+        try {
+            await attemptTokenSend();
+        } finally {
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.className = 'btn btn-outline-warning btn-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center';
+                btn.disabled = false;
+            }, 3000);
+        }
+    }
+    
+    // Add click event listener to send token button
+    document.getElementById('send-token-btn').addEventListener('click', sendTokenToNestJS);
+    
+    // Store user ID in localStorage for Firebase
+    localStorage.setItem('user_id', '{{ Auth::user()->_id }}');
     
     // Check notification status on page load
     updateNotificationButtonState();

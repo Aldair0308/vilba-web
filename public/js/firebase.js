@@ -108,27 +108,68 @@ if (typeof firebase === 'undefined') {
             });
             console.log('🌐 Token web:', token);
 
-            // Send token to backend
-            const response = await fetch('/api/register-web-token', {
+            // Send token to NestJS API
+            const deviceInfo = {
+              brand: navigator.platform || 'Unknown',
+              modelName: navigator.userAgent.split('(')[1]?.split(')')[0] || 'Unknown',
+              osName: navigator.platform.includes('Win') ? 'Windows' : 
+                     navigator.platform.includes('Mac') ? 'macOS' : 
+                     navigator.platform.includes('Linux') ? 'Linux' : 'Unknown',
+              osVersion: navigator.userAgent.match(/(?:Windows NT|Mac OS X|Linux) ([\d\._]+)/)?.[1] || 'Unknown'
+            };
+            
+            const userId = localStorage.getItem('user_id');
+            console.log('👤 User ID desde localStorage:', userId);
+            
+            const requestBody = {
+              token,
+              userId: userId || 'anonymous_web_user',
+              platform: 'web',
+              deviceInfo,
+              deviceName: `${pushSupport.browser} Browser - ${deviceInfo.osName}`,
+              appVersion: '1.0.0',
+              metadata: {
+                browser: pushSupport.browser,
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString()
+              }
+            };
+            
+            console.log('📤 Enviando datos a NestJS:', requestBody);
+            
+            const response = await fetch('http://192.168.100.169:3000/devices/register', {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                'Authorization': 'Bearer ' + (localStorage.getItem('auth_token') || '')
+                'Content-Type': 'application/json'
               },
-              body: JSON.stringify({ 
-                token, 
-                platform: 'web',
-                browser: pushSupport.browser
-              }),
+              body: JSON.stringify(requestBody),
             });
+            
+            console.log('📥 Respuesta del servidor:', {
+              status: response.status,
+              statusText: response.statusText,
+              headers: Object.fromEntries(response.headers.entries())
+            });
+            
+            const responseData = await response.text();
+            console.log('📄 Cuerpo de la respuesta:', responseData);
             
             if (response.ok) {
               console.log('✅ Token enviado al backend exitosamente');
+              try {
+                const jsonResponse = JSON.parse(responseData);
+                console.log('✅ Respuesta JSON:', jsonResponse);
+              } catch (e) {
+                console.log('ℹ️ Respuesta no es JSON válido');
+              }
               return { success: true, token, browser: pushSupport.browser };
             } else {
-              console.error('❌ Error enviando token al backend:', response.status);
-              throw new Error('Error enviando token al servidor');
+              console.error('❌ Error enviando token al backend:', {
+                status: response.status,
+                statusText: response.statusText,
+                body: responseData
+              });
+              throw new Error(`Error enviando token al servidor: ${response.status} - ${responseData}`);
             }
           } catch (tokenError) {
             console.error('❌ Error obteniendo token FCM:', tokenError);
