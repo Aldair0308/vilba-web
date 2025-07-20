@@ -151,14 +151,20 @@
                                                                 <option value="">Seleccionar grúa...</option>
                                                                 @foreach($cranes as $crane)
                                                                     <option value="{{ $crane->_id }}" 
-                                                                            data-norte="{{ $crane->precios['zona_norte'] ?? 0 }}" 
-                                                                            data-sur="{{ $crane->precios['zona_sur'] ?? 0 }}" 
-                                                                            data-centro="{{ $crane->precios['zona_centro'] ?? 0 }}" 
-                                                                            data-este="{{ $crane->precios['zona_este'] ?? 0 }}" 
-                                                                            data-oeste="{{ $crane->precios['zona_oeste'] ?? 0 }}">
-                                                                        {{ $crane->nombre }} ({{ $crane->marca }} {{ $crane->modelo }}) - {{ $crane->capacidad }}
+                                                                            data-precios="{{ json_encode($crane->precios ?? []) }}"
+                                                                            data-nombre="{{ $crane->nombre }}"
+                                                                            data-marca="{{ $crane->marca }}"
+                                                                            data-modelo="{{ $crane->modelo }}"
+                                                                            data-capacidad="{{ $crane->capacidad }}">
+                                                                        {{ $crane->nombre }} ({{ $crane->marca }} {{ $crane->modelo }}) - {{ $crane->capacidad }} ton
                                                                     </option>
                                                                 @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-12 mb-3 zona-container" style="display: none;">
+                                                            <label class="form-label">Zona <span class="text-danger">*</span></label>
+                                                            <select class="form-select zona-select" name="cranes[INDEX][zona]" required>
+                                                                <option value="">Seleccionar zona...</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-6 mb-3">
@@ -277,10 +283,16 @@
             
             selects.forEach(select => {
                 select.name = select.name.replace('INDEX', craneIndex);
-                select.addEventListener('change', function() {
-                    updatePriceBasedOnZone(this, zoneInput.value);
-                    updateSubtotal(this.closest('.crane-item'));
-                });
+                
+                if (select.classList.contains('crane-select')) {
+                    select.addEventListener('change', function() {
+                        handleCraneSelection(this);
+                    });
+                } else if (select.classList.contains('zona-select')) {
+                    select.addEventListener('change', function() {
+                        handleZoneSelection(this);
+                    });
+                }
             });
             
             inputs.forEach(input => {
@@ -310,31 +322,52 @@
             updateTotals();
         }
         
-        // Función para actualizar precio basado en zona
-        function updatePriceBasedOnZone(select, zone) {
-            if (!select.value) return;
+        // Función para manejar la selección de grúa
+        function handleCraneSelection(select) {
+            const craneItem = select.closest('.crane-item');
+            const zonaContainer = craneItem.querySelector('.zona-container');
+            const zonaSelect = craneItem.querySelector('.zona-select');
+            
+            if (!select.value) {
+                zonaContainer.style.display = 'none';
+                zonaSelect.innerHTML = '<option value="">Seleccionar zona...</option>';
+                return;
+            }
             
             const option = select.options[select.selectedIndex];
+            const precios = JSON.parse(option.dataset.precios || '[]');
+            
+            // Limpiar y llenar el select de zonas
+            zonaSelect.innerHTML = '<option value="">Seleccionar zona...</option>';
+            
+            precios.forEach(precio => {
+                const optionElement = document.createElement('option');
+                optionElement.value = precio.zona;
+                optionElement.textContent = precio.zona;
+                optionElement.dataset.precio = precio.precio;
+                zonaSelect.appendChild(optionElement);
+            });
+            
+            zonaContainer.style.display = 'block';
+        }
+        
+        // Función para manejar la selección de zona
+        function handleZoneSelection(select) {
             const craneItem = select.closest('.crane-item');
             const precioInput = craneItem.querySelector('.precio-input');
             
-            let price = 0;
-            zone = zone.toLowerCase();
-            
-            if (zone.includes('norte')) {
-                price = option.dataset.norte;
-            } else if (zone.includes('sur')) {
-                price = option.dataset.sur;
-            } else if (zone.includes('centro')) {
-                price = option.dataset.centro;
-            } else if (zone.includes('este')) {
-                price = option.dataset.este;
-            } else if (zone.includes('oeste')) {
-                price = option.dataset.oeste;
+            if (!select.value) {
+                precioInput.value = '';
+                updateSubtotal(craneItem);
+                return;
             }
             
-            if (price && price > 0) {
-                precioInput.value = price;
+            const option = select.options[select.selectedIndex];
+            const precio = option.dataset.precio;
+            
+            if (precio) {
+                precioInput.value = precio;
+                updateSubtotal(craneItem);
             }
         }
         
@@ -368,16 +401,6 @@
             totalDisplay.textContent = '$' + total.toFixed(2);
             totalInput.value = total.toFixed(2);
         }
-        
-        // Escuchar cambios en la zona para actualizar precios
-        zoneInput.addEventListener('input', function() {
-            const craneItems = cranesContainer.querySelectorAll('.crane-item');
-            craneItems.forEach(item => {
-                const select = item.querySelector('.crane-select');
-                updatePriceBasedOnZone(select, this.value);
-                updateSubtotal(item);
-            });
-        });
         
         // Validar formulario antes de enviar
         document.getElementById('quoteForm').addEventListener('submit', function(e) {

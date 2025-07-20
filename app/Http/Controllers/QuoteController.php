@@ -115,6 +115,24 @@ class QuoteController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource with PDF preview.
+     */
+    public function createWithPreview()
+    {
+        try {
+            $clients = Client::where('status', Client::STATUS_ACTIVE)->get(['_id', 'name']);
+            $cranes = Crane::where('estado', Crane::STATUS_ACTIVE)->get(['_id', 'nombre', 'marca', 'modelo', 'capacidad', 'tipo', 'precios']);
+            $users = User::all(['_id', 'name']);
+
+            return view('quotes.create-with-preview', compact('clients', 'cranes', 'users'));
+
+        } catch (\Exception $e) {
+            Log::error('Error al cargar formulario de creación de cotización con vista previa: ' . $e->getMessage());
+            return redirect()->route('quotes.index')->with('error', 'Error al cargar el formulario');
+        }
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -127,6 +145,7 @@ class QuoteController extends Controller
                 'status' => ['sometimes', Rule::in([Quote::STATUS_PENDING, Quote::STATUS_APPROVED, Quote::STATUS_REJECTED, Quote::STATUS_ACTIVE, Quote::STATUS_COMPLETED])],
                 'cranes' => 'required|array|min:1',
                 'cranes.*.crane' => 'required|string|exists:cranes,_id',
+                'cranes.*.zona' => 'required|string',
                 'cranes.*.dias' => 'required|numeric|min:1',
                 'cranes.*.precio' => 'required|numeric|min:0',
                 'iva' => 'nullable|numeric|min:0|max:100',

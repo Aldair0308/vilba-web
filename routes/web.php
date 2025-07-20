@@ -125,6 +125,9 @@ Route::patch('/cranes/{crane}/rented', [CraneController::class, 'setRented'])->n
     Route::get('/quotes/create-with-pdf', [QuoteController::class, 'createWithPdf'])->name('quotes.create-with-pdf');
     Route::post('/quotes/store-and-generate-pdf', [QuoteController::class, 'storeAndGeneratePdf'])->name('quotes.store-and-generate-pdf');
     
+    // Nueva ruta para crear cotización con vista previa en tiempo real
+    Route::get('/quotes/create-with-preview', [QuoteController::class, 'createWithPreview'])->name('quotes.create-with-preview');
+    
     // CRUD de Eventos
     Route::resource('events', EventController::class);
     

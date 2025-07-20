@@ -313,11 +313,13 @@ class Quote extends Model
             $craneId = isset($crane['crane']) && (is_string($crane['crane']) || is_object($crane['crane'])) ? (string)$crane['crane'] : null;
             $dias = isset($crane['dias']) && is_numeric($crane['dias']) ? (int)$crane['dias'] : 0;
             $precio = isset($crane['precio']) && is_numeric($crane['precio']) ? (float)$crane['precio'] : 0;
+            $zona = isset($crane['zona']) && is_string($crane['zona']) ? $crane['zona'] : '';
             
             $craneModel = $craneId ? $craneModels->get($craneId) : null;
             
             return [
                 'crane' => $craneId,
+                'zona' => $zona,
                 'dias' => $dias,
                 'precio' => $precio,
                 'subtotal' => $dias * $precio,

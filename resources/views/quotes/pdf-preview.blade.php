@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Cotización</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cotización - Vista Previa</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
@@ -33,22 +34,10 @@
         }
 
         .logo {
-            max-width: 120px;
-            max-height: 60px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
+            max-width: 150px;
             margin-bottom: 15px;
-        }
-
-        .logo-placeholder {
-            width: 120px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #FF6B35;
-            border-radius: 5px;
+            width: 100%;
+            height: auto;
         }
 
         .header h2 {
@@ -209,21 +198,7 @@
 </head>
 <body>
     <div class="header">
-        @php
-            $logoPath = public_path('assets/img/logo/Vilba-logo.png');
-            $logoBase64 = '';
-            if (file_exists($logoPath)) {
-                $logoData = file_get_contents($logoPath);
-                $logoBase64 = 'data:image/png;base64,' . base64_encode($logoData);
-            }
-        @endphp
-        @if($logoBase64)
-            <img class="logo" src="{{ $logoBase64 }}" />
-        @else
-            <div class="logo-placeholder">
-                <h2 style="color: #FF6B35; margin: 0;">VILBA</h2>
-            </div>
-        @endif
+        <img class="logo" src="{{ asset('assets/img/logo/Vilba-logo.png') }}" />
     </div>
 
     <div class="content">
@@ -231,11 +206,11 @@
             <h3>COTIZACIÓN</h3>
             <div class="quotation-number">
                 <label>N°:</label>
-                <span>{{ $quote->id ?? 'N/A' }}</span>
+                <span id="preview-quote-number">001</span>
             </div>
             <div class="quotation-date">
                 <label>Fecha:</label>
-                <span>{{ $quote->created_at ? $quote->created_at->format('d/m/Y') : date('d/m/Y') }}</span>
+                <span id="preview-quote-date"></span>
             </div>
         </div>
 
@@ -244,23 +219,23 @@
             <div class="client-details">
                 <div>
                     <label>Nombre/Razón Social:</label>
-                    <span>{{ $quote->client->name ?? 'N/A' }}</span>
+                    <span id="preview-client-name">Seleccionar cliente</span>
                 </div>
                 <div>
                     <label>RFC:</label>
-                    <span>{{ $quote->client->rfc ?? 'N/A' }}</span>
+                    <span id="previewClientRfc">N/A</span>
                 </div>
                 <div>
                     <label>Dirección:</label>
-                    <span>{{ $quote->client->address ?? 'N/A' }}</span>
+                    <span id="preview-client-address">-</span>
                 </div>
                 <div>
                     <label>Teléfono:</label>
-                    <span>{{ $quote->client->phone ?? 'N/A' }}</span>
+                    <span id="preview-client-phone">-</span>
                 </div>
                 <div>
                     <label>Email:</label>
-                    <span>{{ $quote->client->email ?? 'N/A' }}</span>
+                    <span id="preview-client-email">-</span>
                 </div>
             </div>
         </div>
@@ -268,7 +243,7 @@
         <div class="project-info">
             <h4>DESCRIPCIÓN DEL PROYECTO</h4>
             <div class="project-description">
-                <p>{{ $quote->description ?? 'Sin descripción' }}</p>
+                <p id="preview-description">Descripción del proyecto...</p>
             </div>
         </div>
 
@@ -286,44 +261,23 @@
                         <th>Total</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @if(isset($quote->crane_details) && is_array($quote->crane_details))
-                        @foreach($quote->crane_details as $index => $detail)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>
-                                    @if(isset($detail['crane_info']) && $detail['crane_info'])
-                                        {{ $detail['crane_info']['nombre'] ?? 'Grúa' }}
-                                        <br><small>{{ $detail['crane_info']['marca'] ?? '' }} {{ $detail['crane_info']['modelo'] ?? '' }}</small>
-                                    @else
-                                        Grúa
-                                    @endif
-                                </td>
-                                <td>{{ $detail['zona'] ?? 'N/A' }}</td>
-                                <td>{{ $detail['dias'] ?? 1 }}</td>
-                                <td>Días</td>
-                                <td>S/ {{ number_format($detail['precio'] ?? 0, 2) }}</td>
-                                <td>S/ {{ number_format($detail['subtotal'] ?? 0, 2) }}</td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td colspan="7" style="text-align: center;">No hay items disponibles</td>
-                        </tr>
-                    @endif
+                <tbody id="preview-items">
+                    <tr>
+                        <td colspan="7" style="text-align: center;">No hay items agregados</td>
+                    </tr>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="6" class="total-label">SUBTOTAL</td>
-                        <td class="total-value">S/ {{ number_format($quote->subtotal ?? 0, 2) }}</td>
+                        <td class="total-value" id="preview-subtotal">S/ 0.00</td>
                     </tr>
                     <tr>
-                        <td colspan="6" class="total-label">IVA ({{ $quote->iva ?? 18 }}%)</td>
-                        <td class="total-value">S/ {{ number_format($quote->iva_amount ?? 0, 2) }}</td>
+                        <td colspan="6" class="total-label">IVA (18%)</td>
+                        <td class="total-value" id="preview-iva">S/ 0.00</td>
                     </tr>
                     <tr>
                         <td colspan="6" class="total-label">TOTAL</td>
-                        <td class="total-value">S/ {{ number_format($quote->calculated_total ?? 0, 2) }}</td>
+                        <td class="total-value" id="preview-total">S/ 0.00</td>
                     </tr>
                 </tfoot>
             </table>
@@ -342,13 +296,19 @@
 
         <div class="signature">
             <div class="signature-line"></div>
-            <p>{{ $quote->responsible->name ?? 'Responsable' }}</p>
+            <p id="preview-responsible">Responsable</p>
             <p>Representante de Ventas</p>
         </div>
     </div>
 
     <div class="footer">
-        <p>Generado el {{ date('d/m/Y H:i:s') }}</p>
+        <p>Generado el <span id="preview-generated-date"></span></p>
     </div>
+
+    <script>
+        // Set current date
+        document.getElementById('preview-quote-date').textContent = new Date().toLocaleDateString('es-PE');
+        document.getElementById('preview-generated-date').textContent = new Date().toLocaleDateString('es-PE') + ' ' + new Date().toLocaleTimeString('es-PE');
+    </script>
 </body>
 </html>
