@@ -348,7 +348,7 @@
                 <li>Validez de la cotización: 15 días.</li>
                 <li>Forma de pago: 50% adelanto, 50% contraentrega.</li>
                 <li>Tiempo de entrega: 7 días hábiles.</li>
-                <li>Garantía: 12 meses.</li>
+                <li>Garantía: 1 mes.</li>
                 @if($quote->include_iva ?? true)
                     <li>El precio incluye IVA.</li>
                 @else

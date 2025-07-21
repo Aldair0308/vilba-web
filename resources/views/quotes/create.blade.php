@@ -46,13 +46,13 @@
 
                                         <!-- Zona -->
                                         <div class="mb-3">
-                                            <label for="zone" class="form-label">Zona <span class="text-danger">*</span></label>
+                                            <label for="zone" class="form-label">Zona del Proyecto <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control @error('zone') is-invalid @enderror" 
                                                 id="zone" name="zone" value="{{ old('zone') }}" required>
                                             @error('zone')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                            <small class="form-text text-muted">Ejemplo: Norte, Sur, Centro, etc.</small>
+                                            <small class="form-text text-muted">Ubicación donde se realizará el proyecto</small>
                                         </div>
 
                                         <!-- Cliente -->
@@ -120,78 +120,68 @@
                             </div>
 
                             <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                                        <h5 class="mb-0">Grúas y Precios</h5>
-                                        <button type="button" class="btn btn-sm btn-primary" id="addCraneBtn">
-                                            <i class="fas fa-plus"></i> Agregar Grúa
-                                        </button>
+                                <!-- Selector de Equipos -->
+                                <div class="card mb-3">
+                                    <div class="card-header bg-primary text-white">
+                                        <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Agregar Equipos</h5>
                                     </div>
                                     <div class="card-body">
-                                        <div id="cranesContainer">
-                                            <!-- Aquí se agregarán dinámicamente las grúas -->
-                                            <div class="alert alert-info" id="noCranesMessage">
-                                                <i class="fas fa-info-circle me-2"></i> Agrega al menos una grúa a la cotización.
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Seleccionar Equipo</label>
+                                                <select class="form-select" id="equipmentSelector">
+                                                    <option value="">Seleccionar equipo...</option>
+                                                    @foreach($cranes as $crane)
+                                                        <option value="{{ $crane->_id }}" 
+                                                                data-precios="{{ json_encode($crane->precios ?? []) }}"
+                                                                data-nombre="{{ $crane->nombre }}"
+                                                                data-marca="{{ $crane->marca }}"
+                                                                data-modelo="{{ $crane->modelo }}"
+                                                                data-capacidad="{{ $crane->capacidad }}">
+                                                            {{ $crane->nombre }} ({{ $crane->marca }} {{ $crane->modelo }}) - {{ $crane->capacidad }} ton
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 mb-3" id="zoneSelector" style="display: none;">
+                                                <label class="form-label">Zona de Trabajo</label>
+                                                <select class="form-select" id="zoneSelect">
+                                                    <option value="">Seleccionar zona...</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 mb-3" id="daysInput" style="display: none;">
+                                                <label class="form-label">Días de Alquiler</label>
+                                                <input type="number" class="form-control" id="daysValue" min="1" value="1">
+                                            </div>
+                                            <div class="col-md-6 mb-3" id="priceDisplay" style="display: none;">
+                                                <label class="form-label">Precio por Día</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">S/</span>
+                                                    <input type="text" class="form-control" id="priceValue" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" id="addButton" style="display: none;">
+                                                <button type="button" class="btn btn-success w-100" id="addToCartBtn">
+                                                    <i class="fas fa-cart-plus me-2"></i>Agregar al Carrito
+                                                </button>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <template id="craneTemplate">
-                                            <div class="crane-item card mb-3">
-                                                <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                                                    <h6 class="mb-0 crane-title">Grúa</h6>
-                                                    <button type="button" class="btn btn-sm btn-outline-danger remove-crane-btn">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12 mb-3">
-                                                            <label class="form-label">Seleccionar Grúa <span class="text-danger">*</span></label>
-                                                            <select class="form-select crane-select" name="cranes[INDEX][crane]" required>
-                                                                <option value="">Seleccionar grúa...</option>
-                                                                @foreach($cranes as $crane)
-                                                                    <option value="{{ $crane->_id }}" 
-                                                                            data-precios="{{ json_encode($crane->precios ?? []) }}"
-                                                                            data-nombre="{{ $crane->nombre }}"
-                                                                            data-marca="{{ $crane->marca }}"
-                                                                            data-modelo="{{ $crane->modelo }}"
-                                                                            data-capacidad="{{ $crane->capacidad }}">
-                                                                        {{ $crane->nombre }} ({{ $crane->marca }} {{ $crane->modelo }}) - {{ $crane->capacidad }} ton
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3 zona-container" style="display: none;">
-                                                            <label class="form-label">Zona <span class="text-danger">*</span></label>
-                                                            <select class="form-select zona-select" name="cranes[INDEX][zona]" required>
-                                                                <option value="">Seleccionar zona...</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3">
-                                                            <label class="form-label">Días <span class="text-danger">*</span></label>
-                                                            <input type="number" class="form-control dias-input" 
-                                                                   name="cranes[INDEX][dias]" min="1" required>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3">
-                                                            <label class="form-label">Precio por Día <span class="text-danger">*</span></label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-text">S/</span>
-                                                                <input type="number" class="form-control precio-input" 
-                                                                       name="cranes[INDEX][precio]" min="0" step="0.01" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="alert alert-success mb-0">
-                                                                <div class="d-flex justify-content-between">
-                                                                    <span>Subtotal:</span>
-                                                                    <span class="crane-subtotal">S/ 0.00</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                <!-- Carrito de Equipos -->
+                                <div class="card">
+                                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Equipos en Cotización</h5>
+                                        <span class="badge bg-primary" id="cartCount">0</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="equipmentCart">
+                                            <!-- Aquí se mostrarán los equipos agregados -->
+                                            <div class="alert alert-info" id="emptyCartMessage">
+                                                <i class="fas fa-info-circle me-2"></i> No hay equipos agregados a la cotización.
                                             </div>
-                                        </template>
+                                        </div>
 
                                         <!-- Configuración de IVA -->
                                         <div class="mb-4 mt-4">
@@ -255,10 +245,13 @@
                             </div>
                         </div>
 
+                        <!-- Campos ocultos para enviar datos del carrito -->
+                        <div id="hiddenInputs"></div>
+
                         <div class="d-flex justify-content-end mt-4">
                             <button type="button" class="btn btn-secondary me-2" onclick="window.history.back()">
                                 Cancelar
-                            </button>
+            </button>
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-save me-2"></i>Guardar Cotización
                             </button>
@@ -274,191 +267,300 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        let craneIndex = 0;
-        const cranesContainer = document.getElementById('cranesContainer');
-        const noCranesMessage = document.getElementById('noCranesMessage');
-        const addCraneBtn = document.getElementById('addCraneBtn');
-        const craneTemplate = document.getElementById('craneTemplate').content;
-        const ivaInput = document.getElementById('iva');
-        const includeIvaSwitch = document.getElementById('includeIva');
-        const ivaSection = document.getElementById('ivaSection');
+        // Variables globales
+        let cart = [];
+        let cartIndex = 0;
+        
+        // Elementos del DOM
+        const equipmentSelector = document.getElementById('equipmentSelector');
+        const zoneSelector = document.getElementById('zoneSelector');
+        const zoneSelect = document.getElementById('zoneSelect');
+        const daysInput = document.getElementById('daysInput');
+        const daysValue = document.getElementById('daysValue');
+        const priceDisplay = document.getElementById('priceDisplay');
+        const priceValue = document.getElementById('priceValue');
+        const addButton = document.getElementById('addButton');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const equipmentCart = document.getElementById('equipmentCart');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        const cartCount = document.getElementById('cartCount');
+        const hiddenInputs = document.getElementById('hiddenInputs');
+        
+        // Elementos de IVA y totales
+        const includeIvaCheckbox = document.getElementById('includeIva');
+        const ivaPercentageInput = document.getElementById('iva');
         const ivaRow = document.getElementById('ivaRow');
-        const ivaRateDisplay = document.getElementById('ivaRateDisplay');
-        const subtotalDisplay = document.getElementById('subtotalDisplay');
-        const ivaDisplay = document.getElementById('ivaDisplay');
-        const totalDisplay = document.getElementById('totalDisplay');
-        const totalInput = document.getElementById('total');
-        const zoneInput = document.getElementById('zone');
-        
-        // Agregar grúa
-        addCraneBtn.addEventListener('click', function() {
-            addCrane();
+        const ivaPercentageDisplay = document.getElementById('ivaRateDisplay');
+        const totalSubtotal = document.getElementById('subtotalDisplay');
+        const totalIva = document.getElementById('ivaDisplay');
+        const totalFinal = document.getElementById('totalDisplay');
+
+        // Event listener para selección de equipo
+        equipmentSelector.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            
+            if (selectedOption.value) {
+                try {
+                    const precios = JSON.parse(selectedOption.dataset.precios || '[]');
+                    
+                    // Limpiar y llenar zonas
+                    zoneSelect.innerHTML = '<option value="">Seleccionar zona...</option>';
+                    
+                    if (Array.isArray(precios) && precios.length > 0) {
+                        precios.forEach(precio => {
+                            if (precio.zona && precio.precio) {
+                                const option = document.createElement('option');
+                                option.value = precio.zona;
+                                option.textContent = precio.zona;
+                                option.dataset.precio = precio.precio;
+                                zoneSelect.appendChild(option);
+                            }
+                        });
+                        
+                        // Mostrar selector de zona
+                        zoneSelector.style.display = 'block';
+                    } else {
+                        // Si no hay precios, mostrar mensaje
+                        const option = document.createElement('option');
+                        option.value = '';
+                        option.textContent = 'No hay zonas disponibles';
+                        option.disabled = true;
+                        zoneSelect.appendChild(option);
+                        zoneSelector.style.display = 'block';
+                    }
+                    
+                    // Ocultar otros campos hasta que se seleccione zona
+                    daysInput.style.display = 'none';
+                    priceDisplay.style.display = 'none';
+                    addButton.style.display = 'none';
+                } catch (error) {
+                    console.error('Error parsing precios data:', error);
+                    zoneSelector.style.display = 'none';
+                }
+            } else {
+                // Ocultar todos los campos
+                zoneSelector.style.display = 'none';
+                daysInput.style.display = 'none';
+                priceDisplay.style.display = 'none';
+                addButton.style.display = 'none';
+            }
         });
-        
-        // Manejar switch de IVA
-        includeIvaSwitch.addEventListener('change', function() {
+
+        // Event listener para selección de zona
+        zoneSelect.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            
+            if (selectedOption.value) {
+                const precio = selectedOption.dataset.precio;
+                priceValue.value = parseFloat(precio).toFixed(2);
+                
+                // Mostrar campos de días, precio y botón
+                daysInput.style.display = 'block';
+                priceDisplay.style.display = 'block';
+                addButton.style.display = 'block';
+            } else {
+                // Ocultar campos
+                daysInput.style.display = 'none';
+                priceDisplay.style.display = 'none';
+                addButton.style.display = 'none';
+            }
+        });
+
+        // Event listener para agregar al carrito
+        addToCartBtn.addEventListener('click', function() {
+            const equipmentOption = equipmentSelector.options[equipmentSelector.selectedIndex];
+            const zoneOption = zoneSelect.options[zoneSelect.selectedIndex];
+            const days = parseInt(daysValue.value);
+            const price = parseFloat(priceValue.value);
+            
+            if (!equipmentOption.value || !zoneOption.value || !days || !price) {
+                alert('Por favor, complete todos los campos antes de agregar al carrito.');
+                return;
+            }
+            
+            // Crear item del carrito
+            const cartItem = {
+                id: cartIndex++,
+                craneId: equipmentOption.value,
+                craneName: equipmentOption.dataset.nombre,
+                craneBrand: equipmentOption.dataset.marca,
+                craneModel: equipmentOption.dataset.modelo,
+                craneCapacity: equipmentOption.dataset.capacidad,
+                zone: zoneOption.value,
+                days: days,
+                pricePerDay: price,
+                subtotal: days * price
+            };
+            
+            // Agregar al carrito
+            cart.push(cartItem);
+            
+            // Actualizar UI
+            updateCartDisplay();
+            updateTotals();
+            updateHiddenInputs();
+            
+            // Limpiar formulario
+            resetForm();
+        });
+
+        // Función para actualizar la visualización del carrito
+        function updateCartDisplay() {
+            cartCount.textContent = cart.length;
+            
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                return;
+            }
+            
+            emptyCartMessage.style.display = 'none';
+            
+            const cartHTML = cart.map(item => `
+                <div class="card mb-2" data-cart-id="${item.id}">
+                    <div class="card-body p-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">${item.craneName}</h6>
+                                <small class="text-muted">${item.craneBrand} ${item.craneModel} - ${item.craneCapacity} ton</small>
+                                <div class="mt-2">
+                                    <span class="badge bg-info me-2">Zona: ${item.zone}</span>
+                                    <span class="badge bg-secondary me-2">${item.days} días</span>
+                                    <span class="badge bg-success">S/ ${item.pricePerDay.toFixed(2)}/día</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <div class="h6 mb-1">S/ ${item.subtotal.toFixed(2)}</div>
+                                <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            equipmentCart.innerHTML = cartHTML;
+        }
+
+        // Función para remover del carrito
+        window.removeFromCart = function(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartDisplay();
+            updateTotals();
+            updateHiddenInputs();
+        };
+
+        // Función para actualizar campos ocultos
+        function updateHiddenInputs() {
+            hiddenInputs.innerHTML = '';
+            
+            cart.forEach((item, index) => {
+                hiddenInputs.innerHTML += `
+                    <input type="hidden" name="cranes[${index}][crane]" value="${item.craneId}">
+                    <input type="hidden" name="cranes[${index}][zona]" value="${item.zone}">
+                    <input type="hidden" name="cranes[${index}][dias]" value="${item.days}">
+                    <input type="hidden" name="cranes[${index}][precio]" value="${item.pricePerDay}">
+                `;
+            });
+            
+            // Agregar el total calculado
+            const subtotal = cart.reduce((sum, item) => sum + item.subtotal, 0);
+            let total = subtotal;
+            if (includeIvaCheckbox.checked) {
+                const ivaPercentage = parseFloat(ivaPercentageInput.value) || 0;
+                const ivaAmount = subtotal * (ivaPercentage / 100);
+                total = subtotal + ivaAmount;
+            }
+            
+            // Actualizar el campo hidden del total
+            document.getElementById('total').value = total.toFixed(2);
+        }
+
+        // Función para resetear el formulario de agregar
+        function resetForm() {
+            equipmentSelector.value = '';
+            zoneSelect.innerHTML = '<option value="">Seleccionar zona...</option>';
+            daysValue.value = 1;
+            priceValue.value = '';
+            
+            // Ocultar campos
+            zoneSelector.style.display = 'none';
+            daysInput.style.display = 'none';
+            priceDisplay.style.display = 'none';
+            addButton.style.display = 'none';
+        }
+
+        // Función para actualizar totales
+        function updateTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + item.subtotal, 0);
+            
+            totalSubtotal.textContent = `S/ ${subtotal.toFixed(2)}`;
+            
+            // Calcular IVA si está habilitado
+            let total = subtotal;
+            if (includeIvaCheckbox.checked) {
+                const ivaPercentage = parseFloat(ivaPercentageInput.value) || 0;
+                const ivaAmount = subtotal * (ivaPercentage / 100);
+                totalIva.textContent = `S/ ${ivaAmount.toFixed(2)}`;
+                total = subtotal + ivaAmount;
+            }
+            
+            totalFinal.textContent = `S/ ${total.toFixed(2)}`;
+        }
+
+        // Event listener para checkbox de IVA
+        includeIvaCheckbox.addEventListener('change', function() {
             if (this.checked) {
-                ivaSection.style.display = 'block';
+                document.getElementById('ivaSection').style.display = 'block';
                 ivaRow.style.display = 'flex';
             } else {
-                ivaSection.style.display = 'none';
+                document.getElementById('ivaSection').style.display = 'none';
                 ivaRow.style.display = 'none';
-                ivaInput.value = 0;
             }
             updateTotals();
         });
-        
-        // Actualizar IVA cuando cambie
-        ivaInput.addEventListener('input', function() {
-            ivaRateDisplay.textContent = this.value || '0';
+
+        // Event listener para porcentaje de IVA
+        ivaPercentageInput.addEventListener('input', function() {
+            ivaPercentageDisplay.textContent = this.value;
             updateTotals();
         });
-        
-        // Función para agregar una grúa
-        function addCrane() {
-            noCranesMessage.style.display = 'none';
-            
-            const clone = document.importNode(craneTemplate, true);
-            
-            // Actualizar índices
-            const selects = clone.querySelectorAll('select');
-            const inputs = clone.querySelectorAll('input');
-            
-            selects.forEach(select => {
-                select.name = select.name.replace('INDEX', craneIndex);
-                
-                if (select.classList.contains('crane-select')) {
-                    select.addEventListener('change', function() {
-                        handleCraneSelection(this);
-                    });
-                } else if (select.classList.contains('zona-select')) {
-                    select.addEventListener('change', function() {
-                        handleZoneSelection(this);
-                    });
-                }
-            });
-            
-            inputs.forEach(input => {
-                input.name = input.name.replace('INDEX', craneIndex);
-                input.addEventListener('input', function() {
-                    updateSubtotal(this.closest('.crane-item'));
-                });
-            });
-            
-            // Configurar botón de eliminar
-            const removeBtn = clone.querySelector('.remove-crane-btn');
-            removeBtn.addEventListener('click', function() {
-                this.closest('.crane-item').remove();
-                updateTotals();
-                
-                // Mostrar mensaje si no hay grúas
-                if (cranesContainer.querySelectorAll('.crane-item').length === 0) {
-                    noCranesMessage.style.display = 'block';
-                }
-            });
-            
-            // Actualizar título
-            clone.querySelector('.crane-title').textContent = `Grúa ${craneIndex + 1}`;
-            
-            cranesContainer.appendChild(clone);
-            craneIndex++;
-            updateTotals();
-        }
-        
-        // Función para manejar la selección de grúa
-        function handleCraneSelection(select) {
-            const craneItem = select.closest('.crane-item');
-            const zonaContainer = craneItem.querySelector('.zona-container');
-            const zonaSelect = craneItem.querySelector('.zona-select');
-            
-            if (!select.value) {
-                zonaContainer.style.display = 'none';
-                zonaSelect.innerHTML = '<option value="">Seleccionar zona...</option>';
-                return;
-            }
-            
-            const option = select.options[select.selectedIndex];
-            const precios = JSON.parse(option.dataset.precios || '[]');
-            
-            // Limpiar y llenar el select de zonas
-            zonaSelect.innerHTML = '<option value="">Seleccionar zona...</option>';
-            
-            precios.forEach(precio => {
-                const optionElement = document.createElement('option');
-                optionElement.value = precio.zona;
-                optionElement.textContent = precio.zona;
-                optionElement.dataset.precio = precio.precio;
-                zonaSelect.appendChild(optionElement);
-            });
-            
-            zonaContainer.style.display = 'block';
-        }
-        
-        // Función para manejar la selección de zona
-        function handleZoneSelection(select) {
-            const craneItem = select.closest('.crane-item');
-            const precioInput = craneItem.querySelector('.precio-input');
-            
-            if (!select.value) {
-                precioInput.value = '';
-                updateSubtotal(craneItem);
-                return;
-            }
-            
-            const option = select.options[select.selectedIndex];
-            const precio = option.dataset.precio;
-            
-            if (precio) {
-                precioInput.value = precio;
-                updateSubtotal(craneItem);
-            }
-        }
-        
-        // Función para actualizar subtotal de una grúa
-        function updateSubtotal(craneItem) {
-            const dias = parseFloat(craneItem.querySelector('.dias-input').value) || 0;
-            const precio = parseFloat(craneItem.querySelector('.precio-input').value) || 0;
-            const subtotal = dias * precio;
-            
-            craneItem.querySelector('.crane-subtotal').textContent = 'S/ ' + subtotal.toFixed(2);
-            updateTotals();
-        }
-        
-        // Función para actualizar totales generales
-        function updateTotals() {
-            let subtotal = 0;
-            const craneItems = cranesContainer.querySelectorAll('.crane-item');
-            
-            craneItems.forEach(item => {
-                const dias = parseFloat(item.querySelector('.dias-input').value) || 0;
-                const precio = parseFloat(item.querySelector('.precio-input').value) || 0;
-                subtotal += dias * precio;
-            });
-            
-            const includeIva = includeIvaSwitch.checked;
-            const ivaRate = includeIva ? (parseFloat(ivaInput.value) || 0) : 0;
-            const ivaAmount = subtotal * (ivaRate / 100);
-            const total = subtotal + ivaAmount;
-            
-            subtotalDisplay.textContent = 'S/ ' + subtotal.toFixed(2);
-            ivaDisplay.textContent = 'S/ ' + ivaAmount.toFixed(2);
-            totalDisplay.textContent = 'S/ ' + total.toFixed(2);
-            totalInput.value = total.toFixed(2);
-        }
-        
-        // Validar formulario antes de enviar
+
+        // Validación del formulario
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            const craneItems = cranesContainer.querySelectorAll('.crane-item');
-            if (craneItems.length === 0) {
+            if (cart.length === 0) {
                 e.preventDefault();
-                alert('Debe agregar al menos una grúa a la cotización.');
+                alert('Debe agregar al menos un equipo a la cotización.');
                 return false;
             }
-            return true;
+            
+            // Debug: verificar que los campos ocultos estén presentes
+            console.log('Cart data:', cart);
+            console.log('Hidden inputs:', hiddenInputs.innerHTML);
+            
+            // Asegurar que los campos ocultos estén actualizados antes del envío
+            updateHiddenInputs();
+            
+            // Verificar que los campos ocultos existen
+            const craneInputs = document.querySelectorAll('input[name^="cranes["]');
+            if (craneInputs.length === 0) {
+                e.preventDefault();
+                alert('Error: No se pudieron generar los datos del carrito. Por favor, intente nuevamente.');
+                return false;
+            }
         });
+
+        // Inicializar estado del IVA
+        if (includeIvaCheckbox.checked) {
+            document.getElementById('ivaSection').style.display = 'block';
+            ivaRow.style.display = 'flex';
+        } else {
+            document.getElementById('ivaSection').style.display = 'none';
+            ivaRow.style.display = 'none';
+        }
         
-        // Agregar una grúa inicial
-        addCrane();
+        // Inicializar totales
+        updateTotals();
     });
 </script>
 @endpush

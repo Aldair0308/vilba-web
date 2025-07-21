@@ -313,11 +313,14 @@ class QuoteController extends Controller
                 'status' => ['sometimes', Rule::in([Quote::STATUS_PENDING, Quote::STATUS_APPROVED, Quote::STATUS_REJECTED, Quote::STATUS_ACTIVE, Quote::STATUS_COMPLETED])],
                 'cranes' => 'required|array|min:1',
                 'cranes.*.crane' => 'required|string|exists:cranes,_id',
+                'cranes.*.zona' => 'required|string',
                 'cranes.*.dias' => 'required|numeric|min:1',
                 'cranes.*.precio' => 'required|numeric|min:0',
                 'iva' => 'nullable|numeric|min:0|max:100',
+                'include_iva' => 'nullable|boolean',
                 'total' => 'nullable|string',
                 'responsibleId' => 'required|string|exists:users,_id',
+                'description' => 'nullable|string',
             ]);
 
             $quote->update($validatedData);
