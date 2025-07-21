@@ -20,9 +20,6 @@
                             <a href="{{ route('quotes.create') }}" class="btn btn-primary">
                                 <i class="fas fa-plus me-2"></i>Nueva Cotización
                             </a>
-                            <a href="{{ route('quotes.create-with-pdf') }}" class="btn btn-success">
-                                <i class="fas fa-file-pdf me-2"></i>Crear con PDF
-                            </a>
                         </div>
                     </div>
                 </div>

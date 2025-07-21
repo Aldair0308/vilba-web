@@ -90,14 +90,19 @@
                                                 id="responsibleId" name="responsibleId" required>
                                                 <option value="">Seleccionar responsable...</option>
                                                 @foreach($users as $user)
-                                                    <option value="{{ $user->_id }}" {{ old('responsibleId') == $user->_id ? 'selected' : '' }}>
+                                                    <option value="{{ $user->_id }}" 
+                                                        {{ old('responsibleId', auth()->user()->_id) == $user->_id ? 'selected' : '' }}>
                                                         {{ $user->name }}
+                                                        @if($user->_id == auth()->user()->_id)
+                                                            <span class="text-muted">(Tú)</span>
+                                                        @endif
                                                     </option>
                                                 @endforeach
                                             </select>
                                             @error('responsibleId')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
+                                            <small class="form-text text-muted">Por defecto se selecciona tu usuario, pero puedes cambiarlo si es necesario</small>
                                         </div>
 
                                         <!-- Estado -->
