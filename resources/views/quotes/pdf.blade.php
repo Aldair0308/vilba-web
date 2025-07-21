@@ -81,8 +81,7 @@
         }
 
         .quotation-number, .quotation-date {
-            display: flex;
-            justify-content: flex-end;
+            text-align: right;
             margin-bottom: 12px;
             font-size: 14px;
         }
@@ -91,6 +90,10 @@
             font-weight: 500;
             margin-right: 15px;
             color: var(--secondary-color);
+        }
+
+        .quotation-number span, .quotation-date span {
+            color: var(--text-color);
         }
 
         .client-info, .project-info, .items-table, .terms-conditions {
@@ -287,7 +290,7 @@
                     <tr>
                         <th>Item</th>
                         <th>Descripción</th>
-                        <th>Zona</th>
+
                         <th>Cantidad</th>
                         <th>Unidad</th>
                         <th>P. Unitario</th>
@@ -307,7 +310,7 @@
                                         Grúa
                                     @endif
                                 </td>
-                                <td>{{ $detail['zona'] ?? 'N/A' }}</td>
+
                                 <td>{{ $detail['dias'] ?? 1 }}</td>
                                 <td>Días</td>
                                 <td>S/ {{ number_format($detail['precio'] ?? 0, 2) }}</td>
@@ -322,17 +325,17 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="6" class="total-label">SUBTOTAL</td>
+                        <td colspan="5" class="total-label">SUBTOTAL</td>
                         <td class="total-value">S/ {{ number_format($quote->subtotal ?? 0, 2) }}</td>
                     </tr>
                     @if($quote->include_iva ?? true)
                     <tr>
-                        <td colspan="6" class="total-label">IVA ({{ $quote->iva ?? 18 }}%)</td>
+                        <td colspan="5" class="total-label">IVA ({{ $quote->iva ?? 18 }}%)</td>
                         <td class="total-value">S/ {{ number_format($quote->iva_amount ?? 0, 2) }}</td>
                     </tr>
                     @endif
                     <tr>
-                        <td colspan="6" class="total-label">TOTAL</td>
+                        <td colspan="5" class="total-label">TOTAL</td>
                         <td class="total-value">S/ {{ number_format($quote->calculated_total ?? 0, 2) }}</td>
                     </tr>
                 </tfoot>
