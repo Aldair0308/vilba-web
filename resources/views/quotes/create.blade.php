@@ -162,7 +162,7 @@
                                             <div class="col-md-6 mb-3" id="priceDisplay" style="display: none;">
                                                 <label class="form-label">Precio por Día</label>
                                                 <div class="input-group">
-                                                    <span class="input-group-text">S/</span>
+                                                    <span class="input-group-text">MXN</span>
                                                     <input type="text" class="form-control" id="priceValue" readonly>
                                                 </div>
                                             </div>
@@ -232,16 +232,16 @@
                                                 <h6 class="mb-3"><i class="fas fa-calculator me-2"></i>Resumen de Totales</h6>
                                                 <div class="d-flex justify-content-between mb-2">
                                                     <span>Subtotal:</span>
-                                                    <span id="subtotalDisplay" class="fw-bold">S/ 0.00</span>
+                                                    <span id="subtotalDisplay" class="fw-bold">MXN 0.00</span>
                                                 </div>
                                                 <div class="d-flex justify-content-between mb-2" id="ivaRow">
                                                     <span>IVA (<span id="ivaRateDisplay">16</span>%):</span>
-                                                    <span id="ivaDisplay" class="fw-bold text-info">S/ 0.00</span>
+                                                    <span id="ivaDisplay" class="fw-bold text-info">MXN 0.00</span>
                                                 </div>
                                                 <hr>
                                                 <div class="d-flex justify-content-between fw-bold fs-5">
                                                     <span>Total:</span>
-                                                    <span id="totalDisplay" class="text-success">S/ 0.00</span>
+                                                    <span id="totalDisplay" class="text-success">MXN 0.00</span>
                                                 </div>
                                                 <input type="hidden" id="total" name="total">
                                             </div>
@@ -431,11 +431,11 @@
                                 <div class="mt-2">
                                     <span class="badge bg-info me-2">Zona: ${item.zone}</span>
                                     <span class="badge bg-secondary me-2">${item.days} días</span>
-                                    <span class="badge bg-success">S/ ${item.pricePerDay.toFixed(2)}/día</span>
+                                    <span class="badge bg-success">MXN ${item.pricePerDay.toFixed(2)}/día</span>
                                 </div>
                             </div>
                             <div class="text-end">
-                                <div class="h6 mb-1">S/ ${item.subtotal.toFixed(2)}</div>
+                                <div class="h6 mb-1">MXN ${item.subtotal.toFixed(2)}</div>
                                 <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -500,18 +500,18 @@
         function updateTotals() {
             const subtotal = cart.reduce((sum, item) => sum + item.subtotal, 0);
             
-            totalSubtotal.textContent = `S/ ${subtotal.toFixed(2)}`;
+            totalSubtotal.textContent = `MXN ${subtotal.toFixed(2)}`;
             
             // Calcular IVA si está habilitado
             let total = subtotal;
             if (includeIvaCheckbox.checked) {
                 const ivaPercentage = parseFloat(ivaPercentageInput.value) || 0;
                 const ivaAmount = subtotal * (ivaPercentage / 100);
-                totalIva.textContent = `S/ ${ivaAmount.toFixed(2)}`;
+                totalIva.textContent = `MXN ${ivaAmount.toFixed(2)}`;
                 total = subtotal + ivaAmount;
             }
             
-            totalFinal.textContent = `S/ ${total.toFixed(2)}`;
+            totalFinal.textContent = `MXN ${total.toFixed(2)}`;
         }
 
         // Event listener para checkbox de IVA

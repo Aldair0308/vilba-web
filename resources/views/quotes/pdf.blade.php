@@ -313,8 +313,8 @@
 
                                 <td>{{ $detail['dias'] ?? 1 }}</td>
                                 <td>Días</td>
-                                <td>S/ {{ number_format($detail['precio'] ?? 0, 2) }}</td>
-                                <td>S/ {{ number_format($detail['subtotal'] ?? 0, 2) }}</td>
+                                <td>MXN {{ number_format($detail['precio'] ?? 0, 2) }}</td>
+                                <td>MXN {{ number_format($detail['subtotal'] ?? 0, 2) }}</td>
                             </tr>
                         @endforeach
                     @else
@@ -326,17 +326,17 @@
                 <tfoot>
                     <tr>
                         <td colspan="5" class="total-label">SUBTOTAL</td>
-                        <td class="total-value">S/ {{ number_format($quote->subtotal ?? 0, 2) }}</td>
+                        <td class="total-value">MXN {{ number_format($quote->subtotal ?? 0, 2) }}</td>
                     </tr>
                     @if($quote->include_iva ?? true)
                     <tr>
                         <td colspan="5" class="total-label">IVA ({{ $quote->iva ?? 18 }}%)</td>
-                        <td class="total-value">S/ {{ number_format($quote->iva_amount ?? 0, 2) }}</td>
+                        <td class="total-value">MXN {{ number_format($quote->iva_amount ?? 0, 2) }}</td>
                     </tr>
                     @endif
                     <tr>
                         <td colspan="5" class="total-label">TOTAL</td>
-                        <td class="total-value">S/ {{ number_format($quote->calculated_total ?? 0, 2) }}</td>
+                        <td class="total-value">MXN {{ number_format($quote->calculated_total ?? 0, 2) }}</td>
                     </tr>
                 </tfoot>
             </table>

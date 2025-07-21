@@ -196,10 +196,10 @@
                                                         <span class="badge bg-primary">{{ isset($detail['dias']) ? $detail['dias'] : 0 }} día(s)</span>
                                                     </td>
                                                     <td>
-                                                        <span class="text-success fw-bold">${{ isset($detail['precio']) ? number_format($detail['precio'], 2) : '0.00' }}</span>
+                                                        <span class="text-success fw-bold">MXN {{ isset($detail['precio']) ? number_format($detail['precio'], 2) : '0.00' }}</span>
                                                     </td>
                                                     <td>
-                                                        <span class="text-success fw-bold">${{ isset($detail['subtotal']) ? number_format($detail['subtotal'], 2) : '0.00' }}</span>
+                                                        <span class="text-success fw-bold">MXN {{ isset($detail['subtotal']) ? number_format($detail['subtotal'], 2) : '0.00' }}</span>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -269,25 +269,25 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between mb-2">
                                 <span>Subtotal:</span>
-                                <span class="fw-bold">${{ number_format($quote->subtotal, 2) }}</span>
+                                <span class="fw-bold">MXN {{ number_format($quote->subtotal, 2) }}</span>
                             </div>
                             @if($quote->iva > 0)
                                 <div class="d-flex justify-content-between mb-2">
                                     <span>IVA ({{ $quote->iva }}%):</span>
-                                    <span class="fw-bold">${{ number_format($quote->iva_amount, 2) }}</span>
+                                    <span class="fw-bold">MXN {{ number_format($quote->iva_amount, 2) }}</span>
                                 </div>
                             @endif
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <span class="h5 mb-0">Total:</span>
-                                <span class="h5 mb-0 text-success">${{ number_format($quote->total, 2) }}</span>
+                                <span class="h5 mb-0 text-success">MXN {{ number_format($quote->total, 2) }}</span>
                             </div>
                             
                             @if($quote->calculated_total != $quote->total)
                                 <div class="alert alert-warning mt-3">
                                     <small>
                                         <i class="fas fa-exclamation-triangle me-1"></i>
-                                        Total calculado: ${{ number_format($quote->calculated_total, 2) }}
+                                        Total calculado: MXN {{ number_format($quote->calculated_total, 2) }}
                                     </small>
                                 </div>
                             @endif

@@ -160,16 +160,16 @@
                                                     <h6 class="mb-3"><i class="fas fa-calculator me-2"></i>Resumen de Totales</h6>
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span>Subtotal:</span>
-                                                        <span id="subtotalDisplay" class="fw-bold">S/ 0.00</span>
+                                                        <span id="subtotalDisplay" class="fw-bold">MXN 0.00</span>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2" id="ivaRow">
                                                         <span>IVA (<span id="ivaRateDisplay">16</span>%):</span>
-                                                        <span id="ivaDisplay" class="fw-bold text-info">S/ 0.00</span>
+                                                        <span id="ivaDisplay" class="fw-bold text-info">MXN 0.00</span>
                                                     </div>
                                                     <hr>
                                                     <div class="d-flex justify-content-between fw-bold fs-5">
                                                         <span>Total:</span>
-                                                        <span id="totalDisplay" class="text-success">S/ 0.00</span>
+                                                        <span id="totalDisplay" class="text-success">MXN 0.00</span>
                                                     </div>
                                                     <input type="hidden" id="total" name="total">
                                                 </div>
@@ -234,7 +234,7 @@
                                                             <div class="col-md-6 mb-3">
                                                                 <label class="form-label">Precio por Día <span class="text-danger">*</span></label>
                                                                 <div class="input-group">
-                                                                    <span class="input-group-text">S/</span>
+                                                                    <span class="input-group-text">MXN</span>
                                                                     <input type="number" class="form-control precio-input" 
                                                                            name="cranes[INDEX][precio]" min="0" step="0.01" required readonly>
                                                                 </div>
@@ -243,7 +243,7 @@
                                                                 <div class="alert alert-success mb-0">
                                                                     <div class="d-flex justify-content-between">
                                                                         <span>Subtotal:</span>
-                                                                        <span class="crane-subtotal">S/ 0.00</span>
+                                                                        <span class="crane-subtotal">MXN 0.00</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -444,7 +444,7 @@
             const precio = parseFloat(craneItem.querySelector('.precio-input').value) || 0;
             const subtotal = dias * precio;
             
-            craneItem.querySelector('.crane-subtotal').textContent = 'S/ ' + subtotal.toFixed(2);
+            craneItem.querySelector('.crane-subtotal').textContent = 'MXN ' + subtotal.toFixed(2);
             updateTotals();
         }
         
@@ -464,9 +464,9 @@
             const ivaAmount = subtotal * (ivaRate / 100);
             const total = subtotal + ivaAmount;
             
-            subtotalDisplay.textContent = 'S/ ' + subtotal.toFixed(2);
-            ivaDisplay.textContent = 'S/ ' + ivaAmount.toFixed(2);
-            totalDisplay.textContent = 'S/ ' + total.toFixed(2);
+            subtotalDisplay.textContent = 'MXN ' + subtotal.toFixed(2);
+            ivaDisplay.textContent = 'MXN ' + ivaAmount.toFixed(2);
+            totalDisplay.textContent = 'MXN ' + total.toFixed(2);
             totalInput.value = total.toFixed(2);
         }
         
@@ -499,8 +499,8 @@
                             <td>${selectedZona && selectedZona.value ? selectedZona.textContent : 'N/A'}</td>
                             <td>${dias}</td>
                             <td>Días</td>
-                            <td>S/ ${parseFloat(precio).toFixed(2)}</td>
-                            <td>S/ ${total}</td>
+                            <td>MXN ${parseFloat(precio).toFixed(2)}</td>
+                            <td>MXN ${total}</td>
                         </tr>
                     `;
                 }
@@ -530,10 +530,10 @@
             document.getElementById('previewClientRfc').textContent = selectedClient && selectedClient.dataset.rfc ? selectedClient.dataset.rfc : 'N/A';
             document.getElementById('preview-project-description').textContent = document.getElementById('description').value || 'Proyecto de alquiler de grúas';
             document.getElementById('preview-items-rows').innerHTML = itemsRows;
-            document.getElementById('preview-subtotal').textContent = 'S/ ' + subtotal.toFixed(2);
+            document.getElementById('preview-subtotal').textContent = 'MXN ' + subtotal.toFixed(2);
             document.getElementById('preview-iva-percentage').textContent = ivaRate;
-            document.getElementById('preview-iva').textContent = 'S/ ' + ivaAmount.toFixed(2);
-            document.getElementById('preview-total').textContent = 'S/ ' + total.toFixed(2);
+            document.getElementById('preview-iva').textContent = 'MXN ' + ivaAmount.toFixed(2);
+            document.getElementById('preview-total').textContent = 'MXN ' + total.toFixed(2);
             
             // Mostrar/ocultar fila de IVA en la vista previa
             const previewIvaRow = document.getElementById('preview-iva-row');

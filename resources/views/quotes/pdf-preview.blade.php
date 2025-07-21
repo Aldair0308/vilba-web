@@ -269,15 +269,15 @@
                 <tfoot>
                     <tr>
                         <td colspan="6" class="total-label">SUBTOTAL</td>
-                        <td class="total-value" id="preview-subtotal">S/ 0.00</td>
+                        <td class="total-value" id="preview-subtotal">MXN 0.00</td>
                     </tr>
                     <tr id="preview-iva-row">
                         <td colspan="6" class="total-label">IVA (<span id="preview-iva-rate">18</span>%)</td>
-                        <td class="total-value" id="preview-iva">S/ 0.00</td>
+                        <td class="total-value" id="preview-iva">MXN 0.00</td>
                     </tr>
                     <tr>
                         <td colspan="6" class="total-label">TOTAL</td>
-                        <td class="total-value" id="preview-total">S/ 0.00</td>
+                        <td class="total-value" id="preview-total">MXN 0.00</td>
                     </tr>
                 </tfoot>
             </table>
