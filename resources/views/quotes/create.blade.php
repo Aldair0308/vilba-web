@@ -317,7 +317,7 @@
                             if (precio.zona && precio.precio) {
                                 const option = document.createElement('option');
                                 option.value = precio.zona;
-                                option.textContent = precio.zona;
+                                option.textContent = `${precio.zona} (MXN ${parseFloat(precio.precio).toFixed(2)})`;
                                 option.dataset.precio = precio.precio;
                                 zoneSelect.appendChild(option);
                             }
