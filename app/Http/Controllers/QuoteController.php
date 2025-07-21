@@ -127,19 +127,19 @@ class QuoteController extends Controller
             $currentYear = date('Y');
             
             // Buscar la última cotización del año actual
-            $lastQuote = Quote::where('name', 'like', "COT-{$currentYear}-%")
-                             ->orderBy('created_at', 'desc')
-                             ->first();
+            $quotesOfYear = Quote::where('name', 'like', "COT-{$currentYear}-%")->get();
             
-            if ($lastQuote) {
-                // Extraer el número del último folio
-                preg_match('/COT-' . $currentYear . '-(\d+)/', $lastQuote->name, $matches);
-                $lastNumber = isset($matches[1]) ? intval($matches[1]) : 0;
-                $nextNumber = $lastNumber + 1;
-            } else {
-                // Si no hay cotizaciones del año actual, empezar desde 1
-                $nextNumber = 1;
+            $maxNumber = 0;
+            foreach ($quotesOfYear as $quote) {
+                preg_match('/COT-' . $currentYear . '-(\d+)/', $quote->name, $matches);
+                if (isset($matches[1])) {
+                    $currentNumber = intval($matches[1]);
+                    if ($currentNumber > $maxNumber) {
+                        $maxNumber = $currentNumber;
+                    }
+                }
             }
+            $nextNumber = $maxNumber + 1;
             
             // Formatear el número con ceros a la izquierda (4 dígitos)
             $formattedNumber = str_pad($nextNumber, 4, '0', STR_PAD_LEFT);

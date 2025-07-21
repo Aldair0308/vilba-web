@@ -365,7 +365,7 @@
     </div>
 
     <div class="footer">
-        <p>Generado el {{ date('d/m/Y H:i:s') }}</p>
+        <p>Generado el {{ date('d/m/Y') }}</p>
     </div>
 </body>
 </html>
