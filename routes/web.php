@@ -121,7 +121,6 @@ Route::patch('/cranes/{crane}/rented', [CraneController::class, 'setRented'])->n
     // Rutas para generación de PDFs de cotizaciones
     Route::get('/quotes/{quote}/pdf', [QuoteController::class, 'generatePdf'])->name('quotes.pdf');
     Route::get('/quotes/{quote}/pdf/preview', [QuoteController::class, 'previewPdf'])->name('quotes.pdf.preview');
-    Route::post('/quotes/bulk-pdf', [QuoteController::class, 'generateBulkPdf'])->name('quotes.bulk-pdf');
     Route::get('/quotes/create-with-pdf', [QuoteController::class, 'createWithPdf'])->name('quotes.create-with-pdf');
     Route::post('/quotes/store-and-generate-pdf', [QuoteController::class, 'storeAndGeneratePdf'])->name('quotes.store-and-generate-pdf');
     

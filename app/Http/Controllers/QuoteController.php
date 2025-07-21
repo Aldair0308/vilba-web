@@ -565,38 +565,6 @@ class QuoteController extends Controller
     }
 
     /**
-     * Generar PDF masivo de múltiples cotizaciones
-     */
-    public function generateBulkPdf(Request $request, QuotePdfService $pdfService)
-    {
-        try {
-            $validatedData = $request->validate([
-                'quote_ids' => 'required|array|min:1',
-                'quote_ids.*' => 'required|string|exists:quotes,_id'
-            ]);
-
-            $pdf = $pdfService->generateBulkQuotePdf($validatedData['quote_ids']);
-            
-            $filename = "cotizaciones_" . date('Y-m-d_H-i-s') . ".pdf";
-            
-            return $pdf->download($filename);
-
-        } catch (\Exception $e) {
-            Log::error('Error al generar PDF masivo de cotizaciones: ' . $e->getMessage());
-            
-            if ($request->expectsJson()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Error al generar el PDF de las cotizaciones'
-                ], 500);
-            }
-
-            return redirect()->back()
-                           ->with('error', 'Error al generar el PDF de las cotizaciones');
-        }
-    }
-
-    /**
      * Mostrar formulario para crear cotización con generación de PDF
      */
     public function createWithPdf()

@@ -136,48 +136,4 @@ class QuotePdfService
             'website' => 'www.vilba.com'
         ]);
     }
-    
-    /**
-     * Generar PDF para múltiples cotizaciones
-     */
-    public function generateBulkQuotePdf($quoteIds)
-    {
-        try {
-            $quotes = Quote::whereIn('_id', $quoteIds)
-                          ->with(['client', 'responsible'])
-                          ->get();
-            
-            $quotesData = [];
-            
-            foreach ($quotes as $quote) {
-                $craneDetails = $this->getCraneDetails($quote->cranes);
-                $calculations = $this->calculateTotals($quote->cranes, $quote->iva ?? 16);
-                $quoteNumber = $this->generateQuoteNumber($quote);
-                
-                $quotesData[] = [
-                    'quote' => $quote,
-                    'client' => $quote->client,
-                    'responsible' => $quote->responsible,
-                    'craneDetails' => $craneDetails,
-                    'calculations' => $calculations,
-                    'quoteNumber' => $quoteNumber
-                ];
-            }
-            
-            $data = [
-                'quotes' => $quotesData,
-                'date' => Carbon::now()->format('d/m/Y'),
-                'companyInfo' => $this->getCompanyInfo()
-            ];
-            
-            $pdf = Pdf::loadView('quotes.bulk-pdf', $data);
-            $pdf->setPaper('A4', 'portrait');
-            
-            return $pdf;
-            
-        } catch (\Exception $e) {
-            Log::error('Error generando PDF masivo de cotizaciones: ' . $e->getMessage());
-            throw new \Exception('Error al generar el PDF de las cotizaciones');
-        }
-    }
 }
