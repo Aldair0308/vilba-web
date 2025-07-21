@@ -242,7 +242,7 @@
             <h3>COTIZACIÓN</h3>
             <div class="quotation-number">
                 <label>N°:</label>
-                <span>{{ $quote->id ?? 'N/A' }}</span>
+                <span>{{ $quote->name ?? 'N/A' }}</span>
             </div>
             <div class="quotation-date">
                 <label>Fecha:</label>

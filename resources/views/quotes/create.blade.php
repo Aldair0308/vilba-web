@@ -38,10 +38,11 @@
                                         <div class="mb-3">
                                             <label for="name" class="form-label">Nombre de la Cotización <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control @error('name') is-invalid @enderror" 
-                                                id="name" name="name" value="{{ old('name') }}" required>
+                                                id="name" name="name" value="{{ old('name', $nextFolio) }}" required>
                                             @error('name')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
+                                            <small class="form-text text-muted">Folio generado automáticamente, pero puedes editarlo si es necesario</small>
                                         </div>
 
                                         <!-- Zona -->

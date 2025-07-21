@@ -105,12 +105,52 @@ class QuoteController extends Controller
             $clients = Client::where('status', Client::STATUS_ACTIVE)->get(['_id', 'name']);
             $cranes = Crane::where('estado', Crane::STATUS_ACTIVE)->get(['_id', 'nombre', 'marca', 'modelo', 'capacidad', 'tipo', 'precios']);
             $users = User::all(['_id', 'name']);
+            
+            // Generar folio automático
+            $nextFolio = $this->generateNextFolio();
 
-            return view('quotes.create', compact('clients', 'cranes', 'users'));
+            return view('quotes.create', compact('clients', 'cranes', 'users', 'nextFolio'));
 
         } catch (\Exception $e) {
             Log::error('Error al cargar formulario de creación de cotización: ' . $e->getMessage());
             return redirect()->route('quotes.index')->with('error', 'Error al cargar el formulario');
+        }
+    }
+
+    /**
+     * Generar el siguiente folio automático
+     */
+    private function generateNextFolio()
+    {
+        try {
+            // Obtener el año actual
+            $currentYear = date('Y');
+            
+            // Buscar la última cotización del año actual
+            $lastQuote = Quote::where('name', 'like', "COT-{$currentYear}-%")
+                             ->orderBy('created_at', 'desc')
+                             ->first();
+            
+            if ($lastQuote) {
+                // Extraer el número del último folio
+                preg_match('/COT-' . $currentYear . '-(\d+)/', $lastQuote->name, $matches);
+                $lastNumber = isset($matches[1]) ? intval($matches[1]) : 0;
+                $nextNumber = $lastNumber + 1;
+            } else {
+                // Si no hay cotizaciones del año actual, empezar desde 1
+                $nextNumber = 1;
+            }
+            
+            // Formatear el número con ceros a la izquierda (4 dígitos)
+            $formattedNumber = str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+            
+            // Generar el folio: COT-YYYY-NNNN
+            return "COT-{$currentYear}-{$formattedNumber}";
+            
+        } catch (\Exception $e) {
+            Log::error('Error al generar folio automático: ' . $e->getMessage());
+            // En caso de error, generar un folio básico
+            return "COT-" . date('Y') . "-" . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
         }
     }
 
@@ -123,8 +163,11 @@ class QuoteController extends Controller
             $clients = Client::where('status', Client::STATUS_ACTIVE)->get(['_id', 'name']);
             $cranes = Crane::where('estado', Crane::STATUS_ACTIVE)->get(['_id', 'nombre', 'marca', 'modelo', 'capacidad', 'tipo', 'precios']);
             $users = User::all(['_id', 'name']);
+            
+            // Generar folio automático
+            $nextFolio = $this->generateNextFolio();
 
-            return view('quotes.create-with-preview', compact('clients', 'cranes', 'users'));
+            return view('quotes.create-with-preview', compact('clients', 'cranes', 'users', 'nextFolio'));
 
         } catch (\Exception $e) {
             Log::error('Error al cargar formulario de creación de cotización con vista previa: ' . $e->getMessage());
