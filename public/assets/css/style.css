@@ -1684,37 +1684,37 @@ hr {
     }
 }
 .section-padding30 {
-    padding-top: 183px;
-    padding-bottom: 170px;
+    padding-top: 40px;
+    padding-bottom: 20px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
     .section-padding30 {
-        padding-top: 183px;
-        padding-bottom: 170px;
+        padding-top: 40%;
+        padding-bottom: 10px;
     }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
     .section-padding30 {
-        padding-top: 150px;
-        padding-bottom: 120px;
+        padding-top: 75px;
+        padding-bottom: 60px;
     }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .section-padding30 {
-        padding-top: 100px;
-        padding-bottom: 70px;
+        padding-top: 50px;
+        padding-bottom: 35px;
     }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
     .section-padding30 {
-        padding-top: 70px;
-        padding-bottom: 20px;
+        padding-top: 35px;
+        padding-bottom: 10px;
     }
 }
 @media (max-width: 575px) {
     .section-padding30 {
-        padding-top: 70px;
-        padding-bottom: 20px;
+        padding-top: 35px;
+        padding-bottom: 10px;
     }
 }
 .testimonial-padding {
@@ -6265,11 +6265,11 @@ del {
     .equipment-showcase-title h2 {
         font-size: 32px;
     }
-    
+
     .equipment-content {
         padding: 20px 15px;
     }
-    
+
     .equipment-content h3 {
         font-size: 20px;
     }
