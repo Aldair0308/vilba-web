@@ -6143,3 +6143,134 @@ del {
 .switch-wrap {
     margin-bottom: 10px;
 }
+
+/* Equipment Showcase Component Styles */
+.equipment-area {
+    background: #f7f7fd;
+}
+
+.equipment-item {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.equipment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.equipment-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.equipment-item:hover img {
+    transform: scale(1.05);
+}
+
+.equipment-content {
+    padding: 30px 25px;
+}
+
+.equipment-content h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0b1c39;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.equipment-content p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.equipment-btn {
+    background: #ff5f13;
+    color: #fff !important;
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.equipment-btn:hover {
+    background: #e54a0a;
+    color: #fff !important;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.equipment-showcase-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.equipment-showcase-title h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #0b1c39;
+    margin-bottom: 15px;
+}
+
+.equipment-showcase-title p {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.view-all-equipment {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.view-all-btn {
+    background: transparent;
+    color: #ff5f13 !important;
+    border: 2px solid #ff5f13;
+    padding: 15px 35px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.view-all-btn:hover {
+    background: #ff5f13;
+    color: #fff !important;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+    .equipment-showcase-title h2 {
+        font-size: 32px;
+    }
+    
+    .equipment-content {
+        padding: 20px 15px;
+    }
+    
+    .equipment-content h3 {
+        font-size: 20px;
+    }
+}

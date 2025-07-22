@@ -109,6 +109,10 @@
             </div>
         </div>
         <!-- slider Area End-->
+        
+        <!-- Equipment Showcase Component -->
+        <x-equipment-showcase />
+        
         <!-- Services Area Start -->
         <div class="services-area1 section-padding30">
             <div class="container">
