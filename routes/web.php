@@ -12,6 +12,7 @@ use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ContactMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,9 @@ Route::prefix('EN')->group(function () {
 // Ruta para cambiar idioma
 Route::get('/cambiar-idioma/{language}', [HomeController::class, 'changeLanguage'])->name('change.language');
 Route::post('/cambiar-idioma/{language}', [HomeController::class, 'changeLanguage'])->name('change.language.post');
+
+// Ruta pública para envío de formulario de contacto
+Route::post('/contact/submit', [ContactMessageController::class, 'store'])->name('contact.submit');
 
 
 // Rutas de autenticación
@@ -153,6 +157,17 @@ Route::patch('/cranes/{crane}/rented', [CraneController::class, 'setRented'])->n
     Route::get('/logs-search', [LogController::class, 'search'])->name('logs.search');
     Route::get('/logs-stats', [LogController::class, 'stats'])->name('logs.stats');
     Route::get('/logs-export', [LogController::class, 'export'])->name('logs.export');
+    
+    // CRUD de Mensajes de Contacto
+    Route::resource('contact-messages', ContactMessageController::class);
+    
+    // Rutas adicionales para mensajes de contacto
+    Route::get('/contact-messages/{contactMessage}/reply', [ContactMessageController::class, 'reply'])->name('contact-messages.reply');
+    Route::post('/contact-messages/{contactMessage}/send-reply', [ContactMessageController::class, 'sendReply'])->name('contact-messages.send-reply');
+    Route::patch('/contact-messages/{contactMessage}/mark-read', [ContactMessageController::class, 'markAsRead'])->name('contact-messages.mark-read');
+    Route::patch('/contact-messages/{contactMessage}/archive', [ContactMessageController::class, 'archive'])->name('contact-messages.archive');
+    Route::get('/contact-messages-search', [ContactMessageController::class, 'search'])->name('contact-messages.search');
+    Route::get('/contact-messages-stats', [ContactMessageController::class, 'stats'])->name('contact-messages.stats');
 });
 
 // Rutas API para AJAX (también protegidas)
@@ -219,4 +234,13 @@ Route::middleware(['auth'])->prefix('api')->group(function () {
     
     // API de dashboard para estadísticas
     Route::get('/dashboard/stats', [DashboardController::class, 'stats'])->name('api.dashboard.stats');
+    
+    // API de mensajes de contacto para búsquedas AJAX
+    Route::get('/contact-messages/search', [ContactMessageController::class, 'search'])->name('api.contact-messages.search');
+    Route::get('/contact-messages/stats', [ContactMessageController::class, 'stats'])->name('api.contact-messages.stats');
+    
+    // API REST para mensajes de contacto
+    Route::apiResource('contact-messages', ContactMessageController::class, ['as' => 'api']);
+    Route::patch('/contact-messages/{contactMessage}/mark-read', [ContactMessageController::class, 'markAsRead'])->name('api.contact-messages.mark-read');
+    Route::patch('/contact-messages/{contactMessage}/archive', [ContactMessageController::class, 'archive'])->name('api.contact-messages.archive');
 });

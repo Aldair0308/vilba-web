@@ -83,8 +83,8 @@ $(document).ready(function(){
                     required: true,
                     minlength: 4
                 },
-                number: {
-                    required: true,
+                phone: {
+                    required: false,
                     minlength: 5
                 },
                 email: {
@@ -96,30 +96,88 @@ $(document).ready(function(){
                     minlength: 20
                 }
             },
-            messages: validationMessages[currentLanguage],
+            messages: {
+                name: {
+                    required: "Please enter your name",
+                    minlength: "Your name must consist of at least 2 characters"
+                },
+                subject: {
+                    required: "Please enter a subject",
+                    minlength: "Your subject must consist of at least 4 characters"
+                },
+                phone: {
+                    minlength: "Your phone number must consist of at least 5 characters"
+                },
+                email: {
+                    required: "Please enter a valid email"
+                },
+                message: {
+                    required: "Please enter your message",
+                    minlength: "Your message must consist of at least 20 characters"
+                }
+            },
             submitHandler: function(form) {
+                // Get CSRF token
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                
                 $(form).ajaxSubmit({
-                    type:"POST",
+                    type: "POST",
                     data: $(form).serialize(),
-                    url:"contact_process.php",
-                    success: function() {
-                        $('#contactForm :input').attr('disabled', 'disabled');
-                        $('#contactForm').fadeTo( "slow", 1, function() {
-                            $(this).find(':input').attr('disabled', 'disabled');
-                            $(this).find('label').css('cursor','default');
-                            $('#success').fadeIn()
-                            $('.modal').modal('hide');
-		                	$('#success').modal('show');
-                        })
+                    url: $(form).attr('action'), // Use the form's action attribute
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
                     },
-                    error: function() {
-                        $('#contactForm').fadeTo( "slow", 1, function() {
-                            $('#error').fadeIn()
-                            $('.modal').modal('hide');
-		                	$('#error').modal('show');
-                        })
+                    success: function(response) {
+                        if (response.success) {
+                            $('#contactForm :input').attr('disabled', 'disabled');
+                            $('#contactForm').fadeTo("slow", 1, function() {
+                                $(this).find(':input').attr('disabled', 'disabled');
+                                $(this).find('label').css('cursor','default');
+                                
+                                // Show success message
+                                alert(response.message || (currentLanguage === 'en' ? 
+                                    'Your message has been sent successfully!' : 
+                                    '¡Tu mensaje ha sido enviado exitosamente!'));
+                                
+                                // Reset form
+                                setTimeout(function() {
+                                    $('#contactForm')[0].reset();
+                                    $('#contactForm :input').removeAttr('disabled');
+                                    $('#contactForm').fadeTo("slow", 1);
+                                }, 2000);
+                            });
+                        } else {
+                            // Handle validation errors
+                            if (response.errors) {
+                                var errorMessage = '';
+                                $.each(response.errors, function(field, messages) {
+                                    errorMessage += messages.join('\n') + '\n';
+                                });
+                                alert(errorMessage);
+                            } else {
+                                alert(response.message || (currentLanguage === 'en' ? 
+                                    'There was an error sending your message.' : 
+                                    'Hubo un error al enviar tu mensaje.'));
+                            }
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = currentLanguage === 'en' ? 
+                            'There was an error sending your message. Please try again.' : 
+                            'Hubo un error al enviar tu mensaje. Por favor intenta de nuevo.';
+                        
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage = xhr.responseJSON.message;
+                        }
+                        
+                        alert(errorMessage);
+                        
+                        $('#contactForm').fadeTo("slow", 1, function() {
+                            // Re-enable form
+                            $('#contactForm :input').removeAttr('disabled');
+                        });
                     }
-                })
+                });
             }
         })
     })

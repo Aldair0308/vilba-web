@@ -114,8 +114,9 @@
                         <h2 class="contact-title">{{ session('language') === 'en' ? 'Get in Touch' : 'Ponte en Contacto' }}</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                            <div class="row">
+                        <form class="form-contact contact_form" action="{{ route('contact.submit') }}" method="POST" id="contactForm" novalidate="novalidate">
+                                @csrf
+                                <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
                                         <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{ session('language') === 'en' ? 'Enter Message' : 'Ingresa tu Mensaje' }}'" placeholder="{{ session('language') === 'en' ? 'Enter Message' : 'Ingresa tu Mensaje' }}"></textarea>
@@ -131,7 +132,12 @@
                                         <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{ session('language') === 'en' ? 'Enter email address' : 'Ingresa tu correo electrónico' }}'" placeholder="{{ session('language') === 'en' ? 'Email' : 'Correo Electrónico' }}">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control" name="phone" id="phone" type="tel" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{ session('language') === 'en' ? 'Enter phone number' : 'Ingresa tu teléfono' }}'" placeholder="{{ session('language') === 'en' ? 'Phone (optional)' : 'Teléfono (opcional)' }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{ session('language') === 'en' ? 'Enter Subject' : 'Ingresa el Asunto' }}'" placeholder="{{ session('language') === 'en' ? 'Enter Subject' : 'Ingresa el Asunto' }}">
                                     </div>
