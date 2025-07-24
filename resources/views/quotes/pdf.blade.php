@@ -352,7 +352,7 @@
                 @if($quote->include_iva ?? true)
                     <li>El precio incluye IVA.</li>
                 @else
-                    <li>El precio NO incluye IVA.</li>
+                    <li>El precio no incluye IVA.</li>
                 @endif
             </ol>
         </div>
