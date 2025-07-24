@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 </head>
 
-<body>
+<body data-language="{{ session('language') ?? 'es' }}">
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -146,21 +146,21 @@
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-home"></i></span>
                             <div class="media-body">
-                                <h3>{{ session('language') === 'en' ? 'Buttonwood, California.' : 'Buttonwood, California.' }}</h3>
-                                <p>Rosemead, CA 91770</p>
+                                <h3>{{ session('language') === 'en' ? 'CONCRETOS Y CONSTRUCCIONES VILBA SA DE CV, 50974 Secc. de Guadalupe, Méx.' : 'CONCRETOS Y CONSTRUCCIONES VILBA SA DE CV, 50974 Secc. de Guadalupe, Méx.' }}</h3>
+                                <p></p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                             <div class="media-body">
-                                <h3>+1 253 565 2365</h3>
+                                <h3>+52 55 5555 5555</h3>
                                 <p>{{ session('language') === 'en' ? 'Mon to Fri 9am to 6pm' : 'Lun a Vie 9am a 6pm' }}</p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-email"></i></span>
                             <div class="media-body">
-                                <h3>support@colorlib.com</h3>
+                                <h3>contacto@vilbaconstruccion.com</h3>
                                 <p>{{ session('language') === 'en' ? 'Send us your query anytime!' : '¡Envíanos tu consulta en cualquier momento!' }}</p>
                             </div>
                         </div>

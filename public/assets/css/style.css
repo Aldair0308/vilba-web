@@ -68,25 +68,42 @@
     color: #ff5f13;
 }
 .boxed-btn {
-    background: #fff;
-    color: #ff5f13 !important;
+    background: linear-gradient(135deg, #ff5f13, #ff8a50);
+    color: #fff !important;
     display: inline-block;
     padding: 18px 44px;
     font-family: "Barlow", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
     border: 0;
-    border: 1px solid #ff5f13;
-    letter-spacing: 3px;
+    border-radius: 50px;
+    letter-spacing: 1px;
     text-align: center;
-    color: #ff5f13;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 95, 19, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.boxed-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+.boxed-btn:hover::before {
+    left: 100%;
 }
 .boxed-btn:hover {
-    background: #ff5f13;
+    background: linear-gradient(135deg, #e54a0c, #ff5f13);
     color: #fff !important;
-    border: 1px solid #ff5f13;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 95, 19, 0.4);
 }
 .boxed-btn:focus {
     outline: none;
@@ -4837,35 +4854,58 @@ hr {
     color: #8a8a8a;
 }
 .contact-title {
-    font-size: 27px;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #ff5f13;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+.contact-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff5f13, #ff8a50);
+    border-radius: 2px;
 }
 .form-contact label {
     font-size: 14px;
 }
 .form-contact .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 .form-contact .form-control {
-    border: 1px solid #e5e6e9;
-    border-radius: 0px;
-    height: 48px;
-    padding-left: 18px;
-    font-size: 13px;
-    background: transparent;
+    border: 2px solid #e5e6e9;
+    border-radius: 8px;
+    height: 55px;
+    padding-left: 20px;
+    font-size: 15px;
+    background: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 .form-contact .form-control:focus {
     outline: 0;
-    box-shadow: none;
+    box-shadow: 0 4px 15px rgba(255, 95, 19, 0.15);
+    border-color: #ff5f13;
+    transform: translateY(-2px);
 }
 .form-contact .form-control::placeholder {
-    font-weight: 300;
+    font-weight: 400;
     color: #999999;
+    font-size: 14px;
 }
 .form-contact textarea {
-    border-radius: 0px;
-    height: 100% !important;
+    border-radius: 8px;
+    height: 120px !important;
+    padding-top: 15px;
+    resize: vertical;
+    min-height: 120px;
 }
 .modal-message .modal-dialog {
     position: absolute;
@@ -4901,16 +4941,32 @@ hr {
     display: block;
 }
 .contact-section {
-    padding: 130px 0 100px;
+    padding: 100px 0 80px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-top: 3px solid #ff5f13;
+    border-bottom: 1px solid #e9ecef;
+    position: relative;
+}
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 95, 19, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 95, 19, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 95, 19, 0.03) 0%, transparent 50%);
+    pointer-events: none;
 }
 @media (max-width: 991px) {
     .contact-section {
-        padding: 70px 0 40px;
+        padding: 60px 0 40px;
     }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
     .contact-section {
-        padding: 80px 0 50px;
+        padding: 70px 0 50px;
     }
 }
 .contact-section .btn_2 {
