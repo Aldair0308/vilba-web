@@ -105,7 +105,42 @@
                     </script>
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&amp;callback=initMap">
                     </script>
-
+<!-- Map Navigation Buttons -->
+                        <div class="map-navigation-section mt-4">
+                            <div class="navigation-header text-center mb-3">
+                                <h5 class="navigation-title">{{ session('language') === 'en' ? 'Navigate to our location' : 'Navega a nuestra ubicación' }}</h5>
+                                <p class="navigation-subtitle">{{ session('language') === 'en' ? 'Choose your preferred navigation app' : 'Elige tu app de navegación preferida' }}</p>
+                            </div>
+                            <div class="map-buttons-container">
+                                <a href="https://www.google.com/maps/search/?api=1&query=CONCRETOS+Y+CONSTRUCCIONES+VILBA+SA+DE+CV" target="_blank" class="map-nav-button google-maps" data-app="google">
+                                    <div class="button-icon">
+                                        <i class="fab fa-google"></i>
+                                    </div>
+                                    <div class="button-content">
+                                        <span class="button-title">Google Maps</span>
+                                        <span class="button-subtitle">{{ session('language') === 'en' ? 'Open in Google Maps' : 'Abrir en Google Maps' }}</span>
+                                    </div>
+                                    <div class="button-arrow">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </a>
+                                <a href="https://waze.com/ul?q=CONCRETOS+Y+CONSTRUCCIONES+VILBA+SA+DE+CV&navigate=yes" target="_blank" class="map-nav-button waze" data-app="waze">
+                                    <div class="button-icon">
+                                        <!-- Using a custom Waze icon since Font Awesome might not have it -->
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-5c0 .55-.45 1-1 1H10c-.55 0-1-.45-1-1s.45-1 1-1h4c.55 0 1 .45 1 1z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="button-content">
+                                        <span class="button-title">Waze</span>
+                                        <span class="button-subtitle">{{ session('language') === 'en' ? 'Open in Waze' : 'Abrir en Waze' }}</span>
+                                    </div>
+                                    <div class="button-arrow">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                 </div>
 
 
@@ -170,6 +205,7 @@
                                 <p>{{ session('language') === 'en' ? 'Send us your query anytime!' : '¡Envíanos tu consulta en cualquier momento!' }}</p>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
