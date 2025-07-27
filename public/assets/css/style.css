@@ -34,6 +34,10 @@
         font-size: 38px !important;
     }
 }
+#indicadores {
+    text-align: center;
+    margin-top: 20px;
+}
 .white-bg {
     background: #ffffff;
 }
@@ -87,13 +91,18 @@
     overflow: hidden;
 }
 .boxed-btn::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
     transition: left 0.5s;
 }
 .boxed-btn:hover::before {
@@ -250,13 +259,18 @@ p {
 }
 
 .map-nav-button::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
     transition: left 0.6s ease;
 }
 
@@ -347,23 +361,23 @@ p {
 
 /* Google Maps specific styling */
 .map-nav-button.google-maps {
-    background: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC05 100%);
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #fbbc05 100%);
     border-color: rgba(66, 133, 244, 0.3);
 }
 
 .map-nav-button.google-maps:hover {
-    background: linear-gradient(135deg, #3367D6 0%, #2E7D32 50%, #F9A825 100%);
+    background: linear-gradient(135deg, #3367d6 0%, #2e7d32 50%, #f9a825 100%);
     box-shadow: 0 12px 40px rgba(66, 133, 244, 0.4);
 }
 
 /* Waze specific styling */
 .map-nav-button.waze {
-    background: linear-gradient(135deg, #3366FF 0%, #00D4FF 100%);
+    background: linear-gradient(135deg, #3366ff 0%, #00d4ff 100%);
     border-color: rgba(51, 102, 255, 0.3);
 }
 
 .map-nav-button.waze:hover {
-    background: linear-gradient(135deg, #2952E6 0%, #00B8E6 100%);
+    background: linear-gradient(135deg, #2952e6 0%, #00b8e6 100%);
     box-shadow: 0 12px 40px rgba(51, 102, 255, 0.4);
 }
 
@@ -374,44 +388,44 @@ p {
         margin: 15px 0;
         border-radius: 16px;
     }
-    
+
     .navigation-title {
         font-size: 1.2rem;
     }
-    
+
     .navigation-subtitle {
         font-size: 0.9rem;
     }
-    
+
     .map-nav-button {
         padding: 16px 18px;
         border-radius: 14px;
     }
-    
+
     .button-icon {
         width: 45px;
         height: 45px;
         margin-right: 14px;
     }
-    
+
     .button-icon i,
     .button-icon svg {
         font-size: 22px;
     }
-    
+
     .button-title {
         font-size: 1rem;
     }
-    
+
     .button-subtitle {
         font-size: 0.8rem;
     }
-    
+
     .button-arrow {
         width: 35px;
         height: 35px;
     }
-    
+
     .button-arrow i {
         font-size: 14px;
     }
@@ -422,21 +436,21 @@ p {
         padding: 18px 12px;
         margin: 12px 0;
     }
-    
+
     .navigation-title {
         font-size: 1.1rem;
     }
-    
+
     .map-nav-button {
         padding: 14px 16px;
     }
-    
+
     .button-icon {
         width: 40px;
         height: 40px;
         margin-right: 12px;
     }
-    
+
     .button-icon i,
     .button-icon svg {
         font-size: 20px;
@@ -445,9 +459,15 @@ p {
 
 /* Animation for button press feedback */
 @keyframes buttonPress {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.98); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.98);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .map-nav-button:active {
@@ -469,7 +489,7 @@ p {
     .map-nav-button {
         border: 2px solid #fff;
     }
-    
+
     .button-icon {
         border: 1px solid #fff;
     }
@@ -5139,7 +5159,7 @@ hr {
     padding-bottom: 15px;
 }
 .contact-title::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -5163,7 +5183,7 @@ hr {
     font-size: 15px;
     background: #fff;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 .form-contact .form-control:focus {
     outline: 0;
@@ -5224,15 +5244,27 @@ hr {
     position: relative;
 }
 .contact-section::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(255, 95, 19, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 95, 19, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(255, 95, 19, 0.03) 0%, transparent 50%);
+    background: radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 95, 19, 0.03) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 95, 19, 0.03) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 40% 80%,
+            rgba(255, 95, 19, 0.03) 0%,
+            transparent 50%
+        );
     pointer-events: none;
 }
 @media (max-width: 991px) {

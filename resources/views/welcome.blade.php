@@ -260,8 +260,8 @@
                                 <span class="counter">34</span>
                             </div>
                             <div class="count-text">
-                                <p>Maquinaria</p>
-                                <h5>Herramientas</h5>
+                                <h5 id="indicadores">Clientes</h5>
+                                <p id="indicadores">Satisfechos</p>
                             </div>
                         </div>
                     </div>
@@ -270,11 +270,11 @@
                     <div class="count-clients">
                         <div class="single-counter">
                             <div class="count-number">
-                                <span class="counter">76</span>
+                                <span class="counter">12</span>
                             </div>
                             <div class="count-text">
-                                <p>Maquinaria</p>
-                                <h5>Herramientas</h5>
+                                <h5 id="indicadores">Equipos</h5>
+                                <p id="indicadores">Disponibles</p>
                             </div>
                         </div>
                     </div>
@@ -286,8 +286,8 @@
                                 <span class="counter">08</span>
                             </div>
                             <div class="count-text">
-                                <p>Maquinaria</p>
-                                <h5>Herramientas</h5>
+                                <h5 id="indicadores">Servicios</h5>
+                                <p id="indicadores">Disponibles</p>
                             </div>
                         </div>
                     </div>
