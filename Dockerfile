@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2-fmp
 
 # Instalar dependencias del sistema y Node.js 18+
 RUN apt-get update && apt-get install -y \
@@ -30,7 +30,7 @@ WORKDIR /var/www
 # Copiar package.json primero para aprovechar cache de Docker
 COPY package*.json ./
 
-# Instalar dependencias Node.js (usar npm install en lugar de npm ci)
+# Instalar dependencias Node.js
 RUN npm install
 
 # Copiar el resto de archivos del proyecto
@@ -53,15 +53,29 @@ RUN mkdir -p /var/www/storage/logs \
     && mkdir -p /var/www/storage/framework/sessions \
     && mkdir -p /var/www/storage/framework/views
 
-# Optimizar Laravel (con manejo de errores)
-RUN php artisan config:cache || true \
-    && php artisan route:cache || true \
-    && php artisan view:cache || true
-
 EXPOSE 8080
 
-## Correr migraciones y seeders
-RUN php artisan migrate --force || true 
+# Crear script de inicio que maneje la configuración en tiempo de ejecución
+COPY <<EOF /start.sh
+#!/bin/bash
 
+# Limpiar cache de configuración
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
 
-CMD php artisan serve --host=0.0.0.0 --port=8080
+# Ejecutar migraciones si es necesario
+php artisan migrate --force || true
+
+# Optimizar para producción
+php artisan config:cache
+php artisan route:cache || true
+php artisan view:cache || true
+
+# Iniciar servidor
+exec php artisan serve --host=0.0.0.0 --port=8080
+EOF
+
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]
