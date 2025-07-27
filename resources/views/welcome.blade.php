@@ -111,7 +111,15 @@
         <!-- slider Area End-->
         
         <!-- Equipment Showcase Component -->
-        <x-equipment-showcase />
+        <div class="d-none d-lg-block" style="margin-top: -450px; margin-bottom: -450px;">
+            <x-equipment-showcase />
+        </div>
+        {{-- Show on mobile and tablet --}}
+        <div class="d-block d-lg-none">
+            {{-- You can add different styles or content for mobile/tablet here if needed --}}
+            {{-- For now, it will just render the component without the large negative margins --}}
+            <x-equipment-showcase />
+        </div>
         
         <!-- Services Area Start -->
         <div class="services-area1 section-padding30">
@@ -176,11 +184,11 @@
         
         <!-- Services Area End -->
         <!-- About Area Start -->
-        <section class="support-company-area fix pt-10">
+        <section class="support-company-area fix pt-10" style="margin-bottom: 3%">
             <div class="support-wrapper align-items-end">
                 <div class="left-content">
                     <!-- Título de la sección -->
-                    <div class="section-tittle section-tittle2 mb-55">
+                    <div class="section-tittle section-tittle2 mb-55" style="margin-top: 40px;">
                         <div class="front-text">
                             <h2 class="" data-translate="who_we_are">Quiénes somos</h2>
                         </div>
@@ -212,7 +220,7 @@
         
         <!-- About Area End -->
         <!-- Project Area Start -->
-        <section class="project-area  section-padding30">
+        {{-- <section class="project-area" style="padding-top: 10%; padding-bottom: 10%;">
             <div class="container">
                <div class="project-heading mb-35">
                     <div class="row align-items-end">
@@ -646,7 +654,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- Project Area End -->
         <!-- contact with us Start -->
         <section class="contact-with-area" data-background="assets/img/gallery/section-bg2.jpg">
@@ -678,7 +686,7 @@
         
         <!-- contact with us End-->
 <!-- Área de Contador Inicio -->
-<div class="count-area">
+<div class="count-area" style="margin-bottom: 5%">
     <div class="container">
         <div class="count-wrapper count-bg" data-background="assets/img/gallery/section-bg3.jpg">
             <div class="row justify-content-center">
@@ -782,7 +790,7 @@
 <!-- Equipo Fin -->
 
 <!-- Testimonios Inicio -->
-<div class="testimonial-area t-bg testimonial-padding">
+{{-- <div class="testimonial-area t-bg testimonial-padding">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -842,12 +850,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- Testimonios Fin -->
 
 <!-- Últimas Noticias Inicio -->
-<div class="latest-news-area section-padding30">
+{{-- <div class="latest-news-area section-padding30">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -901,7 +909,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Últimas Noticias Fin -->
 
         <!--latest News Area End -->
