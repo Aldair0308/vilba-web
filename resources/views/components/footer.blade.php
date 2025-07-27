@@ -267,17 +267,24 @@
                                                     <i class="fab fa-google"></i>
                                                 </div>
                                                 <div class="footer-button-content">
-                                                    <span class="footer-button-title">{{ $currentLanguage === 'en' ? 'Open in Google Maps' : 'Abrir en Google Maps' }}</span>
+                                                    <span class="footer-button-title">Google Maps</span>
+                                                    <span class="footer-button-subtitle">{{ $currentLanguage === 'en' ? 'Open in Google Maps' : 'Abrir en Google Maps' }}</span>
                                                 </div>
                                             </a>
                                             <a href="https://waze.com/ul?q=CONCRETOS+Y+CONSTRUCCIONES+VILBA+SA+DE+CV&navigate=yes" target="_blank" class="footer-nav-button waze" data-app="waze">
                                                 <div class="footer-button-icon">
-                                                    <svg style="color: white; !important; fill: currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M566.6 265.7C581.1 351.6 535.7 433.6 453.4 473.8C466.4 507.9 441 544 405.1 544C391.9 544 379.1 538.9 369.5 529.8C359.9 520.7 354.2 508.2 353.5 495C347.1 495.2 289.3 495 277.2 494.4C276.9 501.2 275.3 507.9 272.5 514C269.7 520.1 265.6 525.7 260.6 530.3C255.6 534.9 249.8 538.5 243.4 540.8C237 543.1 230.2 544.2 223.5 543.9C189.6 542.5 165.5 509.1 176.5 476C139.3 462.9 104 441.1 76.9 405.2C63.9 387.9 76.4 363.4 97.7 363.4C144 363.4 129.9 309.2 140.9 253.1C159.3 159.2 257.7 96 352.6 96C455.1 96 549.8 166.7 566.7 265.7zM437.9 452.3C479.9 433.1 519.2 395.6 534.2 350.2C574.7 227.1 470 122.2 352.5 122.2C269.1 122.2 182.2 177.6 166.4 258.2C156.9 307.1 171.4 389.6 97.7 389.6C122.6 422.7 156 442.2 191.4 453.6C216.1 431.8 255.3 438.1 271.2 467.9C285.4 468.9 350.4 469.1 359.1 468.7C362.6 461.8 367.6 455.8 373.8 451.2C380 446.6 387 443.3 394.6 441.7C402.2 440.1 410 440.3 417.5 442.1C425 443.9 432 447.4 438 452.3zM269.5 251.1C269.5 216.4 320.3 216.4 320.3 251.1C320.3 285.8 269.5 285.8 269.5 251.1zM386.1 251.1C386.1 216.4 437 216.4 437 251.1C437 285.8 386.1 285.9 386.1 251.1zM263.5 321.8C260.1 304.9 285.7 299.6 289.1 316.6L289.2 316.9C293.3 338.3 319 360.9 353.3 360C389 359.1 412.6 337.8 417.4 317.2C421.9 301.1 446 306.8 442.9 323.2C437.7 345.4 411.7 385.2 351.4 386.1C308.8 386.1 270.5 358.3 263.5 321.9L263.5 321.9z"/></svg>
+                                                    <!-- Opción 1: Icono oficial de Waze con Font Awesome 6.0+ -->
+                                                    <i class="fa-brands fa-waze waze-fa-icon"></i>
+                                                    <!-- Opción 2: SVG oficial de Waze como respaldo -->
+                                                    <svg class="waze-svg-icon" style="display: none;" width="20" height="20" viewBox="0 0 512 512" fill="currentColor">
+                                                        <path d="M502.17 201.67C516.69 287.53 471.23 369.59 389 409.8c13 34.1-12.4 70.2-48.32 70.2a51.68 51.68 0 0 1-51.57-49c-6.44.19-64.2 0-76.33-.64A51.69 51.69 0 0 1 159 479.9c-33.86-1.36-57.95-34.84-47-67.92-37.9-13.9-72.5-36.8-100.33-68.39-34.3-38.9-55.25-90.78-55.25-145.27C-43.45 84.47 81.25-16.5 187.79 5.86a196.14 196.14 0 0 1 129.52 85.85c18.53-11.09 40.72-17.64 64.59-17.64C447.48 74.07 497.61 130.69 502.17 201.67zM316.08 82.71a153.11 153.11 0 0 0-110.79-34.49c-83.53-13.47-166.31 36.06-166.31 149.44 0 107.28 84.69 194.61 189.21 194.61 104.06 0 188.78-87.33 188.78-194.61 0-65.67-32.77-124.5-84.12-158.95a140.44 140.44 0 0 0-16.77 44z"/>
+                                                    </svg>
                                                     <!-- Opción 3: Texto como último respaldo -->
                                                     <span class="waze-text-icon" style="display: none; font-weight: bold; font-size: 16px;">W</span>
                                                 </div>
                                                 <div class="footer-button-content">
-                                                    <span class="footer-button-title">{{ $currentLanguage === 'en' ? 'Open in Waze' : 'Abrir en Waze' }}</span>
+                                                    <span class="footer-button-title">Waze</span>
+                                                    <span class="footer-button-subtitle">{{ $currentLanguage === 'en' ? 'Open in Waze' : 'Abrir en Waze' }}</span>
                                                 </div>
                                             </a>
                                         </div>
