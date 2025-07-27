@@ -30,45 +30,48 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Establecer directorio de trabajo
 WORKDIR /var/www
 
-# Copiar archivos necesarios para instalar dependencias primero
+# Copiar solo lo necesario para instalar dependencias primero
+COPY composer.json composer.lock ./
 COPY package*.json ./
+
+# Instalar dependencias PHP y JS
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 RUN npm install
 
-COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
-
-# Copiar el resto del código del proyecto
+# Copiar el resto del proyecto
 COPY . .
 
-# Asegurar que .env existe (puedes usar Docker volumes para montarlo también)
-COPY .env.example .env
+# Verificar si .env existe, si no, lo copiamos desde el ejemplo
+RUN if [ ! -f ".env" ]; then cp .env.example .env; fi
 
-# Construir assets
+# Generar APP_KEY (importante para evitar error 500)
+RUN php artisan key:generate
+
+# Compilar assets
 RUN npm run build || true
 
-# Establecer permisos correctos para Laravel
+# Asegurar permisos correctos
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www/storage \
     && chmod -R 755 /var/www/bootstrap/cache
 
-# Crear carpetas necesarias
-RUN mkdir -p /var/www/storage/logs \
-    /var/www/storage/framework/cache \
-    /var/www/storage/framework/sessions \
-    /var/www/storage/framework/views
+# Crear directorios requeridos
+RUN mkdir -p storage/logs \
+    storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views
 
-# Comandos Artisan con tolerancia a errores
-RUN php artisan key:generate || true \
-    && php artisan config:clear || true \
-    && php artisan config:cache || true \
-    && php artisan route:cache || true \
-    && php artisan view:cache || true
+# Optimizar Laravel
+RUN php artisan config:clear \
+    && php artisan config:cache \
+    && php artisan route:cache \
+    && php artisan view:cache
 
-# Correr migraciones de base de datos
+# Migrar base de datos (en producción, manejar desde un entrypoint mejor)
 RUN php artisan migrate --force || true
 
 # Exponer el puerto
 EXPOSE 8080
 
 # Comando final
-CMD php artisan serve --host=0.0.0.0 --port=8080
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
