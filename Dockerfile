@@ -1,4 +1,4 @@
-FROM php:8.2-fmp
+FROM php:8.2-fpm
 
 # Instalar dependencias del sistema y Node.js 18+
 RUN apt-get update && apt-get install -y \
@@ -30,7 +30,7 @@ WORKDIR /var/www
 # Copiar package.json primero para aprovechar cache de Docker
 COPY package*.json ./
 
-# Instalar dependencias Node.js
+# Instalar dependencias Node.js (usar npm install en lugar de npm ci)
 RUN npm install
 
 # Copiar el resto de archivos del proyecto
@@ -53,10 +53,15 @@ RUN mkdir -p /var/www/storage/logs \
     && mkdir -p /var/www/storage/framework/sessions \
     && mkdir -p /var/www/storage/framework/views
 
-# Crear script de inicio
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# Optimizar Laravel (con manejo de errores)
+RUN php artisan config:cache || true \
+    && php artisan route:cache || true \
+    && php artisan view:cache || true
 
 EXPOSE 8080
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+## Correr migraciones y seeders
+RUN php artisan migrate --force || true 
+
+
+CMD php artisan serve --host=0.0.0.0 --port=8080
