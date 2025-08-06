@@ -33,7 +33,7 @@
                         </a>
                     </div>
                     <div class="service-icon">
-                        <img src="{{ url('/assets/img/icon/services_icon1.png') }}" alt="">
+                        <img src="assets/img/icon/services_icon1.png" alt="">
                     </div>
                 </div>
             </div>

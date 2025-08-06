@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets/img/favicon.ico') }}">
 
    <!-- CSS here -->
         <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.min.css') }}">
@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{{ url('/assets/css/animate.min.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/magnific-popup.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ url('/assets/css/themify-icons.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/themify-icons.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/slick.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/nice-select.css') }}">
@@ -32,7 +33,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{ asset('assets/img/logo/loder-logo.png') }}" alt="">
+                    <img src="{{ url('/assets/img/logo/loder-logo.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -45,7 +46,7 @@
     </header>
     <!-- slider Area Start-->
     <div class="slider-area ">
-        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" style="background-image: url('{{ asset('assets/img/hero/about.jpg') }}');">
+        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" style="background-image: url('{{ url('/assets/img/hero/about.jpg') }}');">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -1076,7 +1077,7 @@
             <div class="right-content">
                 <!-- Image -->
                 <div class="right-img">
-                    <img src="{{ asset('assets/img/gallery/safe_in.png') }}" alt="">
+                    <img src="{{ url('/assets/img/gallery/safe_in.png') }}" alt="">
                 </div>
                 <div class="support-img-cap text-center">
                     <span>30+</span>
