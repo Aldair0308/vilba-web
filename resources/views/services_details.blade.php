@@ -14,21 +14,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="manifest" href="{{ asset('site.webmanifest') }}">
-                <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
+                <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
 
-                <!-- CSS here -->
-            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/gijgo.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/slicknav.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-all.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+   <!-- CSS here -->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/assets/css/gijgo.css">
+        <link rel="stylesheet" href="/assets/css/slicknav.css">
+        <link rel="stylesheet" href="/assets/css/animate.min.css">
+        <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="/assets/css/themify-icons.css">
+        <link rel="stylesheet" href="/assets/css/slick.css">
+        <link rel="stylesheet" href="/assets/css/nice-select.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/responsive.css">
    </head>
 
    <body>
@@ -38,7 +38,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{ asset('assets/img/logo/loder-logo.png') }}" alt="">
+                    <img src="/assets/img/logo/loder-logo.png" alt="">
                 </div>
             </div>
         </div>
@@ -46,12 +46,12 @@
     <!-- Preloader Start -->
     <header>
         <!-- Header Start -->
-        <x-navar :language="$language ?? 'es'" />
+        @include('components.navar')
     </header>
     <main>
         <!-- slider Area Start-->
         <div class="slider-area ">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="{{ asset('assets/img/hero/about.jpg') }}">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-xl-8">
@@ -77,7 +77,7 @@
                     <div class="col-12">
                         <div class="single-services section-padding2">
                             <div class="details-img mb-40">
-                                <img src="{{ asset('assets/img/gallery/services_details.png') }}" alt="">
+                                <img src="/assets/img/gallery/services_details.png" alt="">
                             </div>
                             <div class="details-caption">
                                 <p>

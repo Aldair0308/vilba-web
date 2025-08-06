@@ -14,21 +14,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="manifest" href="{{ asset('site.webmanifest') }}">
-                <link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets/img/favicon.ico') }}">
+                <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
 
                 <!-- CSS here -->
-            <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/owl.carousel.min.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/gijgo.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/slicknav.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/animate.min.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/magnific-popup.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/fontawesome-all.min.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/themify-icons.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/slick.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/nice-select.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/responsive.css') }}">
+            <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+            <link rel="stylesheet" href="/assets/css/gijgo.css">
+            <link rel="stylesheet" href="/assets/css/slicknav.css">
+            <link rel="stylesheet" href="/assets/css/animate.min.css">
+            <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+            <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+            <link rel="stylesheet" href="/assets/css/themify-icons.css">
+            <link rel="stylesheet" href="/assets/css/slick.css">
+            <link rel="stylesheet" href="/assets/css/nice-select.css">
+            <link rel="stylesheet" href="/assets/css/style.css">
+            <link rel="stylesheet" href="/assets/css/responsive.css">
    </head>
 
    <body>
@@ -38,7 +38,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{ url('/assets/img/logo/loder-logo.png') }}" alt="">
+                    <img src="/assets/img/logo/loder-logo.png" alt="">
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
     <main>
         <!-- slider Area Start-->
         <div class="slider-area ">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="{{ url('/assets/img/hero/about.jpg') }}">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg"
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -120,7 +120,7 @@
                 <div class="right-content">
                     <!-- img -->
                     <div class="right-img">
-                        <img src="{{ url('/assets/img/gallery/safe_in.png') }}" alt="">
+                        <img src="/assets/img/gallery/safe_in.png" alt="">
                     </div>
                     <div class="support-img-cap text-center">
                         <span>1994</span>
@@ -214,7 +214,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
                         <div class="single-team mb-30">
                             <div class="team-img">
-                                <img src="{{ asset('assets/img/team/team1.png') }}" alt="">
+                                <img src="/assets/img/team/team1.png" alt="">
                             </div>
                             <div class="team-caption">
                                 <span>UX Designer</span>
@@ -225,7 +225,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
                         <div class="single-team mb-30">
                             <div class="team-img">
-                                <img src="{{ asset('assets/img/team/team2.png') }}" alt="">
+                                <img src="/assets/img/team/team2.png" alt="">
                             </div>
                             <div class="team-caption">
                                 <span>UX Designer</span>
@@ -236,7 +236,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
                         <div class="single-team mb-30">
                             <div class="team-img">
-                                <img src="{{ asset('assets/img/team/team3.png') }}" alt="">
+                                <img src="/assets/img/team/team3.png" alt="">
                             </div>
                             <div class="team-caption">
                                 <span>UX Designer</span>

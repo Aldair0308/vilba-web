@@ -8,22 +8,22 @@
     <meta name="description" content="{{ $equipment['description'][session('language', 'es')] }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
 
    <!-- CSS here -->
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/gijgo.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/slicknav.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-all.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/assets/css/gijgo.css">
+        <link rel="stylesheet" href="/assets/css/slicknav.css">
+        <link rel="stylesheet" href="/assets/css/animate.min.css">
+        <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="/assets/css/themify-icons.css">
+        <link rel="stylesheet" href="/assets/css/themify-icons.css">
+        <link rel="stylesheet" href="/assets/css/slick.css">
+        <link rel="stylesheet" href="/assets/css/nice-select.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/responsive.css">
 </head>
 
 <body>
@@ -33,7 +33,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{ asset('assets/img/logo/loder-logo.png') }}" alt="">
+                    <img src="/assets/img/logo/loder-logo.png" alt="">
                 </div>
             </div>
         </div>

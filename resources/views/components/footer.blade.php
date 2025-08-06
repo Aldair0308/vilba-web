@@ -207,7 +207,7 @@
                         <div class="single-footer-caption mb-30">
                             <!-- Logo -->
                             <div class="footer-logo">
-                                <a href="{{ $currentLanguage === 'en' ? route('home.EN') : route('home.ES') }}"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="{{ $currentLanguage === 'en' ? 'Vilba Cranes Logo' : 'Logo Grúas Vilba' }}" style="height: 60px; width: auto; max-width: 200px;"></a>
+                                <a href="{{ $currentLanguage === 'en' ? route('home.EN') : route('home.ES') }}"><img src="/assets/img/logo/logo.png" alt="{{ $currentLanguage === 'en' ? 'Vilba Cranes Logo' : 'Logo Grúas Vilba' }}" style="height: 60px; width: auto; max-width: 200px;"></a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">

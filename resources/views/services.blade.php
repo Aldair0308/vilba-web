@@ -8,24 +8,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets/img/favicon.ico') }}">
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
 
-		<!-- CSS here -->
-            <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/owl.carousel.min.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/gijgo.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/slicknav.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/animate.min.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/magnific-popup.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/fontawesome-all.min.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/themify-icons.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/slick.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/nice-select.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
-            <link rel="stylesheet" href="{{ url('/assets/css/responsive.css') }}">
-            
-            <!-- Language Switcher Script -->
-            <script src="{{ url('/assets/js/language-switcher.js') }}"></script>
+   <!-- CSS here -->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/assets/css/gijgo.css">
+        <link rel="stylesheet" href="/assets/css/slicknav.css">
+        <link rel="stylesheet" href="/assets/css/animate.min.css">
+        <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="/assets/css/themify-icons.css">
+        <link rel="stylesheet" href="/assets/css/themify-icons.css">
+        <link rel="stylesheet" href="/assets/css/slick.css">
+        <link rel="stylesheet" href="/assets/css/nice-select.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/responsive.css">
+        <!-- Language switcher script -->
+        <script src="/assets/js/language-switcher.js"></script>
             <script>
                 window.currentLanguage = '{{ $language ?? "es" }}';
             </script>
@@ -38,7 +38,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{ url('/assets/img/logo/loder-logo.png') }}" alt="">
+                    <img src="/assets/img/logo/loder-logo.png" alt="">
                 </div>
             </div>
         </div>
@@ -48,16 +48,16 @@
     <main>
         <!-- slider Area Start-->
         <div class="slider-area ">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" style="background-image: url('{{ url('/assets/img/hero/about.jpg') }}');">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap pt-100">
-                                <h2>{{ $language === 'en' ? 'Services' : 'Servicios' }}</h2>
+                                <h2>{{ session('language') === 'en' ? 'Services' : 'Servicios' }}</h2>
                                 <nav aria-label="breadcrumb ">
                                     <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ $language === 'en' ? 'Home' : 'Inicio' }}</a></li>
-                                    <li class="breadcrumb-item"><a href="#">{{ $language === 'en' ? 'Services' : 'Servicios' }}</a></li> 
+                                    <li class="breadcrumb-item"><a href="{{ session('language') === 'en' ? route('home.EN') : route('home') }}">{{ session('language') === 'en' ? 'Home' : 'Inicio' }}</a></li>
+                                    <li class="breadcrumb-item"><a href="#">{{ session('language') === 'en' ? 'Services' : 'Servicios' }}</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -70,14 +70,14 @@
         <!-- Services Area Start -->
         <div class="services-area1 section-padding30">
             <div class="container">
-                <!-- section tittle -->
+                <!-- Título de la sección -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle mb-55">
                             <div class="front-text">
-                                <h2 class="">{{ $language === 'en' ? 'Our Services' : 'Nuestros Servicios' }}</h2>
+                                <h2 class="" data-translate="our_services_title">{{ session('language') === 'en' ? 'Our Services' : 'Nuestros Servicios' }}</h2>
                             </div>
-                            <span class="back-text">{{ $language === 'en' ? 'Services' : 'Servicios' }}</span>
+                            <span class="back-text" data-translate="services_back">{{ session('language') === 'en' ? 'Services' : 'Servicios' }}</span>
                         </div>
                     </div>
                 </div>
@@ -85,84 +85,84 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-service-cap mb-30">
                             <div class="service-img">
-                                <img src="{{ url('/assets/img/service/servicess1.png') }}" alt="">
+                                <img src="/assets/img/service/servicess1.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}">{{ $language === 'en' ? 'Engineering techniques & implementation' : 'Técnicas de ingeniería e implementación' }}</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn">{{ $language === 'en' ? 'Read More' : 'Leer Más' }} <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}" data-translate="engineering_techniques">{{ session('language') === 'en' ? 'Engineering techniques and implementation' : 'Técnicas e implementación de ingeniería' }}</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn" data-translate="read_more">{{ session('language') === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
-                                <img src="{{ url('/assets/img/icon/services_icon1.png') }}" alt="">
+                                <img src="/assets/img/icon/services_icon1.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-service-cap mb-30">
                             <div class="service-img">
-                                <img src="{{ url('/assets/img/service/servicess2.png') }}" alt="">
+                                <img src="/assets/img/service/servicess2.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}">{{ $language === 'en' ? 'Engineering techniques & implementation' : 'Técnicas de ingeniería e implementación' }}</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn">{{ $language === 'en' ? 'Read More' : 'Leer Más' }} <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}">{{ session('language') === 'en' ? 'Engineering techniques and implementation' : 'Técnicas e implementación de ingeniería' }}</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn">{{ session('language') === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
-                                <img src="{{ url('/assets/img/icon/services_icon1.png') }}" alt="">
+                                <img src="/assets/img/icon/services_icon1.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-service-cap mb-30">
                             <div class="service-img">
-                                <img src="{{ url('/assets/img/service/servicess3.png') }}" alt="">
+                                <img src="/assets/img/service/servicess3.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}">{{ $language === 'en' ? 'Engineering techniques & implementation' : 'Técnicas de ingeniería e implementación' }}</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn">{{ $language === 'en' ? 'Read More' : 'Leer Más' }} <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}">{{ session('language') === 'en' ? 'Engineering techniques and implementation' : 'Técnicas e implementación de ingeniería' }}</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn">{{ session('language') === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
-                                <img src="{{ url('/assets/img/icon/services_icon1.png') }}" alt="">
+                                <img src="/assets/img/icon/services_icon1.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-service-cap mb-30">
                             <div class="service-img">
-                                <img src="{{ url('/assets/img/service/servicess4.png') }}" alt="">
+                                <img src="/assets/img/service/servicess4.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}">{{ $language === 'en' ? 'Engineering techniques & implementation' : 'Técnicas de ingeniería e implementación' }}</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn">{{ $language === 'en' ? 'Read More' : 'Leer Más' }} <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}">{{ session('language') === 'en' ? 'Engineering techniques and implementation' : 'Técnicas e implementación de ingeniería' }}</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn">{{ session('language') === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
-                                <img src="{{ url('/assets/img/icon/services_icon1.png') }}" alt="">
+                                <img src="/assets/img/icon/services_icon1.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-service-cap mb-30">
                             <div class="service-img">
-                                <img src="{{ url('/assets/img/service/servicess5.png') }}" alt="">
+                                <img src="/assets/img/service/servicess5.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}">{{ $language === 'en' ? 'Engineering techniques & implementation' : 'Técnicas de ingeniería e implementación' }}</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn">{{ $language === 'en' ? 'Read More' : 'Leer Más' }} <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}">{{ session('language') === 'en' ? 'Engineering techniques and implementation' : 'Técnicas e implementación de ingeniería' }}</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn">{{ session('language') === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
-                                <img src="{{ url('/assets/img/icon/services_icon1.png') }}" alt="">
+                                <img src="/assets/img/icon/services_icon1.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-service-cap mb-30">
                             <div class="service-img">
-                                <img src="{{ url('/assets/img/service/servicess6.png') }}" alt="">
+                                <img src="/assets/img/service/servicess6.png" alt="">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}">{{ $language === 'en' ? 'Engineering techniques & implementation' : 'Técnicas de ingeniería e implementación' }}</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn">{{ $language === 'en' ? 'Read More' : 'Leer Más' }} <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail') }}">{{ session('language') === 'en' ? 'Engineering techniques and implementation' : 'Técnicas e implementación de ingeniería' }}</a></h4>
+                                <a href="{{ route('services-detail') }}" class="more-btn">{{ session('language') === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
-                                <img src="{{ url('/assets/img/icon/services_icon1.png') }}" alt="">
+                                <img src="/assets/img/icon/services_icon1.png" alt="">
                             </div>
                         </div>
                     </div>

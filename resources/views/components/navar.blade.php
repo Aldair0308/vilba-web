@@ -45,11 +45,11 @@
                                 <div class="logo">
                                     <!-- logo-1 -->
                                     <a href="{{ route('home') }}" class="big-logo">
-                                        <img id="logo-big" src="{{ asset('assets/img/logo/logo.png') }}" alt="" style="height: 80px; width: auto; max-width: 400px; margin-left: -60px;">
+                                        <img id="logo-big" src="/assets/img/logo/logo.png" alt="" style="height: 80px; width: auto; max-width: 400px; margin-left: -60px;">
                                     </a>
                                     <!-- logo-2 -->
                                     <a href="{{ route('home') }}" class="small-logo">
-                                        <img id="logo-small" src="{{ asset('assets/img/logo/logo.png') }}" alt="" style="height: 60px; width: auto; max-width: 280px; margin-left: -60px;">
+                                        <img id="logo-small" src="/assets/img/logo/logo.png" alt="" style="height: 60px; width: auto; max-width: 280px; margin-left: -60px;">
                                     </a>
                                     
                                     <!-- CSS específico para móviles -->
@@ -77,13 +77,13 @@
                                                 <ul class="submenu">
                                                     <li>
                                         <a href="javascript:void(0)" onclick="changeLanguage('es')" @if($currentLanguage === 'es') style="font-weight: bold; color: #ff6b35;" @endif>
-                                            <img src="{{ asset('assets/images/flags/mx.svg') }}" alt="Español" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
+                                            <img src="/assets/images/flags/mx.svg" alt="Español" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
                                             Español
                                         </a>
                                     </li>
                                     <li>
                                         <a href="javascript:void(0)" onclick="changeLanguage('en')" @if($currentLanguage === 'en') style="font-weight: bold; color: #ff6b35;" @endif>
-                                            <img src="{{ asset('assets/images/flags/us.svg') }}" alt="English" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
+                                            <img src="/assets/images/flags/us.svg" alt="English" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
                                             English
                                         </a>
                                     </li>
