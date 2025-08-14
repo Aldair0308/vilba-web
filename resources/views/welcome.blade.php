@@ -103,11 +103,11 @@
                                     <div class="hero-text1">
                                         <span data-animation="fadeInUp" data-delay=".3s">{{ $currentLanguage === 'en' ? 'professional crane and heavy machinery services' : 'servicios profesionales de grúas y maquinaria pesada' }}</span>
                                     </div>
-                                    <h1 data-animation="fadeInUp" data-delay=".5s" data-translate="welcome">{{ $currentLanguage === 'en' ? 'Advanced' : 'Avanzado' }}</h1>
-                                    <div class="stock-text" data-animation="fadeInUp" data-delay=".8s">
+                                    {{-- <h1 data-translate="welcome">{{ $currentLanguage === 'en' ? 'Advanced' : 'Avanzado' }}</h1>
+                                    <div class="stock-text">
                                         <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
                                         <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
-                                    </div>
+                                    </div> --}}
                                     <div class="hero-text2 mt-110" data-animation="fadeInUp" data-delay=".9s">
                                         <span><a href="services.html" data-translate="services">{{ $currentLanguage === 'en' ? 'Our Services' : 'Nuestros Servicios' }}</a></span>
                                     </div>
@@ -338,7 +338,8 @@
         <script src="./assets/js/gijgo.min.js"></script>
 		<!-- One Page, Animated-HeadLin -->
         <script src="./assets/js/wow.min.js"></script>
-		<script src="./assets/js/animated.headline.js"></script>
+		<!-- Script de cambio de contenido dinámico deshabilitado -->
+<!-- <script src="./assets/js/animated.headline.js"></script> -->
         <script src="./assets/js/jquery.magnific-popup.js"></script>
 
 		<!-- Scrollup, nice-select, sticky -->

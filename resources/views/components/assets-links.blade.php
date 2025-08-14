@@ -14,7 +14,8 @@
 <script src="/assets/js/gijgo.min.js"></script>
 <!-- One Page, Animated-HeadLin -->
 <script src="/assets/js/wow.min.js"></script>
-<script src="/assets/js/animated.headline.js"></script>
+<!-- Script de cambio de contenido dinámico deshabilitado -->
+<!-- <script src="/assets/js/animated.headline.js"></script> -->
 <script src="/assets/js/jquery.magnific-popup.js"></script>
 
 <!-- Breaking New Pluging -->

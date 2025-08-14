@@ -22,8 +22,9 @@
     };
 
 
-/* 3. MainSlider-1 */
-    // h1-hero-active
+/* 3. MainSlider-1 - DISABLED */
+    // h1-hero-active - Funcionalidad de animaciones deshabilitada
+    /*
     function mainSlider() {
       var BasicSlider = $('.slider-active');
       BasicSlider.on('init', function (e, slick) {
@@ -86,6 +87,7 @@
       }
     }
     mainSlider();
+    */
 
 /* 4. Testimonial Active*/
   var testimonial = $('.h1-testimonial-active');
