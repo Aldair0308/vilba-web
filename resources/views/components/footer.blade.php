@@ -273,14 +273,7 @@
                                             </a>
                                             <a href="https://waze.com/ul?q=CONCRETOS+Y+CONSTRUCCIONES+VILBA+SA+DE+CV&navigate=yes" target="_blank" class="footer-nav-button waze" data-app="waze">
                                                 <div class="footer-button-icon">
-                                                    <!-- Opción 1: Icono oficial de Waze con Font Awesome 6.0+ -->
-                                                    <i class="fa-brands fa-waze waze-fa-icon"></i>
-                                                    <!-- Opción 2: SVG oficial de Waze como respaldo -->
-                                                    <svg class="waze-svg-icon" style="display: none;" width="20" height="20" viewBox="0 0 512 512" fill="currentColor">
-                                                        <path d="M502.17 201.67C516.69 287.53 471.23 369.59 389 409.8c13 34.1-12.4 70.2-48.32 70.2a51.68 51.68 0 0 1-51.57-49c-6.44.19-64.2 0-76.33-.64A51.69 51.69 0 0 1 159 479.9c-33.86-1.36-57.95-34.84-47-67.92-37.9-13.9-72.5-36.8-100.33-68.39-34.3-38.9-55.25-90.78-55.25-145.27C-43.45 84.47 81.25-16.5 187.79 5.86a196.14 196.14 0 0 1 129.52 85.85c18.53-11.09 40.72-17.64 64.59-17.64C447.48 74.07 497.61 130.69 502.17 201.67zM316.08 82.71a153.11 153.11 0 0 0-110.79-34.49c-83.53-13.47-166.31 36.06-166.31 149.44 0 107.28 84.69 194.61 189.21 194.61 104.06 0 188.78-87.33 188.78-194.61 0-65.67-32.77-124.5-84.12-158.95a140.44 140.44 0 0 0-16.77 44z"/>
-                                                    </svg>
-                                                    <!-- Opción 3: Texto como último respaldo -->
-                                                    <span class="waze-text-icon" style="display: none; font-weight: bold; font-size: 16px;">W</span>
+                                                    <img src="{{ asset('assets/img/logo/waze.png') }}" alt="Waze" class="waze-png-icon" width="20" height="20" style="filter: brightness(0) invert(1); object-fit: contain; vertical-align: middle;">
                                                 </div>
                                                 <div class="footer-button-content">
                                                     <span class="footer-button-title">Waze</span>
@@ -307,3 +300,43 @@
     </div>
     <!-- Fin del Pie de Página -->
 </footer>
+
+<script>
+// Script para optimizar la visualización del icono de Waze
+document.addEventListener('DOMContentLoaded', function() {
+    const wazeButton = document.querySelector('.footer-nav-button.waze');
+    if (!wazeButton) return;
+    
+    const pngIcon = wazeButton.querySelector('.waze-png-icon');
+    const faIcon = wazeButton.querySelector('.waze-fa-icon');
+    const textIcon = wazeButton.querySelector('.waze-text-icon');
+    
+    // Función para manejar la carga de la imagen
+    function handleImageLoad() {
+        if (pngIcon && pngIcon.complete && pngIcon.naturalHeight !== 0) {
+            // La imagen PNG se cargó correctamente
+            pngIcon.style.display = 'inline-block';
+            if (faIcon) faIcon.style.display = 'none';
+            if (textIcon) textIcon.style.display = 'none';
+        } else {
+            // Fallback a Font Awesome o texto
+            if (pngIcon) pngIcon.style.display = 'none';
+            if (faIcon) {
+                faIcon.style.display = 'inline-block';
+                if (textIcon) textIcon.style.display = 'none';
+            } else if (textIcon) {
+                textIcon.style.display = 'inline-block';
+            }
+        }
+    }
+    
+    // Ejecutar inmediatamente
+    handleImageLoad();
+    
+    // Escuchar eventos de carga de la imagen
+    if (pngIcon) {
+        pngIcon.addEventListener('load', handleImageLoad);
+        pngIcon.addEventListener('error', handleImageLoad);
+    }
+});
+</script>

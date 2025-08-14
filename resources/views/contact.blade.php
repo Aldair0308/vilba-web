@@ -46,7 +46,7 @@
     </header>
     <!-- slider Area Start-->
     <div class="slider-area ">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/contact_hero.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -69,6 +69,7 @@
     <section class="contact-section">
             <div class="container">
 
+                </div>
 
 
                 <div class="row">
@@ -139,68 +140,7 @@
         </section>
     <!-- ================ contact section end ================= -->
     
-    <!-- Animated Notification System -->
-    <div id="notification-container" class="notification-container"></div>
 
-            transition: width linear;
-        }
-        
-        @media (max-width: 768px) {
-            .notification-container {
-                left: 20px;
-                right: 20px;
-                max-width: none;
-            }
-            
-            .notification {
-                transform: translateY(-100px);
-            }
-            
-            .notification.show {
-                transform: translateY(0);
-            }
-        }
-        
-        /* Loading animation for form submission */
-        .form-loading {
-            position: relative;
-            pointer-events: none;
-        }
-        
-        .form-loading::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-        }
-        
-        .form-loading::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 40px;
-            height: 40px;
-            margin: -20px 0 0 -20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #3498db;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            z-index: 1;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
     
     <!-- Footer Component -->
     <x-footer :language="$language ?? 'es'" />
