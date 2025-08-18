@@ -16,19 +16,17 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row d-flex align-items-stretch">
             @foreach($equipments as $equipment)
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="single-service-cap mb-30">
+            <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                <div class="single-service-cap mb-30 d-flex flex-column w-100">
                     <div class="service-img">
                         <img src="{{ $equipment['hero_image'] }}" alt="{{ $equipment['name'][$currentLanguage] }}">
                     </div>
-                    <div class="service-cap">
+                    <div class="service-cap flex-grow-1 d-flex flex-column">
                         <h4><a href="{{ session('language') === 'en' ? route('equipos.detail.EN', $equipment['slug']) : route('equipos.detail.ES', $equipment['slug']) }}">{{ $equipment['name'][$currentLanguage] }}</a></h4>
-                        
-                        <p class="equipment-description">{{ $equipment['description'][$currentLanguage] }}</p>
-                        
-                        <a href="{{ session('language') === 'en' ? route('equipos.detail.EN', $equipment['slug']) : route('equipos.detail.ES', $equipment['slug']) }}" class="more-btn" data-translate="read_more">
+                        <p class="service-description flex-grow-1">{{ $equipment['description'][$currentLanguage] }}</p>
+                        <a href="{{ session('language') === 'en' ? route('equipos.detail.EN', $equipment['slug']) : route('equipos.detail.ES', $equipment['slug']) }}" class="more-btn mt-auto" data-translate="read_more">
                             {{ $currentLanguage === 'es' ? 'Leer más' : 'Read more' }} <i class="ti-plus"></i>
                         </a>
                     </div>

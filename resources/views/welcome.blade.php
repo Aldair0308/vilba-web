@@ -125,43 +125,88 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-service-cap mb-30">
+                <div class="row d-flex align-items-stretch">
+                    <!-- Servicio 1: Renta de Plataformas Elevadoras -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
                             <div class="service-img">
-                                <img src="assets/img/service/servicess1.png" alt="">
+                                <img src="assets/img/service/servicess1.png" alt="Plataformas Elevadoras">
                             </div>
-                            <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}" data-translate="engineering_techniques">Técnicas e implementación de ingeniería</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="{{ route('services-detail') }}" data-translate="platforms_service">{{ $currentLanguage === 'en' ? 'Aerial Platform Rental' : 'Renta de Plataformas Elevadoras' }}</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="platforms_description">{{ $currentLanguage === 'en' ? 'Articulated, telescopic and scissor lifts for construction and industrial work at height.' : 'Plataformas articuladas, telescópicas y tijera para trabajos de construcción e industriales en altura.' }}</p>
+                                <a href="{{ route('services-detail') }}" class="more-btn mt-auto" data-translate="read_more">{{ $currentLanguage === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-service-cap mb-30">
+                    
+                    <!-- Servicio 2: Servicios de Edificación -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
                             <div class="service-img">
-                                <img src="assets/img/service/servicess2.png" alt="">
+                                <img src="assets/img/service/servicess2.png" alt="Servicios de Edificación">
                             </div>
-                            <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}">Técnicas e implementación de ingeniería</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn">Leer más <i class="ti-plus"></i></a>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="{{ route('services-detail') }}" data-translate="building_service">{{ $currentLanguage === 'en' ? 'Construction Services' : 'Servicios de Edificación' }}</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="building_description">{{ $currentLanguage === 'en' ? 'Heavy machinery for excavation, earthworks, compaction and construction projects.' : 'Maquinaria pesada para excavación, movimiento de tierras, compactación y proyectos de construcción.' }}</p>
+                                <a href="{{ route('services-detail') }}" class="more-btn mt-auto" data-translate="read_more">{{ $currentLanguage === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-service-cap mb-30">
+                    
+                    <!-- Servicio 3: Servicios de Electrificación -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
                             <div class="service-img">
-                                <img src="assets/img/service/servicess3.png" alt="">
+                                <img src="assets/img/service/servicess3.png" alt="Servicios de Electrificación">
                             </div>
-                            <div class="service-cap">
-                                <h4><a href="{{ route('services-detail') }}">Técnicas e implementación de ingeniería</a></h4>
-                                <a href="{{ route('services-detail') }}" class="more-btn">Leer más <i class="ti-plus"></i></a>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="{{ route('services-detail') }}" data-translate="electrification_service">{{ $currentLanguage === 'en' ? 'Electrification Services' : 'Servicios de Electrificación' }}</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="electrification_description">{{ $currentLanguage === 'en' ? 'Specialized equipment for electrical installations, power lines and industrial electrification projects.' : 'Equipos especializados para instalaciones eléctricas, líneas de energía y proyectos de electrificación industrial.' }}</p>
+                                <a href="{{ route('services-detail') }}" class="more-btn mt-auto" data-translate="read_more">{{ $currentLanguage === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
+                            </div>
+                            <div class="service-icon">
+                                <img src="assets/img/icon/services_icon1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Segunda fila de servicios -->
+                <div class="row mt-4 d-flex align-items-stretch">
+                    <!-- Servicio 4: Sistemas de Drenaje -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                            <div class="service-img">
+                                <img src="assets/img/service/servicess1.png" alt="Sistemas de Drenaje">
+                            </div>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="{{ route('services-detail') }}" data-translate="drainage_service">{{ $currentLanguage === 'en' ? 'Drainage Systems' : 'Sistemas de Drenaje' }}</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="drainage_description">{{ $currentLanguage === 'en' ? 'Installation and maintenance of stormwater, sanitary and civil works drainage systems.' : 'Instalación y mantenimiento de sistemas de drenaje pluvial, sanitario y obras civiles.' }}</p>
+                                <a href="{{ route('services-detail') }}" class="more-btn mt-auto" data-translate="read_more">{{ $currentLanguage === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
+                            </div>
+                            <div class="service-icon">
+                                <img src="assets/img/icon/services_icon1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 5: Levantamientos Topográficos -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                            <div class="service-img">
+                                <img src="assets/img/service/servicess2.png" alt="Levantamientos Topográficos">
+                            </div>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="{{ route('services-detail') }}" data-translate="topographic_service">{{ $currentLanguage === 'en' ? 'Topographic Surveys' : 'Levantamientos Topográficos' }}</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="topographic_description">{{ $currentLanguage === 'en' ? 'Precision terrain measurement and mapping for construction, infrastructure and civil engineering projects.' : 'Medición y mapeo de precisión del terreno para proyectos de construcción, infraestructura e ingeniería civil.' }}</p>
+                                <a href="{{ route('services-detail') }}" class="more-btn mt-auto" data-translate="read_more">{{ $currentLanguage === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">
