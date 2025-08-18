@@ -328,7 +328,7 @@
 		<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
         <script src="./assets/js/popper.min.js"></script>
         <script src="./assets/js/bootstrap.min.js"></script>
-	    <!-- Jquery Mobile Menu -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
         <script src="./assets/js/jquery.slicknav.min.js"></script>
 
 		<!-- Jquery Slick , Owl-Carousel Plugins -->
@@ -341,26 +341,50 @@
 		<!-- Script de cambio de contenido dinámico deshabilitado -->
 <!-- <script src="./assets/js/animated.headline.js"></script> -->
         <script src="./assets/js/jquery.magnific-popup.js"></script>
-
-		<!-- Scrollup, nice-select, sticky -->
-        <script src="./assets/js/jquery.scrollUp.min.js"></script>
-        <script src="./assets/js/jquery.nice-select.min.js"></script>
-		<script src="./assets/js/jquery.sticky.js"></script>
-               
-        <!-- counter , waypoint -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-        <script src="./assets/js/jquery.counterup.min.js"></script>
-
-        <!-- contact js -->
-        <script src="./assets/js/contact.js"></script>
-        <script src="./assets/js/jquery.form.js"></script>
-        <script src="./assets/js/jquery.validate.min.js"></script>
-        <script src="./assets/js/mail-script.js"></script>
-        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
-        
-		<!-- Jquery Plugins, main Jquery -->	
-        <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
         
-    </body>
-</html>
+        <!-- Script personalizado para inicialización de contadores -->
+        <script>
+        $(document).ready(function() {
+            // Esperar a que todos los scripts se carguen
+            setTimeout(function() {
+                // Verificar si waypoints y counterUp están disponibles
+                if (typeof $.fn.waypoint !== 'undefined' && typeof $.fn.counterUp !== 'undefined') {
+                    console.log('✅ Waypoints y CounterUp cargados correctamente');
+                    
+                    // Inicializar contadores con waypoints
+                    $('.counter').each(function() {
+                        var $this = $(this);
+                        $this.waypoint(function() {
+                            $this.counterUp({
+                                delay: 10,
+                                time: 3000
+                            });
+                        }, {
+                            offset: '75%',
+                            triggerOnce: true
+                        });
+                    });
+                } else {
+                    console.warn('⚠️ Waypoints o CounterUp no disponibles, usando fallback');
+                    
+                    // Fallback: animación manual con CSS
+                    $('.counter').each(function() {
+                        var $this = $(this);
+                        var finalValue = parseInt($this.text());
+                        var currentValue = 0;
+                        var increment = finalValue / 100;
+                        
+                        var timer = setInterval(function() {
+                            currentValue += increment;
+                            if (currentValue >= finalValue) {
+                                currentValue = finalValue;
+                                clearInterval(timer);
+                            }
+                            $this.text(Math.floor(currentValue));
+                        }, 30);
+                    });
+                }
+            }, 1000);
+        });
+        </script>
