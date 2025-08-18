@@ -95,27 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="assets/img/hero/h1_hero.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-11">
-                                <div class="hero__caption">
-                                    <div class="hero-text1">
-                                        <span data-animation="fadeInUp" data-delay=".3s">{{ $currentLanguage === 'en' ? 'professional crane and heavy machinery services' : 'servicios profesionales de grúas y maquinaria pesada' }}</span>
-                                    </div>
-                                    {{-- <h1 data-translate="welcome">{{ $currentLanguage === 'en' ? 'Advanced' : 'Avanzado' }}</h1>
-                                    <div class="stock-text">
-                                        <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
-                                        <h2>{{ $currentLanguage === 'en' ? 'VILBA SERVICES' : 'SERVICIOS VILBA' }}</h2>
-                                    </div> --}}
-                                    <div class="hero-text2 mt-110" data-animation="fadeInUp" data-delay=".9s">
-                                        <span><a href="services.html" data-translate="services">{{ $currentLanguage === 'en' ? 'Our Services' : 'Nuestros Servicios' }}</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
         <!-- slider Area End-->
