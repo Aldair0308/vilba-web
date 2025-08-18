@@ -234,7 +234,7 @@
                             <div class="footer-tittle">
                                 <h4>{{ $currentLanguage === 'en' ? 'Contact' : 'Contacto' }}</h4>
                                 <div class="footer-pera">
-                                    <p class="info1">{{ $currentLanguage === 'en' ? 'Main Street 123, Downtown, City, State' : 'Calle Principal 123, Colonia Centro, Ciudad, Estado' }}</p>
+                                    <p class="info1">{{ $currentLanguage === 'en' ? 'Av. Insurgentes Sur 1234, Col. Del Valle, Benito Juárez, CDMX, México' : 'Av. Insurgentes Sur 1234, Col. Del Valle, Benito Juárez, CDMX, México' }}</p>
                                 </div>
                                 <ul>
                                     <li><a href="#">{{ $currentLanguage === 'en' ? 'Phone: +52 (123) 456 7890' : 'Teléfono: +52 (123) 456 7890' }}</a></li>
