@@ -49,27 +49,22 @@
         @include('components.navar')
     </header>
     <main>
-        <!-- slider Area Start-->
-        <div class="slider-area ">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
+        <!-- Slider Area Start -->
+        <div class="slider-area">
+            <div class="single-slider slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-10 col-xl-8">
-                            <div class="hero-cap hero-cap2 pt-120">
-                                <h2>
-                                    @if(($language ?? 'es') === 'en')
-                                        Engineering Techniques & Implementation
-                                    @else
-                                        Técnicas de Ingeniería e Implementación
-                                    @endif
-                                </h2>
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-120 text-center">
+                                <h2>{{ $serviceData['title'][$language] }}</h2>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="hero-overly"></div>
             </div>
         </div>
-        <!-- slider Area End-->
+        <!-- Slider Area End -->
         <!-- Services Details Start -->
         <div class="services-details-area">
             <div class="container">
@@ -80,34 +75,30 @@
                                 <img src="/assets/img/gallery/services_details.png" alt="">
                             </div>
                             <div class="details-caption">
-                                <p>
-                                    @if(($language ?? 'es') === 'en')
-                                        At VILBA, we specialize in providing comprehensive engineering solutions that combine cutting-edge technology with proven methodologies. Our team of experienced engineers is dedicated to delivering innovative solutions that meet the highest industry standards and exceed our clients' expectations.
-                                    @else
-                                        En VILBA, nos especializamos en brindar soluciones integrales de ingeniería que combinan tecnología de vanguardia con metodologías comprobadas. Nuestro equipo de ingenieros experimentados se dedica a entregar soluciones innovadoras que cumplen con los más altos estándares de la industria y superan las expectativas de nuestros clientes.
-                                    @endif
-                                </p>
-
-                                <p class="mb-50">
-                                    @if(($language ?? 'es') === 'en')
-                                        We understand that every project is unique, which is why we take a personalized approach to each challenge. From initial consultation to final implementation, we work closely with our clients to ensure that every detail is carefully planned and executed with precision.
-                                    @else
-                                        Entendemos que cada proyecto es único, por eso adoptamos un enfoque personalizado para cada desafío. Desde la consulta inicial hasta la implementación final, trabajamos estrechamente con nuestros clientes para asegurar que cada detalle sea cuidadosamente planificado y ejecutado con precisión.
-                                    @endif
-                                </p>
+                                <h4>{{ $serviceData['title'][$language] }}</h4>
+                                <p>{{ $serviceData['description'][$language] }}</p>
+                                
+                                <div class="services-features mt-30">
+                                    <h5>{{ $language == 'es' ? 'Características principales:' : 'Main features:' }}</h5>
+                                    <ul class="unordered-list">
+                                        @foreach($serviceData['features'][$language] as $feature)
+                                            <li>{{ $feature }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
 
                                 <h3>
                                     @if(($language ?? 'es') === 'en')
-                                        How can we help?
+                                        Why Choose Our Services?
                                     @else
-                                        ¿Cómo podemos ayudarte?
+                                        ¿Por qué elegir nuestros servicios?
                                     @endif
                                 </h3>
                                 <p>
                                     @if(($language ?? 'es') === 'en')
-                                        Our comprehensive range of engineering services includes structural design, project management, technical consulting, and quality assurance. We leverage the latest software and technologies to provide accurate calculations, detailed drawings, and efficient project execution.
+                                        At VILBA, we are committed to delivering exceptional results that exceed our clients' expectations. Our experienced team, combined with state-of-the-art equipment and proven methodologies, ensures that every project is completed with the highest standards of quality and safety.
                                     @else
-                                        Nuestra amplia gama de servicios de ingeniería incluye diseño estructural, gestión de proyectos, consultoría técnica y aseguramiento de calidad. Aprovechamos el software y las tecnologías más recientes para proporcionar cálculos precisos, dibujos detallados y ejecución eficiente de proyectos.
+                                        En VILBA, estamos comprometidos a entregar resultados excepcionales que superen las expectativas de nuestros clientes. Nuestro equipo experimentado, combinado con equipos de última generación y metodologías comprobadas, asegura que cada proyecto se complete con los más altos estándares de calidad y seguridad.
                                     @endif
                                 </p>
 

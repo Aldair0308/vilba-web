@@ -32,7 +32,7 @@ Route::get('/contacto', [HomeController::class, 'contact'])->name('contact');
 Route::get('/servicios', [HomeController::class, 'services'])->name('services');
 Route::get('/equipos', [HomeController::class, 'equipos'])->name('equipos');
 Route::get('/equipos/{slug}', [HomeController::class, 'equiposDetail'])->name('equipos.detail');
-Route::get('/detalle-servicio', [HomeController::class, 'servicesDetails'])->name('services-detail');
+Route::get('/detalle-servicio/{service?}', [HomeController::class, 'servicesDetails'])->name('services-detail');
 
 // Rutas específicas por idioma
 Route::prefix('ES')->group(function () {

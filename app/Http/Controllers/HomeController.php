@@ -58,12 +58,15 @@ class HomeController extends Controller
     /**
      * Mostrar página de detalles de servicios
      */
-    public function servicesDetails(Request $request)
+    public function servicesDetails(Request $request, $service = null)
     {
         $language = $this->detectLanguage($request);
         Session::put('language', $language);
         
-        return view('services_details', compact('language'));
+        // Datos específicos para cada servicio
+        $serviceData = $this->getServiceData($service, $language);
+        
+        return view('services_details', compact('language', 'serviceData'));
     }
     
     /**
@@ -1537,5 +1540,175 @@ class HomeController extends Controller
          ];
  
          return $equipments[$slug] ?? null;
-     }
- }
+    }
+
+    /**
+     * Obtener datos específicos para cada servicio
+     */
+    private function getServiceData($service, $language)
+    {
+        $services = [
+            'concrete' => [
+                'title' => [
+                    'es' => 'Venta de Concreto y Materiales de Construcción',
+                    'en' => 'Concrete and Construction Materials Sales'
+                ],
+                'description' => [
+                    'es' => 'Ofrecemos concreto premezclado de alta calidad y materiales de construcción para proyectos de cualquier escala.',
+                    'en' => 'We offer high-quality ready-mix concrete and construction materials for projects of any scale.'
+                ],
+                'features' => [
+                    'es' => [
+                        'Concreto premezclado de diferentes resistencias',
+                        'Materiales certificados y de calidad',
+                        'Entrega puntual en obra',
+                        'Asesoría técnica especializada',
+                        'Control de calidad riguroso'
+                    ],
+                    'en' => [
+                        'Ready-mix concrete of different strengths',
+                        'Certified and quality materials',
+                        'Timely delivery to site',
+                        'Specialized technical advice',
+                        'Rigorous quality control'
+                    ]
+                ]
+            ],
+            'platforms' => [
+                'title' => [
+                    'es' => 'Alquiler de Plataformas Aéreas',
+                    'en' => 'Aerial Platform Rental'
+                ],
+                'description' => [
+                    'es' => 'Alquiler de plataformas aéreas para trabajos en altura con los más altos estándares de seguridad.',
+                    'en' => 'Aerial platform rental for work at height with the highest safety standards.'
+                ],
+                'features' => [
+                    'es' => [
+                        'Plataformas de diferentes alturas',
+                        'Equipos certificados y mantenidos',
+                        'Operadores capacitados disponibles',
+                        'Seguro de responsabilidad civil',
+                        'Soporte técnico 24/7'
+                    ],
+                    'en' => [
+                        'Platforms of different heights',
+                        'Certified and maintained equipment',
+                        'Trained operators available',
+                        'Civil liability insurance',
+                        '24/7 technical support'
+                    ]
+                ]
+            ],
+            'building' => [
+                'title' => [
+                    'es' => 'Servicios de Construcción',
+                    'en' => 'Construction Services'
+                ],
+                'description' => [
+                    'es' => 'Servicios integrales de construcción para proyectos residenciales, comerciales e industriales.',
+                    'en' => 'Comprehensive construction services for residential, commercial and industrial projects.'
+                ],
+                'features' => [
+                    'es' => [
+                        'Construcción de estructuras',
+                        'Acabados de alta calidad',
+                        'Gestión integral de proyectos',
+                        'Cumplimiento de normativas',
+                        'Garantía en todos los trabajos'
+                    ],
+                    'en' => [
+                        'Structure construction',
+                        'High quality finishes',
+                        'Comprehensive project management',
+                        'Regulatory compliance',
+                        'Warranty on all work'
+                    ]
+                ]
+            ],
+            'electrification' => [
+                'title' => [
+                    'es' => 'Servicios de Electrificación',
+                    'en' => 'Electrification Services'
+                ],
+                'description' => [
+                    'es' => 'Instalaciones eléctricas profesionales para proyectos residenciales, comerciales e industriales.',
+                    'en' => 'Professional electrical installations for residential, commercial and industrial projects.'
+                ],
+                'features' => [
+                    'es' => [
+                        'Instalaciones eléctricas completas',
+                        'Sistemas de iluminación LED',
+                        'Tableros y automatización',
+                        'Certificaciones eléctricas',
+                        'Mantenimiento preventivo'
+                    ],
+                    'en' => [
+                        'Complete electrical installations',
+                        'LED lighting systems',
+                        'Panels and automation',
+                        'Electrical certifications',
+                        'Preventive maintenance'
+                    ]
+                ]
+            ],
+            'drainage' => [
+                'title' => [
+                    'es' => 'Sistemas de Drenaje',
+                    'en' => 'Drainage Systems'
+                ],
+                'description' => [
+                    'es' => 'Diseño e instalación de sistemas de drenaje eficientes para control de aguas pluviales.',
+                    'en' => 'Design and installation of efficient drainage systems for stormwater control.'
+                ],
+                'features' => [
+                    'es' => [
+                        'Diseño hidráulico especializado',
+                        'Instalación de tuberías',
+                        'Sistemas de captación',
+                        'Mantenimiento de drenajes',
+                        'Soluciones sustentables'
+                    ],
+                    'en' => [
+                        'Specialized hydraulic design',
+                        'Pipe installation',
+                        'Collection systems',
+                        'Drainage maintenance',
+                        'Sustainable solutions'
+                    ]
+                ]
+            ],
+            'topographic' => [
+                'title' => [
+                    'es' => 'Levantamientos Topográficos',
+                    'en' => 'Topographic Surveys'
+                ],
+                'description' => [
+                    'es' => 'Levantamientos topográficos precisos utilizando tecnología de última generación.',
+                    'en' => 'Precise topographic surveys using state-of-the-art technology.'
+                ],
+                'features' => [
+                    'es' => [
+                        'Levantamientos con drones',
+                        'Tecnología GPS de precisión',
+                        'Planos digitales detallados',
+                        'Análisis de terreno',
+                        'Certificación profesional'
+                    ],
+                    'en' => [
+                        'Drone surveys',
+                        'Precision GPS technology',
+                        'Detailed digital plans',
+                        'Terrain analysis',
+                        'Professional certification'
+                    ]
+                ]
+            ]
+        ];
+
+        // Si no se especifica servicio, usar el primero (concrete)
+        $serviceKey = $service ?? 'concrete';
+        
+        return $services[$serviceKey] ?? $services['concrete'];
+    }
+}
