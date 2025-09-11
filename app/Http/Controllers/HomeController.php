@@ -111,11 +111,15 @@ class HomeController extends Controller
         return view('services', compact('language'));
     }
     
-    public function servicesDetailsEs(Request $request)
+    public function servicesDetailsEs(Request $request, $service = null)
     {
         $language = 'es';
         Session::put('language', $language);
-        return view('services_details', compact('language'));
+        
+        // Datos específicos para cada servicio
+        $serviceData = $this->getServiceData($service, $language);
+        
+        return view('services_details', compact('language', 'serviceData'));
     }
     
     public function equiposEs(Request $request)
@@ -170,11 +174,15 @@ class HomeController extends Controller
         return view('services', compact('language'));
     }
     
-    public function servicesDetailsEn(Request $request)
+    public function servicesDetailsEn(Request $request, $service = null)
     {
         $language = 'en';
         Session::put('language', $language);
-        return view('services_details', compact('language'));
+        
+        // Datos específicos para cada servicio
+        $serviceData = $this->getServiceData($service, $language);
+        
+        return view('services_details', compact('language', 'serviceData'));
     }
     
     public function equiposEn(Request $request)

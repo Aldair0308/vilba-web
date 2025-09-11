@@ -42,7 +42,7 @@ Route::prefix('ES')->group(function () {
     Route::get('/servicios', [HomeController::class, 'servicesEs'])->name('services.ES');
     Route::get('/equipos', [HomeController::class, 'equiposEs'])->name('equipos.ES');
     Route::get('/equipos/{slug}', [HomeController::class, 'equiposDetailEs'])->name('equipos.detail.ES');
-    Route::get('/detalle-servicio', [HomeController::class, 'servicesDetailsEs'])->name('services-detail.ES');
+    Route::get('/detalle-servicio/{service?}', [HomeController::class, 'servicesDetailsEs'])->name('services-detail.ES');
     
 });
 
@@ -53,7 +53,7 @@ Route::prefix('EN')->group(function () {
     Route::get('/services', [HomeController::class, 'servicesEn'])->name('services.EN');
     Route::get('/equipment', [HomeController::class, 'equiposEn'])->name('equipos.EN');
     Route::get('/equipment/{slug}', [HomeController::class, 'equiposDetailEn'])->name('equipos.detail.EN');
-    Route::get('/detalle-servicio', [HomeController::class, 'servicesDetailsEn'])->name('services-detail.EN');
+    Route::get('/detalle-servicio/{service?}', [HomeController::class, 'servicesDetailsEn'])->name('services-detail.EN');
 });
 
 // Ruta para cambiar idioma
