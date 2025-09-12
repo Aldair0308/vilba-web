@@ -139,8 +139,157 @@
                     color: #ffffff; /* Mantener texto blanco en hover */
                 }
                 
-                /* Responsive para footer */
-                @media (max-width: 768px) {
+                /* Responsive específico para tablets (768px - 1024px) */
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    .footer-area {
+                        padding: 60px 0 40px;
+                    }
+                    
+                    .footer-area .container {
+                        max-width: 95%;
+                    }
+                    
+                    .footer-area .row {
+                        margin: 0 -10px;
+                    }
+                    
+                    .footer-area .row > [class*="col-"] {
+                        padding: 0 10px;
+                        margin-bottom: 40px;
+                    }
+                    
+                    /* Logo y descripción más compactos */
+                    .footer-logo img {
+                        height: 50px !important;
+                        max-width: 180px !important;
+                    }
+                    
+                    .footer-pera p.info1 {
+                        font-size: 0.9rem;
+                        line-height: 1.5;
+                        margin-bottom: 20px;
+                    }
+                    
+                    /* Enlaces rápidos más organizados */
+                    .footer-tittle h4 {
+                        font-size: 1.1rem;
+                        margin-bottom: 20px;
+                        color: #fff;
+                        font-weight: 600;
+                    }
+                    
+                    .footer-tittle ul {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 8px 15px;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    
+                    .footer-tittle ul li {
+                        margin-bottom: 8px;
+                    }
+                    
+                    .footer-tittle ul li a {
+                        font-size: 0.85rem;
+                        padding: 5px 0;
+                        display: block;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    /* Sección de contacto optimizada */
+                    .single-footer-caption:nth-child(3) .footer-pera p.info1 {
+                        font-size: 0.8rem;
+                        line-height: 1.4;
+                        margin-bottom: 15px;
+                    }
+                    
+                    .single-footer-caption:nth-child(3) ul {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                    }
+                    
+                    .single-footer-caption:nth-child(3) ul li a {
+                        font-size: 0.8rem;
+                        padding: 3px 0;
+                    }
+                    
+                    /* Mapa y navegación rediseñados para tablets */
+                    .footer-map-container {
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 15px;
+                        padding: 20px;
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                    }
+                    
+                    .footer-map-container iframe {
+                        height: 180px !important;
+                        border-radius: 10px;
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                    }
+                    
+                    .footer-map-buttons {
+                        display: flex;
+                        gap: 12px;
+                        margin-top: 20px;
+                    }
+                    
+                    .footer-nav-button {
+                        flex: 1;
+                        padding: 14px 10px;
+                        border-radius: 10px;
+                        font-size: 0.8rem;
+                        min-height: 75px;
+                        background: rgba(255, 255, 255, 0.08);
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        backdrop-filter: blur(10px);
+                    }
+                    
+                    .footer-nav-button:hover {
+                        background: rgba(30, 64, 175, 0.8);
+                        transform: translateY(-1px);
+                        box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
+                    }
+                    
+                    .footer-button-icon {
+                        width: 36px;
+                        height: 36px;
+                        margin-bottom: 6px;
+                        background: rgba(255, 255, 255, 0.15);
+                    }
+                    
+                    .footer-button-icon i,
+                    .footer-button-icon svg,
+                    .footer-button-icon img {
+                        font-size: 18px;
+                    }
+                    
+                    .footer-button-title {
+                        font-size: 0.85rem;
+                        font-weight: 600;
+                    }
+                    
+                    .footer-button-subtitle {
+                        font-size: 0.7rem;
+                        opacity: 0.85;
+                    }
+                    
+                    /* Copyright optimizado */
+                    #copy-right {
+                        margin-top: 30px;
+                        padding-top: 25px;
+                        border-top: 1px solid rgba(255, 255, 255, 0.1);
+                    }
+                    
+                    .footer-copy-right p {
+                        font-size: 0.85rem;
+                        margin: 0;
+                    }
+                }
+                
+                /* Responsive para móviles (mantener existente) */
+                @media (max-width: 767px) {
                     .footer-nav-button {
                         padding: 12px 8px;
                         border-radius: 10px;
