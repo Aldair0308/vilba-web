@@ -1239,12 +1239,12 @@ class HomeController extends Controller
             'vibrocompactadora' => [
                 'slug' => 'vibrocompactadora',
                 'name' => [
-                    'es' => 'Vibrocompactadora',
-                    'en' => 'Vibratory Roller'
+                    'es' => 'Vibrocompactador Hugg & Hall SD 105F TF',
+                    'en' => 'Hugg & Hall SD 105F TF Vibratory Compactor'
                 ],
                 'description' => [
-                    'es' => 'Vibrocompactadoras para compactación de suelos y asfalto.',
-                    'en' => 'Vibratory rollers for soil and asphalt compaction.'
+                    'es' => 'Vibrocompactador Hugg & Hall modelo SD 105F TF Ingersoll Rand para compactación de suelos.',
+                    'en' => 'Hugg & Hall SD 105F TF Ingersoll Rand vibratory compactor for soil compaction.'
                 ],
                 'hero_image' => 'assets/img/equipos/vibrocompactadora.svg',
                 'gallery' => [
@@ -1254,62 +1254,80 @@ class HomeController extends Controller
                 ],
                 'detailed_info' => [
                     'es' => [
-                        'description' => 'Nuestras vibrocompactadoras están diseñadas para lograr la compactación perfecta en proyectos de pavimentación y construcción de carreteras.',
+                        'description' => 'Vibrocompactador Hugg & Hall modelo SD 105F TF Ingersoll Rand serie 186519, diseñado para compactación eficiente de suelos en proyectos de construcción y pavimentación.',
                         'features' => [
-                            'Sistema de vibración ajustable',
-                            'Rodillos de acero de alta calidad',
-                            'Sistema de riego automático',
-                            'Control de frecuencia variable',
-                            'Cabina con suspensión'
+                            'Motor Cummins B3.9 TAA Tier 2 turboalimentado',
+                            'Tambor de 84 pulgadas de ancho',
+                            'Diámetro del tambor de 59.02 pulgadas',
+                            'Doble frecuencia de vibración (27.6 Hz y 33.8 Hz)',
+                            'Fuerza centrífuga alta de 60,698 lbs',
+                            'Capacidad de combustible de 68 galones'
                         ],
                         'applications' => [
-                            'Compactación de asfalto',
                             'Compactación de suelos',
                             'Construcción de carreteras',
+                            'Preparación de terrenos',
                             'Trabajos de pavimentación'
                         ],
                         'technical_specs' => [
-                            'Peso operativo: 3-15 toneladas',
-                            'Ancho de compactación: 1.2-2.1 metros',
-                            'Frecuencia de vibración: 2800-4200 vpm',
-                            'Amplitud: 0.35-0.85 mm',
-                            'Velocidad de trabajo: 0-12 km/h'
+                            'Modelo: SD 105F TF',
+                            'Serie: 186519',
+                            'Motor: Cummins B3.9 TAA Tier 2 - 125 HP',
+                            'Peso operativo: 25,100 lbs (11,385 kg)',
+                            'Longitud total: 19.34 ft (5.89 m)',
+                            'Ancho: 7.5 ft (2.29 m)',
+                            'Altura: 10.33 ft (3.15 m)',
+                            'Ancho del tambor: 84 in (2.13 m)',
+                            'Diámetro del tambor: 59.02 in (1.50 m)',
+                            'Velocidad máxima: 6.5 mph (10.5 km/h)',
+                            'Capacidad de combustible: 68 gal (257 L)',
+                            'Frecuencias de vibración: 27.6 Hz y 33.8 Hz',
+                            'Fuerza centrífuga: 60,698 lbs (27,533 kg)'
                         ]
                     ],
                     'en' => [
-                        'description' => 'Our vibratory rollers are designed to achieve perfect compaction in paving and road construction projects.',
+                        'description' => 'Hugg & Hall SD 105F TF Ingersoll Rand vibratory compactor series 186519, designed for efficient soil compaction in construction and paving projects.',
                         'features' => [
-                            'Adjustable vibration system',
-                            'High-quality steel drums',
-                            'Automatic sprinkler system',
-                            'Variable frequency control',
-                            'Suspended cabin'
+                            'Cummins B3.9 TAA Tier 2 turbocharged engine',
+                            '84-inch wide drum',
+                            '59.02-inch drum diameter',
+                            'Dual vibration frequency (27.6 Hz and 33.8 Hz)',
+                            'High centrifugal force of 60,698 lbs',
+                            '68-gallon fuel capacity'
                         ],
                         'applications' => [
-                            'Asphalt compaction',
                             'Soil compaction',
                             'Road construction',
+                            'Ground preparation',
                             'Paving work'
                         ],
                         'technical_specs' => [
-                            'Operating weight: 3-15 tons',
-                            'Compaction width: 1.2-2.1 meters',
-                            'Vibration frequency: 2800-4200 vpm',
-                            'Amplitude: 0.35-0.85 mm',
-                            'Working speed: 0-12 km/h'
+                            'Model: SD 105F TF',
+                            'Series: 186519',
+                            'Engine: Cummins B3.9 TAA Tier 2 - 125 HP',
+                            'Operating weight: 25,100 lbs (11,385 kg)',
+                            'Overall length: 19.34 ft (5.89 m)',
+                            'Width: 7.5 ft (2.29 m)',
+                            'Height: 10.33 ft (3.15 m)',
+                            'Drum width: 84 in (2.13 m)',
+                            'Drum diameter: 59.02 in (1.50 m)',
+                            'Maximum speed: 6.5 mph (10.5 km/h)',
+                            'Fuel capacity: 68 gal (257 L)',
+                            'Vibration frequencies: 27.6 Hz and 33.8 Hz',
+                            'Centrifugal force: 60,698 lbs (27,533 kg)'
                         ]
                     ]
                  ]
              ],
-             'motoconformadora' => [
-                 'slug' => 'motoconformadora',
+             'vibrocompactador-bross-spv730' => [
+                 'slug' => 'vibrocompactador-bross-spv730',
                  'name' => [
-                     'es' => 'Motoconformadora',
-                     'en' => 'Motor Grader'
+                     'es' => 'Vibrocompactador Bross SPV-730',
+                     'en' => 'Bross SPV-730 Vibratory Compactor'
                  ],
                  'description' => [
-                     'es' => 'Motoconformadoras para nivelación y conformación de terrenos.',
-                     'en' => 'Motor graders for land leveling and shaping.'
+                     'es' => 'Vibrocompactador Bross SPV-730 para compactación eficiente de suelos y materiales granulares.',
+                     'en' => 'Bross SPV-730 vibratory compactor for efficient soil and granular material compaction.'
                  ],
                  'hero_image' => 'assets/img/equipos/motoconformadora.svg',
                  'gallery' => [
@@ -1319,49 +1337,61 @@ class HomeController extends Controller
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Nuestras motoconformadoras proporcionan la precisión necesaria para trabajos de nivelación y conformación de superficies en proyectos viales.',
+                         'description' => 'El Vibrocompactador Bross SPV-730 es una máquina robusta diseñada para la compactación eficiente de suelos, asfalto y materiales granulares en proyectos de construcción vial.',
                          'features' => [
-                             'Hoja moldboard de 3.7 metros',
-                             'Sistema de control hidráulico',
-                             'Articulación central',
-                             'Ripper trasero opcional',
-                             'Sistema GPS disponible'
+                             'Motor diesel de alta potencia 80 HP',
+                             'Sistema de vibración de doble amplitud',
+                             'Tambor de acero reforzado de 70 pulgadas',
+                             'Sistema hidráulico de control preciso',
+                             'Cabina con sistema de amortiguación ROPS/FOPS'
                          ],
                          'applications' => [
-                             'Nivelación de carreteras',
-                             'Conformación de taludes',
-                             'Mantenimiento vial',
-                             'Preparación de subrasante'
+                             'Compactación de suelos',
+                             'Construcción de carreteras',
+                             'Preparación de terrenos',
+                             'Compactación de materiales granulares',
+                             'Trabajos de pavimentación'
                          ],
                          'technical_specs' => [
-                             'Peso operativo: 12-20 toneladas',
-                             'Potencia del motor: 140-200 HP',
-                             'Longitud de hoja: 3.7 metros',
-                             'Velocidad máxima: 45 km/h',
-                             'Radio de giro: 7.3 metros'
+                             'Modelo: SPV-730',
+                             'Serie: SPV-730',
+                             'Motor: Diesel 80 HP',
+                             'Peso operativo: 13,500 lbs (6,123 kg)',
+                             'Ancho del tambor: 70 in (1.78 m)',
+                             'Diámetro del tambor: 51 in (1.30 m)',
+                             'Velocidad máxima: 9 mph (14.5 km/h)',
+                             'Capacidad de combustible: 45 gal (170 L)',
+                             'Frecuencia de vibración: 28 Hz',
+                             'Fuerza centrífuga: 40,000 lbs (18,144 kg)'
                          ]
                      ],
                      'en' => [
-                         'description' => 'Our motor graders provide the precision needed for leveling and surface shaping work in road projects.',
+                         'description' => 'The Bross SPV-730 Vibratory Compactor is a robust machine designed for efficient compaction of soils, asphalt, and granular materials in road construction projects.',
                          'features' => [
-                             '3.7-meter moldboard blade',
-                             'Hydraulic control system',
-                             'Center articulation',
-                             'Optional rear ripper',
-                             'GPS system available'
+                             'High-power 80 HP diesel engine',
+                             'Double amplitude vibration system',
+                             '70-inch reinforced steel drum',
+                             'Precise hydraulic control system',
+                             'ROPS/FOPS cabin with damping system'
                          ],
                          'applications' => [
-                             'Road leveling',
-                             'Slope shaping',
-                             'Road maintenance',
-                             'Subgrade preparation'
+                             'Soil compaction',
+                             'Road construction',
+                             'Ground preparation',
+                             'Granular material compaction',
+                             'Paving work'
                          ],
                          'technical_specs' => [
-                             'Operating weight: 12-20 tons',
-                             'Engine power: 140-200 HP',
-                             'Blade length: 3.7 meters',
-                             'Maximum speed: 45 km/h',
-                             'Turning radius: 7.3 meters'
+                             'Model: SPV-730',
+                             'Series: SPV-730',
+                             'Engine: 80 HP Diesel',
+                             'Operating weight: 13,500 lbs (6,123 kg)',
+                             'Drum width: 70 in (1.78 m)',
+                             'Drum diameter: 51 in (1.30 m)',
+                             'Maximum speed: 9 mph (14.5 km/h)',
+                             'Fuel capacity: 45 gal (170 L)',
+                             'Vibration frequency: 28 Hz',
+                             'Centrifugal force: 40,000 lbs (18,144 kg)'
                          ]
                      ]
                  ]
