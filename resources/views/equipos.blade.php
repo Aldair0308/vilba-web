@@ -539,36 +539,36 @@
             [
                 'slug' => 'excavadoras',
                 'name' => [
-                    'es' => 'Excavadoras',
-                    'en' => 'Excavators'
+                    'es' => 'Excavadora Caterpillar 330C',
+                    'en' => 'Caterpillar 330C Excavator'
                 ],
                 'description' => [
-                    'es' => 'Excavadoras de trabajo pesado para movimiento de tierra, demolición y proyectos de construcción. Disponibles en varios tamaños para diferentes requisitos de proyecto.',
-                    'en' => 'Heavy-duty excavators for earthmoving, demolition, and construction projects. Available in various sizes for different project requirements.'
+                    'es' => 'Excavadora Caterpillar 330C modelo 2004 (Serie: CAT0330CCJAB00810) para movimiento de tierra, demolición y proyectos de construcción con motor CAT C9 de 244 HP.',
+                    'en' => 'Caterpillar 330C excavator model 2004 (Serial: CAT0330CCJAB00810) for earthmoving, demolition, and construction projects with CAT C9 engine 244 HP.'
                 ],
                 'image' => 'assets/img/service/servicess5.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
-                        'Peso: 5-50 toneladas',
-                        'Múltiples accesorios',
+                        'Peso: 35.1 toneladas',
+                        'Motor CAT C9 - 244 HP',
                         'Operadores experimentados'
                     ],
                     'en' => [
-                        'Weight: 5-50 tons',
-                        'Multiple attachments',
+                        'Weight: 35.1 tons',
+                        'CAT C9 Engine - 244 HP',
                         'Experienced operators'
                     ]
                 ],
                 'detailed_info' => [
                     'es' => [
-                        'description' => 'Nuestras excavadoras están diseñadas para los trabajos más exigentes. Desde mini excavadoras para espacios reducidos hasta grandes máquinas para proyectos de infraestructura.',
+                        'description' => 'Excavadora Caterpillar 330C modelo 2004 (Serie: CAT0330CCJAB00810) diseñada para los trabajos más exigentes de excavación, demolición y movimiento de tierra en proyectos de construcción e infraestructura.',
                         'features' => [
-                            'Motor de alta eficiencia',
-                            'Sistema hidráulico avanzado',
+                            'Motor CAT C9 de 244 HP',
+                            'Sistema hidráulico de 148 gal/min',
                             'Cabina ROPS/FOPS certificada',
-                            'Múltiples accesorios intercambiables',
-                            'Sistema de monitoreo inteligente'
+                            'Peso operativo de 35.1 toneladas',
+                            'Capacidad de combustible de 163 galones'
                         ],
                         'applications' => [
                             'Excavación y movimiento de tierra',
@@ -577,21 +577,23 @@
                             'Proyectos de urbanización'
                         ],
                         'technical_specs' => [
-                            'Peso operativo: 5-50 toneladas',
-                            'Potencia del motor: 75-400 HP',
-                            'Capacidad del cucharón: 0.3-3.2 m³',
-                            'Alcance máximo: 6-12 metros',
-                            'Profundidad de excavación: 4-8 metros'
+                            'Motor: CAT C9 - 244 HP',
+                            'Peso operativo: 77,400 lb (35.1 ton)',
+                            'Capacidad del cucharón: 2.3 yd³',
+                            'Alcance máximo: 10.68 metros',
+                            'Profundidad de excavación: 7.24 metros',
+                            'Capacidad de combustible: 163 gal',
+                            'Sistema hidráulico: 148 gal/min'
                         ]
                     ],
                     'en' => [
-                        'description' => 'Our excavators are designed for the most demanding jobs. From mini excavators for confined spaces to large machines for infrastructure projects.',
+                        'description' => 'Caterpillar 330C excavator model 2004 (Serial: CAT0330CCJAB00810) designed for the most demanding excavation, demolition, and earthmoving jobs in construction and infrastructure projects.',
                         'features' => [
-                            'High-efficiency engine',
-                            'Advanced hydraulic system',
+                            'CAT C9 engine 244 HP',
+                            'Hydraulic system 148 gal/min',
                             'ROPS/FOPS certified cabin',
-                            'Multiple interchangeable attachments',
-                            'Intelligent monitoring system'
+                            'Operating weight 35.1 tons',
+                            'Fuel capacity 163 gallons'
                         ],
                         'applications' => [
                             'Excavation and earthmoving',
@@ -600,11 +602,13 @@
                             'Urbanization projects'
                         ],
                         'technical_specs' => [
-                            'Operating weight: 5-50 tons',
-                            'Engine power: 75-400 HP',
-                            'Bucket capacity: 0.3-3.2 m³',
-                            'Maximum reach: 6-12 meters',
-                            'Digging depth: 4-8 meters'
+                            'Engine: CAT C9 - 244 HP',
+                            'Operating weight: 77,400 lb (35.1 ton)',
+                            'Bucket capacity: 2.3 yd³',
+                            'Maximum reach: 10.68 meters',
+                            'Digging depth: 7.24 meters',
+                            'Fuel capacity: 163 gal',
+                            'Hydraulic system: 148 gal/min'
                         ]
                     ]
                 ],

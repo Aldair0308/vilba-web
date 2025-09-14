@@ -898,12 +898,12 @@ class HomeController extends Controller
              'excavadoras' => [
                  'slug' => 'excavadoras',
                  'name' => [
-                     'es' => 'Excavadoras',
-                     'en' => 'Excavators'
+                     'es' => 'Excavadora Caterpillar 330C',
+                     'en' => 'Caterpillar 330C Excavator'
                  ],
                  'description' => [
-                     'es' => 'Excavadoras de alta potencia para trabajos de excavación y movimiento de tierra.',
-                     'en' => 'High-power excavators for excavation and earthmoving work.'
+                     'es' => 'Excavadora Caterpillar 330C 2004 con motor CAT C9 de 244 HP para trabajos de excavación y movimiento de tierra.',
+                     'en' => 'Caterpillar 330C 2004 excavator with CAT C9 engine 244 HP for excavation and earthmoving work.'
                  ],
                  'hero_image' => 'assets/img/gallery/services5.jpg',
                  'gallery' => [
@@ -913,49 +913,51 @@ class HomeController extends Controller
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Nuestras excavadoras están diseñadas para trabajos pesados de excavación, demolición y movimiento de tierra en proyectos de construcción e infraestructura.',
+                         'description' => 'Nuestra excavadora Caterpillar 330C modelo 2004 (Serie: CAT0330CCJAB00810) está diseñada para trabajos pesados de excavación, demolición y movimiento de tierra en proyectos de construcción e infraestructura.',
                          'features' => [
-                             'Potencia del motor hasta 400 HP',
-                             'Peso operativo hasta 50 toneladas',
-                             'Alcance de excavación hasta 12 metros',
-                             'Cabina con aire acondicionado',
-                             'Sistema hidráulico de alta presión'
+                             'Motor CAT C9 de 244 HP',
+                             'Sistema hidráulico de 148 gal/min',
+                             'Cabina con suspensión y aire acondicionado',
+                             'Brazo de excavación de alta resistencia',
+                             'Sistema de control electrónico avanzado'
                          ],
                          'applications' => [
                              'Excavación de cimientos',
-                             'Demolición de estructuras',
                              'Movimiento de tierra',
-                             'Construcción de carreteras'
+                             'Demolición controlada',
+                             'Construcción de carreteras',
+                             'Proyectos de infraestructura'
                          ],
                          'technical_specs' => [
-                             'Potencia: 400 HP',
-                             'Peso operativo: 50 toneladas',
-                             'Alcance máximo: 12m',
-                             'Profundidad de excavación: 8m',
-                             'Capacidad del cucharón: 3.5 m³'
+                             'Peso operativo: 35.1 toneladas (77,400 lb)',
+                             'Capacidad de cucharón: 2.3 yd³',
+                             'Profundidad de excavación: 7.24 metros',
+                             'Alcance máximo: 10.68 metros',
+                             'Capacidad de combustible: 163 galones'
                          ]
                      ],
                      'en' => [
-                         'description' => 'Our excavators are designed for heavy excavation, demolition, and earthmoving work in construction and infrastructure projects.',
+                         'description' => 'Our Caterpillar 330C excavator model 2004 (Serial: CAT0330CCJAB00810) is designed for heavy excavation, demolition, and earthmoving work in construction and infrastructure projects.',
                          'features' => [
-                             'Engine power up to 400 HP',
-                             'Operating weight up to 50 tons',
-                             'Excavation reach up to 12 meters',
-                             'Air-conditioned cabin',
-                             'High-pressure hydraulic system'
+                             'CAT C9 engine 244 HP',
+                             'Hydraulic system 148 gal/min',
+                             'Suspended cab with air conditioning',
+                             'High-strength excavation arm',
+                             'Advanced electronic control system'
                          ],
                          'applications' => [
                              'Foundation excavation',
-                             'Structure demolition',
                              'Earthmoving',
-                             'Road construction'
+                             'Controlled demolition',
+                             'Road construction',
+                             'Infrastructure projects'
                          ],
                          'technical_specs' => [
-                             'Power: 400 HP',
-                             'Operating weight: 50 tons',
-                             'Maximum reach: 12m',
-                             'Digging depth: 8m',
-                             'Bucket capacity: 3.5 m³'
+                             'Operating weight: 35.1 tons (77,400 lb)',
+                             'Bucket capacity: 2.3 yd³',
+                             'Excavation depth: 7.24 meters',
+                             'Maximum reach: 10.68 meters',
+                             'Fuel capacity: 163 gallons'
                          ]
                      ]
                  ]
@@ -963,12 +965,12 @@ class HomeController extends Controller
              'excavators' => [
                  'slug' => 'excavators',
                  'name' => [
-                     'es' => 'Excavadoras',
-                     'en' => 'Excavators'
+                     'es' => 'Excavadora Caterpillar 330C',
+                     'en' => 'Caterpillar 330C Excavator'
                  ],
                  'description' => [
-                     'es' => 'Excavadoras de alta potencia para trabajos de excavación y movimiento de tierra.',
-                     'en' => 'High-power excavators for excavation and earthmoving work.'
+                     'es' => 'Excavadora Caterpillar 330C 2004 con motor CAT C9 de 244 HP para trabajos de excavación y movimiento de tierra.',
+                     'en' => 'Caterpillar 330C 2004 excavator with CAT C9 engine 244 HP for excavation and earthmoving work.'
                  ],
                  'hero_image' => 'assets/img/gallery/services5.jpg',
                  'gallery' => [
@@ -978,13 +980,13 @@ class HomeController extends Controller
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Nuestras excavadoras están diseñadas para trabajos pesados de excavación, demolición y movimiento de tierra en proyectos de construcción e infraestructura.',
+                         'description' => 'Excavadora Caterpillar 330C modelo 2004 (Serie: CAT0330CCJAB00810) diseñada para trabajos pesados de excavación, demolición y movimiento de tierra en proyectos de construcción e infraestructura.',
                          'features' => [
-                             'Potencia del motor hasta 400 HP',
-                             'Peso operativo hasta 50 toneladas',
-                             'Alcance de excavación hasta 12 metros',
+                             'Motor CAT C9 de 244 HP',
+                             'Peso operativo de 35.1 toneladas',
+                             'Alcance máximo de 10.68 metros',
                              'Cabina con aire acondicionado',
-                             'Sistema hidráulico de alta presión'
+                             'Sistema hidráulico de 148 gal/min'
                          ],
                          'applications' => [
                              'Excavación de cimientos',
@@ -993,21 +995,23 @@ class HomeController extends Controller
                              'Construcción de carreteras'
                          ],
                          'technical_specs' => [
-                             'Potencia: 400 HP',
-                             'Peso operativo: 50 toneladas',
-                             'Alcance máximo: 12m',
-                             'Profundidad de excavación: 8m',
-                             'Capacidad del cucharón: 3.5 m³'
+                             'Motor: CAT C9 - 244 HP',
+                             'Peso operativo: 77,400 lb (35.1 ton)',
+                             'Alcance máximo: 10.68 m',
+                             'Profundidad de excavación: 7.24 m',
+                             'Capacidad del cucharón: 2.3 yd³',
+                             'Capacidad de combustible: 163 gal',
+                             'Sistema hidráulico: 148 gal/min'
                          ]
                      ],
                      'en' => [
-                         'description' => 'Our excavators are designed for heavy excavation, demolition, and earthmoving work in construction and infrastructure projects.',
+                         'description' => 'Caterpillar 330C excavator model 2004 (Serial: CAT0330CCJAB00810) designed for heavy excavation, demolition, and earthmoving work in construction and infrastructure projects.',
                          'features' => [
-                             'Engine power up to 400 HP',
-                             'Operating weight up to 50 tons',
-                             'Excavation reach up to 12 meters',
+                             'CAT C9 engine 244 HP',
+                             'Operating weight 35.1 tons',
+                             'Maximum reach 10.68 meters',
                              'Air-conditioned cabin',
-                             'High-pressure hydraulic system'
+                             'Hydraulic system 148 gal/min'
                          ],
                          'applications' => [
                              'Foundation excavation',
@@ -1016,11 +1020,13 @@ class HomeController extends Controller
                              'Road construction'
                          ],
                          'technical_specs' => [
-                             'Power: 400 HP',
-                             'Operating weight: 50 tons',
-                             'Maximum reach: 12m',
-                             'Digging depth: 8m',
-                             'Bucket capacity: 3.5 m³'
+                             'Engine: CAT C9 - 244 HP',
+                             'Operating weight: 77,400 lb (35.1 ton)',
+                             'Maximum reach: 10.68 m',
+                             'Digging depth: 7.24 m',
+                             'Bucket capacity: 2.3 yd³',
+                             'Fuel capacity: 163 gal',
+                             'Hydraulic system: 148 gal/min'
                          ]
                      ]
                  ]
@@ -1548,12 +1554,12 @@ class HomeController extends Controller
              'excavadora' => [
                  'slug' => 'excavadora',
                  'name' => [
-                     'es' => 'Excavadora',
-                     'en' => 'Excavator'
+                     'es' => 'Excavadora Caterpillar 330C',
+                     'en' => 'Caterpillar 330C Excavator'
                  ],
                  'description' => [
-                     'es' => 'Excavadoras hidráulicas para movimiento de tierra y excavación.',
-                     'en' => 'Hydraulic excavators for earthmoving and excavation work.'
+                     'es' => 'Excavadora Caterpillar 330C 2004 con motor CAT C9 de 244 HP para trabajos de excavación y movimiento de tierra.',
+                     'en' => 'Caterpillar 330C 2004 excavator with CAT C9 engine 244 HP for excavation and earthmoving work.'
                  ],
                  'hero_image' => 'assets/img/equipos/excavadora-cover.png',
                  'gallery' => [
@@ -1563,49 +1569,51 @@ class HomeController extends Controller
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Nuestros camiones de volteo ofrecen soluciones eficientes para el transporte y descarga de materiales en proyectos de construcción de gran escala.',
+                         'description' => 'Nuestra excavadora Caterpillar 330C modelo 2004 (Serie: CAT0330CCJAB00810) ofrece potencia y versatilidad excepcionales para proyectos de construcción e infraestructura de gran escala.',
                          'features' => [
-                             'Caja de volteo reforzada',
-                             'Sistema hidráulico de alta potencia',
-                             'Compuerta trasera automática',
-                             'Suspensión neumática',
-                             'Sistema de frenado ABS'
+                             'Motor CAT C9 de 244 HP',
+                             'Sistema hidráulico de 148 gal/min',
+                             'Cabina con suspensión y aire acondicionado',
+                             'Brazo de excavación de alta resistencia',
+                             'Sistema de control electrónico avanzado'
                          ],
                          'applications' => [
-                             'Transporte de agregados',
+                             'Excavación de cimientos',
                              'Movimiento de tierra',
-                             'Proyectos de minería',
-                             'Construcción de carreteras'
+                             'Demolición controlada',
+                             'Construcción de carreteras',
+                             'Proyectos de infraestructura'
                          ],
                          'technical_specs' => [
-                             'Capacidad de carga: 10-40 toneladas',
-                             'Volumen de caja: 8-25 m³',
-                             'Potencia del motor: 300-500 HP',
-                             'Tiempo de volteo: 15-25 segundos',
-                             'Velocidad máxima: 90 km/h'
+                             'Peso operativo: 35.1 toneladas (77,400 lb)',
+                             'Capacidad de cucharón: 2.3 yd³',
+                             'Profundidad de excavación: 7.24 metros',
+                             'Alcance máximo: 10.68 metros',
+                             'Capacidad de combustible: 163 galones'
                          ]
                      ],
                      'en' => [
-                         'description' => 'Our dump trucks offer efficient solutions for material transport and unloading in large-scale construction projects.',
+                         'description' => 'Our Caterpillar 330C excavator model 2004 (Serial: CAT0330CCJAB00810) offers exceptional power and versatility for large-scale construction and infrastructure projects.',
                          'features' => [
-                             'Reinforced dump body',
-                             'High-power hydraulic system',
-                             'Automatic tailgate',
-                             'Air suspension',
-                             'ABS braking system'
+                             'CAT C9 engine 244 HP',
+                             'Hydraulic system 148 gal/min',
+                             'Suspended cab with air conditioning',
+                             'High-strength excavation arm',
+                             'Advanced electronic control system'
                          ],
                          'applications' => [
-                             'Aggregate transport',
+                             'Foundation excavation',
                              'Earthmoving',
-                             'Mining projects',
-                             'Road construction'
+                             'Controlled demolition',
+                             'Road construction',
+                             'Infrastructure projects'
                          ],
                          'technical_specs' => [
-                             'Load capacity: 10-40 tons',
-                             'Body volume: 8-25 m³',
-                             'Engine power: 300-500 HP',
-                             'Dumping time: 15-25 seconds',
-                             'Maximum speed: 90 km/h'
+                             'Operating weight: 35.1 tons (77,400 lb)',
+                             'Bucket capacity: 2.3 yd³',
+                             'Excavation depth: 7.24 meters',
+                             'Maximum reach: 10.68 meters',
+                             'Fuel capacity: 163 gallons'
                          ]
                      ]
                  ]

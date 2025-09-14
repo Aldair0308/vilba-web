@@ -30,12 +30,12 @@ class EquipmentShowcase extends Component
             [
                 'slug' => 'excavadora',
                 'name' => [
-                    'es' => 'Excavadora',
-                    'en' => 'Excavator'
+                    'es' => 'Excavadora Caterpillar 330C',
+                    'en' => 'Caterpillar 330C Excavator'
                 ],
                 'description' => [
-                    'es' => 'Excavadoras de trabajo pesado para movimiento de tierra, demolición y proyectos de construcción.',
-                    'en' => 'Heavy-duty excavators for earthmoving, demolition, and construction projects.'
+                    'es' => 'Excavadora Caterpillar 330C 2004 con motor CAT C9 de 244 HP, peso operativo de 35.1 toneladas y capacidad de cucharón de 2.3 yd³.',
+                    'en' => 'Caterpillar 330C 2004 excavator with CAT C9 engine 244 HP, operating weight 35.1 tons and bucket capacity 2.3 yd³.'
                 ],
                 'hero_image' => 'assets/img/equipos/excavadora.png'
             ],
