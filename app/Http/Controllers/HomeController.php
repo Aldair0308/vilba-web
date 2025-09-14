@@ -382,8 +382,8 @@ class HomeController extends Controller
                     'en' => 'Backhoe Loader 414E'
                 ],
                 'description' => [
-                    'es' => 'Grúas torre de alta capacidad para proyectos de construcción de todos los tamaños.',
-                    'en' => 'High-capacity tower cranes for construction projects of all sizes.'
+                    'es' => 'Retroexcavadora Caterpillar 414E versátil para excavación y carga de materiales.',
+                    'en' => 'Versatile Caterpillar 414E backhoe loader for excavation and material loading.'
                 ],
                 'hero_image' => 'assets/img/gallery/services1.jpg',
                 'gallery' => [
@@ -393,49 +393,49 @@ class HomeController extends Controller
                 ],
                 'detailed_info' => [
                     'es' => [
-                        'description' => 'Nuestras grúas torre ofrecen soluciones de elevación confiables y eficientes para proyectos de construcción de gran envergadura. Con tecnología de punta y operadores certificados.',
+                        'description' => 'La retroexcavadora Caterpillar 414E combina potencia y versatilidad para trabajos de excavación, carga y manipulación de materiales con máxima eficiencia.',
                         'features' => [
-                            'Capacidad de carga hasta 25 toneladas',
-                            'Altura máxima de 80 metros',
-                            'Alcance horizontal hasta 70 metros',
-                            'Sistema de control computarizado',
-                            'Operadores certificados incluidos'
+                            'Motor Cat C4.4 ACERT de 97 HP',
+                            'Transmisión powershift de 4 velocidades',
+                            'Brazo excavador con alcance de 5.49m',
+                            'Cargador frontal con capacidad de 1.0 m³',
+                            'Cabina ROPS/FOPS con aire acondicionado'
                         ],
                         'applications' => [
-                            'Construcción de edificios altos',
-                            'Proyectos residenciales',
-                            'Construcción comercial',
-                            'Infraestructura urbana'
+                            'Excavación de zanjas y cimientos',
+                            'Carga y descarga de materiales',
+                            'Trabajos de paisajismo',
+                            'Mantenimiento de servicios públicos'
                         ],
                         'technical_specs' => [
-                            'Carga máxima: 25 toneladas',
-                            'Altura bajo gancho: 80m',
-                            'Alcance máximo: 70m',
-                            'Velocidad de elevación: 120 m/min',
-                            'Rotación: 360° continua'
+                            'Potencia del motor: 97 HP (72 kW)',
+                            'Peso operativo: 8,165 kg',
+                            'Profundidad de excavación: 4.27m',
+                            'Capacidad del cucharón: 0.24 m³',
+                            'Altura de descarga: 2.59m'
                         ]
                     ],
                     'en' => [
-                        'description' => 'Our tower cranes offer reliable and efficient lifting solutions for large-scale construction projects. Featuring cutting-edge technology and certified operators.',
+                        'description' => 'The Caterpillar 414E backhoe loader combines power and versatility for excavation, loading and material handling work with maximum efficiency.',
                         'features' => [
-                            'Load capacity up to 25 tons',
-                            'Maximum height of 80 meters',
-                            'Horizontal reach up to 70 meters',
-                            'Computerized control system',
-                            'Certified operators included'
+                            'Cat C4.4 ACERT engine 97 HP',
+                            '4-speed powershift transmission',
+                            'Excavator arm with 5.49m reach',
+                            'Front loader with 1.0 m³ capacity',
+                            'ROPS/FOPS cabin with air conditioning'
                         ],
                         'applications' => [
-                            'High-rise building construction',
-                            'Residential projects',
-                            'Commercial construction',
-                            'Urban infrastructure'
+                            'Trench and foundation excavation',
+                            'Material loading and unloading',
+                            'Landscaping work',
+                            'Utility maintenance'
                         ],
                         'technical_specs' => [
-                            'Maximum load: 25 tons',
-                            'Hook height: 80m',
-                            'Maximum reach: 70m',
-                            'Lifting speed: 120 m/min',
-                            'Rotation: 360° continuous'
+                            'Engine power: 97 HP (72 kW)',
+                            'Operating weight: 8,165 kg',
+                            'Digging depth: 4.27m',
+                            'Bucket capacity: 0.24 m³',
+                            'Dump height: 2.59m'
                         ]
                     ]
                 ]
@@ -512,8 +512,8 @@ class HomeController extends Controller
                     'en' => 'Kenworth Truck'
                 ],
                 'description' => [
-                    'es' => 'Grúas móviles versátiles para montaje rápido y posicionamiento flexible.',
-                    'en' => 'Versatile mobile cranes for quick setup and flexible positioning.'
+                    'es' => 'Camión Kenworth T880 de trabajo pesado para transporte y construcción.',
+                    'en' => 'Heavy-duty Kenworth T880 truck for transport and construction.'
                 ],
                 'hero_image' => 'assets/img/equipos/camion-kenworth-cover.png',
                 'gallery' => [
@@ -523,49 +523,49 @@ class HomeController extends Controller
                 ],
                 'detailed_info' => [
                     'es' => [
-                        'description' => 'Nuestras grúas móviles proporcionan la flexibilidad necesaria para proyectos que requieren movilidad y configuración rápida. Ideales para trabajos en múltiples ubicaciones.',
+                        'description' => 'El Kenworth T880 es un camión de trabajo pesado diseñado para las aplicaciones más exigentes con durabilidad excepcional y rendimiento superior.',
                         'features' => [
-                            'Capacidad de carga hasta 50 toneladas',
-                            'Longitud de pluma hasta 60 metros',
-                            'Movilidad todo terreno',
-                            'Configuración rápida en sitio',
-                            'Operación hidráulica suave'
+                            'Motor PACCAR MX-13 de 12.9L',
+                            'Transmisión Eaton Fuller 18 velocidades',
+                            'Chasis reforzado para trabajo pesado',
+                            'Cabina con suspensión neumática',
+                            'Sistema de frenos con ABS y control de estabilidad'
                         ],
                         'applications' => [
-                            'Montaje de estructuras prefabricadas',
-                            'Trabajos de mantenimiento industrial',
-                            'Construcción en espacios reducidos',
-                            'Proyectos temporales'
+                            'Transporte de materiales de construcción',
+                            'Operaciones de minería y canteras',
+                            'Transporte de carga pesada',
+                            'Aplicaciones de volteo y construcción'
                         ],
                         'technical_specs' => [
-                            'Carga máxima: 50 toneladas',
-                            'Longitud de pluma: 60m',
-                            'Radio de trabajo: 48m',
-                            'Velocidad de traslado: 80 km/h',
-                            'Estabilizadores: Hidráulicos'
+                            'Motor: PACCAR MX-13 12.9L',
+                            'Potencia: 510 HP @ 1,700 rpm',
+                            'Torque: 1,850 lb-ft @ 1,000 rpm',
+                            'GVWR: hasta 80,000 lbs (36,287 kg)',
+                            'Transmisión: Eaton Fuller 18 velocidades'
                         ]
                     ],
                     'en' => [
-                        'description' => 'Our mobile cranes provide the flexibility needed for projects requiring mobility and quick setup. Ideal for work at multiple locations.',
+                        'description' => 'The Kenworth T880 is a heavy-duty truck designed for the most demanding applications with exceptional durability and superior performance.',
                         'features' => [
-                            'Load capacity up to 50 tons',
-                            'Boom length up to 60 meters',
-                            'All-terrain mobility',
-                            'Quick on-site setup',
-                            'Smooth hydraulic operation'
+                            'PACCAR MX-13 12.9L engine',
+                            'Eaton Fuller 18-speed transmission',
+                            'Heavy-duty reinforced chassis',
+                            'Air-suspended cab',
+                            'ABS brake system with stability control'
                         ],
                         'applications' => [
-                            'Prefabricated structure assembly',
-                            'Industrial maintenance work',
-                            'Construction in confined spaces',
-                            'Temporary projects'
+                            'Construction material transport',
+                            'Mining and quarry operations',
+                            'Heavy haul transport',
+                            'Dump and construction applications'
                         ],
                         'technical_specs' => [
-                            'Maximum load: 50 tons',
-                            'Boom length: 60m',
-                            'Working radius: 48m',
-                            'Travel speed: 80 km/h',
-                            'Outriggers: Hydraulic'
+                            'Engine: PACCAR MX-13 12.9L',
+                            'Power: 510 HP @ 1,700 rpm',
+                            'Torque: 1,850 lb-ft @ 1,000 rpm',
+                            'GVWR: up to 80,000 lbs (36,287 kg)',
+                            'Transmission: Eaton Fuller 18-speed'
                         ]
                     ]
                 ]
@@ -653,49 +653,49 @@ class HomeController extends Controller
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Nuestra retroexcavadora 416F combina potencia y versatilidad para realizar tareas de excavación, carga y movimiento de tierra en una amplia variedad de terrenos. Ideal para proyectos de construcción y mantenimiento.',
+                         'description' => 'La retroexcavadora Caterpillar 416F combina potencia y versatilidad para realizar tareas de excavación, carga y movimiento de tierra con máxima eficiencia y productividad.',
                          'features' => [
-                             'Capacidad de carga hasta 2.5 toneladas',
-                             'Altura de elevación hasta 8 metros',
-                             'Opciones eléctricas y diésel',
-                             'Cabina ergonómica con visibilidad 360°',
-                             'Sistema hidráulico de alta eficiencia'
+                             'Motor Cat C4.4 ACERT de 4.4L turboalimentado',
+                             'Transmisión powershift de 4 velocidades',
+                             'Brazo excavador con alcance de 5.49m',
+                             'Cargador frontal con capacidad de 1.0 m³',
+                             'Sistema hidráulico de caudal variable'
                          ],
                          'applications' => [
-                             'Manejo de materiales en almacenes',
-                             'Carga y descarga de camiones',
-                             'Operaciones en fábricas',
-                             'Construcción y obras civiles'
+                             'Excavación de zanjas y cimientos',
+                             'Carga y descarga de materiales',
+                             'Trabajos de paisajismo y jardinería',
+                             'Mantenimiento de carreteras y servicios'
                          ],
                          'technical_specs' => [
-                             'Carga máxima: 10 toneladas',
-                             'Altura de elevación: 8m',
-                             'Tipo de combustible: Eléctrico/Diésel',
-                             'Velocidad de elevación: 0.5 m/s',
-                             'Radio de giro: 2.8m'
+                             'Motor: Cat C4.4 ACERT 4.4L',
+                             'Potencia: 109 HP @ 2,200 rpm',
+                             'Peso operativo: 8,846 kg',
+                             'Alcance máximo excavación: 5.49m',
+                             'Profundidad de excavación: 4.27m'
                          ]
                      ],
                      'en' => [
-                         'description' => 'Our forklifts offer efficient solutions for material handling in warehouses, factories, and construction sites. Available in electric and diesel versions.',
+                         'description' => 'The Caterpillar 416F backhoe loader combines power and versatility to perform excavation, loading, and earthmoving tasks with maximum efficiency and productivity.',
                          'features' => [
-                             'Load capacity up to 10 tons',
-                             'Lift height up to 8 meters',
-                             'Electric and diesel options',
-                             'Ergonomic cabin with 360° visibility',
-                             'High-efficiency hydraulic system'
+                             'Cat C4.4 ACERT 4.4L turbocharged engine',
+                             '4-speed powershift transmission',
+                             'Excavator arm with 5.49m reach',
+                             'Front loader with 1.0 m³ capacity',
+                             'Variable flow hydraulic system'
                          ],
                          'applications' => [
-                             'Warehouse material handling',
-                             'Truck loading and unloading',
-                             'Factory operations',
-                             'Construction and civil works'
+                             'Trench and foundation excavation',
+                             'Material loading and unloading',
+                             'Landscaping and gardening work',
+                             'Road maintenance and utilities'
                          ],
                          'technical_specs' => [
-                             'Maximum load: 10 tons',
-                             'Lift height: 8m',
-                             'Fuel type: Electric/Diesel',
-                             'Lifting speed: 0.5 m/s',
-                             'Turning radius: 2.8m'
+                             'Engine: Cat C4.4 ACERT 4.4L',
+                             'Power: 109 HP @ 2,200 rpm',
+                             'Operating weight: 8,846 kg',
+                             'Maximum dig reach: 5.49m',
+                             'Dig depth: 4.27m'
                          ]
                      ]
                  ]
@@ -1418,12 +1418,12 @@ class HomeController extends Controller
              'camion-ford' => [
                  'slug' => 'camion-ford',
                  'name' => [
-                     'es' => 'Camión de Volteo Ford',
-                     'en' => 'Dump Truck'
+                     'es' => 'Camión Ford F-750',
+                     'en' => 'Ford F-750 Truck'
                  ],
                  'description' => [
-                     'es' => 'Camiones de volteo para transporte y descarga de materiales.',
-                     'en' => 'Dump trucks for material transport and unloading.'
+                     'es' => 'Camión Ford F-750 robusto para trabajos pesados y transporte comercial.',
+                     'en' => 'Robust Ford F-750 truck for heavy-duty work and commercial transport.'
                  ],
                  'hero_image' => 'assets/img/equipos/camion-cover.png',
                  'gallery' => [
@@ -1433,62 +1433,127 @@ class HomeController extends Controller
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Nuestros camiones de volteo ofrecen soluciones eficientes para el transporte y descarga de materiales en proyectos de construcción de gran escala.',
+                         'description' => 'El Ford F-750 es un camión comercial de trabajo pesado diseñado para aplicaciones exigentes con máxima confiabilidad y durabilidad.',
                          'features' => [
-                             'Caja de volteo reforzada',
-                             'Sistema hidráulico de alta potencia',
-                             'Compuerta trasera automática',
-                             'Suspensión neumática',
-                             'Sistema de frenado ABS'
+                             'Motor Power Stroke V8 6.7L turbodiésel',
+                             'Transmisión automática TorqShift de 6 velocidades',
+                             'Chasis reforzado para trabajo pesado',
+                             'Cabina SuperCab con asientos cómodos',
+                             'Sistema de frenos hidráulicos con ABS'
                          ],
                          'applications' => [
-                             'Transporte de agregados',
-                             'Movimiento de tierra',
-                             'Proyectos de minería',
-                             'Construcción de carreteras'
+                             'Transporte de materiales de construcción',
+                             'Servicios de entrega comercial',
+                             'Trabajos municipales y de servicios',
+                             'Aplicaciones de volteo y carga'
                          ],
                          'technical_specs' => [
-                             'Capacidad de carga: 10-40 toneladas',
-                             'Volumen de caja: 8-25 m³',
-                             'Potencia del motor: 300-500 HP',
-                             'Tiempo de volteo: 15-25 segundos',
-                             'Velocidad máxima: 90 km/h'
+                             'Motor: 6.7L Power Stroke V8 Turbodiésel',
+                             'Potencia: 270 HP @ 2,600 rpm',
+                             'Torque: 675 lb-ft @ 1,600 rpm',
+                             'GVWR: hasta 26,000 lbs (11,793 kg)',
+                             'Capacidad de remolque: hasta 22,000 lbs'
                          ]
                      ],
                      'en' => [
-                         'description' => 'Our dump trucks offer efficient solutions for material transport and unloading in large-scale construction projects.',
+                         'description' => 'The Ford F-750 is a heavy-duty commercial truck designed for demanding applications with maximum reliability and durability.',
                          'features' => [
-                             'Reinforced dump body',
-                             'High-power hydraulic system',
-                             'Automatic tailgate',
-                             'Air suspension',
-                             'ABS braking system'
+                             '6.7L Power Stroke V8 turbodiesel engine',
+                             '6-speed TorqShift automatic transmission',
+                             'Heavy-duty reinforced chassis',
+                             'SuperCab cabin with comfortable seating',
+                             'Hydraulic brake system with ABS'
                          ],
                          'applications' => [
-                             'Aggregate transport',
-                             'Earthmoving',
-                             'Mining projects',
-                             'Road construction'
+                             'Construction material transport',
+                             'Commercial delivery services',
+                             'Municipal and utility work',
+                             'Dump and loading applications'
                          ],
                          'technical_specs' => [
-                             'Load capacity: 10-40 tons',
-                             'Body volume: 8-25 m³',
-                             'Engine power: 300-500 HP',
-                             'Dumping time: 15-25 seconds',
-                             'Maximum speed: 90 km/h'
+                             'Engine: 6.7L Power Stroke V8 Turbodiesel',
+                             'Power: 270 HP @ 2,600 rpm',
+                             'Torque: 675 lb-ft @ 1,600 rpm',
+                             'GVWR: up to 26,000 lbs (11,793 kg)',
+                             'Towing capacity: up to 22,000 lbs'
                          ]
                      ]
                  ]
                          ],
+             'camion-volvo' => [
+                 'slug' => 'camion-volvo',
+                 'name' => [
+                     'es' => 'Camión Volvo FH',
+                     'en' => 'Volvo FH Truck'
+                 ],
+                 'description' => [
+                     'es' => 'Camión Volvo FH de alta potencia para transporte pesado y construcción.',
+                     'en' => 'High-power Volvo FH truck for heavy transport and construction.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/camion-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/camion-cover.png',
+                     'assets/img/gallery/services1.jpg',
+                     'assets/img/gallery/services2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'El Camión Volvo FH representa la excelencia en transporte pesado, combinando potencia, eficiencia y tecnología avanzada para proyectos de construcción e infraestructura.',
+                         'features' => [
+                             'Motor D13K de 13 litros turboalimentado',
+                             'Potencia de 460-540 HP',
+                             'Transmisión I-Shift automatizada',
+                             'Cabina con suspensión neumática',
+                             'Tecnología de seguridad avanzada'
+                         ],
+                         'applications' => [
+                             'Transporte de materiales de construcción',
+                             'Proyectos de infraestructura',
+                             'Transporte pesado de larga distancia',
+                             'Operaciones en sitios de construcción'
+                         ],
+                         'technical_specs' => [
+                             'Potencia: 460-540 HP',
+                             'Capacidad de carga: hasta 40 toneladas',
+                             'Motor: D13K de 13 litros',
+                             'Transmisión: I-Shift automatizada',
+                             'Suspensión: Neumática en cabina'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'The Volvo FH Truck represents excellence in heavy transport, combining power, efficiency and advanced technology for construction and infrastructure projects.',
+                         'features' => [
+                             '13-liter turbocharged D13K engine',
+                             'Power output 460-540 HP',
+                             'I-Shift automated transmission',
+                             'Air-suspended cabin',
+                             'Advanced safety technology'
+                         ],
+                         'applications' => [
+                             'Construction material transport',
+                             'Infrastructure projects',
+                             'Long-distance heavy transport',
+                             'Construction site operations'
+                         ],
+                         'technical_specs' => [
+                             'Power: 460-540 HP',
+                             'Load capacity: up to 40 tons',
+                             'Engine: 13-liter D13K',
+                             'Transmission: I-Shift automated',
+                             'Suspension: Air-suspended cabin'
+                         ]
+                     ]
+                 ]
+             ],
              'excavadora' => [
                  'slug' => 'excavadora',
                  'name' => [
                      'es' => 'Excavadora',
-                     'en' => 'Dump Truck'
+                     'en' => 'Excavator'
                  ],
                  'description' => [
-                     'es' => 'Camiones de volteo para transporte y descarga de materiales.',
-                     'en' => 'Dump trucks for material transport and unloading.'
+                     'es' => 'Excavadoras hidráulicas para movimiento de tierra y excavación.',
+                     'en' => 'Hydraulic excavators for earthmoving and excavation work.'
                  ],
                  'hero_image' => 'assets/img/equipos/excavadora-cover.png',
                  'gallery' => [

@@ -88,14 +88,14 @@ class EquipmentShowcase extends Component
                 'hero_image' => 'assets/img/equipos/Retro-416.png'
             ],
             [
-                'slug' => 'plataformas-elevadoras',
+                'slug' => 'camion-volvo',
                 'name' => [
-                    'es' => 'Plataformas Elevadoras',
-                    'en' => 'Aerial Platforms'
+                    'es' => 'Camión Volvo FH',
+                    'en' => 'Volvo FH Truck'
                 ],
                 'description' => [
-                    'es' => 'Plataformas tijera y articuladas para acceso seguro a trabajos en altura.',
-                    'en' => 'Scissor lifts and boom lifts for safe access to elevated work.'
+                    'es' => 'Camión Volvo FH para transporte de larga distancia y construcción. Potencia de 420-540 CV, ideal para tareas de transporte regional y relacionado con edificación.',
+                    'en' => 'Volvo FH truck for long-distance transport and construction. Power 420-540 HP, ideal for regional transport and building-related tasks.'
                 ],
                 'hero_image' => 'assets/img/service/servicess4.png'
             ]

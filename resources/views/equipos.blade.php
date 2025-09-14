@@ -459,81 +459,81 @@
                 ]
             ],
             [
-                'slug' => 'plataformas-elevadoras',
+                'slug' => 'camion-volvo',
                 'name' => [
-                    'es' => 'Plataformas Elevadoras',
-                    'en' => 'Aerial Platforms'
+                    'es' => 'Camión Volvo FH',
+                    'en' => 'Volvo FH Truck'
                 ],
                 'description' => [
-                    'es' => 'Plataformas tijera y articuladas para acceso a trabajos en altura. Soluciones seguras y eficientes para tareas de mantenimiento, instalación y construcción.',
-                    'en' => 'Scissor lifts and boom lifts for elevated work access. Safe and efficient solutions for maintenance, installation, and construction tasks.'
+                    'es' => 'Camión Volvo FH para transporte de larga distancia y construcción. Potencia de 420-540 CV, ideal para tareas de transporte regional y relacionado con edificación.',
+                    'en' => 'Volvo FH truck for long-distance transport and construction. Power 420-540 HP, ideal for regional transport and building-related tasks.'
                 ],
                 'image' => 'assets/img/service/servicess4.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
-                        'Altura: 6-30 metros',
-                        'Modelos eléctricos y diésel',
-                        'Uso interior/exterior'
+                        'Potencia: 420-540 CV',
+                        'Transmisión automática',
+                        'Cabina ergonómica'
                     ],
                     'en' => [
-                        'Height: 6-30 meters',
-                        'Electric & diesel models',
-                        'Indoor/outdoor use'
+                        'Power: 420-540 HP',
+                        'Automatic transmission',
+                        'Ergonomic cabin'
                     ]
                 ],
                 'detailed_info' => [
                     'es' => [
-                        'description' => 'Nuestras plataformas elevadoras proporcionan acceso seguro a trabajos en altura. Disponemos de modelos tijera y articulados para diferentes tipos de aplicaciones.',
+                        'description' => 'Nuestros camiones Volvo FH ofrecen soluciones de transporte confiables para construcción y logística. Diseñados para máximo rendimiento y eficiencia en rutas de larga distancia.',
                         'features' => [
-                            'Plataforma antideslizante',
-                            'Barandillas de seguridad',
-                            'Control proporcional suave',
-                            'Sistema de nivelación automática',
-                            'Alarma de sobrecarga'
+                            'Motor D13K de alta eficiencia',
+                            'Transmisión I-Shift automatizada',
+                            'Cabina con suspensión neumática',
+                            'Sistema de gestión de combustible',
+                            'Tecnología de seguridad avanzada'
                         ],
                         'applications' => [
-                            'Mantenimiento de edificios',
-                            'Instalaciones eléctricas',
-                            'Trabajos de pintura',
-                            'Limpieza de fachadas'
+                            'Transporte de materiales de construcción',
+                            'Logística regional',
+                            'Distribución urbana',
+                            'Proyectos de infraestructura'
                         ],
                         'technical_specs' => [
-                            'Altura de trabajo: 6-30 metros',
-                            'Capacidad de carga: 230-450 kg',
-                            'Velocidad de elevación: 40 cm/s',
-                            'Dimensiones de plataforma: 2.3x1.1m',
-                            'Peso: 1500-4500 kg'
+                            'Potencia: 420-540 CV',
+                            'Torque: 2100-2600 Nm',
+                            'Capacidad de carga: hasta 40 toneladas',
+                            'Consumo: 32-35 L/100km',
+                            'Emisiones: Euro 6'
                         ]
                     ],
                     'en' => [
-                        'description' => 'Our aerial platforms provide safe access to elevated work. We have scissor and articulated models for different types of applications.',
+                        'description' => 'Our Volvo FH trucks offer reliable transport solutions for construction and logistics. Designed for maximum performance and efficiency on long-distance routes.',
                         'features' => [
-                            'Non-slip platform',
-                            'Safety railings',
-                            'Smooth proportional control',
-                            'Automatic leveling system',
-                            'Overload alarm'
+                            'High-efficiency D13K engine',
+                            'I-Shift automated transmission',
+                            'Air-suspended cabin',
+                            'Fuel management system',
+                            'Advanced safety technology'
                         ],
                         'applications' => [
-                            'Building maintenance',
-                            'Electrical installations',
-                            'Painting work',
-                            'Facade cleaning'
+                            'Construction material transport',
+                            'Regional logistics',
+                            'Urban distribution',
+                            'Infrastructure projects'
                         ],
                         'technical_specs' => [
-                            'Working height: 6-30 meters',
-                            'Load capacity: 230-450 kg',
-                            'Lifting speed: 40 cm/s',
-                            'Platform dimensions: 2.3x1.1m',
-                            'Weight: 1500-4500 kg'
+                            'Power: 420-540 HP',
+                            'Torque: 2100-2600 Nm',
+                            'Load capacity: up to 40 tons',
+                            'Consumption: 32-35 L/100km',
+                            'Emissions: Euro 6'
                         ]
                     ]
                 ],
                 'gallery' => [
-                    'assets/img/gallery/platform1.jpg',
-                    'assets/img/gallery/platform2.jpg',
-                    'assets/img/gallery/platform3.jpg'
+                    'assets/img/gallery/volvo1.jpg',
+                    'assets/img/gallery/volvo2.jpg',
+                    'assets/img/gallery/volvo3.jpg'
                 ]
             ],
             [

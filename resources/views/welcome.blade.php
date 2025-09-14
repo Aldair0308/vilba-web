@@ -143,16 +143,16 @@
                         </div>
                     </div>
                     
-                    <!-- Servicio 2: Renta de Plataformas Elevadoras -->
+                    <!-- Servicio 2: Renta de Camión Volvo -->
                     <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
                         <div class="single-service-cap mb-30 d-flex flex-column w-100">
                             <div class="service-img">
-                                <img src="assets/img/service/servicess1.png" alt="Plataformas Elevadoras">
+                                <img src="assets/img/service/servicess1.png" alt="Camión Volvo">
                             </div>
                             <div class="service-cap flex-grow-1 d-flex flex-column">
-                                <h4><a href="{{ route('services-detail', 'platforms') }}" data-translate="platforms_service">{{ $currentLanguage === 'en' ? 'Aerial Platform Rental' : 'Renta de Plataformas Elevadoras' }}</a></h4>
-                                <p class="service-description flex-grow-1" data-translate="platforms_description">{{ $currentLanguage === 'en' ? 'Articulated, telescopic and scissor lifts for construction and industrial work at height.' : 'Plataformas articuladas, telescópicas y tijera para trabajos de construcción e industriales en altura.' }}</p>
-                                <a href="{{ route('services-detail', 'platforms') }}" class="more-btn mt-auto" data-translate="read_more">{{ $currentLanguage === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
+                                <h4><a href="{{ route('services-detail', 'volvo-truck') }}" data-translate="volvo_service">{{ $currentLanguage === 'en' ? 'Volvo Truck Rental' : 'Renta de Camión Volvo' }}</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="volvo_description">{{ $currentLanguage === 'en' ? 'Volvo FH truck for long-distance transport and construction. Power 420-540 HP, ideal for regional transport and building-related tasks.' : 'Camión Volvo FH para transporte de larga distancia y construcción. Potencia de 420-540 CV, ideal para tareas de transporte regional y relacionado con edificación.' }}</p>
+                                <a href="{{ route('services-detail', 'volvo-truck') }}" class="more-btn mt-auto" data-translate="read_more">{{ $currentLanguage === 'en' ? 'Read More' : 'Leer más' }} <i class="ti-plus"></i></a>
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">
