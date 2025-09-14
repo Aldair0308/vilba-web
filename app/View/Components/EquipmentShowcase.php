@@ -76,16 +76,16 @@ class EquipmentShowcase extends Component
                 'hero_image' => 'assets/img/equipos/camion-kenworth.png'
             ],
             [
-                'slug' => 'retroexcavadora-416F',
+                'slug' => 'motoconformadora-570a',
                 'name' => [
-                    'es' => 'Retroexcavadora 416F',
-                    'en' => 'Backhoe Loader 416F'
+                    'es' => 'Motoconformadora John Deere 570A',
+                    'en' => 'John Deere 570A Motor Grader'
                 ],
                 'description' => [
-                    'es' => 'Retroexcavadora 416F de alto rendimiento para excavación y carga en terrenos variados.',
-                    'en' => 'High-performance 416F backhoe loader for excavation and loading on varied terrains.'
+                    'es' => 'Motoconformadora John Deere 570A Serie 003311T para nivelación de terrenos y construcción de carreteras.',
+                    'en' => 'John Deere 570A Motor Grader Series 003311T for land leveling and road construction.'
                 ],
-                'hero_image' => 'assets/img/equipos/Retro-416.png'
+                'hero_image' => 'assets/img/equipos/motoconformadora.svg'
             ],
             [
                 'slug' => 'camion-volvo',

@@ -1167,67 +1167,71 @@ class HomeController extends Controller
                      ]
                  ]
              ],
-            'retroexcavadora' => [
-                'slug' => 'retroexcavadora',
+            'motoconformadora-570a' => [
+                'slug' => 'motoconformadora-570a',
                 'name' => [
-                    'es' => 'Retroexcavadora',
-                    'en' => 'Backhoe Loader'
+                    'es' => 'Motoconformadora John Deere 570A',
+                    'en' => 'John Deere 570A Motor Grader'
                 ],
                 'description' => [
-                    'es' => 'Retroexcavadoras versátiles para excavación, carga y múltiples tareas de construcción.',
-                    'en' => 'Versatile backhoe loaders for excavation, loading, and multiple construction tasks.'
+                    'es' => 'Motoconformadora John Deere 570A Serie 003311T para nivelación de terrenos y construcción de carreteras.',
+                    'en' => 'John Deere 570A Motor Grader Series 003311T for land leveling and road construction.'
                 ],
-                'hero_image' => 'assets/img/equipos/retroexcavadora.svg',
+                'hero_image' => 'assets/img/equipos/motoconformadora.svg',
                 'gallery' => [
-                    'assets/img/equipos/retroexcavadora.svg',
-                    'assets/img/gallery/backhoe1.jpg',
-                    'assets/img/gallery/backhoe2.jpg'
+                    'assets/img/equipos/motoconformadora.svg',
+                    'assets/img/gallery/grader1.jpg',
+                    'assets/img/gallery/grader2.jpg'
                 ],
                 'detailed_info' => [
                     'es' => [
-                        'description' => 'Nuestras retroexcavadoras ofrecen la versatilidad de dos máquinas en una. Con cargador frontal y brazo excavador trasero, son ideales para proyectos medianos que requieren flexibilidad.',
+                        'description' => 'Motoconformadora John Deere Modelo 570A Serie 003311T. Máquina especializada en nivelación de terrenos, construcción de carreteras y mantenimiento de caminos rurales con máxima precisión y eficiencia.',
                         'features' => [
-                            'Cargador frontal de alta capacidad',
-                            'Brazo excavador articulado',
-                            'Transmisión powershift',
-                            'Cabina ROPS certificada',
-                            'Sistema hidráulico piloto'
+                            'Hoja moldboard de 12 pies de ancho',
+                            'Sistema de control hidráulico avanzado',
+                            'Articulación central para maniobrabilidad',
+                            'Cabina ROPS/FOPS certificada',
+                            'Sistema de dirección asistida'
                         ],
                         'applications' => [
-                            'Excavación de zanjas',
-                            'Carga de materiales',
                             'Nivelación de terrenos',
-                            'Trabajos urbanos'
+                            'Construcción de carreteras',
+                            'Mantenimiento de caminos rurales',
+                            'Preparación de superficies',
+                            'Conformación de taludes'
                         ],
                         'technical_specs' => [
-                            'Peso operativo: 7-10 toneladas',
-                            'Potencia del motor: 95-110 HP',
-                            'Capacidad cucharón frontal: 1.0 m³',
-                            'Capacidad cucharón trasero: 0.3 m³',
-                            'Profundidad de excavación: 4.5 metros'
+                            'Peso operativo: 21,703 lbs (9,845 kg)',
+                            'Longitud total: 26 ft 9 in (8.15 m)',
+                            'Ancho total: 8 ft 4 in (2.54 m)',
+                            'Altura total: 10 ft 6 in (3.20 m)',
+                            'Ancho de hoja: 12 ft (3.66 m)',
+                            'Serie: 003311T'
                         ]
                     ],
                     'en' => [
-                        'description' => 'Our backhoe loaders offer the versatility of two machines in one. With front loader and rear excavator arm, they are ideal for medium projects requiring flexibility.',
+                        'description' => 'John Deere Model 570A Motor Grader Series 003311T. Specialized machine for land leveling, road construction and rural road maintenance with maximum precision and efficiency.',
                         'features' => [
-                            'High-capacity front loader',
-                            'Articulated excavator arm',
-                            'Powershift transmission',
-                            'ROPS certified cabin',
-                            'Pilot hydraulic system'
+                            '12-foot wide moldboard blade',
+                            'Advanced hydraulic control system',
+                            'Center articulation for maneuverability',
+                            'ROPS/FOPS certified cabin',
+                            'Power steering system'
                         ],
                         'applications' => [
-                            'Trench excavation',
-                            'Material loading',
                             'Land leveling',
-                            'Urban work'
+                            'Road construction',
+                            'Rural road maintenance',
+                            'Surface preparation',
+                            'Slope shaping'
                         ],
                         'technical_specs' => [
-                            'Operating weight: 7-10 tons',
-                            'Engine power: 95-110 HP',
-                            'Front bucket capacity: 1.0 m³',
-                            'Rear bucket capacity: 0.3 m³',
-                            'Digging depth: 4.5 meters'
+                            'Operating weight: 21,703 lbs (9,845 kg)',
+                            'Overall length: 26 ft 9 in (8.15 m)',
+                            'Overall width: 8 ft 4 in (2.54 m)',
+                            'Overall height: 10 ft 6 in (3.20 m)',
+                            'Blade width: 12 ft (3.66 m)',
+                            'Series: 003311T'
                         ]
                     ]
                 ]
