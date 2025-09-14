@@ -1396,67 +1396,79 @@ class HomeController extends Controller
                      ]
                  ]
              ],
-             'pipa-agua' => [
-                 'slug' => 'pipa-agua',
+             'motoconformadora-galion-t600c' => [
+                 'slug' => 'motoconformadora-galion-t600c',
                  'name' => [
-                     'es' => 'Pipa de Agua',
-                     'en' => 'Water Truck'
+                     'es' => 'Motoconformadora Galion T600C',
+                     'en' => 'Galion T600C Motor Grader'
                  ],
                  'description' => [
-                     'es' => 'Pipas de agua para control de polvo, compactación y riego.',
-                     'en' => 'Water trucks for dust control, compaction, and irrigation.'
+                     'es' => 'Motoconformadora Galion T600C Serie IC-03004 para nivelación, construcción de carreteras y mantenimiento vial.',
+                     'en' => 'Galion T600C Motor Grader Series IC-03004 for grading, road construction and highway maintenance.'
                  ],
-                 'hero_image' => 'assets/img/equipos/pipa-agua.svg',
+                 'hero_image' => 'assets/img/equipos/motoconformadora-galion.svg',
                  'gallery' => [
-                     'assets/img/equipos/pipa-agua.svg',
-                     'assets/img/gallery/watertruck1.jpg',
-                     'assets/img/gallery/watertruck2.jpg'
+                     'assets/img/equipos/motoconformadora-galion.svg',
+                     'assets/img/gallery/grader1.jpg',
+                     'assets/img/gallery/grader2.jpg'
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Nuestras pipas de agua son fundamentales para el control de polvo y el mantenimiento de condiciones de trabajo seguras en proyectos de construcción.',
+                         'description' => 'La Motoconformadora Galion T600C Serie IC-03004 es una máquina robusta y confiable diseñada para trabajos de nivelación, construcción de carreteras y mantenimiento vial con máxima precisión y eficiencia.',
                          'features' => [
-                             'Tanque de acero inoxidable',
-                             'Sistema de bombeo de alta presión',
-                             'Boquillas de aspersión ajustables',
-                             'Control remoto de aspersión',
-                             'Medidor de nivel de agua'
+                             'Motor Detroit 6 cilindros diésel refrigerado por agua',
+                             'Transmisión Powershift con 4 velocidades adelante y 4 atrás',
+                             'Tracción 4WD con bloqueo diferencial',
+                             'Cabina cerrada con calefacción',
+                             'Frenos hidráulicos con sistema ABS'
                          ],
                          'applications' => [
-                             'Control de polvo en obras',
-                             'Compactación de suelos',
-                             'Riego de áreas verdes',
-                             'Limpieza de equipos'
+                             'Construcción de carreteras',
+                             'Mantenimiento de carreteras',
+                             'Preparación de sitios',
+                             'Operaciones de nivelación y conformación',
+                             'Remoción de nieve'
                          ],
                          'technical_specs' => [
-                             'Capacidad del tanque: 5,000-20,000 litros',
-                             'Presión de bombeo: 3-5 bar',
-                             'Ancho de aspersión: 8-15 metros',
-                             'Velocidad de trabajo: 5-25 km/h',
-                             'Autonomía: 4-8 horas'
+                             'Motor: Detroit 6 cilindros diésel, refrigerado por agua, 76 HP',
+                             'Peso operativo: 29,000 lbs (13,154 kg)',
+                             'Transmisión: Powershift, 4 adelante, 4 atrás',
+                             'Distancia entre ejes: 312 pulgadas (7.9 m)',
+                             'Hoja: 14 pies de ancho x 24 pulgadas de alto',
+                             'Ancho total: 97 pulgadas (2.46 m)',
+                             'Longitud: 27 pies 4 pulgadas (8.33 m)',
+                             'Altura: 11 pies 2 pulgadas (3.4 m)',
+                             'Neumáticos: 14.00-24 delanteros y traseros',
+                             'Rango de ángulo de hoja: 360°'
                          ]
                      ],
                      'en' => [
-                         'description' => 'Our water trucks are essential for dust control and maintaining safe working conditions in construction projects.',
+                         'description' => 'The Galion T600C Motor Grader Series IC-03004 is a robust and reliable machine designed for grading work, road construction and highway maintenance with maximum precision and efficiency.',
                          'features' => [
-                             'Stainless steel tank',
-                             'High-pressure pumping system',
-                             'Adjustable spray nozzles',
-                             'Remote spray control',
-                             'Water level gauge'
+                             'Detroit 6-cylinder water-cooled diesel engine',
+                             'Powershift transmission with 4 forward and 4 reverse speeds',
+                             '4WD drive with differential lock',
+                             'Enclosed cab with heating',
+                             'Hydraulic brakes with ABS system'
                          ],
                          'applications' => [
-                             'Dust control at sites',
-                             'Soil compaction',
-                             'Green area irrigation',
-                             'Equipment cleaning'
+                             'Road construction',
+                             'Highway maintenance',
+                             'Site preparation',
+                             'Grading and leveling operations',
+                             'Snow removal'
                          ],
                          'technical_specs' => [
-                             'Tank capacity: 5,000-20,000 liters',
-                             'Pumping pressure: 3-5 bar',
-                             'Spray width: 8-15 meters',
-                             'Working speed: 5-25 km/h',
-                             'Autonomy: 4-8 hours'
+                             'Engine: Detroit 6-cylinder diesel, water cooled, 76 HP',
+                             'Operating weight: 29,000 lbs (13,154 kg)',
+                             'Transmission: Powershift, 4 forward, 4 reverse',
+                             'Wheelbase: 312 inches (7.9 m)',
+                             'Blade: 14 feet wide x 24 inches tall',
+                             'Overall width: 97 inches (2.46 m)',
+                             'Length: 27 ft 4 in (8.33 m)',
+                             'Height: 11 ft 2 in (3.4 m)',
+                             'Tires: 14.00-24 front and rear',
+                             'Blade angle range: 360°'
                          ]
                      ]
                  ]
