@@ -1034,64 +1034,70 @@ class HomeController extends Controller
              'equipos-especializados' => [
                  'slug' => 'equipos-especializados',
                  'name' => [
-                     'es' => 'Equipos Especializados',
-                     'en' => 'Specialized Equipment'
+                     'es' => 'Retroexcavadora Caterpillar 416D',
+                     'en' => 'Caterpillar 416D Backhoe Loader'
                  ],
                  'description' => [
-                     'es' => 'Equipos especializados para aplicaciones específicas en construcción e industria.',
-                     'en' => 'Specialized equipment for specific applications in construction and industry.'
+                     'es' => 'Retroexcavadora Caterpillar 416D Serie CAT0416DVBFP16809 con motor diesel 3054C de 74 HP y peso operativo de 15,180 lbs.',
+                     'en' => 'Caterpillar 416D Backhoe Loader Series CAT0416DVBFP16809 with 3054C diesel engine 74 HP and operating weight 15,180 lbs.'
                  ],
-                 'hero_image' => 'assets/img/gallery/services1.jpg',
+                 'hero_image' => 'assets/img/equipos/Retro-416.png',
                  'gallery' => [
+                     'assets/img/equipos/Retro-416.png',
                      'assets/img/gallery/services1.jpg',
-                     'assets/img/gallery/services4.jpg',
-                     'assets/img/gallery/services5.jpg'
+                     'assets/img/gallery/services4.jpg'
                  ],
                  'detailed_info' => [
                      'es' => [
-                         'description' => 'Contamos con una amplia gama de equipos especializados diseñados para aplicaciones específicas en diversos sectores industriales y de construcción.',
+                         'description' => 'Retroexcavadora Caterpillar 416D fabricada entre 2000-2006, Serie CAT0416DVBFP16809. Equipo versátil que combina cargador frontal y brazo excavador trasero para máxima productividad en proyectos de construcción.',
                          'features' => [
-                             'Equipos de última tecnología',
-                             'Adaptables a necesidades específicas',
-                             'Operadores especializados disponibles',
-                             'Mantenimiento especializado',
-                             'Soporte técnico 24/7'
+                             'Motor Caterpillar 3054C de 4.4L (268 cu·in)',
+                             'Potencia: 74 HP (55 kW) a 2200 rpm',
+                             'Transmisión Power Shuttle 4F/4R',
+                             'Sistema hidráulico de centro cerrado',
+                             'Cabina ROPS o estructura de protección',
+                             'Dirección hidrostática'
                          ],
                          'applications' => [
-                             'Proyectos industriales especiales',
-                             'Instalaciones complejas',
-                             'Trabajos de precisión',
-                             'Aplicaciones personalizadas'
+                             'Excavación de zanjas y cimientos',
+                             'Carga y descarga de materiales',
+                             'Nivelación y preparación de terrenos',
+                             'Trabajos de construcción urbana',
+                             'Proyectos de infraestructura'
                          ],
                          'technical_specs' => [
-                             'Variedad de especificaciones',
-                             'Configuraciones personalizadas',
-                             'Tecnología avanzada',
-                             'Certificaciones internacionales',
-                             'Soporte técnico especializado'
+                             'Peso operativo: 15,180 lbs (6,900 kg)',
+                             'Profundidad máxima de excavación: 10 ft 7 in (3,219 mm)',
+                             'Fuerza de excavación: 11,600 lbs (cilindro del cucharón)',
+                             'Capacidad tanque combustible: 34 galones (128L)',
+                             'Sistema hidráulico: 37 gpm a 3000 psi',
+                             'Tracción: 2WD/4WD disponible'
                          ]
                      ],
                      'en' => [
-                         'description' => 'We have a wide range of specialized equipment designed for specific applications in various industrial and construction sectors.',
+                         'description' => 'Caterpillar 416D Backhoe Loader manufactured between 2000-2006, Series CAT0416DVBFP16809. Versatile equipment that combines front loader and rear excavator arm for maximum productivity in construction projects.',
                          'features' => [
-                             'Latest technology equipment',
-                             'Adaptable to specific needs',
-                             'Specialized operators available',
-                             'Specialized maintenance',
-                             '24/7 technical support'
+                             'Caterpillar 3054C engine 4.4L (268 cu·in)',
+                             'Power: 74 HP (55 kW) at 2200 rpm',
+                             'Power Shuttle transmission 4F/4R',
+                             'Closed center hydraulic system',
+                             'ROPS cabin or protection structure',
+                             'Hydrostatic steering'
                          ],
                          'applications' => [
-                             'Special industrial projects',
-                             'Complex installations',
-                             'Precision work',
-                             'Custom applications'
+                             'Trench and foundation excavation',
+                             'Material loading and unloading',
+                             'Land leveling and preparation',
+                             'Urban construction work',
+                             'Infrastructure projects'
                          ],
                          'technical_specs' => [
-                             'Variety of specifications',
-                             'Custom configurations',
-                             'Advanced technology',
-                             'International certifications',
-                             'Specialized technical support'
+                             'Operating weight: 15,180 lbs (6,900 kg)',
+                             'Maximum digging depth: 10 ft 7 in (3,219 mm)',
+                             'Digging force: 11,600 lbs (bucket cylinder)',
+                             'Fuel tank capacity: 34 gallons (128L)',
+                             'Hydraulic system: 37 gpm at 3000 psi',
+                             'Drive: 2WD/4WD available'
                          ]
                      ]
                  ]

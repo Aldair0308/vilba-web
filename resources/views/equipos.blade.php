@@ -621,79 +621,85 @@
             [
                 'slug' => 'equipos-especializados',
                 'name' => [
-                    'es' => 'Equipos Especializados',
-                    'en' => 'Specialized Equipment'
+                    'es' => 'Retroexcavadora Caterpillar 416D',
+                    'en' => 'Caterpillar 416D Backhoe Loader'
                 ],
                 'description' => [
-                    'es' => 'Maquinaria personalizada y especializada para requisitos únicos de proyecto. Incluyendo bombas de concreto, hincadoras de pilotes y otros equipos especializados de construcción.',
-                    'en' => 'Custom and specialized machinery for unique project requirements. Including concrete pumps, pile drivers, and other specialized construction equipment.'
+                    'es' => 'Retroexcavadora Caterpillar 416D Serie CAT0416DVBFP16809. Máquina versátil con motor diesel de 74 HP, ideal para excavación, carga y trabajos de construcción medianos.',
+                    'en' => 'Caterpillar 416D Backhoe Loader Series CAT0416DVBFP16809. Versatile machine with 74 HP diesel engine, ideal for excavation, loading and medium construction work.'
                 ],
-                'image' => 'assets/img/service/servicess6.png',
+                'image' => 'assets/img/equipos/cat-416d-hero.jpg',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
-                        'Soluciones personalizadas',
-                        'Última tecnología',
-                        'Consultoría experta'
+                        'Motor: Caterpillar 3054C 74 HP',
+                        'Peso: 15,180 lbs (6,900 kg)',
+                        'Profundidad excavación: 10 ft 7 in'
                     ],
                     'en' => [
-                        'Custom solutions',
-                        'Latest technology',
-                        'Expert consultation'
+                        'Engine: Caterpillar 3054C 74 HP',
+                        'Weight: 15,180 lbs (6,900 kg)',
+                        'Digging depth: 10 ft 7 in'
                     ]
                 ],
                 'detailed_info' => [
                     'es' => [
-                        'description' => 'Contamos con equipos especializados para proyectos únicos que requieren soluciones específicas. Nuestro inventario incluye maquinaria de última generación para aplicaciones especiales.',
+                        'description' => 'La Retroexcavadora Caterpillar 416D Serie CAT0416DVBFP16809 es una máquina robusta y confiable, fabricada entre 2000-2006. Combina la potencia de excavación trasera con la versatilidad de carga frontal, siendo ideal para proyectos de construcción medianos.',
                         'features' => [
-                            'Tecnología de vanguardia',
-                            'Configuraciones personalizadas',
-                            'Soporte técnico especializado',
-                            'Mantenimiento preventivo',
-                            'Capacitación de operadores'
+                            'Motor Caterpillar 3054C de 4.4L turboalimentado',
+                            'Transmisión power shuttle 4F/4R',
+                            'Sistema hidráulico de 37 gpm a 3000 psi',
+                            'Tracción 2WD/4WD disponible',
+                            'Cabina ROPS/FOPS certificada'
                         ],
                         'applications' => [
-                            'Bombeo de concreto',
-                            'Hincado de pilotes',
-                            'Perforación especializada',
-                            'Proyectos de infraestructura compleja'
+                            'Excavación de zanjas y cimientos',
+                            'Carga y descarga de materiales',
+                            'Nivelación y preparación de terrenos',
+                            'Trabajos de construcción urbana',
+                            'Mantenimiento de carreteras'
                         ],
                         'technical_specs' => [
-                            'Variedad de especializaciones',
-                            'Configuración según proyecto',
-                            'Tecnología adaptativa',
-                            'Soporte 24/7',
-                            'Certificaciones especiales'
+                            'Motor: Caterpillar 3054C 4 cilindros diesel',
+                            'Potencia: 74 HP (55 kW) a 2200 rpm',
+                            'Peso operativo: 15,180 lbs (6,900 kg)',
+                            'Profundidad máxima excavación: 10 ft 7 in (3,219 mm)',
+                            'Fuerza de excavación: 11,600 lbs',
+                            'Capacidad tanque combustible: 34 galones (128L)',
+                            'Sistema hidráulico: 37 gpm a 3000 psi'
                         ]
                     ],
                     'en' => [
-                        'description' => 'We have specialized equipment for unique projects that require specific solutions. Our inventory includes state-of-the-art machinery for special applications.',
+                        'description' => 'The Caterpillar 416D Backhoe Loader Series CAT0416DVBFP16809 is a robust and reliable machine, manufactured between 2000-2006. It combines rear excavation power with front loading versatility, being ideal for medium construction projects.',
                         'features' => [
-                            'Cutting-edge technology',
-                            'Custom configurations',
-                            'Specialized technical support',
-                            'Preventive maintenance',
-                            'Operator training'
+                            'Caterpillar 3054C 4.4L turbocharged engine',
+                            'Power shuttle transmission 4F/4R',
+                            'Hydraulic system 37 gpm at 3000 psi',
+                            '2WD/4WD traction available',
+                            'ROPS/FOPS certified cabin'
                         ],
                         'applications' => [
-                            'Concrete pumping',
-                            'Pile driving',
-                            'Specialized drilling',
-                            'Complex infrastructure projects'
+                            'Trench and foundation excavation',
+                            'Material loading and unloading',
+                            'Land leveling and preparation',
+                            'Urban construction work',
+                            'Road maintenance'
                         ],
                         'technical_specs' => [
-                            'Variety of specializations',
-                            'Project-based configuration',
-                            'Adaptive technology',
-                            '24/7 support',
-                            'Special certifications'
+                            'Engine: Caterpillar 3054C 4-cylinder diesel',
+                            'Power: 74 HP (55 kW) at 2200 rpm',
+                            'Operating weight: 15,180 lbs (6,900 kg)',
+                            'Maximum digging depth: 10 ft 7 in (3,219 mm)',
+                            'Digging force: 11,600 lbs',
+                            'Fuel tank capacity: 34 gallons (128L)',
+                            'Hydraulic system: 37 gpm at 3000 psi'
                         ]
                     ]
                 ],
                 'gallery' => [
-                    'assets/img/gallery/specialized1.jpg',
-                    'assets/img/gallery/specialized2.jpg',
-                    'assets/img/gallery/specialized3.jpg'
+                    'assets/img/equipos/cat-416d-1.jpg',
+                    'assets/img/equipos/cat-416d-2.jpg',
+                    'assets/img/equipos/cat-416d-3.jpg'
                 ]
             ],
             [
