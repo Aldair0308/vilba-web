@@ -1499,6 +1499,119 @@
                     'assets/img/gallery/lowboy3.jpg',
                     'assets/img/gallery/lowboy4.jpg'
                 ]
+            ],
+            
+            'lowboy-2005' => [
+                'slug' => 'lowboy-2005',
+                'name' => [
+                    'es' => 'LOW BOY 2005',
+                    'en' => 'LOW BOY 2005'
+                ],
+                'description' => [
+                    'es' => 'Remolque LOW BOY del año 2005 con número de serie 1L9GA72A65L033420, diseñado para el transporte de maquinaria pesada y equipos de construcción. Con capacidad de 40-55 toneladas y plataforma baja para facilitar la carga y descarga.',
+                    'en' => 'LOW BOY trailer from year 2005 with serial number 1L9GA72A65L033420, designed for transporting heavy machinery and construction equipment. With 40-55 ton capacity and low platform for easy loading and unloading.'
+                ],
+                'image' => 'assets/img/equipos/lowboy-2005.svg',
+                'icon' => 'assets/img/icon/lowboy-icon.svg',
+                'specs' => [
+                    'es' => [
+                        'Capacidad: 40-55 toneladas (80,000-110,000 lbs)',
+                        'Longitud de plataforma: 24-29 pies',
+                        'Altura de plataforma: 18-24 pulgadas',
+                        'Suspensión neumática',
+                        'Frenos de aire con ABS'
+                    ],
+                    'en' => [
+                        'Capacity: 40-55 tons (80,000-110,000 lbs)',
+                        'Deck length: 24-29 feet',
+                        'Deck height: 18-24 inches',
+                        'Air ride suspension',
+                        'Air brakes with ABS'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'El remolque LOW BOY del año 2005 con número de serie 1L9GA72A65L033420 es una solución robusta y confiable para el transporte de maquinaria pesada. Su diseño de plataforma baja y alta capacidad de carga lo hacen ideal para transportar equipos de construcción y maquinaria industrial de gran tamaño.',
+                        'features' => [
+                            'Plataforma baja de 18-24 pulgadas de altura',
+                            'Capacidad de carga de 40-55 toneladas',
+                            'Longitud de plataforma de 24-29 pies',
+                            'Suspensión neumática para viaje suave',
+                            'Sistema de frenos de aire con ABS',
+                            'Llantas 255/70R22.5 o 11R22.5',
+                            'Configuración de ejes tándem o tri-eje',
+                            'Ancho estándar de 8.5 pies',
+                            'Longitud total de 48-53 pies',
+                            'Cuello de ganso desmontable (RGN)'
+                        ],
+                        'applications' => [
+                            'Transporte de maquinaria pesada',
+                            'Transporte de equipo de construcción',
+                            'Transporte de excavadoras',
+                            'Transporte de bulldozers',
+                            'Transporte de grúas',
+                            'Transporte de equipos industriales',
+                            'Transporte de maquinaria especializada'
+                        ],
+                        'technical_specs' => [
+                            'Año: 2005',
+                            'Número de serie: 1L9GA72A65L033420',
+                            'Capacidad: 40-55 toneladas (80,000-110,000 lbs)',
+                            'Longitud de plataforma: 24-29 pies (7.3-8.8 m)',
+                            'Altura de plataforma: 18-24 pulgadas (0.46-0.61 m)',
+                            'Longitud total: 48-53 pies (14.6-16.2 m)',
+                            'Ancho: 8.5 pies (2.6 m)',
+                            'Ejes: Configuración tándem/tri-eje',
+                            'Suspensión: Suspensión neumática',
+                            'Llantas: 255/70R22.5 o 11R22.5',
+                            'Frenos: Frenos de aire con ABS',
+                            'Cuello de ganso: Desmontable (RGN)'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'The LOW BOY trailer from year 2005 with serial number 1L9GA72A65L033420 is a robust and reliable solution for heavy machinery transport. Its low platform design and high load capacity make it ideal for transporting large construction equipment and industrial machinery.',
+                        'features' => [
+                            'Low platform 18-24 inches height',
+                            '40-55 ton load capacity',
+                            '24-29 feet platform length',
+                            'Air ride suspension for smooth travel',
+                            'Air brake system with ABS',
+                            '255/70R22.5 or 11R22.5 tires',
+                            'Tandem or tri-axle configuration',
+                            'Standard 8.5 feet width',
+                            'Overall length 48-53 feet',
+                            'Removable gooseneck (RGN)'
+                        ],
+                        'applications' => [
+                            'Heavy machinery transport',
+                            'Construction equipment transport',
+                            'Excavator transport',
+                            'Bulldozer transport',
+                            'Crane transport',
+                            'Industrial equipment transport',
+                            'Specialized machinery transport'
+                        ],
+                        'technical_specs' => [
+                            'Year: 2005',
+                            'Serial number: 1L9GA72A65L033420',
+                            'Capacity: 40-55 tons (80,000-110,000 lbs)',
+                            'Deck length: 24-29 feet (7.3-8.8 m)',
+                            'Deck height: 18-24 inches (0.46-0.61 m)',
+                            'Overall length: 48-53 feet (14.6-16.2 m)',
+                            'Width: 8.5 feet (2.6 m)',
+                            'Axles: Tandem/tri-axle configuration',
+                            'Suspension: Air ride suspension',
+                            'Tires: 255/70R22.5 or 11R22.5',
+                            'Brakes: Air brakes with ABS',
+                            'Gooseneck: Removable (RGN)'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/lowboy-2005.svg',
+                    'assets/img/gallery/lowboy5.jpg',
+                    'assets/img/gallery/lowboy6.jpg'
+                ]
             ]
             
                     

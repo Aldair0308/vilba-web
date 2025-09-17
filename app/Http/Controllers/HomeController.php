@@ -765,6 +765,87 @@ class HomeController extends Controller
                      ]
                  ]
              ],
+             'lowboy-2005' => [
+                 'slug' => 'lowboy-2005',
+                 'name' => [
+                     'es' => 'LOW BOY 2005',
+                     'en' => 'LOW BOY 2005'
+                 ],
+                 'description' => [
+                     'es' => 'Remolque LOW BOY 2005 para transporte de maquinaria pesada y equipo de construcción.',
+                     'en' => 'LOW BOY 2005 trailer for heavy machinery and construction equipment transport.'
+                 ],
+                 'hero_image' => 'assets/img/gallery/services1.jpg',
+                 'gallery' => [
+                     'assets/img/gallery/services1.jpg',
+                     'assets/img/gallery/services2.jpg',
+                     'assets/img/gallery/services3.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'El remolque LOW BOY 2005 con número de serie 1L9GA72A65L033420 es una solución especializada para el transporte de maquinaria pesada y equipo de construcción. Diseñado con una plataforma baja para facilitar la carga y descarga de equipos de gran tamaño.',
+                         'features' => [
+                             'Número de serie: 1L9GA72A65L033420',
+                             'Capacidad de carga: 40-55 toneladas',
+                             'Configuración de ejes: Tándem/Tri-axle',
+                             'Suspensión neumática (Air Ride)',
+                             'Cuello de ganso desmontable (RGN)',
+                             'Frenos de aire con sistema ABS',
+                             'Llantas 255/70R22.5 o 11R22.5'
+                         ],
+                         'applications' => [
+                             'Transporte de maquinaria pesada',
+                             'Equipo de construcción',
+                             'Excavadoras y bulldozers',
+                             'Grúas y equipos industriales',
+                             'Maquinaria agrícola de gran tamaño'
+                         ],
+                         'technical_specs' => [
+                             'Año: 2005',
+                             'Número de serie: 1L9GA72A65L033420',
+                             'Capacidad de carga: 40-55 toneladas',
+                             'Longitud de plataforma: 24-29 pies',
+                             'Altura de plataforma: 18-24 pulgadas',
+                             'Longitud total: 48-53 pies',
+                             'Ancho: 8.5 pies',
+                             'Configuración: Tándem/Tri-axle',
+                             'Suspensión: Neumática',
+                             'Frenos: Aire con ABS'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'The LOW BOY 2005 trailer with serial number 1L9GA72A65L033420 is a specialized solution for transporting heavy machinery and construction equipment. Designed with a low platform to facilitate loading and unloading of large equipment.',
+                         'features' => [
+                             'Serial number: 1L9GA72A65L033420',
+                             'Load capacity: 40-55 tons',
+                             'Axle configuration: Tandem/Tri-axle',
+                             'Air ride suspension',
+                             'Removable gooseneck (RGN)',
+                             'Air brakes with ABS system',
+                             '255/70R22.5 or 11R22.5 tires'
+                         ],
+                         'applications' => [
+                             'Heavy machinery transport',
+                             'Construction equipment',
+                             'Excavators and bulldozers',
+                             'Cranes and industrial equipment',
+                             'Large agricultural machinery'
+                         ],
+                         'technical_specs' => [
+                             'Year: 2005',
+                             'Serial number: 1L9GA72A65L033420',
+                             'Load capacity: 40-55 tons',
+                             'Deck length: 24-29 feet',
+                             'Deck height: 18-24 inches',
+                             'Overall length: 48-53 feet',
+                             'Width: 8.5 feet',
+                             'Configuration: Tandem/Tri-axle',
+                             'Suspension: Air ride',
+                             'Brakes: Air with ABS'
+                         ]
+                     ]
+                 ]
+             ],
              'plataformas-aereas' => [
                  'slug' => 'plataformas-aereas',
                  'name' => [
