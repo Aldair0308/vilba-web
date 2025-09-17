@@ -1756,6 +1756,91 @@ class HomeController extends Controller
                          ]
                      ]
                  ]
+             ],
+             'lowboy-rg35-t' => [
+                 'slug' => 'lowboy-rg35-t',
+                 'name' => [
+                     'es' => 'LOW BOY RG35 T',
+                     'en' => 'LOW BOY RG35 T'
+                 ],
+                 'description' => [
+                     'es' => 'Remolque Low Boy RG35 T año 2000, capacidad 35 toneladas para transporte de maquinaria pesada y equipos de construcción.',
+                     'en' => 'Low Boy RG35 T trailer year 2000, 35-ton capacity for heavy machinery and construction equipment transport.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/lowboy-rg35t-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/lowboy-rg35t.png',
+                     'assets/img/gallery/lowboy1.jpg',
+                     'assets/img/gallery/lowboy2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestro remolque Low Boy RG35 T modelo 2000 (Serie: 1W8A11D25Y5000540) es la solución ideal para el transporte seguro y eficiente de maquinaria pesada y equipos de construcción de gran tamaño.',
+                         'features' => [
+                             'Capacidad de carga de 35 toneladas (70,000 lbs)',
+                             'Plataforma de carga baja para fácil acceso',
+                             'Suspensión neumática para transporte suave',
+                             'Sistema de frenos de aire con ABS',
+                             'Configuración de ejes tándem o tri-eje',
+                             'Rampas hidráulicas desmontables',
+                             'Estructura reforzada de acero de alta resistencia'
+                         ],
+                         'applications' => [
+                             'Transporte de excavadoras y bulldozers',
+                             'Traslado de motoconformadoras',
+                             'Transporte de equipos industriales',
+                             'Movilización de maquinaria de construcción',
+                             'Transporte de equipos especializados',
+                             'Logística de proyectos de infraestructura'
+                         ],
+                         'technical_specs' => [
+                             'Capacidad: 35 toneladas (70,000 lbs)',
+                             'Longitud de plataforma: 22-24 pies (6.7-7.3 m)',
+                             'Altura de plataforma: 20-24 pulgadas (0.5-0.6 m)',
+                             'Longitud total: 44-46 pies (13.4-14.0 m)',
+                             'Ancho: 8.5 pies (2.6 m)',
+                             'Llantas: 255/70R22.5 o similar',
+                             'Suspensión: Neumática',
+                             'Frenos: Aire con sistema ABS',
+                             'Año: 2000',
+                             'Modelo: RG35 T',
+                             'Serie: 1W8A11D25Y5000540'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our Low Boy RG35 T trailer model 2000 (Serial: 1W8A11D25Y5000540) is the ideal solution for safe and efficient transport of heavy machinery and large construction equipment.',
+                         'features' => [
+                             '35-ton loading capacity (70,000 lbs)',
+                             'Low-profile deck for easy access',
+                             'Air ride suspension for smooth transport',
+                             'Air brake system with ABS',
+                             'Tandem or tri-axle configuration',
+                             'Removable hydraulic ramps',
+                             'Reinforced high-strength steel structure'
+                         ],
+                         'applications' => [
+                             'Excavator and bulldozer transport',
+                             'Motor grader hauling',
+                             'Industrial equipment transport',
+                             'Construction machinery mobilization',
+                             'Specialized equipment transport',
+                             'Infrastructure project logistics'
+                         ],
+                         'technical_specs' => [
+                             'Capacity: 35 tons (70,000 lbs)',
+                             'Deck length: 22-24 feet (6.7-7.3 m)',
+                             'Deck height: 20-24 inches (0.5-0.6 m)',
+                             'Overall length: 44-46 feet (13.4-14.0 m)',
+                             'Width: 8.5 feet (2.6 m)',
+                             'Tires: 255/70R22.5 or similar',
+                             'Suspension: Air ride suspension',
+                             'Brakes: Air brakes with ABS',
+                             'Year: 2000',
+                             'Model: RG35 T',
+                             'Serial: 1W8A11D25Y5000540'
+                         ]
+                     ]
+                 ]
              ]
          ];
  

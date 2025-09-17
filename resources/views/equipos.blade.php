@@ -1269,6 +1269,119 @@
                     'assets/img/gallery/galion1.jpg',
                     'assets/img/gallery/galion2.jpg'
                 ]
+            ],
+            
+            'lowboy-rg35-t' => [
+                'slug' => 'lowboy-rg35-t',
+                'name' => [
+                    'es' => 'LOW BOY RG35 T',
+                    'en' => 'LOW BOY RG35 T'
+                ],
+                'description' => [
+                    'es' => 'Remolque LOW BOY modelo RG35 T del año 2000, diseñado para el transporte de maquinaria pesada y equipos de construcción. Con capacidad de 35 toneladas y plataforma baja para facilitar la carga y descarga.',
+                    'en' => 'LOW BOY trailer model RG35 T from year 2000, designed for transporting heavy machinery and construction equipment. With 35-ton capacity and low platform for easy loading and unloading.'
+                ],
+                'image' => 'assets/img/equipos/lowboy-rg35t.svg',
+                'icon' => 'assets/img/icon/lowboy-icon.svg',
+                'specs' => [
+                    'es' => [
+                        'Capacidad: 35 toneladas (70,000 lbs)',
+                        'Longitud de plataforma: 22-24 pies',
+                        'Altura de plataforma: 20-24 pulgadas',
+                        'Suspensión neumática',
+                        'Frenos de aire con ABS'
+                    ],
+                    'en' => [
+                        'Capacity: 35 tons (70,000 lbs)',
+                        'Deck length: 22-24 feet',
+                        'Deck height: 20-24 inches',
+                        'Air ride suspension',
+                        'Air brakes with ABS'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'El remolque LOW BOY RG35 T del año 2000 es una solución confiable para el transporte de maquinaria pesada. Su diseño de plataforma baja facilita la carga y descarga de equipos, mientras que su construcción robusta garantiza seguridad en el transporte.',
+                        'features' => [
+                            'Plataforma baja de 20-24 pulgadas de altura',
+                            'Capacidad de carga de 35 toneladas',
+                            'Longitud de plataforma de 22-24 pies',
+                            'Suspensión neumática para viaje suave',
+                            'Sistema de frenos de aire con ABS',
+                            'Llantas 255/70R22.5 o similares',
+                            'Configuración de ejes tándem o tri-eje',
+                            'Ancho estándar de 8.5 pies',
+                            'Longitud total de 44-46 pies'
+                        ],
+                        'applications' => [
+                            'Transporte de excavadoras',
+                            'Transporte de maquinaria de construcción',
+                            'Transporte de equipos industriales',
+                            'Transporte de tractores y equipos agrícolas',
+                            'Transporte de generadores grandes',
+                            'Transporte de equipos de minería',
+                            'Transporte de maquinaria especializada'
+                        ],
+                        'technical_specs' => [
+                            'Modelo: RG35 T',
+                            'Año: 2000',
+                            'Serie: 1W8A11D25Y5000540',
+                            'Capacidad: 35 toneladas (70,000 lbs)',
+                            'Longitud de plataforma: 22-24 pies (6.7-7.3 m)',
+                            'Altura de plataforma: 20-24 pulgadas (0.5-0.6 m)',
+                            'Longitud total: 44-46 pies (13.4-14.0 m)',
+                            'Ancho: 8.5 pies (2.6 m)',
+                            'Ejes: Configuración tándem o tri-eje',
+                            'Suspensión: Suspensión neumática',
+                            'Llantas: 255/70R22.5 o similares',
+                            'Frenos: Frenos de aire con sistema ABS',
+                            'Peso del remolque: Aproximadamente 15,000-18,000 lbs'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'The LOW BOY RG35 T trailer from year 2000 is a reliable solution for heavy machinery transport. Its low platform design facilitates equipment loading and unloading, while its robust construction ensures transport safety.',
+                        'features' => [
+                            'Low platform 20-24 inches height',
+                            '35-ton load capacity',
+                            '22-24 feet platform length',
+                            'Air ride suspension for smooth travel',
+                            'Air brake system with ABS',
+                            '255/70R22.5 or similar tires',
+                            'Tandem or tri-axle configuration',
+                            'Standard 8.5 feet width',
+                            'Overall length 44-46 feet'
+                        ],
+                        'applications' => [
+                            'Excavator transport',
+                            'Construction machinery transport',
+                            'Industrial equipment transport',
+                            'Tractor and agricultural equipment transport',
+                            'Large generator transport',
+                            'Mining equipment transport',
+                            'Specialized machinery transport'
+                        ],
+                        'technical_specs' => [
+                            'Model: RG35 T',
+                            'Year: 2000',
+                            'Serial: 1W8A11D25Y5000540',
+                            'Capacity: 35 tons (70,000 lbs)',
+                            'Deck length: 22-24 feet (6.7-7.3 m)',
+                            'Deck height: 20-24 inches (0.5-0.6 m)',
+                            'Overall length: 44-46 feet (13.4-14.0 m)',
+                            'Width: 8.5 feet (2.6 m)',
+                            'Axles: Tandem or tri-axle configuration',
+                            'Suspension: Air ride suspension',
+                            'Tires: 255/70R22.5 or similar',
+                            'Brakes: Air brakes with ABS system',
+                            'Trailer weight: Approximately 15,000-18,000 lbs'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/lowboy-rg35t.svg',
+                    'assets/img/gallery/lowboy1.jpg',
+                    'assets/img/gallery/lowboy2.jpg'
+                ]
             ]
             
                     
