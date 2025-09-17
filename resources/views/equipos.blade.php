@@ -1612,6 +1612,102 @@
                     'assets/img/gallery/lowboy5.jpg',
                     'assets/img/gallery/lowboy6.jpg'
                 ]
+            ],
+            [
+                'slug' => 'lowboy-1996',
+                'name' => [
+                    'es' => 'LOW BOY 1996',
+                    'en' => 'LOW BOY 1996'
+                ],
+                'description' => [
+                    'es' => 'Remolque Low Boy año 1996, Serie: 1LH17AUH2T1007759, capacidad 40-50 toneladas para transporte de maquinaria pesada y equipos de construcción.',
+                    'en' => 'Low Boy trailer year 1996, Serial: 1LH17AUH2T1007759, 40-50 ton capacity for heavy machinery and construction equipment transport.'
+                ],
+                'image' => 'assets/img/equipos/lowboy-1996.png',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Capacidad: 40-50 toneladas',
+                        'Plataforma baja: 18-24 pulgadas',
+                        'Configuración: Tándem/Tri-eje'
+                    ],
+                    'en' => [
+                        'Capacity: 40-50 tons',
+                        'Low platform: 18-24 inches',
+                        'Configuration: Tandem/Tri-axle'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestro remolque Low Boy del año 1996 (Serie: 1LH17AUH2T1007759) es una solución confiable y robusta para el transporte de maquinaria pesada. Su diseño de plataforma baja facilita la carga y descarga de equipos de gran tamaño, siendo ideal para proyectos de construcción e infraestructura.',
+                        'features' => [
+                            'Número de serie: 1LH17AUH2T1007759',
+                            'Capacidad de carga: 40-50 toneladas',
+                            'Configuración de ejes: Tándem/Tri-eje',
+                            'Suspensión: Neumática/Resortes',
+                            'Cuello desmontable hidráulico/mecánico',
+                            'Neumáticos: 11R22.5 o 255/70R22.5',
+                            'Frenos neumáticos con ABS'
+                        ],
+                        'applications' => [
+                            'Transporte de maquinaria pesada',
+                            'Equipos de construcción',
+                            'Vehículos industriales',
+                            'Excavadoras y bulldozers',
+                            'Grúas y equipos industriales',
+                            'Maquinaria agrícola de gran tamaño'
+                        ],
+                        'technical_specs' => [
+                            'Año: 1996',
+                            'Número de serie: 1LH17AUH2T1007759',
+                            'Capacidad de carga: 40-50 toneladas',
+                            'Longitud de plataforma: 24-29 pies',
+                            'Altura de plataforma: 18-24 pulgadas',
+                            'Longitud total: 48-53 pies',
+                            'Ancho: 8.5 pies',
+                            'Configuración: Tándem/Tri-eje',
+                            'Suspensión: Neumática/Resortes',
+                            'Frenos: Neumáticos con ABS'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our Low Boy trailer from year 1996 (Serial: 1LH17AUH2T1007759) is a reliable and robust solution for heavy machinery transport. Its low platform design facilitates loading and unloading of large equipment, making it ideal for construction and infrastructure projects.',
+                        'features' => [
+                            'Serial number: 1LH17AUH2T1007759',
+                            'Load capacity: 40-50 tons',
+                            'Axle configuration: Tandem/Tri-axle',
+                            'Suspension: Air/Spring',
+                            'Detachable hydraulic/mechanical neck',
+                            'Tires: 11R22.5 or 255/70R22.5',
+                            'Air brakes with ABS'
+                        ],
+                        'applications' => [
+                            'Heavy machinery transport',
+                            'Construction equipment',
+                            'Industrial vehicles',
+                            'Excavators and bulldozers',
+                            'Cranes and industrial equipment',
+                            'Large agricultural machinery'
+                        ],
+                        'technical_specs' => [
+                            'Year: 1996',
+                            'Serial number: 1LH17AUH2T1007759',
+                            'Load capacity: 40-50 tons',
+                            'Deck length: 24-29 ft',
+                            'Deck height: 18-24 in',
+                            'Overall length: 48-53 ft',
+                            'Width: 8.5 ft',
+                            'Configuration: Tandem/Tri-axle',
+                            'Suspension: Air/Spring',
+                            'Brakes: Air brakes with ABS'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/lowboy-1996.png',
+                    'assets/img/gallery/lowboy1.jpg',
+                    'assets/img/gallery/lowboy2.jpg'
+                ]
             ]
             
                     
