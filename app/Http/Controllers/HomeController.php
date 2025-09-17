@@ -1841,6 +1841,99 @@ class HomeController extends Controller
                          ]
                      ]
                  ]
+             ],
+             'lowboy-2002' => [
+                 'slug' => 'lowboy-2002',
+                 'name' => [
+                     'es' => 'LOW BOY 2002',
+                     'en' => 'LOW BOY 2002'
+                 ],
+                 'description' => [
+                     'es' => 'Remolque Low Boy año 2002, capacidad 40-50 toneladas para transporte de maquinaria pesada y equipos de construcción de gran envergadura.',
+                     'en' => 'Low Boy trailer year 2002, 40-50 ton capacity for heavy machinery and large-scale construction equipment transport.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/lowboy-2002-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/lowboy-2002.png',
+                     'assets/img/gallery/lowboy3.jpg',
+                     'assets/img/gallery/lowboy4.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestro remolque Low Boy del año 2002 (Serie: 13ND5340423514722) es una solución robusta y confiable para el transporte de maquinaria pesada. Su diseño de plataforma baja y alta capacidad de carga lo hacen ideal para transportar equipos de construcción y maquinaria industrial de gran tamaño.',
+                         'features' => [
+                             'Capacidad de carga de 40-50 toneladas (80,000-100,000 lbs)',
+                             'Plataforma de carga baja de 18-24 pulgadas',
+                             'Suspensión neumática para transporte suave',
+                             'Sistema de frenos de aire con ABS',
+                             'Configuración de ejes tándem o tri-eje',
+                             'Llantas 255/70R22.5 o 11R22.5',
+                             'Construcción de acero de alta resistencia',
+                             'Longitud total de 48-53 pies'
+                         ],
+                         'applications' => [
+                             'Transporte de excavadoras grandes',
+                             'Transporte de bulldozers',
+                             'Transporte de maquinaria de construcción pesada',
+                             'Transporte de equipos industriales',
+                             'Transporte de generadores industriales',
+                             'Transporte de equipos de minería',
+                             'Transporte de maquinaria especializada',
+                             'Transporte de equipos agrícolas pesados'
+                         ],
+                         'technical_specs' => [
+                             'Capacidad: 40-50 toneladas (80,000-100,000 lbs)',
+                             'Longitud de plataforma: 24-29 pies (7.3-8.8 m)',
+                             'Altura de plataforma: 18-24 pulgadas (0.46-0.61 m)',
+                             'Longitud total: 48-53 pies (14.6-16.2 m)',
+                             'Ancho: 8.5 pies (2.6 m)',
+                             'Llantas: 255/70R22.5 o 11R22.5',
+                             'Suspensión: Neumática',
+                             'Frenos: Aire con sistema ABS',
+                             'Año: 2002',
+                             'Serie: 13ND5340423514722',
+                             'Peso del remolque: Aproximadamente 18,000-22,000 lbs',
+                             'Material: Construcción de acero de alta resistencia'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our Low Boy trailer from year 2002 (Serial: 13ND5340423514722) is a robust and reliable solution for heavy machinery transport. Its low platform design and high load capacity make it ideal for transporting large construction equipment and industrial machinery.',
+                         'features' => [
+                             '40-50 ton loading capacity (80,000-100,000 lbs)',
+                             'Low-profile deck 18-24 inches height',
+                             'Air ride suspension for smooth transport',
+                             'Air brake system with ABS',
+                             'Tandem or tri-axle configuration',
+                             '255/70R22.5 or 11R22.5 tires',
+                             'High-strength steel construction',
+                             'Overall length 48-53 feet'
+                         ],
+                         'applications' => [
+                             'Large excavator transport',
+                             'Bulldozer transport',
+                             'Heavy construction machinery transport',
+                             'Industrial equipment transport',
+                             'Industrial generator transport',
+                             'Mining equipment transport',
+                             'Specialized machinery transport',
+                             'Heavy agricultural equipment transport'
+                         ],
+                         'technical_specs' => [
+                             'Capacity: 40-50 tons (80,000-100,000 lbs)',
+                             'Deck length: 24-29 feet (7.3-8.8 m)',
+                             'Deck height: 18-24 inches (0.46-0.61 m)',
+                             'Overall length: 48-53 feet (14.6-16.2 m)',
+                             'Width: 8.5 feet (2.6 m)',
+                             'Tires: 255/70R22.5 or 11R22.5',
+                             'Suspension: Air ride suspension',
+                             'Brakes: Air brakes with ABS',
+                             'Year: 2002',
+                             'Serial: 13ND5340423514722',
+                             'Trailer weight: Approximately 18,000-22,000 lbs',
+                             'Material: High-strength steel construction'
+                         ]
+                     ]
+                 ]
              ]
          ];
  

@@ -1382,6 +1382,123 @@
                     'assets/img/gallery/lowboy1.jpg',
                     'assets/img/gallery/lowboy2.jpg'
                 ]
+            ],
+            
+            'lowboy-2002' => [
+                'slug' => 'lowboy-2002',
+                'name' => [
+                    'es' => 'LOW BOY 2002',
+                    'en' => 'LOW BOY 2002'
+                ],
+                'description' => [
+                    'es' => 'Remolque LOW BOY del año 2002, diseñado para el transporte de maquinaria pesada y equipos de construcción. Con capacidad de 40-50 toneladas y plataforma baja para facilitar la carga y descarga de equipos pesados.',
+                    'en' => 'LOW BOY trailer from year 2002, designed for transporting heavy machinery and construction equipment. With 40-50 ton capacity and low platform for easy loading and unloading of heavy equipment.'
+                ],
+                'image' => 'assets/img/equipos/lowboy-2002.svg',
+                'icon' => 'assets/img/icon/lowboy-icon.svg',
+                'specs' => [
+                    'es' => [
+                        'Capacidad: 40-50 toneladas (80,000-100,000 lbs)',
+                        'Longitud de plataforma: 24-29 pies',
+                        'Altura de plataforma: 18-24 pulgadas',
+                        'Suspensión neumática',
+                        'Frenos de aire con ABS'
+                    ],
+                    'en' => [
+                        'Capacity: 40-50 tons (80,000-100,000 lbs)',
+                        'Deck length: 24-29 feet',
+                        'Deck height: 18-24 inches',
+                        'Air ride suspension',
+                        'Air brakes with ABS'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'El remolque LOW BOY del año 2002 es una solución robusta y confiable para el transporte de maquinaria pesada. Su diseño de plataforma baja y alta capacidad de carga lo hacen ideal para transportar equipos de construcción y maquinaria industrial de gran tamaño.',
+                        'features' => [
+                            'Plataforma baja de 18-24 pulgadas de altura',
+                            'Capacidad de carga de 40-50 toneladas',
+                            'Longitud de plataforma de 24-29 pies',
+                            'Suspensión neumática para viaje suave',
+                            'Sistema de frenos de aire con ABS',
+                            'Llantas 255/70R22.5 o 11R22.5',
+                            'Configuración de ejes tándem o tri-eje',
+                            'Ancho estándar de 8.5 pies',
+                            'Longitud total de 48-53 pies',
+                            'Construcción de acero de alta resistencia'
+                        ],
+                        'applications' => [
+                            'Transporte de excavadoras grandes',
+                            'Transporte de bulldozers',
+                            'Transporte de maquinaria de construcción pesada',
+                            'Transporte de equipos industriales',
+                            'Transporte de generadores industriales',
+                            'Transporte de equipos de minería',
+                            'Transporte de maquinaria especializada',
+                            'Transporte de equipos agrícolas pesados'
+                        ],
+                        'technical_specs' => [
+                            'Año: 2002',
+                            'Serie: 13ND5340423514722',
+                            'Capacidad: 40-50 toneladas (80,000-100,000 lbs)',
+                            'Longitud de plataforma: 24-29 pies (7.3-8.8 m)',
+                            'Altura de plataforma: 18-24 pulgadas (0.46-0.61 m)',
+                            'Longitud total: 48-53 pies (14.6-16.2 m)',
+                            'Ancho: 8.5 pies (2.6 m)',
+                            'Ejes: Configuración tándem o tri-eje',
+                            'Suspensión: Suspensión neumática',
+                            'Llantas: 255/70R22.5 o 11R22.5',
+                            'Frenos: Frenos de aire con sistema ABS',
+                            'Peso del remolque: Aproximadamente 18,000-22,000 lbs',
+                            'Material: Construcción de acero de alta resistencia'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'The LOW BOY trailer from year 2002 is a robust and reliable solution for heavy machinery transport. Its low platform design and high load capacity make it ideal for transporting large construction equipment and industrial machinery.',
+                        'features' => [
+                            'Low platform 18-24 inches height',
+                            '40-50 ton load capacity',
+                            '24-29 feet platform length',
+                            'Air ride suspension for smooth travel',
+                            'Air brake system with ABS',
+                            '255/70R22.5 or 11R22.5 tires',
+                            'Tandem or tri-axle configuration',
+                            'Standard 8.5 feet width',
+                            'Overall length 48-53 feet',
+                            'High-strength steel construction'
+                        ],
+                        'applications' => [
+                            'Large excavator transport',
+                            'Bulldozer transport',
+                            'Heavy construction machinery transport',
+                            'Industrial equipment transport',
+                            'Industrial generator transport',
+                            'Mining equipment transport',
+                            'Specialized machinery transport',
+                            'Heavy agricultural equipment transport'
+                        ],
+                        'technical_specs' => [
+                            'Year: 2002',
+                            'Serial: 13ND5340423514722',
+                            'Capacity: 40-50 tons (80,000-100,000 lbs)',
+                            'Deck length: 24-29 feet (7.3-8.8 m)',
+                            'Deck height: 18-24 inches (0.46-0.61 m)',
+                            'Overall length: 48-53 feet (14.6-16.2 m)',
+                            'Width: 8.5 feet (2.6 m)',
+                            'Axles: Tandem or tri-axle configuration',
+                            'Suspension: Air ride suspension',
+                            'Tires: 255/70R22.5 or 11R22.5',
+                            'Brakes: Air brakes with ABS system',
+                            'Trailer weight: Approximately 18,000-22,000 lbs',
+                            'Material: High-strength steel construction'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/lowboy-2002.svg',
+                    'assets/img/gallery/lowboy3.jpg',
+                    'assets/img/gallery/lowboy4.jpg'
+                ]
             ]
             
                     
