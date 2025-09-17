@@ -1669,10 +1669,127 @@ class HomeController extends Controller
                          ]
                      ]
                  ]
+             ],
+             'motoconformadora-galion-118c' => [
+                 'slug' => 'motoconformadora-galion-118c',
+                 'name' => [
+                     'es' => 'MOTOCONFORMADORA GALION MOD. 11809C',
+                     'en' => 'GALION 11809C MOTOR GRADER'
+                 ],
+                 'description' => [
+                     'es' => 'Motoconformadora Galion 11809C Serie 118C, máquina robusta y confiable para trabajos de nivelación, construcción de caminos y mantenimiento vial con motor Cummins.',
+                     'en' => 'Galion 11809C Motor Grader Series 118C, robust and reliable machine for grading work, road construction and highway maintenance with Cummins engine.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/motoconformadora-galion.svg',
+                 'gallery' => [
+                     'assets/img/equipos/motoconformadora-galion.svg',
+                     'assets/img/gallery/galion1.jpg',
+                     'assets/img/gallery/galion2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'La Motoconformadora Galion 11809C Serie 118C es una máquina de construcción robusta y confiable, diseñada para trabajos de nivelación de precisión, construcción de caminos y mantenimiento vial. Equipada con motor Cummins de alta eficiencia y controles hidráulicos avanzados.',
+                         'features' => [
+                             'Motor Cummins NHC 4C de 4 cilindros diésel',
+                             'Sistema de controles hidráulicos',
+                             'Hoja niveladora de 14 pies de ancho',
+                             'Llantas 13.00-24 para tracción superior',
+                             'Cabina cerrada con controles ergonómicos',
+                             'Sistema de dirección hidráulica',
+                             'Tanque de combustible de gran capacidad'
+                         ],
+                         'applications' => [
+                             'Construcción y mantenimiento de caminos',
+                             'Nivelación de terrenos',
+                             'Preparación de sitios de construcción',
+                             'Trabajos de acabado fino',
+                             'Remoción de nieve',
+                             'Mantenimiento de cunetas',
+                             'Esparcimiento de materiales'
+                         ],
+                         'technical_specs' => [
+                             'Motor: Cummins NHC 4C de 4 cilindros diésel',
+                             'Peso operativo: 30,100 lbs (13,653 kg)',
+                             'Longitud: 27 pies 8 pulgadas (8.43 m)',
+                             'Ancho: 8 pies 0 pulgadas (2.44 m)',
+                             'Altura: 10 pies 3 pulgadas (3.12 m)',
+                             'Ancho de hoja: 14 pies (4.27 m)',
+                             'Llantas: 13.00-24 estándar',
+                             'Capacidad de tanque: Aproximadamente 45-50 galones (170-189 litros)',
+                             'Sistema hidráulico integrado',
+                             'Serie: 118C',
+                             'Modelo: 11809C'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'The Galion 11809C Motor Grader Series 118C is a robust and reliable construction machine designed for precision grading work, road construction and highway maintenance. Equipped with high-efficiency Cummins engine and advanced hydraulic controls.',
+                         'features' => [
+                             'Cummins NHC 4C 4-cylinder diesel engine',
+                             'Hydraulic control system',
+                             '14-foot wide moldboard blade',
+                             '13.00-24 tires for superior traction',
+                             'Enclosed cab with ergonomic controls',
+                             'Hydraulic steering system',
+                             'Large capacity fuel tank'
+                         ],
+                         'applications' => [
+                             'Road construction and maintenance',
+                             'Land grading',
+                             'Construction site preparation',
+                             'Fine finishing work',
+                             'Snow removal',
+                             'Ditch maintenance',
+                             'Material spreading'
+                         ],
+                         'technical_specs' => [
+                             'Engine: Cummins NHC 4C 4-cylinder diesel',
+                             'Operating weight: 30,100 lbs (13,653 kg)',
+                             'Length: 27 ft 8 in (8.43 m)',
+                             'Width: 8 ft 0 in (2.44 m)',
+                             'Height: 10 ft 3 in (3.12 m)',
+                             'Blade width: 14 ft (4.27 m)',
+                             'Tires: 13.00-24 standard',
+                             'Fuel tank capacity: Approximately 45-50 gallons (170-189 liters)',
+                             'Integrated hydraulic system',
+                             'Series: 118C',
+                             'Model: 11809C'
+                         ]
+                     ]
+                 ]
              ]
          ];
  
          return $equipments[$slug] ?? null;
+    }
+
+    /**
+     * Mostrar detalles de la Motoconformadora CAT 120B
+     */
+    public function motoconformadoraCat120b()
+    {
+        $language = session('language', 'es');
+        $equipment = $this->getEquipmentData('motoconformadora-cat-120b');
+        
+        if (!$equipment) {
+            abort(404);
+        }
+        
+        return view('equipos-detalle', compact('equipment', 'language'));
+    }
+
+    /**
+     * Mostrar detalles de la Motoconformadora GALION 118C
+     */
+    public function motoconformadoraGalion118c()
+    {
+        $language = session('language', 'es');
+        $equipment = $this->getEquipmentData('motoconformadora-galion-118c');
+        
+        if (!$equipment) {
+            abort(404);
+        }
+        
+        return view('equipos-detalle', compact('equipment', 'language'));
     }
 
     /**
