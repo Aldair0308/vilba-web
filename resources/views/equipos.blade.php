@@ -1708,6 +1708,116 @@
                     'assets/img/gallery/lowboy1.jpg',
                     'assets/img/gallery/lowboy2.jpg'
                 ]
+            ],
+            [
+                'slug' => 'plataforma-plana-1990',
+                'name' => [
+                    'es' => 'PLATAFORMA PLANA 1990',
+                    'en' => 'FLATBED PLATFORM 1990'
+                ],
+                'description' => [
+                    'es' => 'Plataforma plana año 1990, VIN: 1S12FF450MB332380, capacidad 48,000-80,000 lbs para transporte de carga general, materiales de construcción y maquinaria.',
+                    'en' => 'Flatbed platform year 1990, VIN: 1S12FF450MB332380, 48,000-80,000 lbs capacity for general cargo transport, construction materials and machinery.'
+                ],
+                'image' => 'assets/img/equipos/plataforma-plana-1990.png',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Capacidad: 48,000-80,000 lbs',
+                        'Longitud: 48-53 pies',
+                        'Configuración: Tándem (2 ejes)'
+                    ],
+                    'en' => [
+                        'Capacity: 48,000-80,000 lbs',
+                        'Length: 48-53 ft',
+                        'Configuration: Tandem (2 axles)'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'Nuestra plataforma plana del año 1990 (VIN: 1S12FF450MB332380) es una solución versátil y confiable para el transporte de carga general. Su diseño de plataforma abierta permite transportar una amplia variedad de materiales y equipos, siendo ideal para proyectos de construcción y logística industrial.',
+                        'features' => [
+                            'VIN: 1S12FF450MB332380',
+                            'Capacidad de carga: 48,000-80,000 lbs',
+                            'Longitud: 48-53 pies',
+                            'Ancho: 102 pulgadas (8.5 pies)',
+                            'Altura de plataforma: 60 pulgadas',
+                            'Configuración de ejes: Tándem (2 ejes)',
+                            'Suspensión: Resortes de acero',
+                            'Neumáticos: 11R22.5',
+                            'Frenos: Neumáticos',
+                            'Material: Acero con plataforma antideslizante'
+                        ],
+                        'applications' => [
+                            'Transporte de carga general',
+                            'Materiales de construcción',
+                            'Maquinaria industrial',
+                            'Contenedores',
+                            'Equipos de construcción',
+                            'Materiales de acero',
+                            'Productos manufacturados',
+                            'Equipos agrícolas'
+                        ],
+                        'technical_specs' => [
+                            'Año: 1990',
+                            'VIN: 1S12FF450MB332380',
+                            'Capacidad de carga: 48,000-80,000 lbs',
+                            'Peso en vacío: 12,000-15,000 lbs',
+                            'Longitud: 48-53 pies',
+                            'Ancho: 102 pulgadas (8.5 pies)',
+                            'Altura de plataforma: 60 pulgadas',
+                            'Configuración de ejes: Tándem (2 ejes)',
+                            'Suspensión: Resortes de acero',
+                            'Neumáticos: 11R22.5',
+                            'Frenos: Neumáticos',
+                            'Material: Acero con superficie antideslizante'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'Our flatbed platform from year 1990 (VIN: 1S12FF450MB332380) is a versatile and reliable solution for general cargo transport. Its open platform design allows transporting a wide variety of materials and equipment, making it ideal for construction projects and industrial logistics.',
+                        'features' => [
+                            'VIN: 1S12FF450MB332380',
+                            'Load capacity: 48,000-80,000 lbs',
+                            'Length: 48-53 ft',
+                            'Width: 102 in (8.5 ft)',
+                            'Deck height: 60 in',
+                            'Axle configuration: Tandem (2 axles)',
+                            'Suspension: Steel springs',
+                            'Tires: 11R22.5',
+                            'Brakes: Air brakes',
+                            'Material: Steel with anti-slip deck'
+                        ],
+                        'applications' => [
+                            'General cargo transport',
+                            'Construction materials',
+                            'Industrial machinery',
+                            'Containers',
+                            'Construction equipment',
+                            'Steel materials',
+                            'Manufactured products',
+                            'Agricultural equipment'
+                        ],
+                        'technical_specs' => [
+                            'Year: 1990',
+                            'VIN: 1S12FF450MB332380',
+                            'Load capacity: 48,000-80,000 lbs',
+                            'Empty weight: 12,000-15,000 lbs',
+                            'Length: 48-53 ft',
+                            'Width: 102 in (8.5 ft)',
+                            'Deck height: 60 in',
+                            'Axle configuration: Tandem (2 axles)',
+                            'Suspension: Steel springs',
+                            'Tires: 11R22.5',
+                            'Brakes: Air brakes',
+                            'Material: Steel with anti-slip surface'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/plataforma-plana-1990.png',
+                    'assets/img/gallery/flatbed1.jpg',
+                    'assets/img/gallery/flatbed2.jpg'
+                ]
             ]
             
                     

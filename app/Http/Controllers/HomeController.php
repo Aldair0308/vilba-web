@@ -2098,6 +2098,95 @@ class HomeController extends Controller
                          ]
                      ]
                  ]
+             ],
+             'plataforma-plana-1990' => [
+                 'slug' => 'plataforma-plana-1990',
+                 'name' => [
+                     'es' => 'PLATAFORMA PLANA 1990',
+                     'en' => 'FLATBED PLATFORM 1990'
+                 ],
+                 'description' => [
+                     'es' => 'Plataforma plana año 1990, VIN: 1S12FF450MB332380, capacidad 48,000-80,000 lbs para transporte de carga general y materiales de construcción.',
+                     'en' => 'Flatbed platform year 1990, VIN: 1S12FF450MB332380, capacity 48,000-80,000 lbs for general cargo and construction materials transport.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/plataforma-plana-1990-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/plataforma-plana-1990.png',
+                     'assets/img/gallery/flatbed1.jpg',
+                     'assets/img/gallery/flatbed2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestra plataforma plana del año 1990 (VIN: 1S12FF450MB332380) es una solución versátil y confiable para el transporte de carga general, materiales de construcción y maquinaria. Su diseño de plataforma abierta permite fácil carga y descarga desde cualquier ángulo.',
+                         'features' => [
+                             'VIN: 1S12FF450MB332380',
+                             'Capacidad de carga: 48,000-80,000 lbs',
+                             'Plataforma de acero antideslizante',
+                             'Configuración de ejes tándem (2 ejes)',
+                             'Suspensión de resortes de acero',
+                             'Frenos neumáticos',
+                             'Puntos de amarre múltiples para asegurar carga'
+                         ],
+                         'applications' => [
+                             'Transporte de carga general',
+                             'Materiales de construcción',
+                             'Maquinaria y equipos',
+                             'Contenedores',
+                             'Productos siderúrgicos',
+                             'Materiales de gran longitud',
+                             'Equipos industriales'
+                         ],
+                         'technical_specs' => [
+                             'Año: 1990',
+                             'VIN: 1S12FF450MB332380',
+                             'Longitud: 48-53 pies (14.6-16.2 m)',
+                             'Ancho: 102 pulgadas (8.5 pies / 2.6 m)',
+                             'Capacidad de carga: 48,000-80,000 lbs (21,772-36,287 kg)',
+                             'Peso en vacío: 12,000-15,000 lbs (5,443-6,804 kg)',
+                             'Altura de plataforma: 60 pulgadas (1.52 m)',
+                             'Configuración de ejes: Tándem (2 ejes)',
+                             'Suspensión: Resortes de acero',
+                             'Neumáticos: 11R22.5',
+                             'Frenos: Neumáticos',
+                             'Material: Acero con superficie antideslizante'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our flatbed platform from year 1990 (VIN: 1S12FF450MB332380) is a versatile and reliable solution for general cargo transport, construction materials, and machinery. Its open platform design allows easy loading and unloading from any angle.',
+                         'features' => [
+                             'VIN: 1S12FF450MB332380',
+                             'Load capacity: 48,000-80,000 lbs',
+                             'Anti-slip steel platform',
+                             'Tandem axle configuration (2 axles)',
+                             'Steel spring suspension',
+                             'Air brakes',
+                             'Multiple tie-down points for cargo securing'
+                         ],
+                         'applications' => [
+                             'General cargo transport',
+                             'Construction materials',
+                             'Machinery and equipment',
+                             'Containers',
+                             'Steel products',
+                             'Long-length materials',
+                             'Industrial equipment'
+                         ],
+                         'technical_specs' => [
+                             'Year: 1990',
+                             'VIN: 1S12FF450MB332380',
+                             'Length: 48-53 ft (14.6-16.2 m)',
+                             'Width: 102 in (8.5 ft / 2.6 m)',
+                             'Load Capacity: 48,000-80,000 lbs (21,772-36,287 kg)',
+                             'Empty Weight: 12,000-15,000 lbs (5,443-6,804 kg)',
+                             'Deck Height: 60 in (1.52 m)',
+                             'Axle Configuration: Tandem (2 axles)',
+                             'Suspension: Steel springs',
+                             'Tires: 11R22.5',
+                             'Brakes: Air brakes',
+                             'Material: Steel with anti-slip deck'
+                         ]
+                     ]
+                 ]
              ]
          ];
  
