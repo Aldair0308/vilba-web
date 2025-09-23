@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);">
+  <!-- Background pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="400" fill="url(#grid)"/>
+  
+  <!-- Main flatbed trailer -->
+  <g transform="translate(100, 150)">
+    <!-- Trailer bed -->
+    <rect x="0" y="0" width="500" height="80" fill="#7f8c8d" stroke="#34495e" stroke-width="2" rx="4"/>
+    <rect x="5" y="5" width="490" height="70" fill="#95a5a6" rx="2"/>
+    
+    <!-- Deck pattern -->
+    <g stroke="#34495e" stroke-width="1" opacity="0.6">
+      <line x1="50" y1="5" x2="50" y2="75"/>
+      <line x1="100" y1="5" x2="100" y2="75"/>
+      <line x1="150" y1="5" x2="150" y2="75"/>
+      <line x1="200" y1="5" x2="200" y2="75"/>
+      <line x1="250" y1="5" x2="250" y2="75"/>
+      <line x1="300" y1="5" x2="300" y2="75"/>
+      <line x1="350" y1="5" x2="350" y2="75"/>
+      <line x1="400" y1="5" x2="400" y2="75"/>
+      <line x1="450" y1="5" x2="450" y2="75"/>
+    </g>
+    
+    <!-- Side rails -->
+    <rect x="0" y="-5" width="500" height="5" fill="#34495e"/>
+    <rect x="0" y="80" width="500" height="5" fill="#34495e"/>
+    
+    <!-- Axles and wheels -->
+    <!-- First axle -->
+    <rect x="350" y="85" width="8" height="30" fill="#2c3e50"/>
+    <circle cx="340" cy="115" r="18" fill="#1a1a1a" stroke="#34495e" stroke-width="2"/>
+    <circle cx="340" cy="115" r="12" fill="#2c3e50"/>
+    <circle cx="368" cy="115" r="18" fill="#1a1a1a" stroke="#34495e" stroke-width="2"/>
+    <circle cx="368" cy="115" r="12" fill="#2c3e50"/>
+    
+    <!-- Second axle -->
+    <rect x="400" y="85" width="8" height="30" fill="#2c3e50"/>
+    <circle cx="390" cy="115" r="18" fill="#1a1a1a" stroke="#34495e" stroke-width="2"/>
+    <circle cx="390" cy="115" r="12" fill="#2c3e50"/>
+    <circle cx="418" cy="115" r="18" fill="#1a1a1a" stroke="#34495e" stroke-width="2"/>
+    <circle cx="418" cy="115" r="12" fill="#2c3e50"/>
+    
+    <!-- Landing gear -->
+    <rect x="80" y="80" width="6" height="25" fill="#34495e"/>
+    <rect x="77" y="105" width="12" height="4" fill="#2c3e50"/>
+    <rect x="120" y="80" width="6" height="25" fill="#34495e"/>
+    <rect x="117" y="105" width="12" height="4" fill="#2c3e50"/>
+    
+    <!-- Kingpin area -->
+    <rect x="20" y="25" width="40" height="30" fill="#34495e" rx="5"/>
+    <circle cx="40" cy="40" r="8" fill="#2c3e50"/>
+    
+    <!-- Tie-down points -->
+    <circle cx="80" cy="10" r="3" fill="#e74c3c"/>
+    <circle cx="150" cy="10" r="3" fill="#e74c3c"/>
+    <circle cx="220" cy="10" r="3" fill="#e74c3c"/>
+    <circle cx="290" cy="10" r="3" fill="#e74c3c"/>
+    <circle cx="360" cy="10" r="3" fill="#e74c3c"/>
+    <circle cx="430" cy="10" r="3" fill="#e74c3c"/>
+    
+    <circle cx="80" cy="70" r="3" fill="#e74c3c"/>
+    <circle cx="150" cy="70" r="3" fill="#e74c3c"/>
+    <circle cx="220" cy="70" r="3" fill="#e74c3c"/>
+    <circle cx="290" cy="70" r="3" fill="#e74c3c"/>
+    <circle cx="360" cy="70" r="3" fill="#e74c3c"/>
+    <circle cx="430" cy="70" r="3" fill="#e74c3c"/>
+  </g>
+  
+  <!-- Title and specs -->
+  <text x="400" y="50" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="28" font-weight="bold">PLATAFORMA PLANA 1990</text>
+  <text x="400" y="80" text-anchor="middle" fill="#bdc3c7" font-family="Arial, sans-serif" font-size="18">VIN: 19203134</text>
+  
+  <!-- Specifications -->
+  <g transform="translate(50, 320)">
+    <text x="0" y="0" fill="#ecf0f1" font-family="Arial, sans-serif" font-size="14" font-weight="bold">ESPECIFICACIONES:</text>
+    <text x="0" y="20" fill="#bdc3c7" font-family="Arial, sans-serif" font-size="12">• Capacidad: 40,000-50,000 lbs</text>
+    <text x="200" y="20" fill="#bdc3c7" font-family="Arial, sans-serif" font-size="12">• Longitud: 48 ft</text>
+    <text x="350" y="20" fill="#bdc3c7" font-family="Arial, sans-serif" font-size="12">• Ancho: 102 in</text>
+    <text x="0" y="40" fill="#bdc3c7" font-family="Arial, sans-serif" font-size="12">• Configuración: Tándem (2 ejes)</text>
+    <text x="200" y="40" fill="#bdc3c7" font-family="Arial, sans-serif" font-size="12">• Suspensión: Mecánica</text>
+    <text x="350" y="40" fill="#bdc3c7" font-family="Arial, sans-serif" font-size="12">• Frenos: Neumáticos</text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="700" cy="100" r="30" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <circle cx="700" cy="100" r="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  
+  <rect x="50" y="50" width="2" height="20" fill="#3498db"/>
+  <rect x="55" y="55" width="2" height="10" fill="#3498db"/>
+  <rect x="60" y="60" width="2" height="5" fill="#3498db"/>
+</svg>

@@ -2187,6 +2187,211 @@ class HomeController extends Controller
                          ]
                      ]
                  ]
+             ],
+             'plataforma-plana-1990-vin-19203134' => [
+                 'slug' => 'plataforma-plana-1990-vin-19203134',
+                 'name' => [
+                     'es' => 'PLATAFORMA PLANA 1990 - VIN 19203134',
+                     'en' => 'FLATBED PLATFORM 1990 - VIN 19203134'
+                 ],
+                 'description' => [
+                     'es' => 'Plataforma plana año 1990, VIN: 19203134, capacidad 40,000-50,000 lbs para transporte de carga general y materiales de construcción.',
+                     'en' => 'Flatbed platform year 1990, VIN: 19203134, capacity 40,000-50,000 lbs for general cargo and construction materials transport.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/plataforma-plana-1990-2-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/plataforma-plana-1990-2.png',
+                     'assets/img/gallery/flatbed3.jpg',
+                     'assets/img/gallery/flatbed4.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestra segunda plataforma plana del año 1990 (VIN: 19203134) es una solución confiable y versátil para el transporte de carga general, materiales de construcción y maquinaria ligera. Su diseño robusto permite una operación eficiente en diversas condiciones.',
+                         'features' => [
+                             'VIN: 19203134',
+                             'Capacidad de carga: 40,000-50,000 lbs',
+                             'Plataforma de acero resistente',
+                             'Configuración de ejes tándem (2 ejes)',
+                             'Suspensión mecánica de resortes',
+                             'Sistema de frenos neumáticos',
+                             'Múltiples puntos de amarre para carga'
+                         ],
+                         'applications' => [
+                             'Transporte de carga general',
+                             'Materiales de construcción ligeros',
+                             'Maquinaria de tamaño medio',
+                             'Equipos industriales',
+                             'Productos manufacturados',
+                             'Materiales de longitud estándar'
+                         ],
+                         'technical_specs' => [
+                             'Año: 1990',
+                             'VIN: 19203134',
+                             'Longitud: 48 pies (14.6 m)',
+                             'Ancho: 102 pulgadas (8.5 pies / 2.6 m)',
+                             'Capacidad de carga: 40,000-50,000 lbs (18,144-22,680 kg)',
+                             'Peso en vacío: 10,000-12,000 lbs (4,536-5,443 kg)',
+                             'Altura de plataforma: 60 pulgadas (1.52 m)',
+                             'Configuración de ejes: Tándem (2 ejes)',
+                             'Suspensión: Mecánica de resortes',
+                             'Neumáticos: 11R22.5',
+                             'Frenos: Sistema neumático',
+                             'Material: Acero estructural resistente'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our second flatbed platform from year 1990 (VIN: 19203134) is a reliable and versatile solution for general cargo transport, construction materials, and light machinery. Its robust design allows efficient operation in various conditions.',
+                         'features' => [
+                             'VIN: 19203134',
+                             'Load capacity: 40,000-50,000 lbs',
+                             'Durable steel platform',
+                             'Tandem axle configuration (2 axles)',
+                             'Mechanical spring suspension',
+                             'Air brake system',
+                             'Multiple tie-down points for cargo'
+                         ],
+                         'applications' => [
+                             'General cargo transport',
+                             'Light construction materials',
+                             'Medium-sized machinery',
+                             'Industrial equipment',
+                             'Manufactured products',
+                             'Standard length materials'
+                         ],
+                         'technical_specs' => [
+                             'Year: 1990',
+                             'VIN: 19203134',
+                             'Length: 48 ft (14.6 m)',
+                             'Width: 102 in (8.5 ft / 2.6 m)',
+                             'Load Capacity: 40,000-50,000 lbs (18,144-22,680 kg)',
+                             'Empty Weight: 10,000-12,000 lbs (4,536-5,443 kg)',
+                             'Deck Height: 60 in (1.52 m)',
+                             'Axle Configuration: Tandem (2 axles)',
+                             'Suspension: Mechanical springs',
+                             'Tires: 11R22.5',
+                             'Brakes: Air brake system',
+                             'Material: Structural steel'
+                         ]
+                     ]
+                 ]
+             ],
+             'cama-baja-2014-vin-2m512146471114308' => [
+                 'slug' => 'cama-baja-2014-vin-2m512146471114308',
+                 'name' => [
+                     'es' => 'CAMA BAJA O PLANA AÑO 2014, VIN: 2M512146471114308',
+                     'en' => 'LOWBOY OR FLATBED YEAR 2014, VIN: 2M512146471114308'
+                 ],
+                 'description' => [
+                     'es' => 'Remolque cama baja o plana año 2014, VIN: 2M512146471114308, capacidad 40-55 toneladas para transporte de maquinaria pesada y equipos de construcción de gran envergadura.',
+                     'en' => 'Lowboy or flatbed trailer year 2014, VIN: 2M512146471114308, capacity 40-55 tons for heavy machinery and large-scale construction equipment transport.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/cama-baja-2014-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/cama-baja-2014.png',
+                     'assets/img/gallery/lowboy-2014-1.jpg',
+                     'assets/img/gallery/lowboy-2014-2.jpg',
+                     'assets/img/gallery/lowboy-2014-3.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestro remolque cama baja o plana del año 2014 (VIN: 2M512146471114308) representa la última tecnología en transporte de maquinaria pesada. Su diseño moderno y construcción robusta lo hacen ideal para el transporte seguro y eficiente de equipos de construcción, maquinaria industrial y cargas especializadas de gran tamaño.',
+                         'features' => [
+                             'VIN: 2M512146471114308',
+                             'Capacidad de carga: 40-55 toneladas (80,000-110,000 lbs)',
+                             'Plataforma de carga baja de 18-24 pulgadas',
+                             'Longitud de plataforma: 48-53 pies',
+                             'Ancho estándar: 102 pulgadas (8.5 pies)',
+                             'Configuración de ejes: 3 ejes tándem',
+                             'Suspensión neumática con sistema de elevación',
+                             'Sistema de frenos de aire con ABS',
+                             'Cuello desmontable hidráulico',
+                             'Plataforma de madera tratada',
+                             'Rampas frontales plegables',
+                             'Neumáticos 275/70R22.5',
+                             'Construcción de acero de alta resistencia'
+                         ],
+                         'applications' => [
+                             'Transporte de excavadoras grandes (30-50 toneladas)',
+                             'Transporte de bulldozers y motoconformadoras',
+                             'Transporte de grúas móviles',
+                             'Transporte de equipos industriales pesados',
+                             'Transporte de generadores industriales',
+                             'Transporte de equipos de minería',
+                             'Transporte de maquinaria especializada',
+                             'Transporte de equipos agrícolas pesados',
+                             'Transporte de transformadores eléctricos',
+                             'Transporte de estructuras prefabricadas'
+                         ],
+                         'technical_specs' => [
+                             'Año: 2014',
+                             'VIN: 2M512146471114308',
+                             'Tipo: Cama baja/Plana (Lowboy/Flatbed)',
+                             'Capacidad de carga: 40-55 toneladas (80,000-110,000 lbs)',
+                             'Longitud de plataforma: 48-53 pies (14.6-16.2 m)',
+                             'Altura de plataforma: 18-24 pulgadas (0.46-0.61 m)',
+                             'Longitud total: 53-58 pies (16.2-17.7 m)',
+                             'Ancho: 102 pulgadas (8.5 pies / 2.6 m)',
+                             'Configuración de ejes: 3 ejes tándem',
+                             'Suspensión: Neumática con sistema de elevación',
+                             'Frenos: Aire con sistema ABS',
+                             'Neumáticos: 275/70R22.5',
+                             'Peso del remolque: Aproximadamente 20,000-25,000 lbs',
+                             'Material: Construcción de acero de alta resistencia',
+                             'Cuello: Desmontable hidráulico',
+                             'Plataforma: Madera tratada antideslizante',
+                             'Rampas: Frontales plegables hidráulicas'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our lowboy or flatbed trailer from year 2014 (VIN: 2M512146471114308) represents the latest technology in heavy machinery transport. Its modern design and robust construction make it ideal for safe and efficient transport of construction equipment, industrial machinery, and large specialized loads.',
+                         'features' => [
+                             'VIN: 2M512146471114308',
+                             'Load capacity: 40-55 tons (80,000-110,000 lbs)',
+                             'Low-profile deck 18-24 inches height',
+                             'Deck length: 48-53 feet',
+                             'Standard width: 102 inches (8.5 feet)',
+                             'Axle configuration: 3-axle tandem',
+                             'Air suspension with lifting system',
+                             'Air brake system with ABS',
+                             'Hydraulic detachable gooseneck',
+                             'Treated wood platform',
+                             'Folding front ramps',
+                             '275/70R22.5 tires',
+                             'High-strength steel construction'
+                         ],
+                         'applications' => [
+                             'Large excavator transport (30-50 tons)',
+                             'Bulldozer and motor grader transport',
+                             'Mobile crane transport',
+                             'Heavy industrial equipment transport',
+                             'Industrial generator transport',
+                             'Mining equipment transport',
+                             'Specialized machinery transport',
+                             'Heavy agricultural equipment transport',
+                             'Electrical transformer transport',
+                             'Prefabricated structure transport'
+                         ],
+                         'technical_specs' => [
+                             'Year: 2014',
+                             'VIN: 2M512146471114308',
+                             'Type: Lowboy/Flatbed',
+                             'Load capacity: 40-55 tons (80,000-110,000 lbs)',
+                             'Deck length: 48-53 ft (14.6-16.2 m)',
+                             'Deck height: 18-24 in (0.46-0.61 m)',
+                             'Overall length: 53-58 ft (16.2-17.7 m)',
+                             'Width: 102 in (8.5 ft / 2.6 m)',
+                             'Axle configuration: 3-axle tandem',
+                             'Suspension: Air suspension with lifting system',
+                             'Brakes: Air brakes with ABS',
+                             'Tires: 275/70R22.5',
+                             'Trailer weight: Approximately 20,000-25,000 lbs',
+                             'Material: High-strength steel construction',
+                             'Gooseneck: Hydraulic detachable',
+                             'Platform: Treated anti-slip wood',
+                             'Ramps: Hydraulic folding front ramps'
+                         ]
+                     ]
+                 ]
              ]
          ];
  
