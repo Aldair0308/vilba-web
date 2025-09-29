@@ -2330,6 +2330,122 @@
                     'assets/img/gallery/ford-dump-1996-1.jpg',
                     'assets/img/gallery/ford-dump-1996-2.jpg'
                 ]
+            ],
+            [
+                'slug' => 'camion-volteo-volvo-2013-vin-4v4m19gg96n407479',
+                'name' => [
+                    'es' => 'Camión de Volteo Volvo VHD 2013 - 7m³',
+                    'en' => 'Volvo VHD 2013 Dump Truck - 7m³'
+                ],
+                'description' => [
+                    'es' => 'Camión de volteo Volvo VHD 2013 con capacidad de 7 metros cúbicos, ideal para transporte de materiales de construcción y movimiento de tierras.',
+                    'en' => 'Volvo VHD 2013 dump truck with 7 cubic meter capacity, ideal for construction material transport and earthmoving operations.'
+                ],
+                'image' => 'assets/img/equipos/camion-volteo-volvo-2013.jpg',
+                'icon' => 'assets/img/icon/services_icon1.png',
+                'specs' => [
+                    'es' => [
+                        'Motor: Volvo D13 - 425 HP',
+                        'Capacidad: 7 metros cúbicos',
+                        'Transmisión: I-Shift automática'
+                    ],
+                    'en' => [
+                        'Engine: Volvo D13 - 425 HP',
+                        'Capacity: 7 cubic meters',
+                        'Transmission: I-Shift automatic'
+                    ]
+                ],
+                'detailed_info' => [
+                    'es' => [
+                        'description' => 'El Camión de Volteo Volvo VHD 2013 es un vehículo robusto y confiable diseñado para aplicaciones de construcción pesada. Con su motor Volvo D13 y transmisión I-Shift automática, ofrece un rendimiento excepcional y eficiencia operativa.',
+                        'features' => [
+                            'Motor Volvo D13 de 425 HP con tecnología avanzada',
+                            'Transmisión automática I-Shift de 12 velocidades',
+                            'Sistema hidráulico PTO para volcado eficiente',
+                            'Configuración de ejes 6x4 para máxima tracción',
+                            'Frenos de aire con sistema ABS para seguridad',
+                            'Cabina ergonómica con controles intuitivos',
+                            'Sistema de suspensión con ballestas reforzadas',
+                            'Dirección hidráulica asistida para maniobrabilidad'
+                        ],
+                        'applications' => [
+                            'Transporte de materiales de construcción',
+                            'Movimiento de tierras y excavaciones',
+                            'Obras de infraestructura vial',
+                            'Proyectos de urbanización',
+                            'Transporte de agregados y arena',
+                            'Limpieza y mantenimiento urbano'
+                        ],
+                        'technical_specs' => [
+                            'Año: 2013',
+                            'VIN: 4V4M19GG96N407479',
+                            'Marca: Volvo',
+                            'Modelo: VHD',
+                            'Tipo: Camión de Volteo',
+                            'Motor: Volvo D13 - 425 HP (317 kW) @ 1,800 rpm',
+                            'Torque: 1,650 lb-ft (2,237 Nm) @ 1,000 rpm',
+                            'Transmisión: I-Shift automática de 12 velocidades',
+                            'Capacidad de carga: 7 metros cúbicos',
+                            'GVWR: 26,000 kg (57,320 lbs)',
+                            'Configuración de ejes: 6x4',
+                            'Sistema hidráulico: PTO para volcado',
+                            'Frenos: Aire con ABS',
+                            'Suspensión: Ballestas delanteras y traseras',
+                            'Llantas: 11R22.5',
+                            'Tanque de combustible: 300 litros',
+                            'Dirección: Hidráulica asistida',
+                            'Voltaje: 24V',
+                            'Alternador: 150 amperios'
+                        ]
+                    ],
+                    'en' => [
+                        'description' => 'The Volvo VHD 2013 Dump Truck is a robust and reliable vehicle designed for heavy construction applications. With its Volvo D13 engine and I-Shift automatic transmission, it offers exceptional performance and operational efficiency.',
+                        'features' => [
+                            'Volvo D13 425 HP engine with advanced technology',
+                            'I-Shift 12-speed automatic transmission',
+                            'PTO hydraulic system for efficient dumping',
+                            '6x4 axle configuration for maximum traction',
+                            'Air brakes with ABS system for safety',
+                            'Ergonomic cab with intuitive controls',
+                            'Suspension system with reinforced leaf springs',
+                            'Power-assisted hydraulic steering for maneuverability'
+                        ],
+                        'applications' => [
+                            'Construction material transport',
+                            'Earthmoving and excavation work',
+                            'Road infrastructure projects',
+                            'Urbanization projects',
+                            'Aggregate and sand transport',
+                            'Urban cleaning and maintenance'
+                        ],
+                        'technical_specs' => [
+                            'Year: 2013',
+                            'VIN: 4V4M19GG96N407479',
+                            'Brand: Volvo',
+                            'Model: VHD',
+                            'Type: Dump Truck',
+                            'Engine: Volvo D13 - 425 HP (317 kW) @ 1,800 rpm',
+                            'Torque: 1,650 lb-ft (2,237 Nm) @ 1,000 rpm',
+                            'Transmission: I-Shift 12-speed automatic',
+                            'Load Capacity: 7 cubic meters',
+                            'GVWR: 26,000 kg (57,320 lbs)',
+                            'Axle Configuration: 6x4',
+                            'Hydraulic System: PTO for dumping',
+                            'Brakes: Air with ABS',
+                            'Suspension: Front and rear leaf springs',
+                            'Tires: 11R22.5',
+                            'Fuel Tank: 300 liters',
+                            'Steering: Power-assisted hydraulic',
+                            'Voltage: 24V',
+                            'Alternator: 150 amps'
+                        ]
+                    ]
+                ],
+                'gallery' => [
+                    'assets/img/equipos/camion-volteo-volvo-2013.jpg',
+                    'assets/img/gallery/volvo-dump-2013-1.jpg',
+                    'assets/img/gallery/volvo-dump-2013-2.jpg'
+                ]
             ]
             
                     

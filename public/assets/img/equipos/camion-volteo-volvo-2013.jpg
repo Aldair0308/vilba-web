@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f8f9fa"/>
+  
+  <!-- Ground line -->
+  <line x1="0" y1="250" x2="400" y2="250" stroke="#ddd" stroke-width="2"/>
+  
+  <!-- Truck body (dump bed) -->
+  <rect x="50" y="120" width="180" height="80" fill="#2c5aa0" stroke="#1a3d73" stroke-width="2" rx="5"/>
+  
+  <!-- Truck cab -->
+  <rect x="230" y="140" width="80" height="60" fill="#2c5aa0" stroke="#1a3d73" stroke-width="2" rx="8"/>
+  
+  <!-- Cab windshield -->
+  <rect x="240" y="150" width="60" height="30" fill="#87ceeb" stroke="#4682b4" stroke-width="1" rx="3"/>
+  
+  <!-- Volvo grille -->
+  <rect x="310" y="155" width="15" height="35" fill="#1a3d73" rx="2"/>
+  <rect x="315" y="160" width="5" height="25" fill="#ffffff"/>
+  
+  <!-- Headlights -->
+  <circle cx="320" cy="165" r="8" fill="#ffffcc" stroke="#ffd700" stroke-width="2"/>
+  <circle cx="320" cy="185" r="8" fill="#ffffcc" stroke="#ffd700" stroke-width="2"/>
+  
+  <!-- Wheels -->
+  <circle cx="100" cy="230" r="25" fill="#333" stroke="#000" stroke-width="3"/>
+  <circle cx="100" cy="230" r="15" fill="#666"/>
+  <circle cx="180" cy="230" r="25" fill="#333" stroke="#000" stroke-width="3"/>
+  <circle cx="180" cy="230" r="15" fill="#666"/>
+  <circle cx="260" cy="230" r="25" fill="#333" stroke="#000" stroke-width="3"/>
+  <circle cx="260" cy="230" r="15" fill="#666"/>
+  
+  <!-- Hydraulic cylinders -->
+  <rect x="70" y="100" width="8" height="20" fill="#666" rx="4"/>
+  <rect x="200" y="100" width="8" height="20" fill="#666" rx="4"/>
+  
+  <!-- Dump bed details -->
+  <line x1="60" y1="130" x2="220" y2="130" stroke="#1a3d73" stroke-width="1"/>
+  <line x1="60" y1="150" x2="220" y2="150" stroke="#1a3d73" stroke-width="1"/>
+  <line x1="60" y1="170" x2="220" y2="170" stroke="#1a3d73" stroke-width="1"/>
+  
+  <!-- Volvo logo area -->
+  <rect x="240" y="180" width="30" height="15" fill="#ffffff" stroke="#2c5aa0" stroke-width="1" rx="2"/>
+  <text x="255" y="190" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#2c5aa0" text-anchor="middle">VOLVO</text>
+  
+  <!-- Model year text -->
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">2013 VHD - 7m³</text>
+  
+  <!-- Side reflectors -->
+  <rect x="45" y="160" width="3" height="8" fill="#ff6b35" rx="1"/>
+  <rect x="325" y="160" width="3" height="8" fill="#ff6b35" rx="1"/>
+</svg>
