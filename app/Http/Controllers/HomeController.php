@@ -2497,6 +2497,122 @@ class HomeController extends Controller
                          ]
                      ]
                  ]
+             ],
+             'camion-volteo-ford-1996-vin-1fdyl90e2tva30436' => [
+                 'slug' => 'camion-volteo-ford-1996-vin-1fdyl90e2tva30436',
+                 'name' => [
+                     'es' => 'Camión Volteo Ford 7m³ 1996',
+                     'en' => 'Ford 7m³ Dump Truck 1996'
+                 ],
+                 'description' => [
+                     'es' => 'Camión volteo Ford F-350 año 1996, VIN: 1FDYL90E2TVA30436, capacidad 7 metros cúbicos, motor 7.5L V8, transmisión manual 5 velocidades.',
+                     'en' => 'Ford F-350 dump truck year 1996, VIN: 1FDYL90E2TVA30436, 7 cubic meters capacity, 7.5L V8 engine, 5-speed manual transmission.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/camion-volteo-ford-1996-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/camion-volteo-ford-1996.png',
+                     'assets/img/gallery/ford-dump-1996-1.jpg',
+                     'assets/img/gallery/ford-dump-1996-2.jpg',
+                     'assets/img/gallery/ford-dump-1996-3.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestro camión volteo Ford F-350 del año 1996 (VIN: 1FDYL90E2TVA30436) es una solución confiable y robusta para el transporte y descarga de materiales de construcción. Con su motor 7.5L V8 y transmisión manual de 5 velocidades, ofrece la potencia y control necesarios para trabajos exigentes en obras de construcción e infraestructura.',
+                         'features' => [
+                             'VIN: 1FDYL90E2TVA30436',
+                             'Motor 7.5L V8 (460 cu in, 245 HP @ 4,000 rpm)',
+                             'Transmisión manual de 5 velocidades',
+                             'Capacidad de carga: 7 metros cúbicos',
+                             'Peso bruto vehicular: 11,000 lbs (4,990 kg)',
+                             'Configuración de ejes: 4x2 (dos ejes)',
+                             'Sistema hidráulico PTO con bomba hidráulica',
+                             'Frenos de disco delanteros con ABS',
+                             'Suspensión de ballestas delanteras y traseras',
+                             'Dirección asistida hidráulicamente',
+                             'Tanque de gasolina de 19 galones',
+                             'Llantas 235/85R16'
+                         ],
+                         'applications' => [
+                             'Transporte de arena y grava',
+                             'Transporte de materiales de construcción',
+                             'Trabajos de excavación y movimiento de tierra',
+                             'Proyectos de pavimentación',
+                             'Construcción de carreteras',
+                             'Obras de infraestructura urbana',
+                             'Proyectos residenciales y comerciales',
+                             'Limpieza y mantenimiento de sitios'
+                         ],
+                         'technical_specs' => [
+                             'Año: 1996',
+                             'VIN: 1FDYL90E2TVA30436',
+                             'Marca: Ford',
+                             'Modelo: F-350 (Novena Generación)',
+                             'Tipo: Camión de Volteo',
+                             'Motor: 7.5L V8 (460 cu in, 245 HP @ 4,000 rpm)',
+                             'Torque: 400 lb-ft @ 2,200 rpm',
+                             'Transmisión: Manual de 5 velocidades',
+                             'Capacidad de carga: 7 metros cúbicos',
+                             'Peso bruto vehicular: 11,000 lbs (4,990 kg)',
+                             'Peso vacío: aproximadamente 7,500 lbs (3,402 kg)',
+                             'Configuración de ejes: 4x2 (dos ejes)',
+                             'Sistema hidráulico: PTO con bomba hidráulica',
+                             'Frenos: Frenos de disco delanteros con ABS',
+                             'Suspensión: Ballestas delanteras y traseras',
+                             'Llantas: 235/85R16',
+                             'Dirección: Dirección asistida hidráulicamente',
+                             'Combustible: Tanque de gasolina de 19 galones',
+                             'Dimensiones: Largo 6.7m x Ancho 2.4m x Alto 3.0m'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our Ford F-350 dump truck from year 1996 (VIN: 1FDYL90E2TVA30436) is a reliable and robust solution for transporting and unloading construction materials. With its 7.5L V8 engine and 5-speed manual transmission, it offers the power and control needed for demanding work in construction and infrastructure projects.',
+                         'features' => [
+                             'VIN: 1FDYL90E2TVA30436',
+                             '7.5L V8 engine (460 cu in, 245 HP @ 4,000 rpm)',
+                             '5-speed manual transmission',
+                             'Load capacity: 7 cubic meters',
+                             'GVWR: 11,000 lbs (4,990 kg)',
+                             'Axle configuration: 4x2 (two axles)',
+                             'PTO hydraulic system with hydraulic pump',
+                             'Front disc brakes with ABS',
+                             'Leaf springs front and rear suspension',
+                             'Hydraulically assisted power steering',
+                             '19-gallon gasoline tank',
+                             '235/85R16 tires'
+                         ],
+                         'applications' => [
+                             'Sand and gravel transport',
+                             'Construction materials transport',
+                             'Excavation and earthmoving work',
+                             'Paving projects',
+                             'Road construction',
+                             'Urban infrastructure works',
+                             'Residential and commercial projects',
+                             'Site cleanup and maintenance'
+                         ],
+                         'technical_specs' => [
+                             'Year: 1996',
+                             'VIN: 1FDYL90E2TVA30436',
+                             'Brand: Ford',
+                             'Model: F-350 (Ninth Generation)',
+                             'Type: Dump Truck',
+                             'Engine: 7.5L V8 (460 cu in, 245 HP @ 4,000 rpm)',
+                             'Torque: 400 lb-ft @ 2,200 rpm',
+                             'Transmission: 5-speed manual',
+                             'Load Capacity: 7 cubic meters',
+                             'GVWR: 11,000 lbs (4,990 kg)',
+                             'Empty Weight: approximately 7,500 lbs (3,402 kg)',
+                             'Axle Configuration: 4x2 (two axles)',
+                             'Hydraulic System: PTO with hydraulic pump',
+                             'Brakes: Front disc brakes with ABS',
+                             'Suspension: Leaf springs front and rear',
+                             'Tires: 235/85R16',
+                             'Steering: Hydraulically assisted power steering',
+                             'Fuel: 19-gallon gasoline tank',
+                             'Dimensions: Length 6.7m x Width 2.4m x Height 3.0m'
+                         ]
+                     ]
+                 ]
              ]
          ];
  
