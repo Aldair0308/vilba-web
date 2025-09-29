@@ -2614,6 +2614,132 @@ class HomeController extends Controller
                      ]
                  ]
              ],
+             'camion-volteo-ford-1997-serie-y559537nm559537' => [
+                 'slug' => 'camion-volteo-ford-1997-serie-y559537nm559537',
+                 'name' => [
+                     'es' => 'Camión Volteo Ford F700 1997 - 7m³',
+                     'en' => 'Ford F700 1997 Dump Truck - 7m³'
+                 ],
+                 'description' => [
+                     'es' => 'Camión volteo Ford F700 año 1997, Serie: Y559537NM559537, capacidad 7 metros cúbicos, motor 7.0L V8 (429), transmisión manual 5 velocidades.',
+                     'en' => 'Ford F700 dump truck year 1997, Series: Y559537NM559537, 7 cubic meters capacity, 7.0L V8 (429) engine, 5-speed manual transmission.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/camion-volteo-ford-1997-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/camion-volteo-ford-1997.png',
+                     'assets/img/gallery/ford-dump-1997-1.jpg',
+                     'assets/img/gallery/ford-dump-1997-2.jpg',
+                     'assets/img/gallery/ford-dump-1997-3.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestro camión volteo Ford F700 del año 1997 (Serie: Y559537NM559537) es una solución confiable y robusta para el transporte y descarga de materiales de construcción. Con su motor 7.0L V8 (429) y transmisión manual de 5 velocidades con diferencial de 2 velocidades, ofrece la potencia y control necesarios para trabajos exigentes en obras de construcción e infraestructura.',
+                         'features' => [
+                             'Serie: Y559537NM559537',
+                             'Motor Ford 7.0L V8 (429 cu in, 236 HP @ 3,600 rpm)',
+                             'Transmisión manual de 5 velocidades + 2 velocidades diferencial',
+                             'Capacidad de carga: 7 metros cúbicos',
+                             'Peso bruto vehicular: 26,000 lbs (11,793 kg)',
+                             'Configuración de ejes: 4x2 (sencillo)',
+                             'Sistema hidráulico PTO para volcado',
+                             'Frenos hidráulicos (Lucas Girling)',
+                             'Suspensión de ballestas delanteras y traseras',
+                             'Dirección hidráulica asistida',
+                             'Tanque de gasolina de 60 galones (227 litros)',
+                             'Llantas 10R22.5',
+                             'Distancia entre ejes: 153 pulgadas'
+                         ],
+                         'applications' => [
+                             'Transporte de arena y grava',
+                             'Transporte de materiales de construcción',
+                             'Trabajos de excavación y movimiento de tierra',
+                             'Proyectos de pavimentación',
+                             'Construcción de carreteras',
+                             'Obras de infraestructura urbana',
+                             'Proyectos residenciales y comerciales',
+                             'Limpieza y mantenimiento de sitios'
+                         ],
+                         'technical_specs' => [
+                             'Año: 1997',
+                             'Serie: Y559537NM559537',
+                             'Marca: Ford',
+                             'Modelo: F700',
+                             'Tipo: Camión de Volteo Rabón',
+                             'Motor: Ford 7.0L V8 (429 cu in, 236 HP @ 3,600 rpm)',
+                             'Torque: 358 lb-ft @ 2,800 rpm',
+                             'Relación de compresión: 8.0:1',
+                             'Transmisión: Manual 5 velocidades + 2 velocidades diferencial',
+                             'Capacidad de carga: 7 metros cúbicos',
+                             'Peso bruto vehicular: 26,000 lbs (11,793 kg)',
+                             'Eje delantero: 9,000 lbs',
+                             'Eje trasero: 17,000 lbs',
+                             'Configuración de ejes: 4x2 (sencillo)',
+                             'Sistema hidráulico: PTO para volcado',
+                             'Frenos: Hidráulicos (Lucas Girling)',
+                             'Suspensión: Ballestas delanteras y traseras',
+                             'Llantas: 10R22.5',
+                             'Dirección: Hidráulica asistida',
+                             'Combustible: Tanque de gasolina 60 galones (227 litros)',
+                             'Capacidad de aceite: 8 cuartos (7.6 litros)',
+                             'Distancia entre ejes: 153 pulgadas',
+                             'Voltaje: 12V'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our Ford F700 dump truck from year 1997 (Series: Y559537NM559537) is a reliable and robust solution for transporting and unloading construction materials. With its 7.0L V8 (429) engine and 5-speed manual transmission with 2-speed differential, it offers the power and control needed for demanding work in construction and infrastructure projects.',
+                         'features' => [
+                             'Series: Y559537NM559537',
+                             'Ford 7.0L V8 engine (429 cu in, 236 HP @ 3,600 rpm)',
+                             '5-speed manual transmission + 2-speed differential',
+                             'Load capacity: 7 cubic meters',
+                             'GVWR: 26,000 lbs (11,793 kg)',
+                             'Axle configuration: 4x2 (single)',
+                             'PTO hydraulic system for dumping',
+                             'Hydraulic brakes (Lucas Girling)',
+                             'Leaf springs front and rear suspension',
+                             'Power-assisted hydraulic steering',
+                             '60-gallon gasoline tank (227 liters)',
+                             '10R22.5 tires',
+                             'Wheelbase: 153 inches'
+                         ],
+                         'applications' => [
+                             'Sand and gravel transport',
+                             'Construction materials transport',
+                             'Excavation and earthmoving work',
+                             'Paving projects',
+                             'Road construction',
+                             'Urban infrastructure works',
+                             'Residential and commercial projects',
+                             'Site cleanup and maintenance'
+                         ],
+                         'technical_specs' => [
+                             'Year: 1997',
+                             'Series: Y559537NM559537',
+                             'Brand: Ford',
+                             'Model: F700',
+                             'Type: Rabón Dump Truck',
+                             'Engine: Ford 7.0L V8 (429 cu in, 236 HP @ 3,600 rpm)',
+                             'Torque: 358 lb-ft @ 2,800 rpm',
+                             'Compression Ratio: 8.0:1',
+                             'Transmission: 5-speed manual + 2-speed differential',
+                             'Load Capacity: 7 cubic meters',
+                             'GVWR: 26,000 lbs (11,793 kg)',
+                             'Front Axle: 9,000 lbs',
+                             'Rear Axle: 17,000 lbs',
+                             'Axle Configuration: 4x2 (single)',
+                             'Hydraulic System: PTO for dumping',
+                             'Brakes: Hydraulic (Lucas Girling)',
+                             'Suspension: Front and rear leaf springs',
+                             'Tires: 10R22.5',
+                             'Steering: Power-assisted hydraulic',
+                             'Fuel: 60-gallon gasoline tank (227 liters)',
+                             'Oil Capacity: 8 quarts (7.6 liters)',
+                             'Wheelbase: 153 inches',
+                             'Voltage: 12V'
+                         ]
+                     ]
+                 ]
+             ],
              'camion-volteo-volvo-2013-vin-4v4m19gg96n407479' => [
                  'slug' => 'camion-volteo-volvo-2013-vin-4v4m19gg96n407479',
                  'name' => [
