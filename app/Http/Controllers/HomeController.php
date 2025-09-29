@@ -2392,6 +2392,111 @@ class HomeController extends Controller
                          ]
                      ]
                  ]
+             ],
+             'plataforma-plana-2002-vin-1a9cj1a142m362081' => [
+                 'slug' => 'plataforma-plana-2002-vin-1a9cj1a142m362081',
+                 'name' => [
+                     'es' => 'PLATAFORMA PLANA AÑO 2002, VIN: 1A9CJ1A142M362081',
+                     'en' => '2002 FLATBED TRAILER, VIN: 1A9CJ1A142M362081'
+                 ],
+                 'description' => [
+                     'es' => 'Plataforma plana año 2002, VIN: 1A9CJ1A142M362081, capacidad 48,000 lbs (80,000 lbs distribuidos) para transporte de carga general y materiales de construcción.',
+                     'en' => 'Flatbed trailer year 2002, VIN: 1A9CJ1A142M362081, capacity 48,000 lbs (80,000 lbs distributed) for general cargo and construction materials transport.'
+                 ],
+                 'hero_image' => 'assets/img/equipos/plataforma-plana-2002-cover.png',
+                 'gallery' => [
+                     'assets/img/equipos/plataforma-plana-2002.png',
+                     'assets/img/gallery/flatbed-2002-1.jpg',
+                     'assets/img/gallery/flatbed-2002-2.jpg'
+                 ],
+                 'detailed_info' => [
+                     'es' => [
+                         'description' => 'Nuestra plataforma plana del año 2002 (VIN: 1A9CJ1A142M362081) es una solución confiable y versátil para el transporte de carga general, materiales de construcción y maquinaria. Su diseño robusto de plataforma abierta permite fácil carga y descarga desde cualquier ángulo, siendo ideal para proyectos de construcción e infraestructura.',
+                         'features' => [
+                             'VIN: 1A9CJ1A142M362081',
+                             'Capacidad de carga: 48,000 lbs (80,000 lbs distribuidos)',
+                             'Dimensiones: 48 pies de largo x 102 pulgadas de ancho',
+                             'Altura de plataforma: 60 pulgadas desde el suelo',
+                             'Configuración de ejes: 2 ejes tándem',
+                             'Sistema de frenos: Frenos de aire',
+                             'Suspensión: Suspensión mecánica de resortes',
+                             'Plataforma: Cubierta de madera tratada',
+                             'Sistema de amarres con anillos en D',
+                             'Neumáticos: 11R22.5',
+                             'Chasis de acero al carbono'
+                         ],
+                         'applications' => [
+                             'Transporte de carga general',
+                             'Materiales de construcción',
+                             'Maquinaria y equipos industriales',
+                             'Contenedores y productos manufacturados',
+                             'Materiales de gran longitud',
+                             'Equipos de construcción ligeros',
+                             'Productos siderúrgicos'
+                         ],
+                         'technical_specs' => [
+                             'Año: 2002',
+                             'VIN: 1A9CJ1A142M362081',
+                             'Tipo: Plataforma Plana (Flatbed)',
+                             'Capacidad de carga: 48,000 lbs (21,772 kg)',
+                             'Capacidad distribuida: 80,000 lbs (36,287 kg)',
+                             'Longitud: 48 pies (14.6 m)',
+                             'Ancho: 102 pulgadas (8.5 pies / 2.6 m)',
+                             'Altura de plataforma: 60 pulgadas (1.52 m)',
+                             'Peso en vacío: Aproximadamente 12,000 lbs (5,443 kg)',
+                             'Configuración de ejes: 2 ejes tándem',
+                             'Suspensión: Mecánica de resortes',
+                             'Frenos: Sistema de frenos de aire',
+                             'Neumáticos: 11R22.5',
+                             'Plataforma: Cubierta de madera tratada',
+                             'Amarres: Sistema de anillos en D',
+                             'Chasis: Acero al carbono'
+                         ]
+                     ],
+                     'en' => [
+                         'description' => 'Our flatbed trailer from year 2002 (VIN: 1A9CJ1A142M362081) is a reliable and versatile solution for general cargo transport, construction materials, and machinery. Its robust open platform design allows easy loading and unloading from any angle, making it ideal for construction and infrastructure projects.',
+                         'features' => [
+                             'VIN: 1A9CJ1A142M362081',
+                             'Load capacity: 48,000 lbs (80,000 lbs distributed)',
+                             'Dimensions: 48 ft length x 102 in width',
+                             'Platform height: 60 inches from ground',
+                             'Axle configuration: 2-axle tandem',
+                             'Brake system: Air brakes',
+                             'Suspension: Mechanical spring suspension',
+                             'Platform: Treated wood deck',
+                             'D-ring tie-down system',
+                             'Tires: 11R22.5',
+                             'Carbon steel chassis'
+                         ],
+                         'applications' => [
+                             'General cargo transport',
+                             'Construction materials',
+                             'Machinery and industrial equipment',
+                             'Containers and manufactured products',
+                             'Long-length materials',
+                             'Light construction equipment',
+                             'Steel products'
+                         ],
+                         'technical_specs' => [
+                             'Year: 2002',
+                             'VIN: 1A9CJ1A142M362081',
+                             'Type: Flatbed Trailer',
+                             'Load capacity: 48,000 lbs (21,772 kg)',
+                             'Distributed capacity: 80,000 lbs (36,287 kg)',
+                             'Length: 48 ft (14.6 m)',
+                             'Width: 102 in (8.5 ft / 2.6 m)',
+                             'Platform height: 60 in (1.52 m)',
+                             'Empty weight: Approximately 12,000 lbs (5,443 kg)',
+                             'Axle configuration: 2-axle tandem',
+                             'Suspension: Mechanical spring suspension',
+                             'Brakes: Air brake system',
+                             'Tires: 11R22.5',
+                             'Platform: Treated wood deck',
+                             'Tie-downs: D-ring system',
+                             'Chassis: Carbon steel'
+                         ]
+                     ]
+                 ]
              ]
          ];
  
