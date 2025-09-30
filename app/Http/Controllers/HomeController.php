@@ -1122,9 +1122,9 @@ class HomeController extends Controller
                      'es' => 'Retroexcavadora Caterpillar 416D Serie CAT0416DVBFP16809 con motor diesel 3054C de 74 HP y peso operativo de 15,180 lbs.',
                      'en' => 'Caterpillar 416D Backhoe Loader Series CAT0416DVBFP16809 with 3054C diesel engine 74 HP and operating weight 15,180 lbs.'
                  ],
-                 'hero_image' => 'assets/img/equipos/Retro-416.png',
+                 'hero_image' => 'assets/img/equipos/Cat-retroexvacadora-416d.png',
                  'gallery' => [
-                     'assets/img/equipos/Retro-416.png',
+                     'assets/img/equipos/Cat-retroexvacadora-416d.png',
                      'assets/img/gallery/services1.jpg',
                      'assets/img/gallery/services4.jpg'
                  ],
@@ -1629,9 +1629,9 @@ class HomeController extends Controller
                      'es' => 'Camión Volvo FH de alta potencia para transporte pesado y construcción.',
                      'en' => 'High-power Volvo FH truck for heavy transport and construction.'
                  ],
-                 'hero_image' => 'assets/img/equipos/camion-cover.png',
+                 'hero_image' => 'assets/img/equipos/Volvo-camion.png',
                  'gallery' => [
-                     'assets/img/equipos/camion-cover.png',
+                     'assets/img/equipos/Volvo-camion.png',
                      'assets/img/gallery/services1.jpg',
                      'assets/img/gallery/services2.jpg'
                  ],
@@ -1694,9 +1694,9 @@ class HomeController extends Controller
                      'es' => 'Excavadora Caterpillar 330C 2004 con motor CAT C9 de 244 HP para trabajos de excavación y movimiento de tierra.',
                      'en' => 'Caterpillar 330C 2004 excavator with CAT C9 engine 244 HP for excavation and earthmoving work.'
                  ],
-                 'hero_image' => 'assets/img/equipos/excavadora-cover.png',
+                 'hero_image' => 'assets/img/equipos/Cat-exvacadora-330c-2004.png',
                  'gallery' => [
-                     'assets/img/equipos/excavadora.png',
+                     'assets/img/equipos/Cat-exvacadora-330c-2004.png',
                      'assets/img/gallery/dumptruck1.jpg',
                      'assets/img/gallery/dumptruck2.jpg'
                  ],

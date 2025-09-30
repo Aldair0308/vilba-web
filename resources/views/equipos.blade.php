@@ -468,7 +468,7 @@
                     'es' => 'Camión Volvo FH para transporte de larga distancia y construcción. Potencia de 420-540 CV, ideal para tareas de transporte regional y relacionado con edificación.',
                     'en' => 'Volvo FH truck for long-distance transport and construction. Power 420-540 HP, ideal for regional transport and building-related tasks.'
                 ],
-                'image' => 'assets/img/service/servicess4.png',
+                'image' => 'assets/img/equipos/Volvo-camion.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -546,7 +546,7 @@
                     'es' => 'Excavadora Caterpillar 330C modelo 2004 (Serie: CAT0330CCJAB00810) para movimiento de tierra, demolición y proyectos de construcción con motor CAT C9 de 244 HP.',
                     'en' => 'Caterpillar 330C excavator model 2004 (Serial: CAT0330CCJAB00810) for earthmoving, demolition, and construction projects with CAT C9 engine 244 HP.'
                 ],
-                'image' => 'assets/img/service/servicess5.png',
+                'image' => 'assets/img/equipos/Cat-exvacadora-330c-2004.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -628,7 +628,7 @@
                     'es' => 'Retroexcavadora Caterpillar 416D Serie CAT0416DVBFP16809. Máquina versátil con motor diesel de 74 HP, ideal para excavación, carga y trabajos de construcción medianos.',
                     'en' => 'Caterpillar 416D Backhoe Loader Series CAT0416DVBFP16809. Versatile machine with 74 HP diesel engine, ideal for excavation, loading and medium construction work.'
                 ],
-                'image' => 'assets/img/equipos/cat-416d-hero.jpg',
+                'image' => 'assets/img/equipos/Cat-retroexvacadora-416d.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
