@@ -2508,12 +2508,9 @@ class HomeController extends Controller
                      'es' => 'Camión volteo Ford F-350 año 1996, VIN: 1FDYL90E2TVA30436, capacidad 7 metros cúbicos, motor 7.5L V8, transmisión manual 5 velocidades.',
                      'en' => 'Ford F-350 dump truck year 1996, VIN: 1FDYL90E2TVA30436, 7 cubic meters capacity, 7.5L V8 engine, 5-speed manual transmission.'
                  ],
-                 'hero_image' => 'assets/img/equipos/camion-volteo-ford-1996-cover.png',
+                 'hero_image' => '/assets/img/equipos/Ford-7-m3.png',
                  'gallery' => [
-                     'assets/img/equipos/camion-volteo-ford-1996.png',
-                     'assets/img/gallery/ford-dump-1996-1.jpg',
-                     'assets/img/gallery/ford-dump-1996-2.jpg',
-                     'assets/img/gallery/ford-dump-1996-3.jpg'
+                     '/assets/img/equipos/Ford-7-m3.png'
                  ],
                  'detailed_info' => [
                      'es' => [
@@ -2624,12 +2621,9 @@ class HomeController extends Controller
                      'es' => 'Camión volteo Ford F700 año 1997, Serie: Y559537NM559537, capacidad 7 metros cúbicos, motor 7.0L V8 (429), transmisión manual 5 velocidades.',
                      'en' => 'Ford F700 dump truck year 1997, Series: Y559537NM559537, 7 cubic meters capacity, 7.0L V8 (429) engine, 5-speed manual transmission.'
                  ],
-                 'hero_image' => 'assets/img/equipos/camion-volteo-ford-1997-cover.png',
+                 'hero_image' => '/assets/img/equipos/Ford-volteo-rabon.png',
                  'gallery' => [
-                     'assets/img/equipos/camion-volteo-ford-1997.png',
-                     'assets/img/gallery/ford-dump-1997-1.jpg',
-                     'assets/img/gallery/ford-dump-1997-2.jpg',
-                     'assets/img/gallery/ford-dump-1997-3.jpg'
+                     '/assets/img/equipos/Ford-volteo-rabon.png'
                  ],
                  'detailed_info' => [
                      'es' => [
@@ -2750,11 +2744,9 @@ class HomeController extends Controller
                      'es' => 'Camión de volteo Volvo VHD 2013 con capacidad de 7 metros cúbicos, ideal para transporte de materiales de construcción y movimiento de tierras.',
                      'en' => 'Volvo VHD 2013 dump truck with 7 cubic meter capacity, ideal for construction material transport and earthmoving operations.'
                  ],
-                 'hero_image' => '/images/equipos/camion-volteo-volvo-2013.jpg',
+                 'hero_image' => '/assets/img/equipos/Volvo-7-m3.png',
                  'gallery' => [
-                     '/images/equipos/camion-volteo-volvo-2013-1.jpg',
-                     '/images/equipos/camion-volteo-volvo-2013-2.jpg',
-                     '/images/equipos/camion-volteo-volvo-2013-3.jpg'
+                     '/assets/img/equipos/Volvo-7-m3.png'
                  ],
                  'detailed_info' => [
                      'es' => [
