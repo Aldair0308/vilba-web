@@ -55,7 +55,7 @@ const languageSwitcher = {
   createLanguageSelector: function() {
     const nav = document.querySelector('.main-menu ul');
     if (nav) {
-      // const li = document.createElement('li');
+      const li = document.createElement('li');
       li.innerHTML = `
         <a href="#" class="lang-btn ${this.currentLanguage === 'en' ? 'active' : ''}" data-lang="en">EN</a>
         <span class="separator">/</span>

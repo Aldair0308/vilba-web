@@ -2,10 +2,59 @@
   { "use strict"
   
 /* 1. Proloder */
+    // Variable para controlar si el preloader ya se ocultó
+    var preloaderHidden = false;
+    
+    // Función para ocultar el preloader
+    function hidePreloader() {
+      if (!preloaderHidden) {
+        preloaderHidden = true;
+        $('#preloader-active').delay(450).fadeOut('slow');
+        $('body').delay(450).css({
+          'overflow': 'visible'
+        });
+      }
+    }
+    
+    // Evento principal - window.load
     $(window).on('load', function () {
-      $('#preloader-active').delay(450).fadeOut('slow');
-      $('body').delay(450).css({
-        'overflow': 'visible'
+      hidePreloader();
+    });
+    
+    // Fallback 1: DOMContentLoaded para casos donde window.load no funciona
+    $(document).ready(function() {
+      // Esperar un poco más para asegurar que las imágenes se carguen
+      setTimeout(function() {
+        hidePreloader();
+      }, 1500);
+    });
+    
+    // Fallback 2: Timeout absoluto para garantizar que el preloader siempre se oculte
+    setTimeout(function() {
+      hidePreloader();
+    }, 3000); // 3 segundos máximo
+    
+    // Fallback 3: Detectar si todas las imágenes se han cargado manualmente
+    $(document).ready(function() {
+      var images = $('img');
+      var totalImages = images.length;
+      var loadedImages = 0;
+      
+      if (totalImages === 0) {
+        // Si no hay imágenes, ocultar inmediatamente
+        setTimeout(hidePreloader, 800);
+        return;
+      }
+      
+      images.each(function() {
+        var img = new Image();
+        img.onload = img.onerror = function() {
+          loadedImages++;
+          if (loadedImages >= totalImages) {
+            setTimeout(hidePreloader, 500);
+          }
+        };
+        img.src = this.src;
       });
     });
 
@@ -224,7 +273,10 @@
     
 // 11. ---- Mailchimp js --------//  
     function mailChimp() {
-      $('#mc_embed_signup').find('form').ajaxChimp();
+      // Solo ejecutar si ajaxChimp está disponible y el elemento existe
+      if (typeof $.fn.ajaxChimp !== 'undefined' && $('#mc_embed_signup').length) {
+        $('#mc_embed_signup').find('form').ajaxChimp();
+      }
     }
     mailChimp();
 

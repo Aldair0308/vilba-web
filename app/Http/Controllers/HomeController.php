@@ -1258,9 +1258,9 @@ class HomeController extends Controller
                     'es' => 'Motoconformadora John Deere 570A Serie 003311T para nivelación de terrenos y construcción de carreteras.',
                     'en' => 'John Deere 570A Motor Grader Series 003311T for land leveling and road construction.'
                 ],
-                'hero_image' => 'assets/img/equipos/motoconformadora.svg',
+                'hero_image' => 'assets/img/equipos/John-deere-motoconformadora-570a.png',
                 'gallery' => [
-                    'assets/img/equipos/motoconformadora.svg',
+                    'assets/img/equipos/John-deere-motoconformadora-570a.png',
                     'assets/img/gallery/grader1.jpg',
                     'assets/img/gallery/grader2.jpg'
                 ],
@@ -1327,9 +1327,9 @@ class HomeController extends Controller
                     'es' => 'Vibrocompactador Hugg & Hall modelo SD 105F TF Ingersoll Rand para compactación de suelos.',
                     'en' => 'Hugg & Hall SD 105F TF Ingersoll Rand vibratory compactor for soil compaction.'
                 ],
-                'hero_image' => 'assets/img/equipos/vibrocompactadora.svg',
+                'hero_image' => 'assets/img/equipos/Hugg-vibrocompactador-105f-R.png',
                 'gallery' => [
-                    'assets/img/equipos/vibrocompactadora.svg',
+                    'assets/img/equipos/Hugg-vibrocompactador-105f-R.png',
                     'assets/img/gallery/roller1.jpg',
                     'assets/img/gallery/roller2.jpg'
                 ],
@@ -1410,9 +1410,9 @@ class HomeController extends Controller
                      'es' => 'Vibrocompactador Bross SPV-730 para compactación eficiente de suelos y materiales granulares.',
                      'en' => 'Bross SPV-730 vibratory compactor for efficient soil and granular material compaction.'
                  ],
-                 'hero_image' => 'assets/img/equipos/motoconformadora.svg',
+                 'hero_image' => 'assets/img/equipos/Bross-vibrocompactador.png',
                  'gallery' => [
-                     'assets/img/equipos/motoconformadora.svg',
+                     'assets/img/equipos/Bross-vibrocompactador.png',
                      'assets/img/gallery/grader1.jpg',
                      'assets/img/gallery/grader2.jpg'
                  ],

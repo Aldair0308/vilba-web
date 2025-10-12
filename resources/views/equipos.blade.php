@@ -712,7 +712,7 @@
                     'es' => 'Motoconformadora John Deere 570A Serie 003311T para nivelación de terrenos y construcción de carreteras. Máquina especializada en trabajos de precisión.',
                     'en' => 'John Deere 570A Motor Grader Series 003311T for land leveling and road construction. Specialized machine for precision work.'
                 ],
-                'image' => 'assets/img/equipos/motoconformadora.svg',
+                'image' => 'assets/img/equipos/John-deere-motoconformadora-570a.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -779,7 +779,7 @@
                     ]
                 ],
                 'gallery' => [
-                    'assets/img/equipos/motoconformadora.svg',
+                    'assets/img/equipos/John-deere-motoconformadora-570a.png',
                     'assets/img/gallery/grader1.jpg',
                     'assets/img/gallery/grader2.jpg'
                 ]
@@ -794,7 +794,7 @@
                     'es' => 'Vibrocompactador Hugg & Hall modelo SD 105F TF Ingersoll Rand serie 186519 para compactación eficiente de suelos.',
                     'en' => 'Hugg & Hall SD 105F TF Ingersoll Rand vibratory compactor series 186519 for efficient soil compaction.'
                 ],
-                'image' => 'assets/img/equipos/vibrocompactadora.svg',
+                'image' => 'assets/img/equipos/Hugg-vibrocompactador-105f-R.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -875,7 +875,7 @@
                     ]
                 ],
                 'gallery' => [
-                    'assets/img/equipos/vibrocompactadora.svg',
+                    'assets/img/equipos/Hugg-vibrocompactador-105f-R.png',
                     'assets/img/gallery/roller1.jpg',
                     'assets/img/gallery/roller2.jpg'
                 ]
@@ -890,7 +890,7 @@
                     'es' => 'Vibrocompactador Bross Serie SPV-730 para compactación eficiente de suelos en proyectos de construcción y pavimentación.',
                     'en' => 'Bross SPV-730 Series vibratory compactor for efficient soil compaction in construction and paving projects.'
                 ],
-                'image' => 'assets/img/equipos/vibrocompactadora.svg',
+                'image' => 'assets/img/equipos/Bross-vibrocompactador.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -971,7 +971,7 @@
                     ]
                 ],
                 'gallery' => [
-                    'assets/img/equipos/vibrocompactadora.svg',
+                    'assets/img/equipos/Bross-vibrocompactador.png',
                     'assets/img/gallery/roller1.jpg',
                     'assets/img/gallery/roller2.jpg'
                 ]
