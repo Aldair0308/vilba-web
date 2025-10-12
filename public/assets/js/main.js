@@ -273,10 +273,7 @@
     
 // 11. ---- Mailchimp js --------//  
     function mailChimp() {
-      // Solo ejecutar si ajaxChimp está disponible y el elemento existe
-      if (typeof $.fn.ajaxChimp !== 'undefined' && $('#mc_embed_signup').length) {
-        $('#mc_embed_signup').find('form').ajaxChimp();
-      }
+      $('#mc_embed_signup').find('form').ajaxChimp();
     }
     mailChimp();
 
