@@ -101,7 +101,7 @@
         <!-- slider Area End-->
         
         <!-- Equipment Showcase Component -->
-        <div class="d-none d-lg-block" style="margin-top: -100px; margin-bottom: -50px;">
+        <div class="d-none d-lg-block" style="margin-top: -30px; margin-bottom: -20px;">
             <x-equipment-showcase />
         </div>
         {{-- Show on mobile and tablet --}}
