@@ -1829,7 +1829,7 @@
                     'es' => 'Plataforma plana año 1990, VIN: 19203134, capacidad 40,000-50,000 lbs para transporte de carga general, materiales de construcción y maquinaria.',
                     'en' => 'Flatbed platform year 1990, VIN: 19203134, 40,000-50,000 lbs capacity for general cargo transport, construction materials and machinery.'
                 ],
-                'image' => 'assets/img/equipos/plataforma-plana-1990-2.png',
+                'image' => 'assets/img/equipos/Lowboy-plana-1990.png',
                 'icon' => 'assets/img/icon/services_icon1.png',
                 'specs' => [
                     'es' => [
@@ -1940,7 +1940,7 @@
                     ]
                 ],
                 'gallery' => [
-                    'assets/img/equipos/plataforma-plana-1990-2.png',
+                    'assets/img/equipos/Lowboy-plana-1990.png',
                     'assets/img/gallery/flatbed3.jpg',
                     'assets/img/gallery/flatbed4.jpg'
                 ]
