@@ -1487,9 +1487,9 @@ class HomeController extends Controller
                      'es' => 'Motoconformadora Galion T600C Serie IC-03004 para nivelación, construcción de carreteras y mantenimiento vial.',
                      'en' => 'Galion T600C Motor Grader Series IC-03004 for grading, road construction and highway maintenance.'
                  ],
-                 'hero_image' => 'assets/img/equipos/motoconformadora-galion.svg',
+                 'hero_image' => 'assets/img/equipos/Galion-motoconformadora-t600c.png',
                  'gallery' => [
-                     'assets/img/equipos/motoconformadora-galion.svg',
+                     'assets/img/equipos/Galion-motoconformadora-t600c.png',
                      'assets/img/gallery/grader1.jpg',
                      'assets/img/gallery/grader2.jpg'
                  ],
