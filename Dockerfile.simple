@@ -1,0 +1,38 @@
+# Alternativa: Dockerfile Simplificado para Laravel
+# Si el Dockerfile principal falla, prueba con esta versión más simple
+
+FROM php:8.2-cli
+
+# Instalar dependencias mínimas
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    libzip-dev \
+    && docker-php-ext-install zip pdo pdo_mysql \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar Composer
+COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
+
+# Directorio de trabajo
+WORKDIR /var/www/html
+
+# Copiar archivos
+COPY . .
+
+# Instalar dependencias
+RUN composer install --no-interaction --optimize-autoloader --no-dev
+
+# Permisos
+RUN mkdir -p storage/framework/{sessions,views,cache} \
+    && mkdir -p storage/logs \
+    && mkdir -p bootstrap/cache \
+    && chmod -R 777 storage bootstrap/cache
+
+# Puerto
+EXPOSE 8000
+
+# Ejecutar Laravel con servidor built-in
+CMD php artisan serve --host=0.0.0.0 --port=8000
