@@ -26,13 +26,27 @@ Este documento resume los pasos que **DEBES hacer manualmente** para completar e
 1. **Crear cuenta**: https://www.mongodb.com/cloud/atlas/register
 2. **Crear cluster gratuito** (M0)
 3. **Crear usuario de base de datos**:
-   - Username: `vilba_admin`
-   - Password: (genera una segura)
+   - Username: `al222111405_db_user`
+   - Password: `knIDKvoPmHpQkGNJ`
 4. **Permitir acceso desde cualquier IP**: `0.0.0.0/0`
 5. **Copiar connection string**:
    ```
-   mongodb+srv://vilba_admin:TU_PASSWORD@cluster0.xxxxx.mongodb.net/vilba?retryWrites=true&w=majority
+   mongodb+srv://al222111405_db_user:knIDKvoPmHpQkGNJ@cluster0.j2zuixs.mongodb.net/
+   
    ```
+
+
+### 1.1 Cuenta de mongo
+
+Username: al222111405_db_user
+Password: knIDKvoPmHpQkGNJ
+
+
+## 1.2 Connection string
+
+mongodb+srv://al222111405_db_user:knIDKvoPmHpQkGNJ@cluster0.j2zuixs.mongodb.net/
+
+
 
 ### 2. Preparar NestJS (10 minutos)
 
