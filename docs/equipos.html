@@ -1,98 +1,29 @@
 <!doctype html>
 <html class="no-js" lang="es">
-    <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Equipos - SERVICIOS VILBA</title>
+    <title>Equipos - Vilba Construcción</title>
     <meta name="description" content="Equipos pesados disponibles para renta - Vilba">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/gijgo.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
 
-		<!-- CSS here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="assets/css/slicknav.css">
-        <link rel="stylesheet" href="assets/css/animate.min.css">
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
-        <link rel="stylesheet" href="assets/css/slick.css">
-        <link rel="stylesheet" href="assets/css/nice-select.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        
-        <script>
-            window.initialLanguage = 'es';
-        </script>
-        
-        <style>
-            .equipment-grid {
-                padding: 60px 0;
-            }
-            .equipment-card {
-                border: 1px solid #eee;
-                border-radius: 8px;
-                overflow: hidden;
-                margin-bottom: 30px;
-                transition: all 0.3s ease;
-                background: #fff;
-            }
-            .equipment-card:hover {
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                transform: translateY(-5px);
-            }
-            .equipment-card img {
-                width: 100%;
-                height: 250px;
-                object-fit: cover;
-            }
-            .equipment-card-body {
-                padding: 20px;
-            }
-            .equipment-card-body h4 {
-                font-size: 1.2rem;
-                margin-bottom: 10px;
-                color: #333;
-            }
-            .equipment-card-body p {
-                color: #666;
-                font-size: 0.9rem;
-                line-height: 1.5;
-            }
-            .equipment-card-footer {
-                padding: 15px 20px;
-                border-top: 1px solid #eee;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .section-tittle {
-                margin-bottom: 50px;
-            }
-            .page-hero {
-                background-size: cover;
-                background-position: center;
-                padding: 100px 0;
-                position: relative;
-            }
-            .page-hero::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0,0,0,0.5);
-            }
-            .page-hero-content {
-                position: relative;
-                z-index: 1;
-                color: #fff;
-            }
-        </style>
-   </head>
-
-   <body>
+<body>
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -126,22 +57,22 @@
                                  <div class="main-menu f-right d-none d-lg-block">
                                      <nav> 
                                          <ul id="navigation">                                                                                                                   
-                                             <li><a href="index.html" data-translate="home">Inicio</a></li>
-                                             <li><a href="equipos.html" class="active" data-translate="equipment">Equipos</a></li>
-                                             <li><a href="index.html#servicios-section" data-translate="services">Servicios</a></li>
-                                             <li><a href="index.html#nosotros-section" data-translate="about">Nosotros</a></li>
-                                             <li><a href="index.html#contacto-section" data-translate="contact">Contacto</a></li>
-                                             <li><a href="javascript:void(0)" data-translate="language">Idioma 🌐</a>
+                                             <li><a href="index.html">Inicio</a></li>
+                                             <li><a href="equipos.html" class="active">Equipos</a></li>
+                                             <li><a href="index.html#servicios-section">Servicios</a></li>
+                                             <li><a href="index.html#nosotros-section">Nosotros</a></li>
+                                             <li><a href="index.html#contacto-section">Contacto</a></li>
+                                             <li><a href="javascript:void(0)">Idioma 🌐</a>
                                                  <ul class="submenu">
                                                      <li>
                                          <a href="javascript:void(0)" onclick="changeLanguage('es')" style="font-weight: bold; color: #ff6b35;">
-                                             <img src="assets/images/flags/mx.svg" alt="Español" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
+                                             <img src="assets/images/flags/mx.svg" alt="Español" style="width: 16px; height: auto; margin-right: 8px;">
                                              Español
                                          </a>
                                      </li>
                                      <li>
                                          <a href="javascript:void(0)" onclick="changeLanguage('en')">
-                                             <img src="assets/images/flags/us.svg" alt="English" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
+                                             <img src="assets/images/flags/us.svg" alt="English" style="width: 16px; height: auto; margin-right: 8px;">
                                              English
                                          </a>
                                      </li>
@@ -154,7 +85,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-4">
                                 <div class="header-right-content d-flex align-items-center justify-content-end">
                                      <div class="header-right-btn d-none d-lg-block">
-                                         <a href="index.html#contacto-section" class="btn" data-translate="contact_btn">Contáctanos</a>
+                                         <a href="index.html#contacto-section" class="btn">Contáctanos</a>
                                      </div>
                                  </div>
                             </div>
@@ -182,322 +113,368 @@
         }
     </script>
 
-    <!-- Page Hero -->
-    <div class="page-hero" data-background="assets/img/hero/h1_hero.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="page-hero-content text-center">
-                        <h1 style="font-size: 3rem; margin-bottom: 20px;">Nuestros Equipos</h1>
-                        <p style="font-size: 1.2rem;">Maquinaria pesada de alta calidad para tus proyectos</p>
+    <!-- slider Area Start-->
+    <div class="slider-area">
+        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap pt-100">
+                            <h2>Equipos</h2>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                                    <li class="breadcrumb-item"><a href="equipos.html">Equipos</a></li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- slider Area End-->
 
-    <!-- Equipment Grid -->
-    <div class="equipment-grid">
+    <!-- Equipment Grid Start -->
+    <div class="services-area1 section-padding30">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section-tittle mb-55 text-center">
+                    <div class="section-tittle mb-55">
                         <div class="front-text">
-                            <h2>Flota Disponible</h2>
+                            <h2>Equipos</h2>
                         </div>
                         <span class="back-text">Equipos</span>
                     </div>
                 </div>
             </div>
-            
-            <div class="row">
-                <!-- Retroexcavadora 416F -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Retro-416.png" alt="Retroexcavadora 416F">
-                        <div class="equipment-card-body">
-                            <h4>Retroexcavadora 416F</h4>
-                            <p>Retroexcavadora Caterpillar 416F de alto rendimiento para excavación y carga. Motor Cat C4.4 ACERT de 109 HP.</p>
+            <div class="row d-flex align-items-stretch">
+                <!-- Excavadora / Dump Truck -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/excavadora.png" alt="Excavadora">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Excavadora</a></h4>
+                            <p class="service-description flex-grow-1">Camiones de volteo para transporte y descarga de materiales. Disponibles en diferentes capacidades para proyectos de construcción y minería.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Camión Kenworth -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/camion-kenworth.png" alt="Camión Kenworth">
-                        <div class="equipment-card-body">
-                            <h4>Camion Kenworth T880</h4>
-                            <p>Camion de trabajo pesado para transporte y construcción. Motor PACCAR MX-13 de 510 HP.</p>
-                        </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Camión Volvo -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Volvo-camion.png" alt="Camión Volvo">
-                        <div class="equipment-card-body">
-                            <h4>Camion Volvo FH</h4>
-                            <p>Volvo FH para transporte de larga distancia y construcción. Potencia de 420-540 CV.</p>
+                <!-- Retroexcavadora 414E / Backhoe Loader 414E -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Retro-414.png" alt="Retroexcavadora 414E">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Retroexcavadora 414E</a></h4>
+                            <p class="service-description flex-grow-1">Grúas torre de alta capacidad para proyectos de construcción de todos los tamaños. Perfectas para elevar materiales pesados a grandes alturas.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Excavadora -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/excavadora.png" alt="Excavadora">
-                        <div class="equipment-card-body">
-                            <h4>Excavadora Caterpillar</h4>
-                            <p>Excavadora de alta potencia para trabajos de excavación profunda. Modelo 330C del 2004.</p>
-                        </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Motoconformadora Cat 120B -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Cat-MOTOCONFORMADORA-120B.png" alt="Motoconformadora Cat 120B">
-                        <div class="equipment-card-body">
-                            <h4>Motoconformadora Cat 120B</h4>
-                            <p>Motoconformadora de precisión para nivelación y acabados de suelo. Alta eficiencia.</p>
+                <!-- Camión de Volteo Ford / Dump Truck -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/camion.png" alt="Camión de Volteo Ford">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Camión de Volteo Ford</a></h4>
+                            <p class="service-description flex-grow-1">Camiones de volteo para transporte y descarga de materiales. Disponibles en diferentes capacidades.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Motoconformadora Galion T600C -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Galion-motoconformadora-t600c.png" alt="Motoconformadora Galion T600C">
-                        <div class="equipment-card-body">
-                            <h4>Motoconformadora Galion T600C</h4>
-                            <p>Motoconformadora versátil para trabajos de nivelación y compactación de suelos.</p>
+                <!-- Camión Kenworth / Mobile Cranes -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/camion-kenworth.png" alt="Camión Kenworth">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Camión Kenworth</a></h4>
+                            <p class="service-description flex-grow-1">Grúas móviles versátiles para montaje rápido y posicionamiento flexible. Ideales para proyectos que requieren movilidad.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Retroexcavadora 416F / Backhoe Loader 416F -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Retro-416.png" alt="Retroexcavadora 416F">
+                        </div>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Retroexcavadora 416F</a></h4>
+                            <p class="service-description flex-grow-1">Retroexcavadora 416F de alto rendimiento para excavación y carga. Ideal para proyectos de construcción.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camión Volvo FH / Volvo FH Truck -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Volvo-camion.png" alt="Camión Volvo FH">
+                        </div>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Camión Volvo FH</a></h4>
+                            <p class="service-description flex-grow-1">Camión Volvo FH para transporte de larga distancia y construcción. Potencia de 420-540 CV.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Excavadora Caterpillar 330C -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Cat-exvacadora-330c-2004.png" alt="Excavadora Caterpillar 330C">
+                        </div>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Excavadora Caterpillar 330C</a></h4>
+                            <p class="service-description flex-grow-1">Excavadora Caterpillar 330C modelo 2004 para movimiento de tierra, demolición y construcción.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Retroexcavadora Caterpillar 416D -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Cat-retroexvacadora-416d.png" alt="Retroexcavadora Caterpillar 416D">
+                        </div>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Retroexcavadora Caterpillar 416D</a></h4>
+                            <p class="service-description flex-grow-1">Retroexcavadora Caterpillar 416D Serie CAT0416DVBFP16809. Máquina versátil con motor diesel de 74 HP.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
                 <!-- Motoconformadora John Deere 570A -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/John-deere-motoconformadora-570a.png" alt="Motoconformadora John Deere 570A">
-                        <div class="equipment-card-body">
-                            <h4>Motoconformadora John Deere 570A</h4>
-                            <p>Motoconformadora de alta precisión para nivelación y acabados en proyectos de construcción.</p>
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/John-deere-motoconformadora-570a.png" alt="Motoconformadora John Deere 570A">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Motoconformadora John Deere 570A</a></h4>
+                            <p class="service-description flex-grow-1">Motoconformadora John Deere 570A Serie 003311T para nivelación de terrenos y construcción de carreteras.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Vibrocompactadora Hugg 105F -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Hugg-vibrocompactador-105f.png" alt="Vibrocompactadora Hugg 105F">
-                        <div class="equipment-card-body">
-                            <h4>Vibrocompactadora Hugg 105F</h4>
-                            <p>Vibrocompactadora de alta eficiencia para compactación de suelos y bases de carreteras.</p>
-                        </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Vibrocompactadora Bross -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Bross-vibrocompactador.png" alt="Vibrocompactadora Bross">
-                        <div class="equipment-card-body">
-                            <h4>Vibrocompactadora Bross</h4>
-                            <p>Vibrocompactadora Bross de alta calidad para compactación profesional de suelos.</p>
+                <!-- Vibrocompactadora Hugg & Hall SD 105F TF -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Hugg-vibrocompactador-105f-R.png" alt="Vibrocompactadora Hugg & Hall SD 105F TF">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Vibrocompactadora Hugg & Hall SD 105F TF</a></h4>
+                            <p class="service-description flex-grow-1">Vibrocompactador Hugg & Hall modelo SD 105F TF Ingersoll Rand para compactación eficiente de suelos.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Lowboy 2005 -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Lowboy-2005.png" alt="Lowboy 2005">
-                        <div class="equipment-card-body">
-                            <h4>Lowboy 2005</h4>
-                            <p>Remolque LOW BOY 2005 para transporte de maquinaria pesada. Capacidad 40-55 toneladas.</p>
-                        </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Lowboy 2002 -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Lowboy-2002.png" alt="Lowboy 2002">
-                        <div class="equipment-card-body">
-                            <h4>Lowboy 2002</h4>
-                            <p>Remolque LOW BOY 2002 para transporte de maquinaria pesada. Serie: 13ND5340423514722.</p>
+                <!-- Vibrocompactador Bross SPV-730 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Bross-vibrocompactador.png" alt="Vibrocompactador Bross SPV-730">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Vibrocompactador Bross SPV-730</a></h4>
+                            <p class="service-description flex-grow-1">Vibrocompactador Bross Serie SPV-730 para compactación eficiente de suelos en proyectos de construcción.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Lowboy 1996 -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Lowboy-1996.png" alt="Lowboy 1996">
-                        <div class="equipment-card-body">
-                            <h4>Lowboy 1996</h4>
-                            <p>Remolque LOW BOY 1996 para transporte de maquinaria de construcción. Plataforma baja.</p>
-                        </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Lowboy 1990 -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Lowboy-1990.png" alt="Lowboy 1990">
-                        <div class="equipment-card-body">
-                            <h4>Lowboy 1990</h4>
-                            <p>Remolque LOW BOY 1990 para transporte de maquinaria pesada. Configuración tandem.</p>
+                <!-- Motoconformadora Galion T600C -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Galion-motoconformadora-t600c.png" alt="Motoconformadora Galion T600C">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Motoconformadora Galion T600C</a></h4>
+                            <p class="service-description flex-grow-1">Motoconformadora Galion T600C Serie IC-03004 para nivelación, construcción de carreteras y mantenimiento vial.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Lowboy Plana 1990 -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Lowboy-plana-1990.png" alt="Lowboy Plana 1990">
-                        <div class="equipment-card-body">
-                            <h4>Lowboy Plana 1990</h4>
-                            <p>Remolque de plataforma plana 1990 para transporte de maquinaria y equipo industrial.</p>
-                        </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Lowboy RG35 -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Lowboy-RG35.png" alt="Lowboy RG35">
-                        <div class="equipment-card-body">
-                            <h4>Lowboy RG35</h4>
-                            <p>Remolque LOW BOY RG35 para transporte especializado de maquinaria de gran tonelaje.</p>
+                <!-- Motoconformadora CAT 120B -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Cat-MOTOCONFORMADORA-120B.png" alt="Motoconformadora CAT 120B">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Motoconformadora CAT 120B</a></h4>
+                            <p class="service-description flex-grow-1">Motoconformadora Caterpillar 120B Serie 64U5564 para nivelación de precisión y construcción de carreteras.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Ford Volteo Rabon -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Ford-volteo-rabon.png" alt="Ford Volteo Rabon">
-                        <div class="equipment-card-body">
-                            <h4>Ford Volteo Rabon</h4>
-                            <p>Camion Ford de volteo tipo rabon para transporte de materiales de construcción. Capacidad media.</p>
-                        </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Ford 7m3 -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Ford-7-m3.png" alt="Ford 7m3">
-                        <div class="equipment-card-body">
-                            <h4>Ford 7m3</h4>
-                            <p>Camion Ford con capacidad de 7 m³ para transporte de materiales de construcción y escombros.</p>
+                <!-- Motoconformadora GALION MOD. 11809C -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/motoconformadora-galion.svg" alt="MOTOCONFORMADORA GALION MOD. 11809C">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">MOTOCONFORMADORA GALION MOD. 11809C</a></h4>
+                            <p class="service-description flex-grow-1">Motoconformadora Galion 11809C Serie 118C, máquina robusta y confiable para trabajos de nivelación y construcción.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Camión -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/camion.png" alt="Camión">
-                        <div class="equipment-card-body">
-                            <h4>Camion de Carga</h4>
-                            <p>Camion de carga general para transporte de materiales y equipos de construcción.</p>
-                        </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
 
-                <!-- Retroexcavadora 414 -->
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="equipment-card">
-                        <img src="assets/img/equipos/Retro-414.png" alt="Retroexcavadora 414">
-                        <div class="equipment-card-body">
-                            <h4>Retroexcavadora 414</h4>
-                            <p>Retroexcavadora versátil para excavación, carga y movimiento de tierras en construcción.</p>
+                <!-- LOW BOY RG35 T -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Lowboy-RG35.png" alt="LOW BOY RG35 T">
                         </div>
-                        <div class="equipment-card-footer">
-                            <span style="color: #ff6b35; font-weight: bold;">Disponible</span>
-                            <a href="#" class="btn red-btn2" style="padding: 8px 20px; font-size: 0.9rem;">Ver Detalles</a>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">LOW BOY RG35 T</a></h4>
+                            <p class="service-description flex-grow-1">Remolque LOW BOY modelo RG35 T del año 2000, capacidad 35 toneladas, plataforma baja para transporte de maquinaria.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOW BOY 2002 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Lowboy-2002.png" alt="LOW BOY 2002">
+                        </div>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">LOW BOY 2002</a></h4>
+                            <p class="service-description flex-grow-1">Remolque LOW BOY del año 2002, capacidad 40-50 toneladas, plataforma baja para transporte de maquinaria pesada.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOW BOY 2005 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Lowboy-2005.png" alt="LOW BOY 2005">
+                        </div>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">LOW BOY 2005</a></h4>
+                            <p class="service-description flex-grow-1">Remolque LOW BOY del año 2005, capacidad 40-55 toneladas, Serie: 1L9GA72A65L033420.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOW BOY 1996 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Lowboy-1996.png" alt="LOW BOY 1996">
+                        </div>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">LOW BOY 1996</a></h4>
+                            <p class="service-description flex-grow-1">Remolque LOW BOY del año 1996, capacidad 40-50 toneladas, Serie: 1LH17AUH2T1007759.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plataforma Plana 1990 -->
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                    <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                        <div class="service-img">
+                            <img src="assets/img/equipos/Lowboy-plana-1990.png" alt="Plataforma Plana 1990">
+                        </div>
+                        <div class="service-cap flex-grow-1 d-flex flex-column">
+                            <h4><a href="#">Plataforma Plana 1990</a></h4>
+                            <p class="service-description flex-grow-1">Remolque de plataforma plana año 1990, capacidad 48,000-80,000 lbs, Serie: 1S12FF450MB332380.</p>
+                            <a href="#" class="more-btn mt-auto">Leer más <i class="ti-plus"></i></a>
+                        </div>
+                        <div class="service-icon">
+                            <img src="assets/img/icon/services_icon1.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Equipment Grid End -->
 
     <!-- Footer -->
     <footer>
@@ -556,6 +533,84 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/525512345678?text=Hola%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." 
+           target="_blank" class="whatsapp-button" title="Contáctanos por WhatsApp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516" fill="currentColor"/>
+            </svg>
+        </a>
+    </div>
+
+    <style>
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 9999999;
+        transition: all 0.3s ease;
+    }
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 2px 2px 10px #999;
+    }
+    .whatsapp-button {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: white;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+    .whatsapp-button:hover {
+        color: white;
+        text-decoration: none;
+    }
+    .whatsapp-button svg {
+        width: 32px;
+        height: 32px;
+    }
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            width: 50px;
+            height: 50px;
+            bottom: 15px;
+            right: 15px;
+        }
+        .whatsapp-button {
+            width: 50px;
+            height: 50px;
+        }
+        .whatsapp-button svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    .whatsapp-float {
+        animation: pulse 2s infinite;
+    }
+    .whatsapp-float:hover {
+        animation: none;
+    }
+    </style>
 
     <!-- JS here -->
     <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
