@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2">
+  <rect width="1" height="2" fill="#006847"/>
+  <rect x="1" width="1" height="2" fill="#fff"/>
+  <rect x="2" width="1" height="2" fill="#ce1126"/>
+  <g transform="translate(1.5,1) scale(0.4)">
+    <!-- Escudo simplificado de México -->
+    <circle cx="0" cy="0" r="0.8" fill="#8b4513" stroke="#654321" stroke-width="0.1"/>
+    <path d="M-0.3,-0.2 Q0,-0.5 0.3,-0.2 Q0.2,0.2 0,-0.1 Q-0.2,0.2 -0.3,-0.2" fill="#228b22"/>
+    <ellipse cx="0" cy="0.1" rx="0.15" ry="0.25" fill="#8b4513"/>
+  </g>
+</svg>

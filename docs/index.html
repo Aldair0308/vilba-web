@@ -1,0 +1,1287 @@
+<!doctype html>
+<html class="no-js" lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SERVICIOS VILBA</title>
+    <meta name="description" content="Vilba - Maquinaria industrial y servicios de construcción">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+            <link rel="stylesheet" href="assets/css/slicknav.css">
+            <link rel="stylesheet" href="assets/css/animate.min.css">
+            <link rel="stylesheet" href="assets/css/magnific-popup.css">
+            <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+            <link rel="stylesheet" href="assets/css/themify-icons.css">
+            <link rel="stylesheet" href="assets/css/slick.css">
+            <link rel="stylesheet" href="assets/css/nice-select.css">
+            <link rel="stylesheet" href="assets/css/style.css">
+            <!-- Language switcher script -->
+            <script src="assets/js/language-switcher.js"></script>
+             
+            <!-- Configuración inicial del idioma -->
+            <script>
+                window.initialLanguage = 'es';
+                console.log('Idioma inicial:', window.initialLanguage);
+            </script>
+            <style>
+                /* Estilo solo para PC (pantallas mayores a 768px) */
+                @media (min-width: 769px) {
+                    #logo {
+                        margin-top: -190px;
+                    }
+                }
+            </style>
+            
+            <style>
+            /* Ajuste de posición para el div de servicios en dispositivos móviles */
+            @media (max-width: 767px) {
+                .hero-text2.mt-110 {
+                    position: relative;
+                    top: 20px;
+                }
+            }
+            </style>
+   </head>
+
+   <body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/loder-logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inicio del Encabezado -->
+    <header>
+        <div class="header-area header-transparent">
+            <div class="main-header">
+                <div class="header-bottom header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2 col-md-1">
+                                <div class="logo">
+                                    <a href="#" class="big-logo">
+                                        <img id="logo-big" src="assets/img/logo/logo.png" alt="" style="height: 80px; width: auto; max-width: 400px; margin-left: -60px;">
+                                    </a>
+                                    <a href="#" class="small-logo">
+                                        <img id="logo-small" src="assets/img/logo/logo.png" alt="" style="height: 60px; width: auto; max-width: 280px; margin-left: -60px;">
+                                    </a>
+                                     
+                                     <!-- CSS específico para móviles -->
+                                     <style>
+                                         @media (max-width: 768px) {
+                                             #logo-big, #logo-small {
+                                                 margin-left: -10px !important;
+                                             }
+                                         }
+                                     </style>
+                                </div>
+                            </div>
+                            <div class="col-xl-7 col-lg-7 col-md-7">
+                                 <!-- Menú principal -->
+                                 <div class="main-menu f-right d-none d-lg-block">
+                                     <nav> 
+                                         <ul id="navigation">                                                                                                                   
+                                             <li><a href="#" data-translate="home">Inicio</a></li>
+                                             <li><a href="#equipos-section" data-translate="equipment">Equipos</a></li>
+                                             <li><a href="#servicios-section" data-translate="services">Servicios</a></li>
+                                             <li><a href="#nosotros-section" data-translate="about">Nosotros</a></li>
+                                             
+                                             <li><a href="#contacto-section" data-translate="contact">Contacto</a></li>
+                                             <li><a href="javascript:void(0)" data-translate="language">Idioma 🌐</a>
+                                                 <ul class="submenu">
+                                                     <li>
+                                         <a href="javascript:void(0)" onclick="changeLanguage('es')" style="font-weight: bold; color: #ff6b35;">
+                                             <img src="assets/images/flags/mx.svg" alt="Español" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
+                                             Español
+                                         </a>
+                                     </li>
+                                     <li>
+                                         <a href="javascript:void(0)" onclick="changeLanguage('en')">
+                                             <img src="assets/images/flags/us.svg" alt="English" class="flag-icon me-2" style="width: 16px; height: auto; margin-right: 8px;">
+                                             English
+                                         </a>
+                                     </li>
+                                                 </ul>
+                                             </li>
+                                         </ul>
+                                     </nav>
+                                 </div>
+                            </div>             
+                            <div class="col-xl-3 col-lg-3 col-md-4">
+                                <div class="header-right-content d-flex align-items-center justify-content-end">
+                                     <!-- Botón de contacto -->
+                                     <div class="header-right-btn d-none d-lg-block">
+                                         <a href="#contacto-section" class="btn" data-translate="contact_btn">Contáctanos</a>
+                                     </div>
+                                 </div>
+                            </div>
+                            <!-- Menú Móvil -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <script>
+        function changeLanguage(language) {
+            if (language === 'en') {
+                document.documentElement.lang = 'en';
+                localStorage.setItem('vilba-language', 'en');
+                location.reload();
+            } else {
+                document.documentElement.lang = 'es';
+                localStorage.setItem('vilba-language', 'es');
+                location.reload();
+            }
+        }
+        
+        // Check saved language on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('vilba-language') || 'es';
+            window.initialLanguage = savedLang;
+            if (savedLang === 'en') {
+                // Switch to English content
+                document.documentElement.lang = 'en';
+                document.title = 'VILBA SERVICES';
+                // Update all translatable elements
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    const translations = {
+                        'home': 'Home',
+                        'equipment': 'Equipment',
+                        'services': 'Services',
+                        'about': 'About Us',
+                        'contact': 'Contact',
+                        'contact_btn': 'Contact Us',
+                        'welcome': 'Welcome',
+                        'hero_subtitle': 'industrial machinery and construction services',
+                        'our_services': 'Our Services',
+                        'our_services_title': 'Our Services',
+                        'services_back': 'Services',
+                        'concrete_service': 'Concrete and Construction Materials Sales',
+                        'concrete_description': 'We sell high-quality concrete and construction materials at our location: Av. Insurgentes Sur 1234, Col. Del Valle, Benito Juárez, CDMX, México.',
+                        'volvo_service': 'Volvo Truck Rental',
+                        'volvo_description': 'Volvo FH truck for long-distance transport and construction. Power 420-540 HP, ideal for regional transport and building-related tasks.',
+                        'building_service': 'Construction Services',
+                        'building_description': 'Heavy machinery for excavation, earthworks, compaction and construction projects.',
+                        'electrification_service': 'Electrification Services',
+                        'electrification_description': 'Specialized equipment for electrical installations, power lines and industrial electrification projects.',
+                        'drainage_service': 'Drainage Systems',
+                        'drainage_description': 'Installation and maintenance of stormwater, sanitary and civil works drainage systems.',
+                        'topographic_service': 'Topographic Surveys',
+                        'topographic_description': 'Precision terrain measurement and mapping for construction, infrastructure and civil engineering projects.',
+                        'read_more': 'Read More',
+                        'who_we_are': 'Who We Are',
+                        'about_us_back': 'About Us',
+                        'company_description_1': 'At Vilba, we offer reliable solutions in heavy equipment rental for your industrial, construction or logistics projects.',
+                        'company_description_2': 'We have a wide variety of machinery such as forklifts, cranes, platforms and more. We focus on providing equipment in excellent condition, accompanied by professional and punctual customer service. Whether for daily use or by project, at Vilba we support you with the machinery you need, when you need it.',
+                        'read_more_about_us': 'Read more about us',
+                        'our_equipment_title': 'Our Equipment',
+                        'equipment_back': 'Equipment',
+                        'language': 'Language'
+                    };
+                    if (translations[key]) {
+                        el.textContent = translations[key];
+                    }
+                });
+                
+                // Update hero section
+                const heroSubtitle = document.querySelector('[data-translate="hero_subtitle"]');
+                if (heroSubtitle) heroSubtitle.textContent = 'industrial machinery and construction services';
+                
+                const heroWelcome = document.querySelector('[data-translate="welcome"]');
+                if (heroWelcome) heroWelcome.textContent = 'Welcome';
+                
+                const heroTitle = document.querySelector('.stock-text h2');
+                if (heroTitle) {
+                    heroTitle.textContent = 'VILBA SERVICES';
+                    heroTitle.nextElementSibling.textContent = 'VILBA SERVICES';
+                }
+                
+                const servicesLink = document.querySelector('.hero-text2 a');
+                if (servicesLink) {
+                    servicesLink.textContent = 'Our Services';
+                    servicesLink.setAttribute('data-translate', 'our_services');
+                }
+            }
+        });
+    </script>
+    
+    <main>
+
+        <!-- slider Area Start-->
+        <div class="slider-area ">
+            <div class="slider-active">
+                <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="assets/img/hero/h1_hero.jpg">
+                    <div class="container" id="logo">
+                        <div class="row">
+                            <div class="col-lg-11">
+                                <div class="hero__caption">
+                                    <div class="hero-text1">
+                                        <span data-animation="fadeInUp" data-delay=".3s" data-translate="hero_subtitle">maquinaria industrial y servicios de construcción</span>
+                                    </div>
+                                    <h1 data-animation="fadeInUp" data-delay=".5s" data-translate="welcome">Bienvenido</h1>
+                                    <div class="stock-text" data-animation="fadeInUp" data-delay=".8s" style="margin-top: 20px;">
+                                        <h2>SERVICIOS VILBA</h2>
+                                        <h2>SERVICIOS VILBA</h2>
+                                    </div>
+                                    <div class="hero-text2 mt-110" data-animation="fadeInUp" data-delay=".9s">
+                                       <span><a href="#servicios-section" data-translate="our_services" class="services-hero-link">Nuestros Servicios</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- slider Area End-->
+        
+        <!-- Equipment Showcase Component -->
+        <div id="equipos-section" class="d-none d-lg-block" style="margin-top: -25px; margin-bottom: -20px;">
+            <div class="services-area1 section-padding30">
+    <div class="container">
+        <!-- Título de la sección -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-tittle mb-55">
+                    <div class="front-text">
+                        <h2 class="" data-translate="our_equipment_title">
+                            Nuestros Equipos
+                        </h2>
+                    </div>
+                    <span class="back-text" data-translate="equipment_back">
+                        Equipos
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-stretch">
+            <!-- Equipo 1: Retroexcavadora -->
+            <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                    <div class="service-img">
+                        <img src="assets/img/equipos/Retro-416.png" alt="Retroexcavadora">
+                    </div>
+                    <div class="service-cap flex-grow-1 d-flex flex-column">
+                        <h4><a href="#">Retroexcavadora</a></h4>
+                        <p class="service-description flex-grow-1">Maquinaria versátil para excavación, carga y movimiento de tierras en proyectos de construcción.</p>
+                        <a href="#" class="more-btn mt-auto" data-translate="read_more">
+                            Leer más <i class="ti-plus"></i>
+                        </a>
+                    </div>
+                    <div class="service-icon">
+                        <img src="assets/img/icon/services_icon1.png" alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Equipo 2: Grúas Torre -->
+            <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                    <div class="service-img">
+                        <img src="assets/img/equipos/camion-kenworth.png" alt="Grúas Torre">
+                    </div>
+                    <div class="service-cap flex-grow-1 d-flex flex-column">
+                        <h4><a href="#">Camión Kenworth</a></h4>
+                        <p class="service-description flex-grow-1">Camión de carga pesada para transporte de materiales y equipos de construcción.</p>
+                        <a href="#" class="more-btn mt-auto" data-translate="read_more">
+                            Leer más <i class="ti-plus"></i>
+                        </a>
+                    </div>
+                    <div class="service-icon">
+                        <img src="assets/img/icon/services_icon1.png" alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Equipo 3: Camión Volvo -->
+            <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                    <div class="service-img">
+                        <img src="assets/img/equipos/Volvo-camion.png" alt="Camión Volvo">
+                    </div>
+                    <div class="service-cap flex-grow-1 d-flex flex-column">
+                        <h4><a href="#">Camión Volvo</a></h4>
+                        <p class="service-description flex-grow-1">Volvo FH para transporte de larga distancia y construcción. Potencia de 420-540 CV.</p>
+                        <a href="#" class="more-btn mt-auto" data-translate="read_more">
+                            Leer más <i class="ti-plus"></i>
+                        </a>
+                    </div>
+                    <div class="service-icon">
+                        <img src="assets/img/icon/services_icon1.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ver todos los equipos button -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="#" class="btn red-btn2 mt-30">
+                    Ver Todos los Equipos
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        {{-- Show on mobile and tablet --}}
+        <div class="d-block d-lg-none">
+            <div class="services-area1 section-padding30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-tittle mb-55">
+                    <div class="front-text">
+                        <h2 class="" data-translate="our_equipment_title">
+                            Nuestros Equipos
+                        </h2>
+                    </div>
+                    <span class="back-text" data-translate="equipment_back">
+                        Equipos
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-stretch">
+            <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                    <div class="service-img">
+                        <img src="assets/img/equipos/Retro-416.png" alt="Retroexcavadora">
+                    </div>
+                    <div class="service-cap flex-grow-1 d-flex flex-column">
+                        <h4><a href="#">Retroexcavadora</a></h4>
+                        <p class="service-description flex-grow-1">Maquinaria versátil para excavación, carga y movimiento de tierras.</p>
+                        <a href="#" class="more-btn mt-auto" data-translate="read_more">
+                            Leer más <i class="ti-plus"></i>
+                        </a>
+                    </div>
+                    <div class="service-icon">
+                        <img src="assets/img/icon/services_icon1.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                    <div class="service-img">
+                        <img src="assets/img/equipos/camion-kenworth.png" alt="Camión Kenworth">
+                    </div>
+                    <div class="service-cap flex-grow-1 d-flex flex-column">
+                        <h4><a href="#">Camión Kenworth</a></h4>
+                        <p class="service-description flex-grow-1">Camión de carga pesada para transporte de materiales.</p>
+                        <a href="#" class="more-btn mt-auto" data-translate="read_more">
+                            Leer más <i class="ti-plus"></i>
+                        </a>
+                    </div>
+                    <div class="service-icon">
+                        <img src="assets/img/icon/services_icon1.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                    <div class="service-img">
+                        <img src="assets/img/equipos/Volvo-camion.png" alt="Camión Volvo">
+                    </div>
+                    <div class="service-cap flex-grow-1 d-flex flex-column">
+                        <h4><a href="#">Camión Volvo</a></h4>
+                        <p class="service-description flex-grow-1">Volvo FH para transporte de larga distancia.</p>
+                        <a href="#" class="more-btn mt-auto" data-translate="read_more">
+                            Leer más <i class="ti-plus"></i>
+                        </a>
+                    </div>
+                    <div class="service-icon">
+                        <img src="assets/img/icon/services_icon1.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="#" class="btn red-btn2 mt-30">
+                    Ver Todos los Equipos
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        
+        <!-- Services Area Start -->
+        <div id="servicios-section" class="services-area1 section-padding30">
+            <div class="container">
+                <!-- Título de la sección -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle mb-55">
+                            <div class="front-text">
+                                    <h2 class="" data-translate="our_services_title">Nuestros Servicios</h2>
+                                </div>
+                                <span class="back-text" data-translate="services_back">Servicios</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex align-items-stretch">
+                    <!-- Servicio 1: Venta de Concreto y Materiales de Construcción -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                            <div class="service-img">
+                                <img src="assets/img/service/servicess3.png" alt="Venta de Concreto y Materiales">
+                            </div>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="#" data-translate="concrete_service">Venta de Concreto y Materiales de Construcción</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="concrete_description">Vendemos concreto de alta calidad y materiales de construcción en nuestra ubicación: Av. Insurgentes Sur 1234, Col. Del Valle, Benito Juárez, CDMX, México.</p>
+                                <a href="#" class="more-btn mt-auto" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
+                            </div>
+                            <div class="service-icon">
+                                <img src="assets/img/icon/services_icon1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 2: Renta de Camión Volvo -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                            <div class="service-img">
+                                <img src="assets/img/service/servicess1.png" alt="Camión Volvo">
+                            </div>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="#" data-translate="volvo_service">Renta de Camión Volvo</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="volvo_description">Camión Volvo FH para transporte de larga distancia y construcción. Potencia de 420-540 CV, ideal para tareas de transporte regional y relacionado con edificación.</p>
+                                <a href="#" class="more-btn mt-auto" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
+                            </div>
+                            <div class="service-icon">
+                                <img src="assets/img/icon/services_icon1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 3: Servicios de Edificación -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                            <div class="service-img">
+                                <img src="assets/img/service/servicess2.png" alt="Servicios de Edificación">
+                            </div>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="#" data-translate="building_service">Servicios de Edificación</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="building_description">Maquinaria pesada para excavación, movimiento de tierras, compactación y proyectos de construcción.</p>
+                                <a href="#" class="more-btn mt-auto" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
+                            </div>
+                            <div class="service-icon">
+                                <img src="assets/img/icon/services_icon1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Segunda fila de servicios -->
+                <div class="row mt-4 d-flex align-items-stretch">
+                    <!-- Servicio 4: Servicios de Electrificación -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                            <div class="service-img">
+                                <img src="assets/img/service/servicess3.png" alt="Servicios de Electrificación">
+                            </div>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="#" data-translate="electrification_service">Servicios de Electrificación</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="electrification_description">Equipos especializados para instalaciones eléctricas, líneas de energía y proyectos de electrificación industrial.</p>
+                                <a href="#" class="more-btn mt-auto" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
+                            </div>
+                            <div class="service-icon">
+                                <img src="assets/img/icon/services_icon1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 5: Sistemas de Drenaje -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                            <div class="service-img">
+                                <img src="assets/img/service/servicess1.png" alt="Sistemas de Drenaje">
+                            </div>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="#" data-translate="drainage_service">Sistemas de Drenaje</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="drainage_description">Instalación y mantenimiento de sistemas de drenaje pluvial, sanitario y obras civiles.</p>
+                                <a href="#" class="more-btn mt-auto" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
+                            </div>
+                            <div class="service-icon">
+                                <img src="assets/img/icon/services_icon1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Servicio 6: Levantamientos Topográficos -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex">
+                        <div class="single-service-cap mb-30 d-flex flex-column w-100">
+                            <div class="service-img">
+                                <img src="assets/img/service/servicess2.png" alt="Levantamientos Topográficos">
+                            </div>
+                            <div class="service-cap flex-grow-1 d-flex flex-column">
+                                <h4><a href="#" data-translate="topographic_service">Levantamientos Topográficos</a></h4>
+                                <p class="service-description flex-grow-1" data-translate="topographic_description">Medición y mapeo de precisión del terreno para proyectos de construcción, infraestructura e ingeniería civil.</p>
+                                <a href="#" class="more-btn mt-auto" data-translate="read_more">Leer más <i class="ti-plus"></i></a>
+                            </div>
+                            <div class="service-icon">
+                                <img src="assets/img/icon/services_icon1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Services Area End -->
+        <!-- About Area Start -->
+        <section id="nosotros-section" class="support-company-area fix pt-10" style="margin-bottom: 3%">
+            <div class="support-wrapper align-items-end">
+                <div class="left-content">
+                    <!-- Título de la sección -->
+                    <div class="section-tittle section-tittle2 mb-55" style="margin-top: 40px;">
+                        <div class="front-text">
+                            <h2 class="" data-translate="who_we_are">Quiénes somos</h2>
+                        </div>
+                        <span class="back-text" data-translate="about_us_back">Sobre nosotros</span>
+                    </div>
+                    <div class="support-caption">
+                        <p class="pera-top" data-translate="company_description_1">
+                            En <strong>Vilba</strong>, ofrecemos soluciones confiables en renta de equipo pesado para tus proyectos industriales, de construcción o logísticos.
+                        </p>
+                        <p data-translate="company_description_2">
+                            Contamos con una amplia variedad de maquinaria como montacargas, grúas, plataformas y más. Nos enfocamos en brindar equipos en excelente estado, acompañados de un servicio al cliente profesional y puntual. Ya sea para uso diario o por proyecto, en Vilba te apoyamos con la maquinaria que necesitas, cuando la necesitas.
+                        </p>
+                        <a href="#" class="btn red-btn2" data-translate="read_more_about_us">Leer más sobre nosotros</a>
+                    </div>
+                    
+                </div>
+                <div class="right-content">
+                    <!-- Imagen -->
+                    <div class="right-img">
+                        <img src="assets/img/gallery/safe_in.png" alt="">
+                    </div>
+                    <div class="support-img-cap text-center">
+                        <span>1994</span>
+                        <p>Desde</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Area End -->
+        <!-- contact with us Start -->
+        <section class="contact-with-area" data-background="assets/img/gallery/section-bg2.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-9 offset-xl-1 offset-lg-1">
+                        <div class="contact-us-caption">
+                            <div class="team-info mb-30 pt-45">
+                                 <!-- Título de la sección -->
+                                 <div class="section-tittle section-tittle4">
+                                     <div class="front-text">
+                                         <h2 class="">Hablemos de Vilba</h2>
+                                     </div>
+                                     <span class="back-text">Charlemos</span>
+                                 </div>
+                                 <p>
+                                     En Vilba estamos para ayudarte con la renta de montacargas, grúas y todo el equipo pesado que necesites. 
+                                     Nuestro equipo está listo para asesorarte y ofrecerte la mejor solución para tu proyecto. 
+                                     No dudes en contactarnos para recibir atención personalizada y equipos en óptimas condiciones.
+                                 </p>
+                                 <a href="#contacto-section" class="white-btn">Contáctanos</a>
+                             </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- contact with us End-->
+ <!-- Área de Contador Inicio -->
+ <div id="contacto-section" class="count-area" style="margin-bottom: 5%">
+     <div class="container">
+         <div class="count-wrapper count-bg" data-background="assets/img/gallery/section-bg3.jpg">
+             <div class="row justify-content-center">
+                 <div class="col-lg-4 col-md-4 col-sm-6">
+                     <div class="count-clients">
+                         <div class="single-counter">
+                             <div class="count-number">
+                                 <span class="counter">34</span>
+                             </div>
+                             <div class="count-text">
+                                 <h5 id="indicadores">Clientes</h5>
+                                 <p id="indicadores">Satisfechos</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-4 col-md-4 col-sm-6">
+                     <div class="count-clients">
+                         <div class="single-counter">
+                             <div class="count-number">
+                                 <span class="counter">12</span>
+                             </div>
+                             <div class="count-text">
+                                 <h5 id="indicadores">Equipos</h5>
+                                 <p id="indicadores">Disponibles</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-4 col-md-4 col-sm-6">
+                     <div class="count-clients">
+                         <div class="single-counter">
+                             <div class="count-number">
+                                 <span class="counter">09</span>
+                             </div>
+                             <div class="count-text">
+                                 <h5 id="indicadores">Servicios</h5>
+                                 <p id="indicadores">Disponibles</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <!-- Área de Contador Fin -->
+
+    </main>
+    <!-- Footer Component -->
+    <footer>
+    <!-- Inicio del Pie de Página -->
+    <div class="footer-main">
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-4 col-md-4 col-sm-8">
+                        <div class="single-footer-caption mb-30">
+                             <!-- Logo -->
+                             <div class="footer-logo">
+                                 <a href="#"><img src="assets/img/logo/logo.png" alt="Logo Grúas Vilba" style="height: 60px; width: auto; max-width: 200px;"></a>
+                             </div>
+                             <div class="footer-tittle">
+                                 <div class="footer-pera">
+                                     <p class="info1">Vilba empresa especializada en servicios de grúas con atención personalizada y rápida respuesta en toda la ciudad.</p>
+                                 </div>
+                             </div>
+                         </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Enlaces Rápidos</h4>
+                                <ul>
+                                    <li><a href="#nosotros-section">Nosotros</a></li>
+                                    <li><a href="#servicios-section">Servicios</a></li>
+                                    <li><a href="#equipos-section">Equipos</a></li>
+                                    <li><a href="#contacto-section">Contáctanos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Contacto</h4>
+                                <div class="footer-pera">
+                                    <p class="info1">Av. Insurgentes Sur 1234, Col. Del Valle, Benito Juárez, CDMX, México</p>
+                                </div>
+                                <ul>
+                                    <li><a href="#">Teléfono: +52 (123) 456 7890</a></li>
+                                    <li><a href="#">Celular: +52 (123) 987 6543</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-8">
+                        <div class="single-footer-caption mb-50">
+                             <!-- Mapa Interactivo -->
+                             <div class="map-footer">
+                                 <div class="footer-map-container">
+                                     <!-- Mapa de Google Maps -->
+                                     <iframe 
+                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.8445194652563!2d-99.96694989999999!3d19.4191227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2856ba145a859%3A0xdca48ae2e494098d!2sCONCRETOS%20Y%20CONSTRUCCIONES%20VILBA%20SA%20DE%20CV!5e0!3m2!1ses-419!2smx!4v1751433490665!5m2!1ses-419!2smx" 
+                                         width="100%" 
+                                         height="200" 
+                                         style="border:0; border-radius: 12px;" 
+                                         allowfullscreen="" 
+                                         loading="lazy" 
+                                         referrerpolicy="no-referrer-when-downgrade">
+                                     </iframe>
+                                     
+                                     <!-- Botones de Navegación -->
+                                     <div class="footer-map-navigation mt-3">
+                                         <div class="footer-map-buttons">
+                                             <a href="https://www.google.com/maps/search/?api=1&query=CONCRETOS+Y+CONSTRUCCIONES+VILBA+SA+DE+CV" target="_blank" class="footer-nav-button google-maps" data-app="google">
+                                                 <div class="footer-button-icon">
+                                                     <i class="fab fa-google"></i>
+                                                 </div>
+                                                 <div class="footer-button-content">
+                                                     <span class="footer-button-title">Google Maps</span>
+                                                     <span class="footer-button-subtitle">Abrir en Google Maps</span>
+                                                 </div>
+                                             </a>
+                                             <a href="https://waze.com/ul?q=CONCRETOS+Y+CONSTRUCCIONES+VILBA+SA+DE+CV&navigate=yes" target="_blank" class="footer-nav-button waze" data-app="waze">
+                                                 <div class="footer-button-icon">
+                                                     <img src="assets/img/logo/waze.png" alt="Waze" class="waze-png-icon" width="20" height="20" style="filter: brightness(0) invert(1); object-fit: contain; vertical-align: middle;">
+                                                 </div>
+                                                 <div class="footer-button-content">
+                                                     <span class="footer-button-title">Waze</span>
+                                                     <span class="footer-button-subtitle">Abrir en Waze</span>
+                                                 </div>
+                                             </a>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Derechos de autor -->
+                <div id="copy-right" class="row align-items-center">
+                    <div class="col-xl-12">
+                        <div class="footer-copy-right text-center">
+                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | <a href="#" target="_blank">Vilba</a> 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin del Pie de Página -->
+</footer>
+
+<style>
+    /* Estilo solo para PC (pantallas mayores a 768px) */
+    @media (max-width: 769px) {
+        #copy-right {
+            padding-bottom: 70px !important;
+        }
+    }
+    
+    /* Estilos para el mapa y botones del footer */
+    .footer-map-container {
+        width: 100%;
+    }
+    
+    .footer-map-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .footer-nav-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #fff;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid transparent;
+        font-size: 0.85rem;
+        text-align: center;
+        min-height: 80px;
+    }
+    
+    .footer-nav-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        transition: left 0.5s ease;
+    }
+    
+    .footer-nav-button:hover::before {
+        left: 100%;
+    }
+    
+    .footer-nav-button:hover {
+        transform: translateY(-2px) scale(1.02);
+        text-decoration: none;
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .footer-nav-button:active {
+        transform: translateY(-1px) scale(1.01);
+    }
+    
+    .footer-button-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .footer-button-icon i,
+    .footer-button-icon svg {
+        font-size: 20px;
+        color: #ffffff;
+    }
+    
+    .footer-button-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-button-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 2px;
+        display: block;
+    }
+    
+    .footer-button-subtitle {
+        font-size: 0.7rem;
+        opacity: 0.9;
+        font-weight: 400;
+        display: block;
+        line-height: 1.2;
+    }
+    
+    .footer-nav-button.google-maps,
+    .footer-nav-button.waze {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+    }
+    
+    .footer-nav-button.google-maps:hover,
+    .footer-nav-button.waze:hover {
+        background: #1e40af;
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+        color: #ffffff;
+    }
+    
+    /* Responsive específico para tablets (768px - 1024px) */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .footer-area {
+            padding: 60px 0 40px;
+        }
+        
+        .footer-area .container {
+            max-width: 95%;
+        }
+        
+        .footer-area .row {
+            margin: 0 -10px;
+        }
+        
+        .footer-area .row > [class*="col-"] {
+            padding: 0 10px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo img {
+            height: 50px !important;
+            max-width: 180px !important;
+        }
+        
+        .footer-pera p.info1 {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .footer-tittle h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .footer-tittle ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 15px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer-tittle ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-tittle ul li a {
+            font-size: 0.85rem;
+            padding: 5px 0;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .single-footer-caption:nth-child(3) .footer-pera p.info1 {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+        
+        .single-footer-caption:nth-child(3) ul {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .single-footer-caption:nth-child(3) ul li a {
+            font-size: 0.8rem;
+            padding: 3px 0;
+        }
+        
+        .footer-map-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-map-container iframe {
+            height: 180px !important;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-map-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .footer-nav-button {
+            flex: 1;
+            padding: 14px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            min-height: 75px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer-nav-button:hover {
+            background: rgba(30, 64, 175, 0.8);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
+        }
+        
+        .footer-button-icon {
+            width: 36px;
+            height: 36px;
+            margin-bottom: 6px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .footer-button-icon i,
+        .footer-button-icon svg,
+        .footer-button-icon img {
+            font-size: 18px;
+        }
+        
+        .footer-button-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .footer-button-subtitle {
+            font-size: 0.7rem;
+            opacity: 0.85;
+        }
+        
+        #copy-right {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-copy-right p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+    }
+    
+    /* Responsive para móviles */
+    @media (max-width: 767px) {
+        .footer-nav-button {
+            padding: 12px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            min-height: 70px;
+        }
+        
+        .footer-button-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 6px;
+        }
+        
+        .footer-button-icon i,
+        .footer-button-icon svg {
+            font-size: 16px;
+        }
+        
+        .footer-button-title {
+            font-size: 0.8rem;
+        }
+        
+        .footer-button-subtitle {
+            font-size: 0.65rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .footer-nav-button {
+            padding: 10px 6px;
+            font-size: 0.75rem;
+            min-height: 65px;
+        }
+        
+        .footer-button-icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 4px;
+        }
+        
+        .footer-button-icon i,
+        .footer-button-icon svg {
+            font-size: 14px;
+        }
+        
+        .footer-button-title {
+            font-size: 0.75rem;
+        }
+        
+        .footer-button-subtitle {
+            font-size: 0.6rem;
+        }
+    }
+</style>
+
+<script>
+// Script para optimizar la visualización del icono de Waze
+document.addEventListener('DOMContentLoaded', function() {
+    const wazeButton = document.querySelector('.footer-nav-button.waze');
+    if (!wazeButton) return;
+    
+    const pngIcon = wazeButton.querySelector('.waze-png-icon');
+    
+    function handleImageLoad() {
+        if (pngIcon && pngIcon.complete && pngIcon.naturalHeight !== 0) {
+            pngIcon.style.display = 'inline-block';
+        }
+    }
+    
+    handleImageLoad();
+    
+    if (pngIcon) {
+        pngIcon.addEventListener('load', handleImageLoad);
+        pngIcon.addEventListener('error', handleImageLoad);
+    }
+});
+</script>
+    
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/525512345678?text=Hola!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." 
+           target="_blank" 
+           class="whatsapp-button" 
+           title="Contáctanos por WhatsApp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516" fill="currentColor"/>
+            </svg>
+        </a>
+    </div>
+    
+    <style>
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 9999999;
+        transition: all 0.3s ease;
+    }
+    
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 2px 2px 10px #999;
+    }
+    
+    .whatsapp-button {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: white;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+    
+    .whatsapp-button:hover {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .whatsapp-button svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            width: 50px;
+            height: 50px;
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .whatsapp-button {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .whatsapp-button svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+    
+    /* Animation for attention */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    .whatsapp-float {
+        animation: pulse 2s infinite;
+    }
+    
+    .whatsapp-float:hover {
+        animation: none;
+    }
+    </style>
+    
+    <!-- Copy JS here -->
+	
+		<!-- JS here -->
+		
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+        <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+        <script src="assets/js/jquery.slicknav.min.js"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/slick.min.js"></script>
+        <!-- Date Picker -->
+        <script src="assets/js/gijgo.min.js"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="assets/js/wow.min.js"></script>
+		<!-- Script de cambio de contenido dinámico deshabilitado -->
+<!-- <script src="assets/js/animated.headline.js"></script> -->
+        <script src="assets/js/jquery.magnific-popup.js"></script>
+        <script src="assets/js/main.js"></script>
+        
+        <!-- Script personalizado para inicialización de contadores -->
+        <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                if (typeof $.fn.waypoint !== 'undefined' && typeof $.fn.counterUp !== 'undefined') {
+                    $('.counter').each(function() {
+                        var $this = $(this);
+                        $this.waypoint(function() {
+                            $this.counterUp({
+                                delay: 10,
+                                time: 3000
+                            });
+                        }, {
+                            offset: '75%',
+                            triggerOnce: true
+                        });
+                    });
+                } else {
+                    $('.counter').each(function() {
+                        var $this = $(this);
+                        var finalValue = parseInt($this.text());
+                        var currentValue = 0;
+                        var increment = finalValue / 100;
+                        
+                        var timer = setInterval(function() {
+                            currentValue += increment;
+                            if (currentValue >= finalValue) {
+                                currentValue = finalValue;
+                                clearInterval(timer);
+                            }
+                            $this.text(Math.floor(currentValue));
+                        }, 30);
+                    });
+                }
+            }, 1000);
+        });
+        </script>
+        
+        <!-- jQuery CounterUp Plugin -->
+        <script src="assets/js/jquery.counterup.min.js"></script>
+        
+        <!-- Data-background init -->
+        <script>
+        $("[data-background]").each(function () {
+            $(this).css("background-image", "url(" + $(this).attr("data-background") + ")")
+        });
+        </script>
+</body>
+</html>

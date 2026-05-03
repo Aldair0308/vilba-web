@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#87CEEB"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="450" width="800" height="150" fill="#8B4513"/>
+  
+  <!-- Truck chassis -->
+  <rect x="100" y="380" width="500" height="40" fill="#2F4F4F" stroke="#000" stroke-width="2"/>
+  
+  <!-- Cabin -->
+  <rect x="100" y="300" width="120" height="80" fill="#4169E1" stroke="#000" stroke-width="2"/>
+  <rect x="110" y="310" width="100" height="60" fill="#87CEEB" stroke="#000" stroke-width="1"/>
+  
+  <!-- Dump bed (tilted position) -->
+  <g transform="rotate(-15 400 340)">
+    <rect x="250" y="280" width="300" height="80" fill="#FFD700" stroke="#000" stroke-width="2"/>
+    <!-- Bed sides -->
+    <rect x="250" y="280" width="10" height="80" fill="#DAA520" stroke="#000" stroke-width="1"/>
+    <rect x="540" y="280" width="10" height="80" fill="#DAA520" stroke="#000" stroke-width="1"/>
+    <!-- Tailgate -->
+    <rect x="540" y="280" width="80" height="80" fill="#DAA520" stroke="#000" stroke-width="2" transform="rotate(-30 580 320)"/>
+  </g>
+  
+  <!-- Hydraulic cylinder (extended) -->
+  <line x1="300" y1="380" x2="350" y2="280" stroke="#C0C0C0" stroke-width="12"/>
+  <circle cx="300" cy="380" r="8" fill="#2F4F4F" stroke="#000" stroke-width="1"/>
+  <circle cx="350" cy="280" r="8" fill="#2F4F4F" stroke="#000" stroke-width="1"/>
+  
+  <!-- Material being dumped -->
+  <g fill="#8B4513" opacity="0.7">
+    <circle cx="580" cy="250" r="8"/>
+    <circle cx="590" cy="260" r="6"/>
+    <circle cx="600" cy="270" r="7"/>
+    <circle cx="610" cy="280" r="5"/>
+    <circle cx="620" cy="290" r="6"/>
+    <circle cx="630" cy="300" r="4"/>
+    <circle cx="575" cy="270" r="5"/>
+    <circle cx="585" cy="280" r="4"/>
+    <circle cx="595" cy="290" r="6"/>
+    <circle cx="605" cy="300" r="5"/>
+  </g>
+  
+  <!-- Front wheels -->
+  <circle cx="150" cy="440" r="30" fill="#2F4F4F" stroke="#000" stroke-width="2"/>
+  <circle cx="150" cy="440" r="20" fill="#000"/>
+  
+  <!-- Rear wheels (dual axle) -->
+  <circle cx="450" cy="440" r="30" fill="#2F4F4F" stroke="#000" stroke-width="2"/>
+  <circle cx="450" cy="440" r="20" fill="#000"/>
+  <circle cx="490" cy="440" r="30" fill="#2F4F4F" stroke="#000" stroke-width="2"/>
+  <circle cx="490" cy="440" r="20" fill="#000"/>
+  <circle cx="530" cy="440" r="30" fill="#2F4F4F" stroke="#000" stroke-width="2"/>
+  <circle cx="530" cy="440" r="20" fill="#000"/>
+  <circle cx="570" cy="440" r="30" fill="#2F4F4F" stroke="#000" stroke-width="2"/>
+  <circle cx="570" cy="440" r="20" fill="#000"/>
+  
+  <!-- Bed pivot point -->
+  <circle cx="250" cy="360" r="12" fill="#2F4F4F" stroke="#000" stroke-width="2"/>
+  
+  <!-- Hydraulic pump -->
+  <rect x="200" y="390" width="40" height="20" fill="#696969" stroke="#000" stroke-width="2"/>
+  
+  <!-- Headlights -->
+  <circle cx="90" cy="340" r="8" fill="#FFFF00" stroke="#000" stroke-width="1"/>
+  <circle cx="90" cy="360" r="8" fill="#FFFF00" stroke="#000" stroke-width="1"/>
+  
+  <!-- Warning beacon -->
+  <circle cx="160" cy="290" r="6" fill="#FF0000"/>
+  
+  <!-- Exhaust pipe -->
+  <rect x="200" y="280" width="8" height="20" fill="#2F4F4F" stroke="#000" stroke-width="1"/>
+  
+  <!-- License plate area -->
+  <rect x="80" y="370" width="30" height="15" fill="#FFF" stroke="#000" stroke-width="1"/>
+  
+  <!-- Side reflectors -->
+  <rect x="580" y="350" width="8" height="4" fill="#FF4500"/>
+  <rect x="580" y="360" width="8" height="4" fill="#FF4500"/>
+  
+  <!-- Mud flaps -->
+  <rect x="420" y="460" width="20" height="15" fill="#000"/>
+  <rect x="550" y="460" width="20" height="15" fill="#000"/>
+  
+  <!-- Text -->
+  <text x="400" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#000">CAMIÓN DE VOLTEO</text>
+</svg>
