@@ -62,22 +62,22 @@
                                              <li><a href="index.html#servicios-section">Servicios</a></li>
                                              <li><a href="index.html#nosotros-section">Nosotros</a></li>
                                              <li><a href="index.html#contacto-section">Contacto</a></li>
-                                             <li><a href="javascript:void(0)">Idioma 🌐</a>
-                                                 <ul class="submenu">
-                                                     <li>
-                                         <a href="javascript:void(0)" onclick="changeLanguage('es')" style="font-weight: bold; color: #ff6b35;">
-                                             <img src="assets/images/flags/mx.svg" alt="Español" style="width: 16px; height: auto; margin-right: 8px;">
-                                             Español
-                                         </a>
-                                     </li>
-                                     <li>
-                                         <a href="javascript:void(0)" onclick="changeLanguage('en')">
-                                             <img src="assets/images/flags/us.svg" alt="English" style="width: 16px; height: auto; margin-right: 8px;">
-                                             English
-                                         </a>
-                                     </li>
-                                                 </ul>
-                                             </li>
+                                              <li><a href="javascript:void(0)">Idioma 🌐</a>
+                                                  <ul class="submenu">
+                                                      <li>
+                                          <a href="javascript:void(0)" onclick="changeLanguage('es')" data-lang="es" class="lang-option">
+                                              <img src="assets/images/flags/mx.svg" alt="Español" style="width: 16px; height: auto; margin-right: 8px;">
+                                              Español
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="javascript:void(0)" onclick="changeLanguage('en')" data-lang="en" class="lang-option">
+                                              <img src="assets/images/flags/us.svg" alt="English" style="width: 16px; height: auto; margin-right: 8px;">
+                                              English
+                                          </a>
+                                      </li>
+                                                  </ul>
+                                              </li>
                                          </ul>
                                      </nav>
                                  </div>
@@ -111,6 +111,24 @@
                 location.reload();
             }
         }
+        
+        function updateLanguageIndicator(lang) {
+            document.querySelectorAll('.lang-option').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.style.fontWeight = 'bold';
+                    el.style.color = '#ff6b35';
+                } else {
+                    el.style.fontWeight = 'normal';
+                    el.style.color = '';
+                }
+            });
+        }
+        
+        // Check saved language on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('vilba-language') || 'es';
+            updateLanguageIndicator(savedLang);
+        });
     </script>
 
     <!-- slider Area Start-->
