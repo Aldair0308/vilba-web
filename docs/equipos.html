@@ -535,6 +535,63 @@
         </div>
     </footer>
 
+    <!-- Equipment Detail Modal -->
+    <div class="modal fade" id="equipmentModal" tabindex="-1" role="dialog" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="equipmentModalLabel"></h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modalEquipmentImage" src="" alt="" class="img-fluid rounded shadow mb-3" style="width: 100%; max-height: 300px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="modalEquipmentName" class="text-primary"></h4>
+                            <p id="modalEquipmentDescription" class="text-muted"></p>
+                            <hr>
+                            <div id="modalEquipmentSpecsQuick" class="mt-3"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h6><i class="fa fa-star text-warning"></i> <strong>Características Principales</strong></h6>
+                            <ul id="modalEquipmentFeatures" class="list-unstyled pl-3" style="list-style: none; padding-left: 0;"></ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fa fa-cogs text-primary"></i> <strong>Aplicaciones</strong></h6>
+                            <ul id="modalEquipmentApplications" class="list-unstyled pl-3" style="list-style: none; padding-left: 0;"></ul>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6><i class="fa fa-list-alt text-info"></i> <strong>Especificaciones Técnicas</strong></h6>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="modalEquipmentSpecs">
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6><i class="fa fa-images text-success"></i> <strong>Galería</strong></h6>
+                            <div class="row" id="modalEquipmentGallery"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <a href="index.html#contacto-section" class="btn btn-primary">Solicitar Cotización</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- WhatsApp Button -->
     <div class="whatsapp-float">
         <a href="https://wa.me/525512345678?text=Hola%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." 
@@ -613,6 +670,97 @@
     }
     </style>
 
+    <!-- Equipment Data -->
+    <script src="equipment-data.js"></script>
+    
+    <script>
+    // Equipment slugs in order as they appear
+    var equipmentSlugs = ["excavadora", "retroexcavadora-414E", "camion-ford", "camion-kenworth", "retroexcavadora-416F", "camion-volvo", "excavadoras", "equipos-especializados", "motoconformadora-570a", "vibrocompactadora", "vibrocompactador-bross-spv730", "motoconformadora-galion-t600c", "motoconformadora-cat-120b", "lowboy-rg35-t", "lowboy-2002", "lowboy-2005", "lowboy-1996", "plataforma-plana-1990"];
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var cards = document.querySelectorAll('.single-service-cap');
+        cards.forEach(function(card, index) {
+            if (equipmentSlugs[index]) {
+                card.setAttribute('data-slug', equipmentSlugs[index]);
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A' || e.target.closest('a')) return;
+                    var slug = this.getAttribute('data-slug');
+                    showEquipmentModal(slug);
+                });
+            }
+        });
+    });
+    
+    function showEquipmentModal(slug) {
+        var data = equipmentData[slug];
+        if (!data) return;
+        var lang = localStorage.getItem('vilba-language') || 'es';
+        // Set modal content
+        document.getElementById('equipmentModalLabel').textContent = data.name[lang] || data.name.es;
+        document.getElementById('modalEquipmentName').textContent = data.name[lang] || data.name.es;
+        document.getElementById('modalEquipmentImage').src = data.image;
+        document.getElementById('modalEquipmentDescription').textContent = data.description[lang] || data.description.es;
+        // Features
+        var featuresList = document.getElementById('modalEquipmentFeatures');
+        featuresList.innerHTML = '';
+        var features = (data.detailed_info && data.detailed_info[lang] && data.detailed_info[lang].features) || [];
+        features.forEach(function(f) {
+            var li = document.createElement('li');
+            li.innerHTML = '<i class="fa fa-check text-success" style="margin-right:8px;"></i>' + f;
+            li.style.marginBottom = '8px';
+            li.style.listStyle = 'none';
+            featuresList.appendChild(li);
+        });
+        // Applications
+        var appsList = document.getElementById('modalEquipmentApplications');
+        appsList.innerHTML = '';
+        var apps = (data.detailed_info && data.detailed_info[lang] && data.detailed_info[lang].applications) || [];
+        apps.forEach(function(a) {
+            var li = document.createElement('li');
+            li.innerHTML = '<i class="fa fa-cog text-primary" style="margin-right:8px;"></i>' + a;
+            li.style.marginBottom = '8px';
+            li.style.listStyle = 'none';
+            appsList.appendChild(li);
+        });
+        // Technical specs table
+        var specsTable = document.getElementById('modalEquipmentSpecs').querySelector('tbody');
+        specsTable.innerHTML = '';
+        var specs = (data.detailed_info && data.detailed_info[lang] && data.detailed_info[lang].technical_specs) || [];
+        specs.forEach(function(s) {
+            var parts = s.split(':');
+            var tr = document.createElement('tr');
+            var td1 = document.createElement('td');
+            td1.innerHTML = '<strong>' + (parts[0] || '') + '</strong>';
+            var td2 = document.createElement('td');
+            td2.textContent = (parts[1] || '').trim();
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            specsTable.appendChild(tr);
+        });
+        // Gallery
+        var galleryDiv = document.getElementById('modalEquipmentGallery');
+        galleryDiv.innerHTML = '';
+        var gallery = data.gallery || [];
+        gallery.forEach(function(img) {
+            var col = document.createElement('div');
+            col.className = 'col-md-4 mb-3';
+            var imgEl = document.createElement('img');
+            imgEl.src = img;
+            imgEl.className = 'img-fluid rounded shadow';
+            imgEl.style.width = '100%';
+            imgEl.style.height = '150px';
+            imgEl.style.objectFit = 'cover';
+            col.appendChild(imgEl);
+            galleryDiv.appendChild(col);
+        });
+        // Show modal
+        if (typeof $ !== 'undefined') {
+            $('#equipmentModal').modal('show');
+        }
+    }
+    </script>
+    
     <!-- JS here -->
     <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
