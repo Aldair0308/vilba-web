@@ -150,3 +150,89 @@ var equipmentData = {
     },
     gallery: ["assets/img/equipos/Cat-exvacadora-330c-2004.png", "assets/img/gallery/excavator1.jpg", "assets/img/gallery/excavator2.jpg"]
 }
+
+, "motoconformadora-570a": {
+    name: { es: "Motoconformadora John Deere 570A", en: "John Deere 570A Motor Grader" },
+    description: { es: "Motoconformadora John Deere 570A para nivelación.", en: "John Deere 570A for land leveling." },
+    image: "assets/img/equipos/John-deere-motoconformadora-570a.png",
+    specs: { es: ["Peso: 21,703 lbs", "Hoja de 12 pies"], en: ["Weight: 21,703 lbs", "12-foot blade"] },
+    detailed_info: {
+        es: { description: "Motoconformadora John Deere 570A.", features: ["Hoja moldboard de 12 pies", "Sistema de control"], applications: ["Nivelación de terrenos", "Construcción"], technical_specs: ["Peso operativo: 21,703 lbs", "Longitud: 26 ft 9 in"] },
+        en: { description: "John Deere 570A Motor Grader.", features: ["12-foot wide moldboard blade", "Control system"], applications: ["Land leveling", "Construction"], technical_specs: ["Operating weight: 21,703 lbs", "Length: 26 ft 9 in"] }
+    },
+    gallery: ["assets/img/equipos/John-deere-motoconformadora-570a.png", "assets/img/gallery/grader1.jpg"]
+}
+
+, "vibrocompactadora": {
+    name: { es: "Vibrocompactadora Hugg & Hall SD 105F TF", en: "Hugg & Hall SD 105F TF Vibratory Compactor" },
+    description: { es: "Vibrocompactador Hugg & Hall modelo SD 105F TF.", en: "Hugg & Hall SD 105F TF vibratory compactor." },
+    image: "assets/img/equipos/Hugg-vibrocompactador-105f-R.png",
+    specs: { es: ["Peso: 25,100 lbs", "Motor: Cummins 125 HP"], en: ["Weight: 25,100 lbs", "Engine: Cummins 125 HP"] },
+    detailed_info: { es: { description: "Vibrocompactador Hugg & Hall.", features: ["Motor Cummins B3.9 TAA", "Tambor de 84 pulgadas"], applications: ["Compactación de suelos", "Construcción"], technical_specs: ["Modelo: SD 105F TF", "Peso: 25,100 lbs"] }, en: { description: "Hugg & Hall compactor.", features: ["Cummins B3.9 TAA engine", "84-inch drum"], applications: ["Soil compaction", "Construction"], technical_specs: ["Model: SD 105F TF", "Weight: 25,100 lbs"] } },
+    gallery: ["assets/img/equipos/Hugg-vibrocompactador-105f-R.png", "assets/img/gallery/roller1.jpg"]
+}
+, "vibrocompactador-bross-spv730": {
+    name: { es: "Vibrocompactador Bross SPV-730", en: "Bross SPV-730 Vibratory Compactor" },
+    description: { es: "Vibrocompactador Bross Serie SPV-730.", en: "Bross SPV-730 Series vibratory compactor." },
+    image: "assets/img/equipos/Bross-vibrocompactador.png",
+    specs: { es: ["Motor: Diesel 80 HP"], en: ["Engine: 80 HP Diesel"] },
+    detailed_info: { es: { description: "Vibrocompactador Bross.", features: ["Motor diesel 80 HP", "Tambor 70 pulgadas"], applications: ["Compactación", "Construcción"], technical_specs: ["Motor: Diesel 80 HP", "Peso: 13,500 lbs"] }, en: { description: "Bross compactor.", features: ["80 HP diesel engine", "70-inch drum"], applications: ["Compaction", "Construction"], technical_specs: ["Engine: Diesel 80 HP", "Weight: 13,500 lbs"] } },
+    gallery: ["assets/img/equipos/Bross-vibrocompactador.png", "assets/img/gallery/roller1.jpg"]
+}
+, "motoconformadora-galion-t600c": {
+    name: { es: "Motoconformadora Galion T600C", en: "Galion T600C Motor Grader" },
+    description: { es: "Motoconformadora Galion T600C.", en: "Galion T600C Motor Grader." },
+    image: "assets/img/equipos/Galion-motoconformadora-t600c.png",
+    specs: { es: ["Motor: Detroit 76 HP", "Peso: 29,000 lbs"], en: ["Engine: Detroit 76 HP", "Weight: 29,000 lbs"] },
+    detailed_info: { es: { description: "Motoconformadora Galion T600C.", features: ["Motor Detroit 6 cilindros", "Transmisión Powershift"], applications: ["Construcción", "Mantenimiento"], technical_specs: ["Motor: Detroit 6-cylinder", "Peso: 29,000 lbs"] }, en: { description: "Galion T600C Motor Grader.", features: ["Detroit 6-cylinder engine", "Powershift transmission"], applications: ["Construction", "Maintenance"], technical_specs: ["Engine: Detroit 6-cylinder", "Weight: 29,000 lbs"] } },
+    gallery: ["assets/img/equipos/Galion-motoconformadora-t600c.png", "assets/img/gallery/grader1.jpg"]
+}
+, "motoconformadora-cat-120b": {
+    name: { es: "Motoconformadora CAT 120B", en: "CAT 120B Motor Grader" },
+    description: { es: "Motoconformadora Caterpillar 120B.", en: "Caterpillar 120B Motor Grader." },
+    image: "assets/img/equipos/Cat-MOTOCONFORMADORA-120B.png",
+    specs: { es: ["Motor: CAT 3306 130-150 HP"], en: ["Engine: CAT 3306 130-150 HP"] },
+    detailed_info: { es: { description: "Motoconformadora CAT 120B.", features: ["Motor CAT 3306", "Transmisión Powershift"], applications: ["Construcción", "Nivelación"], technical_specs: ["Motor: CAT 3306", "Peso: 26,460 lbs"] }, en: { description: "CAT 120B Motor Grader.", features: ["CAT 3306 engine", "Powershift transmission"], applications: ["Construction", "Grading"], technical_specs: ["Engine: CAT 3306", "Weight: 26,460 lbs"] } },
+    gallery: ["assets/img/equipos/Cat-MOTOCONFORMADORA-120B.png", "assets/img/gallery/grader1.jpg"]
+}
+, "lowboy-rg35-t": {
+    name: { es: "LOW BOY RG35 T", en: "LOW BOY RG35 T" },
+    description: { es: "Remolque LOW BOY RG35 T.", en: "LOW BOY trailer RG35 T." },
+    image: "assets/img/equipos/Lowboy-RG35.png",
+    specs: { es: ["Capacidad: 35 toneladas"], en: ["Capacity: 35 tons"] },
+    detailed_info: { es: { description: "Remolque LOW BOY RG35 T.", features: ["Plataforma baja", "Capacidad 35 toneladas"], applications: ["Transporte", "Maquinaria"], technical_specs: ["Modelo: RG35 T", "Capacidad: 35 tons"] }, en: { description: "LOW BOY RG35 T trailer.", features: ["Low platform", "35-ton capacity"], applications: ["Transport", "Machinery"], technical_specs: ["Model: RG35 T", "Capacity: 35 tons"] } },
+    gallery: ["assets/img/equipos/Lowboy-RG35.png", "assets/img/gallery/lowboy1.jpg"]
+}
+, "lowboy-2002": {
+    name: { es: "LOW BOY 2002", en: "LOW BOY 2002" },
+    description: { es: "Remolque LOW BOY 2002.", en: "LOW BOY trailer 2002." },
+    image: "assets/img/equipos/Lowboy-2002.png",
+    specs: { es: ["Capacidad: 40-50 toneladas"], en: ["Capacity: 40-50 tons"] },
+    detailed_info: { es: { description: "Remolque LOW BOY 2002.", features: ["Plataforma baja", "Capacidad 40-50 toneladas"], applications: ["Transporte", "Maquinaria"], technical_specs: ["Año: 2002", "Capacidad: 40-50 tons"] }, en: { description: "LOW BOY 2002 trailer.", features: ["Low platform", "40-50 ton capacity"], applications: ["Transport", "Machinery"], technical_specs: ["Year: 2002", "Capacity: 40-50 tons"] } },
+    gallery: ["assets/img/equipos/Lowboy-2002.png", "assets/img/gallery/lowboy3.jpg"]
+}
+, "lowboy-2005": {
+    name: { es: "LOW BOY 2005", en: "LOW BOY 2005" },
+    description: { es: "Remolque LOW BOY 2005.", en: "LOW BOY trailer 2005." },
+    image: "assets/img/equipos/Lowboy-2005.png",
+    specs: { es: ["Capacidad: 40-55 toneladas"], en: ["Capacity: 40-55 tons"] },
+    detailed_info: { es: { description: "Remolque LOW BOY 2005.", features: ["Plataforma baja", "Capacidad 40-55 toneladas"], applications: ["Transporte", "Maquinaria"], technical_specs: ["Año: 2005", "Capacidad: 40-55 tons"] }, en: { description: "LOW BOY 2005 trailer.", features: ["Low platform", "40-55 ton capacity"], applications: ["Transport", "Machinery"], technical_specs: ["Year: 2005", "Capacity: 40-55 tons"] } },
+    gallery: ["assets/img/equipos/Lowboy-2005.png", "assets/img/gallery/lowboy5.jpg"]
+}
+, "lowboy-1996": {
+    name: { es: "LOW BOY 1996", en: "LOW BOY 1996" },
+    description: { es: "Remolque LOW BOY 1996.", en: "LOW BOY trailer 1996." },
+    image: "assets/img/equipos/Lowboy-1996.png",
+    specs: { es: ["Capacidad: 40-50 toneladas"], en: ["Capacity: 40-50 tons"] },
+    detailed_info: { es: { description: "Remolque LOW BOY 1996.", features: ["Plataforma baja", "Capacidad 40-50 toneladas"], applications: ["Transporte", "Maquinaria"], technical_specs: ["Año: 1996", "Capacidad: 40-50 tons"] }, en: { description: "LOW BOY 1996 trailer.", features: ["Low platform", "40-50 ton capacity"], applications: ["Transport", "Machinery"], technical_specs: ["Year: 1996", "Capacity: 40-50 tons"] } },
+    gallery: ["assets/img/equipos/Lowboy-1996.png", "assets/img/gallery/lowboy1.jpg"]
+}
+, "plataforma-plana-1990": {
+    name: { es: "Plataforma Plana 1990", en: "Flatbed Platform 1990" },
+    description: { es: "Remolque de plataforma plana año 1990.", en: "Flatbed platform year 1990." },
+    image: "assets/img/equipos/Lowboy-plana-1990.png",
+    specs: { es: ["Capacidad: 48,000-80,000 lbs"], en: ["Capacity: 48,000-80,000 lbs"] },
+    detailed_info: { es: { description: "Remolque plataforma plana 1990.", features: ["Capacidad 48k-80k lbs", "Plataforma abierta"], applications: ["Transporte", "Carga general"], technical_specs: ["Año: 1990", "Capacidad: 48,000-80,000 lbs"] }, en: { description: "Flatbed platform 1990.", features: ["Capacity 48k-80k lbs", "Open platform"], applications: ["Transport", "General cargo"], technical_specs: ["Year: 1990", "Capacity: 48,000-80,000 lbs"] } },
+    gallery: ["assets/img/equipos/Lowboy-plana-1990.png", "assets/img/gallery/flatbed1.jpg"]
+}
+};
